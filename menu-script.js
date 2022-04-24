@@ -11,3 +11,13 @@ menuLink.forEach((menuLi) => {
         }
     });
 });
+
+$(window).scroll(function(){
+    var header = $('header'),
+        scroll = $(window).scrollTop();
+  
+    if (scroll >= 200)
+        header.addClass('header-scroll');
+    else
+        header.removeClass('header-scroll');
+  });
