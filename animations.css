@@ -5,6 +5,9 @@
     .header-scroll-anim {
         animation: header-scroll 0.5s ease-out;
     }
+    .change-color-anim {
+        animation: change-color 0.5s ease-out;
+    }
 }
 
 @keyframes header {
@@ -17,5 +20,11 @@
     0% {
         opacity: 0;
         height: 120px;
+    }
+}
+
+@keyframes change-color {
+    0% {
+        color: black;
     }
 }
