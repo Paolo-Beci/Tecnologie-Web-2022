@@ -1,3 +1,12 @@
+@media(prefers-reduced-motion: no-preference) {
+    .header-anim {
+        animation: header 1s ease-out;
+    }
+    .header-scroll-anim {
+        animation: header-scroll 0.5s ease-out;
+    }
+}
+
 @keyframes header {
     0% {
         transform: translateY(-200px);

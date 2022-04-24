@@ -5,10 +5,6 @@
     margin: 0;
 }
 
-body {
-    margin: 0;
-}
-
 a {
     text-decoration: none;
     font-weight: bold;
@@ -21,19 +17,11 @@ header {
     border-bottom: 1px solid rgb(65, 65, 65, 0.3);  
     padding-left: 5%;
     padding-right: 5%;
-    animation: header 1s ease-out;
 }
 
 .header-scroll {
-    background-color: white;
-    height: 100px;
-    width: 90%;
-    margin: 0px 0px 0px 0px;
-    padding-left: 5%;
-    padding-right: 5%;
     position: fixed;
     box-shadow: 0px 5px 8px rgba(0,0,0,0.3);
-    animation: header-scroll 0.5s ease-out;
 }
 
 .logo {
