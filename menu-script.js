@@ -1,4 +1,4 @@
-let menuLink = document.querySelectorAll('.menu li')
+var menuLink = document.querySelectorAll('.menu li')
 
 menuLink.forEach((menuLi) => {
     
@@ -18,33 +18,41 @@ $(window).scroll(function(){
 
     navLinksScroll();
 
-  });
+});
 
-  function headerScroll(){
+var lastScroll = 0;
 
-    var header = $('header');
+function headerScroll(){
 
-    var scroll = $(window).scrollTop();
+    let header = $('header');
 
-    if (scroll > parseFloat(header.css('height')))
+    let scroll = $(window).scrollTop();
+
+    if (lastScroll < scroll && scroll > parseFloat(header.css('height')) + 20)
         header.addClass('header-scroll header-scroll-anim');
-    else if (scroll < parseFloat(header.css('height')) - 20)
+    
+    if (lastScroll > scroll && scroll < (parseFloat(header.css('height')) + 50))
         header.removeClass('header-anim header-scroll header-scroll-anim');
 
-  }
+    lastScroll = scroll;
+
+}
 
 function navLinksScroll(){
 
-    var scrollPos = $(window).scrollTop();
+    let scrollPos = $(window).scrollTop();
 
-    $('nav a').each(function () {
+    $('.menu a').each(function () {
 
-        var currLink = $(this);
-        var refElement = $(currLink.attr("href"));
+        let currLink = $(this);
+        let refElement = $(currLink.attr("href"));
 
-        if (refElement.position().top <= scrollPos + 100) {
-            $('header a').removeClass("active");
-            currLink.addClass("active");
+        if (refElement.position().top <= scrollPos + 100 &&
+            refElement.position().top + refElement.height() > scrollPos + 100) {
+            if(!currLink.hasClass('active')){
+                $('.menu a').removeClass('active change-color-anim');
+                currLink.addClass('active change-color-anim');
+            }
         }
 
     });
