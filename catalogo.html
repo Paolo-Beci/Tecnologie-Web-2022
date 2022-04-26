@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="animations.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="catalogo.css">
+
     <script src="menu-script.js" defer></script>
+    <script src="script.js"></script>
 </head>
 <body>
     <header class="header">
@@ -19,42 +21,84 @@
         <nav>
             <ul class="menu">
                 <li>
-                    <a class="active" href="#top">Home</a>
+                    <a class="active" href="index.html">Home</a>
                 </li>
                 <li>
-                    <a href="#middle">Middle</a>
+                    <a href="#login">Accedi</a>
                 </li>
                 <li>
-                    <a href="#bottom">Bottom</a>
+                    <a href="#insert">Inserisci annuncio</a>
                 </li>
             </ul>
         </nav>
 
     </header>
-    <aside id="aside">
-        <section id="mappa" class="top">
 
+    <main>
+        <aside class="lateral-bar">
+            <h1>Filtri ricerca</h1>
+            <iframe
+                width="90%"
+                height="200"
+                style="border:3px"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBDiB3ZpTQcYlqUl0AMcgDsqaY7vtXLYxE&q=Italy,Italy-IT">
+            </iframe>
+            <h2>Città</h2>
+            <h2>Fascia di prezzo</h2>
+            <h2>Tipologia</h2>
+            <h2>Caratteristiche dell'alloggio</h2>
+            <h2>Periodo di locazione</h2>
+        </aside>
+        <section class="inserzioni-container">
+            <h1>Case in affitto</h1>
+            <article class="inserzione-item">
+
+            </article>
+            <article class="inserzione-item">
+
+            </article>
+            <article class="inserzione-item">
+
+            </article>
+            <article class="inserzione-item">
+
+            </article>
+            <article class="inserzione-item">
+
+            </article>
+            <article class="inserzione-item">
+
+            </article>
         </section>
-        <section id="filtro1" class="middle"></section>
-        <section id="filtro2" class="bottom"></section>
-    </aside>
-    <section id="top" class="top"></section>
-    <section id="middle" class="middle"></section>
-    <section id="bottom" class="bottom"></section>
-</body>
-<footer class="footer">
-    <section>
-        <ul>
-            <li class="un-sin-des"><a href="">Contact Us</a></li>
-            <li class="un-sin-des"><a href="">Chi siamo</a></li>
-            <li class="un-sin-des"><a href="">Assistenza</a></li>
-            <li class="un-sin-des"><a href="">Citt&agrave</a></li>
-            <li class="un-sin-des"><a href="">Privacy Policy</a></li>
-        </ul>
-        <ul>
-            <li> Copyright &copy 2022 Tavernelle Dev Company. All Rights Reserved. </li>
-        </ul>
+    </main>
+
+    <section id="bottom" class="bottom">
+        <h1>Parlano di noi...</h1>
+        <section class="mappa2">
+            <iframe
+                    width="50%"
+                    height="60%"
+                    style="border:3px"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBDiB3ZpTQcYlqUl0AMcgDsqaY7vtXLYxE&q=Italy,Italy-IT">
+            </iframe>
+        </section>
     </section>
-</footer>
+
+    <footer>
+        <ul class="info">
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Chi siamo</a></li>
+            <li><a href="#">Assistenza</a></li>
+            <li><a href="#">Città</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+        </ul>
+        <span class="copyright">Copyright © 2022 Tavernelle Dev Company.
+            <br>All Rights Reserved.</span>
+    </footer>
+</body>
 
 </html>

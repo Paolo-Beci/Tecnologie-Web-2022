@@ -1,7 +1,7 @@
 * {
     color: rgb(65, 65, 65);
     font-size: 20px;
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
 }
 
@@ -58,7 +58,6 @@ header {
 
 .top {
     background-color: blue;
-    padding-top: 20px;
 }
 
 .middle {
@@ -66,5 +65,6 @@ header {
 }
 
 .bottom {
-    background-color: purple;
+    background-color: #FFD625;
+    height: 500px;
 }
