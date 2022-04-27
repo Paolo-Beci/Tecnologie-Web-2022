@@ -31,7 +31,7 @@ h2 {
     background-color: white;
     text-align: center;
 }
-.inserzioni-container {
+.container-inserzione {
     height: 100%;
     width: 75%;
     background-color: white;
@@ -40,13 +40,70 @@ h2 {
     justify-content: space-evenly;
     align-items: center;
 }
-.inserzione-item {
+.item-inserzione {
     height: 300px;
     width: 95%;
     border: 2px solid;
     border-radius: 25px;
     background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.item-immagine {
+    height: 250px;
+    width: 35%;
+    border: 1px solid;
+    border-radius: 25px 25px 25px 25px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+.item-descrizione {
+    height: 250px;
+    width: 55%;
+    margin: 10px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.inserisci_annuncio {
+    background-color:#ffd725;
+    border-radius:13px;
+    border:2px solid #414141;
+    display:inline-block;
+    cursor:pointer;
+    color:#414141;
+    font-size:18px;
+    font-weight:bold;
+    padding:12px 1px;
+    text-decoration:none;
+}
+.inserisci_annuncio:hover {
+    background-color:#414141;
+    border:3px solid #ffd725;
+    color:#ffd725;
 }
 .mappa2 {
     border: 2px;
+}
+.item1 {
+    background-image: url('sources/images_case/imm1.jpg');
+}
+.item2 {
+    background-image: url('sources/images_case/imm2.jpg');
+}
+.item3 {
+    background-image: url('sources/images_case/imm3.jpg');
+}
+.item4 {
+    background-image: url('sources/images_case/imm4.jpg');
+}
+.item5 {
+    background-image: url('sources/images_case/imm5.jpg');
+}
+.item6 {
+    background-image: url('sources/images_case/imm6.jpg');
 }
