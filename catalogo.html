@@ -16,7 +16,7 @@
 </head>
 <body>
     <!-- HEADER superiore -->
-    <header class="header">
+    <header class="header-anim">
         <a class="logo" href="index.html">
             <img src="sources/images/FlatMate_Logo_mini.png" alt="FlatMate Logo">
         </a>
@@ -36,7 +36,6 @@
                 </li>
             </ul>
         </nav>
-
     </header>
 
     <!-- Sezione principale della pagina -->
@@ -53,7 +52,37 @@
                 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBDiB3ZpTQcYlqUl0AMcgDsqaY7vtXLYxE&q=Italy,Italy-IT">
             </iframe>
             <h2>Città</h2>
+
             <h2>Fascia di prezzo</h2>
+            <!-- Slider fascia di prezzo -->
+            <section class="container">
+                <section class="price-input">
+                    <section class="field">
+                        <span>Min</span>
+                        <label>
+                            <input type="number" class="input-min" value="50">
+                        </label>
+                    </section>
+                    <section class="separator">-</section>
+                    <section class="field">
+                        <span>Max</span>
+                        <label>
+                            <input type="number" class="input-max" value="1200">
+                        </label>
+                    </section>
+                </section>
+                <section class="slider">
+                    <section class="progress"></section>
+                </section>
+                <section class="range-input">
+                    <label>
+                        <input type="range" class="range-min" min="0" max="2000" value="50" step="50">
+                        <input type="range" class="range-max" min="0" max="2000" value="1200" step="50">
+                    </label>
+                </section>
+            </section>
+            <!-- FINE Slider fascia di prezzo -->
+
             <h2>Tipologia</h2>
             <h2>Caratteristiche dell'alloggio</h2>
             <h2>Periodo di locazione</h2>

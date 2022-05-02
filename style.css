@@ -75,10 +75,10 @@ header {
     background-image: url(sources/images/home-decoration.png);
     background-repeat: no-repeat;
     display: flex;
+    height: 1000px;
 }
 
 .middle {
-    background-color: red;
 }
 
 .bottom {
@@ -295,8 +295,7 @@ header {
     height: 600px;
     width: 600px;
     border-radius: 50%;
-    background: linear-gradient(-60deg,#414141, #FFD625);
-    background-color: white;
+    background: white linear-gradient(-60deg, #414141, #FFD625);
     transform: translate(230px, -530px);
 }
 .circle-to-login {
@@ -304,7 +303,6 @@ header {
     height: 600px;
     width: 600px;
     border-radius: 50%;
-    background: linear-gradient(-60deg,#414141, #FFD625);
-    background-color: white;
+    background: white linear-gradient(-60deg, #414141, #FFD625);
     transform: translate(-500px, -2200px);
 }
