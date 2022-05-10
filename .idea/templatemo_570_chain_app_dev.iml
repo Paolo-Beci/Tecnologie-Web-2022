@@ -6,8 +6,6 @@
       <sourceFolder url="file://$MODULE_DIR$/LaraProject/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/jakub-onderka/php-console-color" />
-      <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/jakub-onderka/php-console-highlighter" />
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/phpdocumentor/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/phpdocumentor/type-resolver" />
@@ -22,13 +20,11 @@
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/facade/ignition" />
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/facade/ignition-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/league/commonmark" />
-      <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/league/commonmark-ext-table" />
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/league/flysystem" />
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/nesbot/carbon" />
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/ramsey/uuid" />
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/scrivo/highlight.php" />
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/vlucas/phpdotenv" />
-      <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/dnoegel/php-xdg-base-dir" />
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/laravel/tinker" />
@@ -93,6 +89,13 @@
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/tijsverkoyen/css-to-inline-styles" />
       <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/dragonmantank/cron-expression" />
+      <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/league/mime-type-detection" />
+      <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/php-parallel-lint/php-console-highlighter" />
+      <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/php-parallel-lint/php-console-color" />
+      <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/symfony/polyfill-intl-normalizer" />
+      <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/symfony/http-client-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/LaraProject/vendor/symfony/deprecation-contracts" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

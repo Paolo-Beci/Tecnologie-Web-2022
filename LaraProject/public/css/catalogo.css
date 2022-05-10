@@ -174,20 +174,20 @@ input[type="range"]::-moz-range-thumb{
 
 /* Annunci */
 .item1 {
-    background-image: url('sources/images_case/imm1.jpg');
+    background-image: url('../images/images_case/imm1.jpg');
 }
 .item2 {
-    background-image: url('sources/images_case/imm2.jpg');
+    background-image: url('../images/images_case/imm2.jpg');
 }
 .item3 {
-    background-image: url('sources/images_case/imm3.jpg');
+    background-image: url('../images/images_case/imm3.jpg');
 }
 .item4 {
-    background-image: url('sources/images_case/imm4.jpg');
+    background-image: url('../images/images_case/imm4.jpg');
 }
 .item5 {
-    background-image: url('sources/images_case/imm5.jpg');
+    background-image: url('../images/images_case/imm5.jpg');
 }
 .item6 {
-    background-image: url('sources/images_case/imm6.jpg');
+    background-image: url('../images/images_case/imm6.jpg');
 }
