@@ -11,30 +11,7 @@
 |
 */
 
-Route::get('/', '')
-    ->name('home');
-
-Route::get('/registrati', '')
-    ->name('registrazione');
-
-Route::get('/homeLocatore', '')
-    ->name('homeLocatore');
-
-Route::get('/homeLocatario', '')
-    ->name('homeLocatario');
-
-Route::get('/admin', '')
-    ->name('admin');
-
-Route::get('/catalogoGuest', '')
-    ->name('catalogoGuest');
-
-Route::get('/catalogoLocatario', '')
-    ->name('catalogoLocatario');
-
-Route::get('/catalogoAdmin', '')
-    ->name('catalogoAdmin');
-
-Route::view('/where', 'where')
-    ->name('');
+Route::get('/', function () {
+    return view('public-home');
+});
 
