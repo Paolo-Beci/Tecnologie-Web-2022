@@ -5,16 +5,16 @@
     <title>FlatMate</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <link rel="stylesheet" href="LaraProject/public/css/animations.css">
-    <link rel="stylesheet" href="LaraProject/public/css/footer.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="LaraProject/resources/js/menu-script.js" defer></script>
-    <script src="LaraProject/resources/js/forms-script.js" defer></script>
+    <link rel="stylesheet" href="laraProject/public/css/animations.css">
+    <link rel="stylesheet" href="laraProject/public/css/footer.css">
+    <script snavpurc="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="laraProject/resources/js/menu-script.js" defer></script>
+    <script src="laraProject/resources/js/forms-script.js" defer></script>
 </head>
 <body>
     <header class="header-anim">
         <a class="logo" href="index.html">
-            <img src="LaraProject/public/images/images/FlatMate_Logo_mini.png" alt="FlatMate Logo">
+            <img src="./public/images/FlatMate_Logo_mini.png" alt="FlatMate Logo">
         </a>
         <nav>
             <ul class="menu">
@@ -92,7 +92,7 @@
                 </form>
                 <div class="circle-to-sign-up"></div>
                 <div class="circle-to-login"></div>
-            </div>  
+            </div>
         </article>
     </section>
     <section id="middle" class="middle"></section>
