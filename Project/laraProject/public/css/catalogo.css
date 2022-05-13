@@ -29,6 +29,7 @@ h2 {
     height: 100%;
     width: 25%;
     background-color: white;
+    opacity: 0.5;
     text-align: center;
 }
 .container-inserzione {
