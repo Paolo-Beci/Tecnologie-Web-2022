@@ -72,7 +72,7 @@ header {
 }
 
 .home {
-    background-image: url(../images/images/home-decoration.png);
+    background-image: url('../images/home-decoration.png');
     background-repeat: no-repeat;
     display: flex;
     height: 1000px;

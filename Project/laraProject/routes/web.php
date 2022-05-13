@@ -12,6 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('public-home');
+    return view('layouts/content-public')
+    ->with('user', 'public');
 });
 
+Route::get('/locatore', function () {
+    return view('layouts/content-locatore')
+    ->with('user', 'locatore');
+});
