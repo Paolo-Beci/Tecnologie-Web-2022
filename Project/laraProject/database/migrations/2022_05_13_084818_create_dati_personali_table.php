@@ -15,18 +15,18 @@ class CreateDatiPersonaliTable extends Migration
     {
         Schema::create('dati_personali', function (Blueprint $table) {
             $table->increments('id_dati_personali')->primary();
-            $table->integer('id_foto_profilo')->nullable();
+            $table->integer('id_foto_profilo')->nullable()->unsigned();
             $table->char('cellulare',10)->nullable();
-            $table->string('via',MAX);
-            $table->string('città',MAX);
+            $table->string('via',255);
+            $table->string('città',255);
             $table->tinyInteger('num_civico');
             $table->char('cap',5);
-            $table->string('nome',MAX);
-            $table->string('cognome',MAX);
+            $table->string('nome',255);
+            $table->string('cognome',255);
             $table->dateTime('data_nascita');
-            $table->string('luogo_nascita',MAX);
+            $table->string('luogo_nascita',255);
             $table->char('sesso',1);
-            $table->string('mail',MAX);
+            $table->string('mail',255);
             $table->char('codice_fiscale',16);
         });
     }
