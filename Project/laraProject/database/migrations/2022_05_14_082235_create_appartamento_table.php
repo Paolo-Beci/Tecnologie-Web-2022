@@ -15,9 +15,9 @@ class CreateAppartamentoTable extends Migration
     {
         Schema::create('appartamento', function (Blueprint $table) {
             $table->increments('id_appartamento')->primary();
-            $table->integer('num_camere' )->nullable();
-            $table->integer('alloggio' )->nullable();
-            $table->foreign('alloggio')->references('id_alloggio')->on(alloggio)->onUpdate('cascade')->onDelete('cascade');
+            $table->tinyInteger('num_camere' )->nullable();
+            $table->integer('alloggio' )->nullable()->unsigned();
+            $table->foreign('alloggio')->references('id_alloggio')->on('alloggio')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

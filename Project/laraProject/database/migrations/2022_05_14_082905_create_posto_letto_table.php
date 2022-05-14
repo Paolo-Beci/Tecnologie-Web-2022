@@ -15,10 +15,10 @@ class CreatePostoLettoTable extends Migration
     {
         Schema::create('posto_letto', function (Blueprint $table) {
             $table->increments('id_posto_letto')->primary();
-            $table->integer('tipologia')->default(1);
+            $table->tinyInteger('tipologia')->default(1);
             $table->binary('angolo_studio')->default(0);
             $table->integer('alloggio')->unsigned();
-            $table->foreign('alloggio')->references('id_alloggio')->on(alloggio)->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('alloggio')->references('id_alloggio')->on('alloggio')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

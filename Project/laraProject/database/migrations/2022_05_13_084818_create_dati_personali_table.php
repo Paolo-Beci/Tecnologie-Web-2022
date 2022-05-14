@@ -19,7 +19,7 @@ class CreateDatiPersonaliTable extends Migration
             $table->char('cellulare',10)->nullable();
             $table->string('via',255);
             $table->string('città',255);
-            $table->tinyInteger('num_civico');
+            $table->smallInteger('num_civico');
             $table->char('cap',5);
             $table->string('nome',255);
             $table->string('cognome',255);

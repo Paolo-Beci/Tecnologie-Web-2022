@@ -14,7 +14,7 @@ class CreateServizioTable extends Migration
     public function up()
     {
         Schema::create('servizio', function (Blueprint $table) {
-            $table->string('nome_servizio')->primary();
+            $table->string('nome_servizio',255)->primary();
         });
     }
 

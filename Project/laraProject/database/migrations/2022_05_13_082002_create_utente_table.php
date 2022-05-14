@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('password',255);
             $table->string('ruolo',9);
             $table->integer('dati_personali')->unsigned();
-            $table->foreign('dati_personali')->references('id_dati_personali')->on(dati_personali)->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('dati_personali')->references('id_dati_personali')->on('dati_personali')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
