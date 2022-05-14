@@ -1,4 +1,4 @@
-@extends('home')
+@extends('template')
 
 @section('content')
 <section id="home" class="home">
@@ -31,7 +31,7 @@
                     <span>Non sei un membro? <a data-form="toSignUp">Registrati</a></span>
                 </div>
             </form>
-            <form class="sign-up inactive-form" action="">
+            <form class="sign-up inactive-form" action="{{route('registrazione')}}">
                 <h1>Registrazione</h1>
                 <fieldset class="sign-up-fieldset">
                     <div class="username">

@@ -11,16 +11,21 @@
 |
 */
 
+// HOMEPAGE PUBBLICA
 Route::get('/', function () {
     return view('layouts/content-public')
     ->with('user', 'public');
-});
+})->name('homepage');
 
-/* CATALOGO */
-Route::get('/catalogo-no-log', function () {
-    return view('layouts/content-catalogo_1')
+Route::get('/registrazione', function () {
+    return view('registrazione-dati-personali');
+})->name('registrazione');
+
+// CATALOGO
+Route::get('/catalogo', function () {
+    return view('layouts/content-catalogo')
     ->with('user', 'public');
-});
+})->name('catalogo');
 
 Route::get('/catalogo-locatore', function () {
     return view('layouts/content-catalogo_2')
@@ -37,7 +42,7 @@ Route::get('/catalogo-admin', function () {
         ->with('user', 'public');
 });
 
-/* HOMEPAGE */
+// HOMEPAGE
 Route::get('/locatore', function () {
     return view('layouts/content-locatore')
     ->with('user', 'locatore');

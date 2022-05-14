@@ -1,6 +1,6 @@
 <ul class="menu">
     <li>
-        <a class="active" href="" title="Home">Home</a>
+        <a class="active" href="#home" title="Home">Home</a>
     </li>
     <li>
         <a href="" title="I nostri servizi">Servizi</a>
@@ -9,10 +9,13 @@
         <a href="" title="Il nostro profilo aziendale">Chi siamo</a>
     </li>
     <li>
-        <a href="" title="Catalogo">Annunci</a>
+        <a href="{{ route('catalogo') }}" title="Catalogo">Catalogo</a>
     </li>
     <li>
-        <a href="" title="Effettua il login">Login</a>
+        <a href="" title="Frequenty Asked Questions">FAQ</a>
+    </li>
+    <li>
+        <a href="#login" title="Effettua il login">Login</a>
     </li>
 </ul>
 

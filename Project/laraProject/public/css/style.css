@@ -89,6 +89,7 @@ header {
 /* Sezione di benvenuto */
 
 .title {
+    margin-top: -80px;
     height: 100%;
     width: 45%;
     display: flex;
@@ -115,6 +116,7 @@ header {
 /* Forms */
 
 .forms {
+    margin-top: -80px;
     height: 100%;
     width: 55%;
     display: flex;
@@ -123,7 +125,6 @@ header {
 }
 
 .container {
-    /* margin-top: 50px; */
     margin-left: 200px;
     height: 515px;
     width: 385px;
@@ -260,6 +261,7 @@ header {
     color: white;
     border: 0px;
     font-size: 26px;
+    cursor: pointer;
     transition: border 0.2s ease;
 }
 
