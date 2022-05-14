@@ -15,7 +15,7 @@ class CreateAlloggioTable extends Migration
     {
         Schema::create('alloggio', function (Blueprint $table) {
             $table->increments('id_alloggio')->primary();
-            $table->string('descrzione',255)->nullable();
+            $table->string('descrizione',255)->nullable();
             $table->smallInteger('utenze')->nullable();
             $table->smallInteger('canone_affitto');
             $table->tinyInteger('periodo_locazione');
@@ -25,7 +25,7 @@ class CreateAlloggioTable extends Migration
             $table->smallInteger('dimensione')->nullable();
             $table->tinyInteger('num_posti_letto_tot')->nullable();
             $table->string('via',255);
-            $table->string('città',255);
+            $table->string('citta',255);
             $table->smallInteger('num_civico');
             $table->char('cap',5);
             $table->smallInteger('interno')->nullable();
