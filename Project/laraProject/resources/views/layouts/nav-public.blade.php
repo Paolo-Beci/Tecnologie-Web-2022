@@ -19,7 +19,7 @@
     </li>
 </ul>
 
-{{-- {{ route('catalog1') }} l'ho provato ed esplode tutto...--}}
+{{-- {{ route('catalog1') }} --}}
 {{-- {{ route('catalog1') }} --}}
 {{-- {{ route('who') }} --}}
 {{-- {{ route('where') }} --}}

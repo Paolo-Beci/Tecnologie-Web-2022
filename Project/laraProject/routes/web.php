@@ -27,21 +27,6 @@ Route::get('/catalogo', function () {
     ->with('user', 'public');
 })->name('catalogo');
 
-Route::get('/catalogo-locatore', function () {
-    return view('layouts/content-catalogo_2')
-        ->with('user', 'public');
-});
-
-Route::get('/catalogo-locatario', function () {
-    return view('layouts/content-catalogo_3')
-        ->with('user', 'public');
-});
-
-Route::get('/catalogo-admin', function () {
-    return view('layouts/content-catalogo_4')
-        ->with('user', 'public');
-});
-
 // HOMEPAGE
 Route::get('/locatore', function () {
     return view('layouts/content-locatore')

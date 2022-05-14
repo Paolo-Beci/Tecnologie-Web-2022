@@ -1,13 +1,13 @@
 <ul class="menu">
     <li>
-        <a class="active" href="index.html">Home</a>
+        <a class="active" href="{{ route('homepage') }}">Home</a>
     </li>
     <li>
-        <a href="index.html">Accedi</a>
+        <a href="{{ route('homepage') }}">Accedi</a>
     </li>
     <li>
         <button class="inserisci_annuncio" href="#insert">
-            <img src="LaraProject/public/images/images/plus_icon.png" alt="Plus Logo" width="10%" style="vertical-align:middle;horiz-align:left">
+            <img src="{{asset('images/plus_icon.png')}}" alt="Plus Logo" width="10%" style="vertical-align:middle;horiz-align:left">
             Inserisci annuncio
         </button>
     </li>

@@ -88,6 +88,4 @@
     </div>
 </section>
 <section id="faq" class="faq">
-
-</section>
 @endsection

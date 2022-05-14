@@ -2,15 +2,53 @@
 
 @section('content')
 <section id="catalogo" class="catalogo">
-    <section class="lateral-bar">
-        <h1>Filtri ricerca</h1>
-        <h2>Città</h2>
-        <h2>Fascia di prezzo</h2>
-        <h2>Tipologia</h2>
-        <h2>Caratteristiche dell'alloggio</h2>
-        <h2>Periodo di locazione</h2>
-    </section>
+    <aside class="lateral-bar">
+        @include('helpers/filtri')
+    </aside>
     <section class="container-inserzione">
+            <h1>Case in affitto</h1>
+            <!-- Item inserzione -->
+            <article class="item-inserzione" onclick="">
+                @include('helpers/immagine-inserzione')
+                <section class="item-descrizione">
+                    <h1>Appartamento/Posto Letto (genere)</h1>
+                    <h1>Via, Città, Num.Civico</h1>
+                    <h2>Dimensione, Periodo Locazione, Utenze</h2>
+                    <h2>Canone affitto: 200 &#8364;</h2>
+                </section>
+            </article>
+            <!-- Item inserzione -->
+            <article class="item-inserzione" onclick="">
+                <section class="item-immagine item2"></section>
+                <section class="item-descrizione">
+                    <h1>Appartamento/Posto Letto (genere)</h1>
+                    <h1>Via, Città, Num.Civico</h1>
+                    <h2>Dimensione, Periodo Locazione, Utenze</h2>
+                    <h2>Canone affitto: 200 &#8364;</h2>
+                </section>
+            </article>
+            <!-- Item inserzione -->
+            <article class="item-inserzione" onclick="">
+                <section class="item-immagine item3"></section>
+                <section class="item-descrizione">
+                    <h1>Appartamento/Posto Letto (genere)</h1>
+                    <h1>Via, Città, Num.Civico</h1>
+                    <h2>Dimensione, Periodo Locazione, Utenze</h2>
+                    <h2>Canone affitto: 200 &#8364;</h2>
+                </section>
+            </article>
+            <!-- Item inserzione -->
+            <article class="item-inserzione" onclick="">
+                <section class="item-immagine item6"></section>
+                <section class="item-descrizione">
+                    <h1>Appartamento/Posto Letto (genere)</h1>
+                    <h1>Via, Città, Num.Civico</h1>
+                    <h2>Dimensione, Periodo Locazione, Utenze</h2>
+                    <h2>Canone affitto: 200 &#8364;</h2>
+                </section>
+            </article>
+    </section>
+    <!-- DA FARE UNA VOLTA IMPLEMENTATO IL DB -->
         @isset($alloggio)   <!-- esiste o non è null -->
         @foreach ($alloggio as $alloggio)
             <!-- Item inserzione -->
@@ -29,6 +67,5 @@
         @include('pagination.paginator', ['paginator' => $products])
 
         @endisset()
-    </section>
 </section>
 @endsection

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{asset('css/content-public.css')}}">
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
     <link rel="stylesheet" href="{{asset('css/animations.css')}}">
+    <link rel="stylesheet" href="{{asset('css/catalogo.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../resources/js/menu-script.js" defer></script>
     <script src="../resources/js/forms-script.js" defer></script>
@@ -23,6 +24,10 @@
                 @include('layouts/nav-locatore')
             @else
                 @include('layouts/nav-public')
+            @endif
+            <!-- DA FARE DIFFERENZIAZIONE NAVBAR IN BASE A CONTENT -->
+            @if(Request::url() == '/catalogo')
+                @include('layouts/nav-catalogo')
             @endif
 
         </nav>
