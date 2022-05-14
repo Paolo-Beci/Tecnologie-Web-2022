@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Case in affitto - FlatMate</title>
+    @section('title', 'Case in affitto')
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="LaraProject/public/css/style.css">
-    <link rel="stylesheet" href="LaraProject/public/css/footer.css">
-    <link rel="stylesheet" href="LaraProject/public/css/animations.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/animations.css')}}">
     <link rel="stylesheet" href="LaraProject/public/css/catalogo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Script di questa pagina - script_catalogo DA FARE -->
     <script src="LaraProject/resources/js/menu-script.js" defer></script>
@@ -89,67 +88,24 @@
         </aside>
         <!-- Container catalogo principale -->
         <section class="container-inserzione">
-            <h1>Case in affitto</h1>
+            @isset($alloggio)   <!-- esiste o non è null -->
+            @foreach ($alloggio as $alloggio)
             <!-- Item inserzione -->
             <article class="item-inserzione" onclick="">
-                <section class="item-immagine item1"></section>
-                <section class="item-descrizione">
-                    <h1>Appartamento/Posto Letto (genere)</h1>
-                    <h1>Via, Città, Num.Civico</h1>
+                <div class="item-immagine item1"></div>
+                <div class="item-info">
+                    <h1>Appartamento/Posto Letto (genere) {{ $alloggio ->genere }}</h1>
+                    <h1>Via, Città, Num.Civico {{ $alloggio ->Via }}</h1>
                     <h2>Dimensione, Periodo Locazione, Utenze</h2>
                     <h2>Canone affitto: 200 &#8364;</h2>
-                </section>
+                </div>
             </article>
-            <!-- Item inserzione -->
-            <article class="item-inserzione" onclick="">
-                <section class="item-immagine item2"></section>
-                <section class="item-descrizione">
-                    <h1>Appartamento/Posto Letto (genere)</h1>
-                    <h1>Via, Città, Num.Civico</h1>
-                    <h2>Dimensione, Periodo Locazione, Utenze</h2>
-                    <h2>Canone affitto: 200 &#8364;</h2>
-                </section>
-            </article>
-            <!-- Item inserzione -->
-            <article class="item-inserzione" onclick="">
-                <section class="item-immagine item3"></section>
-                <section class="item-descrizione">
-                    <h1>Appartamento/Posto Letto (genere)</h1>
-                    <h1>Via, Città, Num.Civico</h1>
-                    <h2>Dimensione, Periodo Locazione, Utenze</h2>
-                    <h2>Canone affitto: 200 &#8364;</h2>
-                </section>
-            </article>
-            <!-- Item inserzione -->
-            <article class="item-inserzione" onclick="">
-                <section class="item-immagine item4"></section>
-                <section class="item-descrizione">
-                    <h1>Appartamento/Posto Letto (genere)</h1>
-                    <h1>Via, Città, Num.Civico</h1>
-                    <h2>Dimensione, Periodo Locazione, Utenze</h2>
-                    <h2>Canone affitto: 200 &#8364;</h2>
-                </section>
-            </article>
-            <!-- Item inserzione -->
-            <article class="item-inserzione" onclick="">
-                <section class="item-immagine item5"></section>
-                <section class="item-descrizione">
-                    <h1>Appartamento/Posto Letto (genere)</h1>
-                    <h1>Via, Città, Num.Civico</h1>
-                    <h2>Dimensione, Periodo Locazione, Utenze</h2>
-                    <h2>Canone affitto: 200 &#8364;</h2>
-                </section>
-            </article>
-            <!-- Item inserzione -->
-            <article class="item-inserzione" onclick="">
-                <section class="item-immagine item6"></section>
-                <section class="item-descrizione">
-                    <h1>Appartamento/Posto Letto (genere)</h1>
-                    <h1>Via, Città, Num.Civico</h1>
-                    <h2>Dimensione, Periodo Locazione, Utenze</h2>
-                    <h2>Canone affitto: 200 &#8364;</h2>
-                </section>
-            </article>
+            @endforeach
+
+            <!--Paginazione-->
+            @include('pagination.paginator', ['paginator' => $products])
+
+            @endisset()
         </section>
     </main>
 
