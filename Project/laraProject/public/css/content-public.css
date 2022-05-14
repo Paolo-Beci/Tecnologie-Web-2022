@@ -1,3 +1,9 @@
+/* Proprietà condivise */
+
+.services, .about-us, .faq {
+    margin-top: 100px;
+}
+
 /* Sezione home */
 
 .home {
@@ -231,7 +237,6 @@
 /* Sezione servizi */
 
 .services {
-    height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -239,12 +244,9 @@
     gap: 40px;
 }
 
-.services p {
-    text-align: center;
-}
-
 .service-container {
     display: flex;
+    flex-wrap: wrap;
     gap: 40px;
 }
 
@@ -262,9 +264,28 @@
 
 /* Sezione chi siamo */
 
-.who-we-are {
-    background-color: #FFD625;
-    height: 500px;
+.about-us {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.info-container {
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.info {
+    height: 150px;
+    width: 400px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 5px #c6c6c6;
 }
 
 /* Sezione FAQ */

@@ -74,8 +74,18 @@
         <article class="service"></article>
     </div>
 </section>
-<section id="chi-siamo" class="who-we-are">
-
+<section id="chi-siamo" class="about-us">
+    <h2>Cosa facciamo e chi siamo?</h2>
+    <p>Siamo una società immobiliare fondata ad Ancona nel 2022 che intende
+        <br>
+        fornire un servizio innovativo agli studenti di tutta Italia!
+    </p>
+    <div class="info-container">
+        <article class="info"></article>
+        <article class="info"></article>
+        <article class="info"></article>
+        <article class="info"></article>
+    </div>
 </section>
 <section id="faq" class="faq">
 

@@ -7,7 +7,7 @@ footer {
     align-items: center;
 }
 
-.info {
+footer ul {
     display: flex;
     align-items: center;
     column-gap: 20px;
@@ -20,19 +20,19 @@ footer {
     margin: auto;
 }
 
-.info a, .copyright {
+footer a, .copyright {
     font-size: 16px;
     color: white;
     text-align: center;
 }
 
-.info a:after {
+footer a:after {
     content: '';
     display: block;
     height: 3px;
     transition: width 0.5s ease, background-color 1s ease;
 }
-.info a:hover:after {
+footer a:hover:after {
     width: 100%;
     background: #FFD625;
 

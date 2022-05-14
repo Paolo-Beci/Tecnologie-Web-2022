@@ -1,4 +1,4 @@
-<ul class="info">
+<ul>
     <li><a href="#">Contact Us</a></li>
     <li><a href="#">Chi siamo</a></li>
     <li><a href="#">Assistenza</a></li>
