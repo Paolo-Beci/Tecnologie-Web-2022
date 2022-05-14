@@ -16,12 +16,12 @@
                 <fieldset class="login-fieldset">
                     <div class="username">
                         <label for="login-username">Username</label>
-                        <input type="text" id="login-username" name="login-username">
+                        <input type="text" id="login-username" name="login-username" required>
                         <span class="underline"></span>
                     </div>
                     <div class="password">
                         <label for="login-password">Password</label>
-                        <input type="text" id="login-password" name="login-password">
+                        <input type="text" id="login-password" name="login-password" required>
                         <span class="underline"></span>
                     </div>
                 </fieldset>
@@ -36,17 +36,17 @@
                 <fieldset class="sign-up-fieldset">
                     <div class="username">
                         <label for="sign-up-username">Username</label>
-                        <input type="text" id="sign-up-username" name="sign-up-username">
+                        <input type="text" id="sign-up-username" name="sign-up-username" required>
                         <span class="underline"></span>
                     </div>
                     <div class="password">
                         <label for="sign-up-password">Password</label>
-                        <input type="text" id="sign-up-password" name="sign-up-password">
+                        <input type="text" id="sign-up-password" name="sign-up-password" required>
                         <span class="underline"></span>
                     </div>
                     <div class="confirm-password">
                         <label for="confirm-password">Conferma password</label>
-                        <input type="text" id="confirm-password" name="confirm-password">
+                        <input type="text" id="confirm-password" name="confirm-password"required>
                         <span class="underline"></span>
                     </div>
                 </fieldset>
@@ -60,6 +60,24 @@
         </div>
     </article>
 </section>
-<section id="middle" class="middle"></section>
-<section id="bottom" class="bottom"></section>
+<section id="servizi" class="services">
+
+    <h2>Un servizio eccezionale!</h2>
+    <p>Il nostro servizio clienti risponde 24 ore su 24, e ricorda,
+        <br>
+        puoi sempre contattare l'inserzionista dell'appartamento che ti interessa!
+    </p>
+    <div class="service-container">
+        <article class="service"></article>
+        <article class="service"></article>
+        <article class="service"></article>
+        <article class="service"></article>
+    </div>
+</section>
+<section id="chi-siamo" class="who-we-are">
+
+</section>
+<section id="faq" class="faq">
+
+</section>
 @endsection

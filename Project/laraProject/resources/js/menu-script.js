@@ -42,7 +42,7 @@ function navLinksScroll(){
 
     let scrollPos = $(window).scrollTop();
 
-    $('.menu a').each(function () {
+    $('.menu a.anchor').each(function () {
 
         let currLink = $(this);
         let refElement = $(currLink.attr("href"));
