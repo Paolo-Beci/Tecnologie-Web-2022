@@ -5,9 +5,24 @@ aside {
 
 h2 {
     font-size: 18px;
-    margin: 20px;
+    margin-left: 50px;
+    margin-top: 15px;
+    margin-bottom: 10px;
     text-align: left;
     color: black;
+}
+
+h1 {
+    margin-left: 50px;
+}
+
+input {
+    font-size: 15px;
+    margin-left: 50px;
+}
+
+label {
+    font-size: 15px;
 }
 
 .catalogo {
@@ -41,6 +56,25 @@ h2 {
     height: 100%;
     width: 25%;
     color: black;
+}
+
+.button-filtra {
+    background-color:#ffd725;
+    border-radius:13px;
+    border:2px solid #414141;
+    display:inline-block;
+    cursor:pointer;
+    color:#414141;
+    font-size:20px;
+    font-weight:bold;
+    padding:10px 20px;
+    text-decoration:none;
+}
+
+.button-filtra:hover {
+    background-color:#414141;
+    border:2px solid #ffd725;
+    color:#ffd725;
 }
 
 /* Regole sezione centrale inserzioni */
