@@ -27,6 +27,11 @@ Route::get('/catalogo', function () {
     ->with('user', 'public');
 })->name('catalogo');
 
+Route::get('/catalogo/dettagli-annuncio', function () {
+    return view('layouts/content-dettagli-annuncio')
+        ->with('user', 'locatario');
+})->name('dettagli-annuncio');
+
 // HOMEPAGE
 Route::get('/locatore', function () {
     return view('layouts/content-locatore')

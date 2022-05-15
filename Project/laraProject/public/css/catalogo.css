@@ -1,3 +1,4 @@
+/* Regole catalogo */
 aside {
     border-right: 1px solid rgb(65, 65, 65, 0.3);
 }
@@ -14,6 +15,26 @@ h2 {
     display: flex;
 }
 
+.inserisci_annuncio {
+    background-color:#ffd725;
+    border-radius:13px;
+    border:2px solid #414141;
+    display:inline-block;
+    cursor:pointer;
+    color:#414141;
+    font-size:18px;
+    font-weight:bold;
+    padding:12px 1px;
+    text-decoration:none;
+}
+
+.inserisci_annuncio:hover {
+    background-color:#414141;
+    border:3px solid #ffd725;
+    color:#ffd725;
+}
+
+/* Regole barra laterale */
 .lateral-bar {
     padding-top: 40px;
     padding-left: 30px;
@@ -21,6 +42,8 @@ h2 {
     width: 25%;
     color: black;
 }
+
+/* Regole sezione centrale inserzioni */
 .container-inserzione {
     padding-top: 40px;
     height: 100%;
@@ -33,7 +56,7 @@ h2 {
 }
 .item-inserzione {
     margin: 10px;
-    height: 300px;
+    height: 400px;
     width: 95%;
     border: 2px solid;
     border-radius: 25px;
@@ -44,7 +67,7 @@ h2 {
     align-items: center;
 }
 .item-immagine {
-    height: 250px;
+    height: 300px;
     width: 35%;
     border: 1px solid;
     border-radius: 25px 25px 25px 25px;
@@ -61,26 +84,18 @@ h2 {
     flex-direction: column;
     justify-content: center;
 }
-.inserisci_annuncio {
-    background-color:#ffd725;
-    border-radius:13px;
-    border:2px solid #414141;
-    display:inline-block;
-    cursor:pointer;
-    color:#414141;
-    font-size:18px;
-    font-weight:bold;
-    padding:12px 1px;
-    text-decoration:none;
+
+.prezzo {
+    font-size: 30px;
+    color: red;
 }
-.inserisci_annuncio:hover {
-    background-color:#414141;
-    border:3px solid #ffd725;
-    color:#ffd725;
-}
-.mappa2 {
-    border: 2px;
-}
+
 .item1 {
     background-image: url('../images_case/imm1.jpg');
+}
+.item2 {
+    background-image: url('../images_case/imm2.jpg');
+}
+.item3 {
+    background-image: url('../images_case/imm3.jpg');
 }

@@ -1,1 +1,1 @@
-<section class="item-immagine item1"></section>
+{{-- <img src="{{ asset('images_case/imm' . $IDFoto) }}"> --}}

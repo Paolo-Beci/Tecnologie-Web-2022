@@ -1,0 +1,3 @@
+function onClickInserzione() {
+    // da fare
+}
