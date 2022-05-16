@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="{{asset('css/animations.css')}}">
     <link rel="stylesheet" href="{{asset('css/catalogo.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="../resources/js/menu-script.js" defer></script>
-    <script src="../resources/js/forms-script.js" defer></script>
-    <script src="../resources/js/catalogo-script.js" defer></script>
+    <script src="{{asset('js/menu-script.js')}}" defer></script>
+    <script src="{{asset('js/forms-script.js')}}" defer></script>
+    <script src="{{asset('js/sign-up-continue.js')}}" defer></script>
+    <script src="{{asset('js/catalogo-script.js')}}" defer></script>
 </head>
 <body>
     <header class="header-anim">
