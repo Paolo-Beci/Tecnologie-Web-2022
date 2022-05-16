@@ -28,7 +28,7 @@
                 <div class="login-extra">
                     <a class="forgot" href="">Password dimenticata?</a>
                     <button class="submit" type="submit">Login</button>
-                    <span>Non sei un membro? <a data-form="toSignUp" href="">Registrati</a></span>
+                    <span>Non sei un membro? <a data-form="toSignUp">Registrati</a></span>
                 </div>
             </form>
             <form class="sign-up inactive-form" action="{{route('registrazione')}}">

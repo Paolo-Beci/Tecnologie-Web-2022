@@ -1,4 +1,4 @@
-@extends('template')
+@extends('template-catalogo')
 
 @section('content')
 <section id="catalogo" class="catalogo">
