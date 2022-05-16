@@ -37,8 +37,3 @@ Route::get('/catalogo/dettagli-annuncio', function () {
         ->with('user', 'locatario');
 })->name('dettagli-annuncio');
 
-// HOMEPAGE
-Route::get('/locatore', function () {
-    return view('layouts/content-locatore')
-    ->with('user', 'locatore');
-});

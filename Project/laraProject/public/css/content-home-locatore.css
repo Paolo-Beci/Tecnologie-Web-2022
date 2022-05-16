@@ -1,5 +1,6 @@
 /* Regole bottone profilo utente */
-.inserisci_annuncio {
+.bottone_profilo {
+    background-color: white;
     border-radius:13px;
     border:2px solid #414141;
     display:inline-block;
@@ -7,12 +8,20 @@
     color:#414141;
     font-size:18px;
     font-weight:bold;
-    padding:12px 1px;
+    padding:13px 1px;
     text-decoration:none;
+    width: 250px;
 }
 
-.inserisci_annuncio:hover {
+.bottone_profilo:hover {
     background-color:#414141;
     border:2px solid #ffd725;
     color:#ffd725;
+}
+
+/* Regole corpo del documento */
+.titolo {
+    font-size: 25px !important;
+    padding-top: 150px;
+    text-align: center;
 }
