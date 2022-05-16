@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        /*
+        
         DB::table('dati_personali')->insert([
             ['id_dati_personali' => 1, 'id_foto_profilo' => 1, 'cellulare' => 3256425968, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 4, 'cap' => 60123, 'nome' => 'Paolo', 'cognome' => 'Beci', 'data_nascita' => '2000-07-22 23:50:55', 'luogo_nascita' => 'Fabriano', 'sesso' => 'm', 'mail' => 'paolo.beci@gmail.com', 'codice_fiscale' => 'BCEPLA00L22D451H'],
             ['id_dati_personali' => 2, 'id_foto_profilo' => 2, 'cellulare' => NULL, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 25, 'cap' => 60123, 'nome' => 'Giuseppe', 'cognome' => 'Izzi', 'data_nascita' => '2000-07-26 23:50:55', 'luogo_nascita' => 'Vasto', 'sesso' => 'm', 'mail' => 'izzi.g@gmail.com', 'codice_fiscale' => 'SCCPRM10D08H501W'],
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('faq')->insert([
-            ['id_faq' => 1, 'domanda' => 'Come registrarsi?', 'risposta' => "Per registrarti puoi andare nella sezione login che trovi sulla pagina Home del sito. Per raggiungerla fai click sull'icona in alto a sinistra", 'target' => 'utente non registrato'],
+            ['id_faq' => 1, 'domanda' => 'Come registrarsi?', 'risposta' => "Per registrarti puoi andare nella sezione login che trovi sulla pagina Home del sito.<br>Per raggiungerla fai click sull'icona in alto a sinistra", 'target' => 'utente non registrato.'],
             ['id_faq' => 2, 'domanda' => 'Come visualizzare dettagliatamente gli annunci?', 'risposta' => "Puoi visualizzare gli annunci solo dopo esserti registrato nel nostro sito. Puoi trovare la relativa sezione nella pagina home", 'target' => 'utente non registrato'],
             ['id_faq' => 3, 'domanda' => 'Come inserire un annuncio?', 'risposta' => "Per inserire un annuncio fai click sul bottone inserisci annuncio sulla pagina della gestione alloggi", 'target' => 'locatore'],
             ['id_faq' => 4, 'domanda' => 'Come rispondere ai messaggi?', 'risposta' => "Puoi rispondere ai messaggi nella sezione privata dell'account. Verrai anche informato dell'interesse da parte dei locatari al tuo annuncio", 'target' => 'locatore'],
@@ -78,10 +78,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('disponibilita')->insert([
-            //['alloggio' => 1, 'servizio' => 'Bagno', 'quantita' => 1],
-
-            //['alloggio' => 1, 'servizio' => 'Cucina', 'quantita' => 1],
-
+            ['alloggio' => 1, 'servizio' => 'Bagno', 'quantita' => 1],
+            ['alloggio' => 1, 'servizio' => 'Cucina', 'quantita' => 1],
             ['alloggio' => 1, 'servizio' => 'Ripostiglio', 'quantita' => 1],
             ['alloggio' => 2, 'servizio' => 'Bagno', 'quantita' => 2],
             ['alloggio' => 2, 'servizio' => 'Cucina', 'quantita' => 1],
@@ -99,9 +97,9 @@ class DatabaseSeeder extends Seeder
             ['utente' => 'ema_f', 'faq' => 5, 'data_modifica' => now()],
             ['utente' => 'ema_f', 'faq' => 6, 'data_modifica' => now()],
         ]);
-*/
+
         DB::table('messaggio')->insert([
-            //['data_invio' => now(), 'contenuto' => 'Ciao, sarei interessato', 'stato' => 1, 'mittente' => 'izzi_g', 'destinatario' => 'paolo_b', 'alloggio' => 1],
+            ['data_invio' => now(), 'contenuto' => 'Ciao, sarei interessato', 'stato' => 1, 'mittente' => 'izzi_g', 'destinatario' => 'paolo_b', 'alloggio' => 1],
             ['data_invio' => now(), 'contenuto' => 'Ti tengo in considerazione', 'stato' => 1, 'mittente' => 'paolo_b', 'destinatario' => 'izzi_g', 'alloggio' => 1],
             ['data_invio' => now(), 'contenuto' => 'Buongiorno, sono interessato', 'stato' => 1, 'mittente' => 'dom_00', 'destinatario' => 'paolo_b', 'alloggio' => 2],
             ['data_invio' => now(), 'contenuto' => 'Ti metto tra gli interessati', 'stato' => 1, 'mittente' => 'paolo_b', 'destinatario' => 'dom_00', 'alloggio' => 2],

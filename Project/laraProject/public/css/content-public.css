@@ -1,6 +1,6 @@
 /* Proprietà condivise */
 
-.services, .about-us, .faq {
+.services, .about-us, .reviews, .faq {
     margin-top: 100px;
 }
 
@@ -288,6 +288,66 @@
     box-shadow: 5px 5px 5px 5px #c6c6c6;
 }
 
+/* Sezione Dicono di noi */
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.reviews-container {
+    width: 60%;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    gap: 40px;
+}
+
+.left-review {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    /* background-color: red; */
+}
+
+.review {
+    height: 30px;
+    width: 300px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 5px #c6c6c6;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+}
+
+.review:active {
+    background-color: #e2e2e2;;
+}
+
+.right-review {
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #FFD625 30%, #414141 100%);
+    color: white;
+    padding: 20px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.active-review {
+    display: flex;
+}
+
 /* Sezione FAQ */
 
 .faq {
@@ -318,6 +378,8 @@
     justify-content: center;
     align-items: center;
     gap: 40px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .question {
@@ -327,6 +389,6 @@
 }
 
 .answer {
-    font-size: 22px;
+    font-size: 20px;
     color: rgb(65, 65, 65);
 }

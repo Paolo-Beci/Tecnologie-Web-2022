@@ -14,7 +14,7 @@ class CreatePostoLettoTable extends Migration
     public function up()
     {
         Schema::create('posto_letto', function (Blueprint $table) {
-            $table->increments('id_posto_letto')->primary();
+            $table->increments('id_posto_letto');
             $table->tinyInteger('tipologia')->default(1);
             $table->binary('angolo_studio')->default(0);
             $table->integer('alloggio')->unsigned();

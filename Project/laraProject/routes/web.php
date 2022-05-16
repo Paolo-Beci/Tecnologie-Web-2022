@@ -12,10 +12,7 @@
 */
 
 // HOMEPAGE
-Route::get('/', function () {
-    return view('layouts/content-public')
-    ->with('user', 'public');
-})->name('homepage');
+Route::get('/', 'PublicController@showPublicHome')->name('homepage');
 
 Route::get('/home-locatore', function () {
     return view('layouts/content-home-locatore')

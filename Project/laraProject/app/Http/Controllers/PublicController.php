@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use PublicUser;
+
+use App\Models\PublicUser;
 
 class PublicController extends Controller
 {
@@ -17,7 +18,8 @@ class PublicController extends Controller
         //Faq
         $faq = $this->_publicUserModel->getFaqByTarget('utente non registrato');
 
-        return view('content-public')
+        return view('layouts/content-public')
+            ->with('user', 'public')
             ->with('faq', $faq); //la variabile faq viene passata alla view
     }
 

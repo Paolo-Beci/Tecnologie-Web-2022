@@ -14,7 +14,7 @@ class CreateDatiPersonaliTable extends Migration
     public function up()
     {
         Schema::create('dati_personali', function (Blueprint $table) {
-            $table->increments('id_dati_personali')->primary();
+            $table->increments('id_dati_personali');
             $table->integer('id_foto_profilo')->nullable()->unsigned();
             $table->char('cellulare',10)->nullable();
             $table->string('via',255);
@@ -26,7 +26,7 @@ class CreateDatiPersonaliTable extends Migration
             $table->dateTime('data_nascita');
             $table->string('luogo_nascita',255);
             $table->char('sesso',1);
-            $table->string('mail',255);
+            $table->string('mail',255)->nullable();
             $table->char('codice_fiscale',16);
         });
     }

@@ -87,30 +87,58 @@
         <article class="info"></article>
     </div>
 </section>
-<section id="faq" class="faq">
-    <h2>Hai dubbi o difficoltà?
-        <br>
-        Non preoccuparti!
-    </h2>
-    <p>Qui di seguito puoi trovare le più frequenti domande che gli utenti ci fanno!
-    </p>
-    <div class="faq-container">
-        <article class="q-a">
-            <p class="question">Domanda 1</p>
-            <p class="aswer">Risposta 1</p>
+<section id="dicono-di-noi" class="reviews">
+    <h2>Cosa dicono di noi?</h2>
+    <div class="reviews-container">
+        <article class="left-review">
+            
+            <button class="review" data-review="1">
+                Mario Rossi
+                <span class="rating">4.5/5 ★</span>
+            </button>
+            <button class="review" data-review="2">
+                Luigi Bianchi
+                <span class="rating">4.3/5 ★</span>
+            </button>
+            <button class="review" data-review="3">
+                Andrea Grandine
+                <span class="rating">4/5 ★</span>
+            </button>
         </article>
-        <article class="q-a">
-            <p class="question">Domanda 2</p>
-            <p class="aswer">Risposta 2</p>
+        <article class="right-review active-review" data-review="1">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
+            ut aliquip ex ea commodo consequat.
         </article>
-        <article class="q-a">
-            <p class="question">Domanda 3</p>
-            <p class="aswer">Risposta 3</p>
+        <article class="right-review" data-review="2">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+            sunt in culpa qui officia deserunt mollit anim id est laborum.
         </article>
-        <article class="q-a">
-            <p class="question">Domanda 4</p>
-            <p class="aswer">Risposta 4</p>
+        <article class="right-review" data-review="3">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
+            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore 
+            veritatis et quasi architecto beatae vitae dicta sunt explicabo.
         </article>
     </div>
 </section>
+@isset($faq)
+    <section id="faq" class="faq">
+        <h2>Hai dubbi o difficoltà?
+            <br>
+            Non preoccuparti!
+        </h2>
+        <p>Qui di seguito puoi trovare le più frequenti domande che gli utenti ci fanno!
+        </p>
+        <div class="faq-container">
+            @foreach ($faq as $singleFaq)
+                <article class="q-a">
+                    <p class="question">{!!$singleFaq->domanda!!}</p>
+                    <p class="answer">{!!$singleFaq->risposta!!}</p>
+                </article>  
+            @endforeach
+        </div>
+    </section>
+@endisset
 @endsection

@@ -14,7 +14,7 @@ class CreateAlloggioTable extends Migration
     public function up()
     {
         Schema::create('alloggio', function (Blueprint $table) {
-            $table->increments('id_alloggio')->primary();
+            $table->increments('id_alloggio');
             $table->string('descrizione',255)->nullable();
             $table->smallInteger('utenze')->nullable();
             $table->smallInteger('canone_affitto');

@@ -16,7 +16,7 @@
     <script src="{{asset('js/menu-script.js')}}" defer></script>
     <script src="{{asset('js/forms-script.js')}}" defer></script>
     <script src="{{asset('js/sign-up-continue.js')}}" defer></script>
-    <script src="{{asset('js/catalogo-script.js')}}" defer></script>
+    <script src="{{asset('js/reviews.js')}}" defer></script>
 </head>
 <body>
     <header class="header-anim">
@@ -27,7 +27,7 @@
             @if ($user=='locatore')
                 @include('layouts/_navbar-home-locatore')
             @else
-                @include('layouts/_navbar-public')
+                @include('layouts/_navbar-home-public')
             @endif
         </nav>
     </header>
