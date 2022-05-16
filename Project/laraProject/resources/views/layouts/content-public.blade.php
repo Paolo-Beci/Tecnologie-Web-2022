@@ -11,7 +11,7 @@
     </article>
     <article class="forms forms-anim" id="login">
         <div class="container">
-            <form class="login active.form" action="">
+            <form class="login active.form" action="{{route('home-locatore')}}">
                 <h1>Login</h1>
                 <fieldset class="login-fieldset">
                     <div class="username">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="password">
                         <label for="login-password">Password</label>
-                        <input type="text" id="login-password" name="login-password" required>
+                        <input type="password" id="login-password" name="login-password" required>
                         <span class="underline"></span>
                     </div>
                 </fieldset>
@@ -41,12 +41,12 @@
                     </div>
                     <div class="password">
                         <label for="sign-up-password">Password</label>
-                        <input type="text" id="sign-up-password" name="sign-up-password" required>
+                        <input type="password" id="sign-up-password" name="sign-up-password" required>
                         <span class="underline"></span>
                     </div>
                     <div class="confirm-password">
                         <label for="confirm-password">Conferma password</label>
-                        <input type="text" id="confirm-password" name="confirm-password"required>
+                        <input type="password" id="confirm-password" name="confirm-password"required>
                         <span class="underline"></span>
                     </div>
                 </fieldset>
@@ -88,4 +88,17 @@
     </div>
 </section>
 <section id="faq" class="faq">
+    <h2>Hai dubbi o difficoltà?
+        <br>
+        Non preoccuparti!
+    </h2>
+    <p>Qui di seguito puoi trovare le più frequenti domande che gli utenti ci fanno!
+    </p>
+    <div class="info-container">
+        <article class="info"></article>
+        <article class="info"></article>
+        <article class="info"></article>
+        <article class="info"></article>
+    </div>
+</section>
 @endsection
