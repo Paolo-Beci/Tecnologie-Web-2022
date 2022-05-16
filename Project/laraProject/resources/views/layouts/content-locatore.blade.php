@@ -1,4 +1,4 @@
-@extends('template', ['user', $user])
+@extends('template-home', ['user', $user])
 
 @section('title', 'Homepage Locatore')
 
