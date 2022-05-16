@@ -297,3 +297,36 @@
     align-items: center;
     gap: 40px;
 }
+
+.faq-container {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.q-a {
+    height: 150px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 5px #c6c6c6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.question {
+    font-size: 26px;
+    font-weight: bold;
+    color: black;
+}
+
+.answer {
+    font-size: 22px;
+    color: rgb(65, 65, 65);
+}
