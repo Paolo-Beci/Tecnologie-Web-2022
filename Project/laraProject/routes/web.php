@@ -11,11 +11,16 @@
 |
 */
 
-// HOMEPAGE PUBBLICA
+// HOMEPAGE
 Route::get('/', function () {
     return view('layouts/content-public')
     ->with('user', 'public');
 })->name('homepage');
+
+Route::get('/home-locatore', function () {
+    return view('layouts/content-home-locatore')
+        ->with('user', 'locatore');
+})->name('home-locatore');
 
 Route::get('/registrazione', function () {
     return view('registrazione-dati-personali');

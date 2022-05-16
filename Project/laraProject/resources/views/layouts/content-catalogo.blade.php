@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-@extends('template-home')
-=======
 @extends('template-catalogo')
->>>>>>> fcf3e26e015ff6dd1b6abc066f822b992dffa9fb
 
 @section('content')
 <section id="catalogo" class="catalogo">

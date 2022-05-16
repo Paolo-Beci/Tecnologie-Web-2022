@@ -24,15 +24,10 @@
         </a>
         <nav>
             @if ($user=='locatore')
-                @include('layouts/nav-locatore')
+                @include('layouts/_navbar-home-locatore')
             @else
-                @include('layouts/nav-public')
+                @include('layouts/_navbar-public')
             @endif
-            <!-- DA FARE DIFFERENZIAZIONE NAVBAR IN BASE A CONTENT -->
-            @if(Request::url() == '/catalogo')
-                @include('layouts/nav-catalogo')
-            @endif
-
         </nav>
     </header>
         @yield('content')
