@@ -13,14 +13,14 @@ class CreateMessaggiTable extends Migration
      */
     public function up()
     {
-        Schema::create('messaggi', function (Blueprint $table) {
+        Schema::create('messaggio', function (Blueprint $table) {
+            $table->increments('id_messaggio')->primary();
+            $table->dateTime('data_invio');
+            $table->string('contenuto', 255);
+            $table->binary('stato')->default(0);
             $table->string('mittente', 255);
             $table->string('destinatario', 255);
             $table->integer('alloggio')->unsigned();
-            $table->dateTime('data_invio');
-            $table->string('messaggio', 255);
-            $table->binary('stato')->default(0);
-            $table->primary(array('mittente', 'destinatario', 'alloggio'));
             $table->foreign('mittente')->references('username')->on('utente')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('destinatario')->references('username')->on('utente')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('alloggio')->references('id_alloggio')->on('alloggio')->onUpdate('cascade')->onDelete('cascade');

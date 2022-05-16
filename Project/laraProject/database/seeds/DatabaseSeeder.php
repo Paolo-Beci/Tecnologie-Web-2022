@@ -12,18 +12,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        /*
+        DB::table('dati_personali')->insert([
+            ['id_dati_personali' => 1, 'id_foto_profilo' => 1, 'cellulare' => 3256425968, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 4, 'cap' => 60123, 'nome' => 'Paolo', 'cognome' => 'Beci', 'data_nascita' => '2000-07-22 23:50:55', 'luogo_nascita' => 'Fabriano', 'sesso' => 'm', 'mail' => 'paolo.beci@gmail.com', 'codice_fiscale' => 'BCEPLA00L22D451H'],
+            ['id_dati_personali' => 2, 'id_foto_profilo' => 2, 'cellulare' => NULL, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 25, 'cap' => 60123, 'nome' => 'Giuseppe', 'cognome' => 'Izzi', 'data_nascita' => '2000-07-26 23:50:55', 'luogo_nascita' => 'Vasto', 'sesso' => 'm', 'mail' => 'izzi.g@gmail.com', 'codice_fiscale' => 'SCCPRM10D08H501W'],
+            ['id_dati_personali' => 3, 'id_foto_profilo' => NULL, 'cellulare' => 4568235971, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 23, 'cap' => 60123, 'nome' => 'Domenico', 'cognome' => 'La Porta', 'data_nascita' => '2000-05-10 23:50:55', 'luogo_nascita' => 'San Marco in Lamis', 'sesso' => 'm', 'mail' => 'd.laporta@gmail.com', 'codice_fiscale' => 'SCCPRM08S24H501C'],
+            ['id_dati_personali' => 4, 'id_foto_profilo' => 3, 'cellulare' => 3225874691, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 45, 'cap' => 60123, 'nome' => 'Emanuele', 'cognome' => 'Frisi', 'data_nascita' => '2000-11-03 23:50:55', 'luogo_nascita' => 'Foggia', 'sesso' => 'm', 'mail' => NULL, 'codice_fiscale' => 'FRSMNL00E11D643V'],
+        ]);
+
         DB::table('utente')->insert([
             ['username' => 'paolo_b', 'password' => 'tec_web22', 'ruolo' => 'locatore', 'dati_personali' => 1],
             ['username' => 'izzi_g', 'password' => 'tec_web122', 'ruolo' => 'locatario', 'dati_personali' => 2],
             ['username' => 'dom_00', 'password' => 'tec_web222', 'ruolo' => 'locatario', 'dati_personali' => 3],
             ['username' => 'ema_f', 'password' => 'tec_web322', 'ruolo' => 'admin', 'dati_personali' => 4],
-        ]);
-
-        DB::table('dati_personali')->insert([
-            ['id_dati_personali' => 1, 'id_foto_profilo' => 1, 'cellulare' => 3256425968, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 4, 'cap' => 60123, 'nome' => 'Paolo', 'cognome' => 'Beci', 'data_nascita' => '22/07/2000', 'luogo_nascita' => 'Fabriano', 'sesso' => 'm', 'mail' => 'paolo.beci@gmail.com', 'codice_fiscale' => 'BCEPLA00L22D451H'],
-            ['id_dati_personali' => 2, 'id_foto_profilo' => 2, 'cellulare' => NULL, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 25, 'cap' => 60123, 'nome' => 'Giuseppe', 'cognome' => 'Izzi', 'data_nascita' => '23/06/2000', 'luogo_nascita' => 'Vasto', 'sesso' => 'm', 'mail' => 'izzi.g@gmail.com', 'codice_fiscale' => 'SCCPRM10D08H501W'],
-            ['id_dati_personali' => 3, 'id_foto_profilo' => NULL, 'cellulare' => 4568235971, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 23, 'cap' => 60123, 'nome' => 'Domenico', 'cognome' => 'La Porta', 'data_nascita' => '10/05/2000', 'luogo_nascita' => 'San Marco in Lamis', 'sesso' => 'm', 'mail' => 'd.laporta@gmail.com', 'codice_fiscale' => 'SCCPRM08S24H501C'],
-            ['id_dati_personali' => 4, 'id_foto_profilo' => 3, 'cellulare' => 3225874691, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 45, 'cap' => 60123, 'nome' => 'Emanuele', 'cognome' => 'Frisi', 'data_nascita' => '03/11/2000', 'luogo_nascita' => 'Foggia', 'sesso' => 'm', 'mail' => NULL, 'codice_fiscale' => 'FRSMNL00E11D643V'],
         ]);
 
         DB::table('alloggio')->insert([
@@ -42,12 +43,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('servizio')->insert([
-            ['nome_servzio' => 'Bagno'],
-            ['nome_servzio' => 'Cucina'],
-            ['nome_servzio' => 'Lavanderia'],
-            ['nome_servzio' => 'Rispostiglio'],
-            ['nome_servzio' => 'Garage'],
-            ['nome_servzio' => 'Giardino'],
+            ['nome_servizio' => 'Bagno'],
+            ['nome_servizio' => 'Cucina'],
+            ['nome_servizio' => 'Lavanderia'],
+            ['nome_servizio' => 'Ripostiglio'],
+            ['nome_servizio' => 'Garage'],
+            ['nome_servizio' => 'Giardino'],
         ]);
 
         DB::table('foto')->insert([
@@ -77,8 +78,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('disponibilita')->insert([
-            ['alloggio' => 1, 'servizio' => 'Bagno', 'quantita' => 1],
-            ['alloggio' => 1, 'servizio' => 'Cucina', 'quantita' => 1],
+            //['alloggio' => 1, 'servizio' => 'Bagno', 'quantita' => 1],
+
+            //['alloggio' => 1, 'servizio' => 'Cucina', 'quantita' => 1],
+
             ['alloggio' => 1, 'servizio' => 'Ripostiglio', 'quantita' => 1],
             ['alloggio' => 2, 'servizio' => 'Bagno', 'quantita' => 2],
             ['alloggio' => 2, 'servizio' => 'Cucina', 'quantita' => 1],
@@ -89,24 +92,25 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('modifica')->insert([
-            ['utente' => 4, 'faq' => 1, 'data_modifica' => now()],
-            ['utente' => 4, 'faq' => 2, 'data_modifica' => now()],
-            ['utente' => 4, 'faq' => 3, 'data_modifica' => now()],
-            ['utente' => 4, 'faq' => 4, 'data_modifica' => now()],
-            ['utente' => 4, 'faq' => 5, 'data_modifica' => now()],
-            ['utente' => 4, 'faq' => 6, 'data_modifica' => now()],
+            ['utente' => 'ema_f', 'faq' => 1, 'data_modifica' => now()],
+            ['utente' => 'ema_f', 'faq' => 2, 'data_modifica' => now()],
+            ['utente' => 'ema_f', 'faq' => 3, 'data_modifica' => now()],
+            ['utente' => 'ema_f', 'faq' => 4, 'data_modifica' => now()],
+            ['utente' => 'ema_f', 'faq' => 5, 'data_modifica' => now()],
+            ['utente' => 'ema_f', 'faq' => 6, 'data_modifica' => now()],
+        ]);
+*/
+        DB::table('messaggio')->insert([
+            //['data_invio' => now(), 'contenuto' => 'Ciao, sarei interessato', 'stato' => 1, 'mittente' => 'izzi_g', 'destinatario' => 'paolo_b', 'alloggio' => 1],
+            ['data_invio' => now(), 'contenuto' => 'Ti tengo in considerazione', 'stato' => 1, 'mittente' => 'paolo_b', 'destinatario' => 'izzi_g', 'alloggio' => 1],
+            ['data_invio' => now(), 'contenuto' => 'Buongiorno, sono interessato', 'stato' => 1, 'mittente' => 'dom_00', 'destinatario' => 'paolo_b', 'alloggio' => 2],
+            ['data_invio' => now(), 'contenuto' => 'Ti metto tra gli interessati', 'stato' => 1, 'mittente' => 'paolo_b', 'destinatario' => 'dom_00', 'alloggio' => 2],
+            ['data_invio' => now(), 'contenuto' => 'Perfetto, attendo aggiornamenti', 'stato' => 1, 'mittente' => 'izzi_g', 'destinatario' => 'paolo_b', 'alloggio' => 1],
+            ['data_invio' => now(), 'contenuto' => 'Grazie mille, aspetto riscontri', 'stato' => 1, 'mittente' => 'dom_00', 'destinatario' => 'paolo_b', 'alloggio' => 2],
+            ['data_invio' => now(), 'contenuto' => 'Ottimo, buona giornata', 'stato' => 0, 'mittente' => 'paolo_b', 'destinatario' => 'izzi_g', 'alloggio' => 1],
+            ['data_invio' => now(), 'contenuto' => 'Va bene, le auguro una buona giornata', 'stato' => 0, 'mittente' => 'paolo_b', 'destinatario' => 'dom_00', 'alloggio' => 2],
+            ['data_invio' => now(), 'contenuto' => 'Ciao, ho visto la casa e sono interessato', 'stato' => 0, 'mittente' => 'dom_00', 'destinatario' => 'paolo_b', 'alloggio' => 3],
         ]);
 
-        DB::table('messaggi')->insert([
-            ['mittente' => 'izzi_g', 'destinatario' => 'paolo_b', 'alloggio' => 1, 'data_invio' => now(), 'messaggio' => 'Ciao, sarei interessato', 'stato' => 1],
-            ['mittente' => 'paolo_b', 'destinatario' => 'izzi_g', 'alloggio' => 1, 'data_invio' => now(), 'messaggio' => 'Ti tengo in considerazione', 'stato' => 1],
-            ['mittente' => 'dom_00', 'destinatario' => 'paolo_b', 'alloggio' => 2, 'data_invio' => now(), 'messaggio' => 'Buongiorno, sono interessato', 'stato' => 1],
-            ['mittente' => 'paolo_b', 'destinatario' => 'dom_00', 'alloggio' => 2, 'data_invio' => now(), 'messaggio' => 'Ti metto tra gli interessati', 'stato' => 1],
-            ['mittente' => 'izzi_g', 'destinatario' => 'paolo_b', 'alloggio' => 1, 'data_invio' => now(), 'messaggio' => 'Perfetto, attendo aggiornamenti', 'stato' => 1],
-            ['mittente' => 'dom_00', 'destinatario' => 'paolo_b', 'alloggio' => 2, 'data_invio' => now(), 'messaggio' => 'Grazie mille, aspetto riscontri', 'stato' => 1],
-            ['mittente' => 'paolo_b', 'destinatario' => 'izzi_g', 'alloggio' => 1, 'data_invio' => now(), 'messaggio' => 'Ottimo, buona giornata', 'stato' => 0],
-            ['mittente' => 'paolo_b', 'destinatario' => 'dom_00', 'alloggio' => 2, 'data_invio' => now(), 'messaggio' => 'Va bene, le auguro una buona giornata', 'stato' => 0],
-            ['mittente' => 'dom_00', 'destinatario' => 'paolo_b', 'alloggio' => 3, 'data_invio' => now(), 'messaggio' => 'Ciao, ho visto la casa e sono interessato', 'stato' => 0],
-        ]);
     }
 }
