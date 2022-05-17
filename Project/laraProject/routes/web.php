@@ -26,10 +26,7 @@ Route::get('/registrazione', function () {
 // CATALOGO
 Route::get('/catalogo', 'PublicController@showPublicCatalog')->name('catalogo');
 
-Route::get('/catalogo-locatore', function () {
-    return view('layouts/content-catalogo-public')
-        ->with('user', 'locatore');
-})->name('catalogo-locatore');
+Route::get('/catalogo-locatore', 'LocatoreController@showLocatoreCatalog')->name('catalogo-locatore');
 
 Route::get('/catalogo-locatario', function () {
     return view('layouts/content-catalogo-locatario')

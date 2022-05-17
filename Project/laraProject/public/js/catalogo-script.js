@@ -1,21 +1,15 @@
-$('.select-button-appartamenti').on('click', function(){
+$('.appartamenti-button').on('click', function(){
 
-    $('.item-inserzione').each(function(){
-        if(this.hasAttribute('data-appartamento'))
-            $(this).addClass('visible');
-        else
-            $(this).removeClass('visible');
-    });
+    $('.appartamenti').addClass('visible');
+
+    $('.posti-letto').removeClass('visible');
 
 });
 
-$('.select-button-posti-letto').on('click', function(){
+$('.posti-letto-button').on('click', function(){
 
-    $('.item-inserzione').each(function(){
-        if(this.hasAttribute('data-posto-letto'))
-            $(this).addClass('visible');
-        else
-            $(this).removeClass('visible');
-    });
+    $('.posti-letto').addClass('visible');
+
+    $('.appartamenti').removeClass('visible');
 
 });

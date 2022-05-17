@@ -3,15 +3,6 @@ aside {
     border-right: 1px solid rgb(65, 65, 65, 0.3);
 }
 
-h2 {
-    font-size: 18px;
-    margin-left: 50px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    text-align: left;
-    color: black;
-}
-
 input {
     font-size: 15px;
     margin-left: 50px;
@@ -19,14 +10,6 @@ input {
 
 label {
     font-size: 15px;
-}
-
-.catalogo {
-    padding-top: 100px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
 }
 
 .inserisci_annuncio {
@@ -77,84 +60,81 @@ label {
 }
 
 /* Regole sezione centrale inserzioni */
-.container-inserzione {
-    padding-top: 40px;
-    height: 100%;
+.catalogo {
     width: 75%;
-    background-color: white;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    padding-top: 150px;
+}
+
+.alloggi-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.appartamenti-button, .posti-letto-button {
+    height: 80px;
+    width: 40%;
+    background-color: #ffd725;
+    border: none;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.button-img {
+    width: 10%;
+}
+
+.appartamenti, .posti-letto {
+    width: 90%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-.item-inserzione {
-    margin: 10px;
-    height: 400px;
-    width: 95%;
+.appartamento, .posto-letto {
+    height: 300px;
+    width: 90%;
+    margin: 30px;
+    padding: 0px 30px;
     border: 2px solid;
     border-radius: 25px;
     background-color: whitesmoke;
-    display: none;
-    flex-direction: row;
-    justify-content: space-evenly;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    gap: 50px;
 }
-.item-immagine {
-    height: 300px;
-    width: 35%;
+
+.item2 {
+    height: 200px;
+    width: 40%;
     border: 1px solid;
     border-radius: 25px 25px 25px 25px;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-}
-.item-info {
-    height: 250px;
-    width: 55%;
-    margin: 10px;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    background-image: url('../images_case/imm2.jpg');
 }
 
-.section-bottoni-tipologia {
-    display: flex;
-    flex-direction: row;
-    width: 90%;
-    justify-content: center;
-}
-
-.select-button-appartamenti {
-    background-color: #ffd725;
-    margin: 20px;
-    font-size:22px;
-    border-radius:13px;
-    padding:13px 1px;
-    border: 0px;
-    cursor: pointer;
-}
-
-.select-button-posti-letto {
-    background-color: #ffd725;
-    margin: 20px;
-    font-size:22px;
-    border-radius:13px;
-    border: 0px;
-    cursor: pointer;
+.info {
+    font-size: 18px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+    color: black;
 }
 
 .visible {
     display: flex;
-}
-
-.item1 {
-    background-image: url('../images_case/imm1.jpg');
-}
-.item2 {
-    background-image: url('../images_case/imm2.jpg');
-}
-.item3 {
-    background-image: url('../images_case/imm3.jpg');
 }

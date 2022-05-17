@@ -25,14 +25,14 @@ class PublicController extends Controller
     }
 
     public function showPublicCatalog(){
+
         $appartamenti = $this->_publicUserModel->getAlloggioByTip('Appartamento');
         $posti_letto = $this->_publicUserModel->getAlloggioByTip('Posto letto');
 
-         //Alloggio
          return view('layouts/content-catalogo-public')
              ->with('user', 'public')
-             ->with('appartamenti', $appartamenti) //la variabile appartamenti (array) viene passato alla view
-             ->with('posti_letto', $posti_letto); //la variabile posti letto (array) viene passato alla view
+             ->with('appartamenti', $appartamenti) //la variabile appartamenti (array) viene passata alla view
+             ->with('posti_letto', $posti_letto); //la variabile posti letto (array) viene passata alla view
     }
 
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Resources\Alloggio;
 use App\Models\Resources\Faq;
 
 class Locatore
@@ -9,4 +10,9 @@ class Locatore
     public function getFaqByTarget($target){
         return Faq::where('target', $target)->get();
     }
+
+    public function getAlloggioByTip($tipologia){
+        return Alloggio::where('tipologia', $tipologia)->get();
+    }
+
 }
