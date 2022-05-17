@@ -4,14 +4,14 @@
 <section id="catalogo" class="catalogo">
 
     <section class="container-inserzione">
-        <h1 class="titolo">Alloggi in affitto</h1>
+        <h1>Alloggi in affitto</h1>
     <section class="section-bottoni-tipologia">
-        <button class="select-button-appartamenti" href="#insert">
-            <img src="{{asset('images/apartment_icon.png')}}" alt="Apartment Logo" width="10%" style="vertical-align:middle;horiz-align:left">
+        <button class="select-button-appartamenti">
+            <img src="{{asset('images/apartment_icon.png')}}" alt="Apartment Logo" width="10%" style="vertical-align:middle;horiz-align:left;margin-right: 30px">
             APPARTAMENTI
         </button>
-        <button class="select-button-posti-letto" href="#insert">
-            <img src="{{asset('images/bed_icon.png')}}" alt="Bed Logo" width="10%" style="vertical-align:middle;horiz-align:left">
+        <button class="select-button-posti-letto">
+            <img src="{{asset('images/bed_icon.png')}}" alt="Bed Logo" width="10%" style="vertical-align:middle;horiz-align:left;margin-right: 30px">
             POSTI LETTO
         </button>
     </section>
