@@ -272,6 +272,10 @@
     background: linear-gradient(45deg, #FFD625 30%, #414141 100%);
 }
 
+.img-container {
+    text-align: center;
+}
+
 /* Sezione chi siamo */
 
 .about-us {
@@ -296,6 +300,22 @@
     width: 400px;
     border-radius: 20px;
     box-shadow: 5px 5px 5px 5px #c6c6c6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px
+}
+
+.email {
+    color: gray;
+}
+
+.email:hover {
+    text-decoration: underline;
+}
+
+.email:active {
+    color: rgb(65, 65, 65);
 }
 
 /* Sezione Dicono di noi */
@@ -403,24 +423,3 @@
     color: rgb(65, 65, 65);
 }
 
-.img-container {
-    text-align: center;
-}
-
-.email {
-    color: gray;
-}
-
-.email:hover {
-    text-decoration: underline;
-}
-
-.email:active {
-    color: rgb(65, 65, 65);
-}
-/*
-.right-content {
-    display: inline-block;
-    margin-left: 20px;
-}
-*/
