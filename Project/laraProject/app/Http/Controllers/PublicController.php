@@ -24,13 +24,15 @@ class PublicController extends Controller
             ->with('faq', $faq); //la variabile faq (array) viene passata alla view
     }
 
-    public function showPublicCatalog($tipologia){
-         $alloggi = $this->_publicUserModel->getAlloggioByTip($tipologia);
+    public function showPublicCatalog(){
+        $appartamenti = $this->_publicUserModel->getAlloggioByTip('Appartamento');
+        $posti_letto = $this->_publicUserModel->getAlloggioByTip('Posto letto');
 
          //Alloggio
          return view('layouts/content-catalogo')
              ->with('user', 'public')
-             ->with('alloggi', $alloggi); //la variabile alloggi (array) viene passato alla view
+             ->with('appartamenti', $appartamenti) //la variabile appartamenti (array) viene passato alla view
+             ->with('posti_letto', $posti_letto); //la variabile posti letto (array) viene passato alla view
     }
 
 }
