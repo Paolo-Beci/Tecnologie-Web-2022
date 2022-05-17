@@ -68,10 +68,42 @@
         puoi sempre contattare l'inserzionista dell'appartamento che ti interessa!
     </p>
     <div class="service-container">
-        <article class="service"></article>
-        <article class="service"></article>
-        <article class="service"></article>
-        <article class="service"></article>
+        <article class="service">
+            <div class="img-container">
+                <img src="{{asset('images/icons_mano.png')}}" alt="" height="75" width="75" >
+                <h2 class="titolo-carte">Puoi cercare alloggi</h2>
+                <p>Desideri ricercare un alloggio in una qualsiasi città italiana? FlatMate è il posto giusto per te!
+                    Scegli i tuoi filtri, ricerca l'alloggio migliore per te e contatta il suo proprietario per concludere l'affitto!</p>
+            </div>
+        </article>
+        <article class="service">
+            <div class="img-container">
+                <img src="{{asset('images/icons_casa.png')}}" alt="" height="75" width="75">
+                <h2 class="titolo-carte">Metti in affitto alloggi</h2>
+                <p>Hai un alloggio e desideri che i tuoi potenziali clienti possano saperlo? FlatMate ti offre
+                 la possibilità di inserire appartamenti e posti letto, in modo che tutti possano vederlo! Ascolta
+                 le offerte dei clienti e scegli con chi concludere l'affare!</p>
+            </div>
+        </article>
+        <article class="service">
+            <div class="img-container">
+                <img src="{{asset('images/icons_messaggi.png')}}" alt="" height="75" width="75">
+                <h2 class="titolo-carte">Messaggistica</h2>
+                <p>Hai necessità di contattare il proprietario di un alloggio? Sei un locatore e vuoi dare
+                maggiori delucidazioni sui tuoi alloggi? FlatMate offre un servizio di messaggistica
+                in cui il potenziale affittuario può contattare il padrone di casa che può a sua volta rispondere
+                chiarendo eventuali dubbi.</p>
+            </div>
+        </article>
+        <article class="service">
+            <div class="img-container">
+                <img src="{{asset('images/icons_domanda.png')}}" alt="" height="75" width="75">
+                <h2 class="titolo-carte">24/7 Help & Support</h2>
+                <p>Hai ancora dei dubbi sulle funzionalità di FlatMate? Desideri saperne di più su di noi?
+                Il nostro sito offre un'ampia sezione di faq dove puoi chiarire ogni tua perplessità!
+                Se desideri ancora approfondire qualcosa contattaci e saremo lieti di aiutarti.</p>
+            </div>
+        </article>
     </div>
 </section>
 <section id="chi-siamo" class="about-us">
@@ -91,7 +123,7 @@
     <h2>Cosa dicono di noi?</h2>
     <div class="reviews-container">
         <article class="left-review">
-            
+
             <button class="review" data-review="1">
                 Mario Rossi
                 <span class="rating">4.5/5 ★</span>
@@ -106,19 +138,19 @@
             </button>
         </article>
         <article class="right-review active-review" data-review="1">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
             ut aliquip ex ea commodo consequat.
         </article>
         <article class="right-review" data-review="2">
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
             sunt in culpa qui officia deserunt mollit anim id est laborum.
         </article>
         <article class="right-review" data-review="3">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
-            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore 
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
             veritatis et quasi architecto beatae vitae dicta sunt explicabo.
         </article>
     </div>

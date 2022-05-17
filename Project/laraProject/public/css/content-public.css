@@ -256,11 +256,16 @@
 }
 
 .service {
-    height: 350px;
+    height: 375px;
     width: 300px;
+    padding: 15px;
     border-radius: 20px;
     border-top-right-radius: 100px;
     box-shadow: 5px 5px 5px 5px #c6c6c6;
+}
+
+.titolo-carte {
+    padding-bottom: 10px;
 }
 
 .service:hover {
@@ -396,4 +401,8 @@
 .answer {
     font-size: 20px;
     color: rgb(65, 65, 65);
+}
+
+.img-container {
+    text-align: center;
 }
