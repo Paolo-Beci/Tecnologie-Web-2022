@@ -4,9 +4,16 @@
 <section id="catalogo" class="catalogo">
 
     <section class="container-inserzione">
-        <h1>Alloggi in affitto</h1>
-    <section class="bottoni_tipologia">
-
+        <h1 class="titolo">Alloggi in affitto</h1>
+    <section class="section-bottoni-tipologia">
+        <button class="select-button-appartamenti" href="#insert">
+            <img src="{{asset('images/apartment_icon.png')}}" alt="Apartment Logo" width="10%" style="vertical-align:middle;horiz-align:left">
+            APPARTAMENTI
+        </button>
+        <button class="select-button-posti-letto" href="#insert">
+            <img src="{{asset('images/bed_icon.png')}}" alt="Bed Logo" width="10%" style="vertical-align:middle;horiz-align:left">
+            POSTI LETTO
+        </button>
     </section>
     @isset($appartamenti)   <!-- esiste o non è null -->
     @foreach ($appartamenti as $appartamento)
