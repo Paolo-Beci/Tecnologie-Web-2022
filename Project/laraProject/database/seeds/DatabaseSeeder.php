@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        
+
         DB::table('dati_personali')->insert([
             ['id_dati_personali' => 1, 'id_foto_profilo' => 1, 'cellulare' => 3256425968, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 4, 'cap' => 60123, 'nome' => 'Paolo', 'cognome' => 'Beci', 'data_nascita' => '2000-07-22 23:50:55', 'luogo_nascita' => 'Fabriano', 'sesso' => 'm', 'mail' => 'paolo.beci@gmail.com', 'codice_fiscale' => 'BCEPLA00L22D451H'],
             ['id_dati_personali' => 2, 'id_foto_profilo' => 2, 'cellulare' => NULL, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 25, 'cap' => 60123, 'nome' => 'Giuseppe', 'cognome' => 'Izzi', 'data_nascita' => '2000-07-26 23:50:55', 'luogo_nascita' => 'Vasto', 'sesso' => 'm', 'mail' => 'izzi.g@gmail.com', 'codice_fiscale' => 'SCCPRM10D08H501W'],
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('faq')->insert([
-            ['id_faq' => 1, 'domanda' => 'Come registrarsi?', 'risposta' => "Per registrarti puoi andare nella sezione login che trovi sulla pagina Home del sito.<br>Per raggiungerla fai click sull'icona in alto a sinistra", 'target' => 'utente non registrato.'],
+            ['id_faq' => 1, 'domanda' => 'Come registrarsi?', 'risposta' => "Per registrarti puoi andare nella sezione login che trovi sulla pagina Home del sito.<br>Per raggiungerla fai click sull'icona in alto a sinistra", 'target' => 'utente non registrato'],
             ['id_faq' => 2, 'domanda' => 'Come visualizzare dettagliatamente gli annunci?', 'risposta' => "Puoi visualizzare gli annunci solo dopo esserti registrato nel nostro sito. Puoi trovare la relativa sezione nella pagina home", 'target' => 'utente non registrato'],
             ['id_faq' => 3, 'domanda' => 'Come inserire un annuncio?', 'risposta' => "Per inserire un annuncio fai click sul bottone inserisci annuncio sulla pagina della gestione alloggi", 'target' => 'locatore'],
             ['id_faq' => 4, 'domanda' => 'Come rispondere ai messaggi?', 'risposta' => "Puoi rispondere ai messaggi nella sezione privata dell'account. Verrai anche informato dell'interesse da parte dei locatari al tuo annuncio", 'target' => 'locatore'],
