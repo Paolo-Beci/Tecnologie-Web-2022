@@ -113,10 +113,36 @@
         fornire un servizio innovativo agli studenti di tutta Italia!
     </p>
     <div class="info-container">
-        <article class="info"></article>
-        <article class="info"></article>
-        <article class="info"></article>
-        <article class="info"></article>
+        <article class="info">
+            <div class="img-container">
+                <img src="{{asset('images/icons_utente_chi_siamo.png')}}" alt="" height="75" width="75">
+                <div>
+                    <h2>Paolo Beci</h2>
+                    <a class="email" href="#">paolobeci@univpm.it</a>
+                </div>
+            </div>
+        </article>
+        <article class="info">
+            <div class="img-container">
+                <img src="{{asset('images/icons_utente_chi_siamo.png')}}" alt="" height="75" width="75">
+                <h2>Emanuele Frisi</h2>
+                <a class="email" href="#">emanuelefrisi@univpm.it</a>
+            </div>
+        </article>
+        <article class="info">
+            <div class="img-container">
+                <img src="{{asset('images/icons_utente_chi_siamo.png')}}" alt="" height="75" width="75">
+                <h2>Giuseppe Izzi</h2>
+                <a class="email" href="#">giuseppeizzi@univpm.it</a>
+            </div>
+        </article>
+        <article class="info">
+            <div class="img-container">
+                <img src="{{asset('images/icons_utente_chi_siamo.png')}}" alt="" height="75" width="75">
+                <h2>Domenico La Porta</h2>
+                <a class="email" href="#">domenicolaporta@univpm.it</a>
+            </div>
+        </article>
     </div>
 </section>
 <section id="dicono-di-noi" class="reviews">

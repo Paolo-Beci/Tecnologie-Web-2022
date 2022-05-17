@@ -406,3 +406,21 @@
 .img-container {
     text-align: center;
 }
+
+.email {
+    color: gray;
+}
+
+.email:hover {
+    text-decoration: underline;
+}
+
+.email:active {
+    color: rgb(65, 65, 65);
+}
+/*
+.right-content {
+    display: inline-block;
+    margin-left: 20px;
+}
+*/
