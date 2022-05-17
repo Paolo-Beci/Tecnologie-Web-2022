@@ -258,9 +258,14 @@
 .service {
     height: 375px;
     width: 300px;
+    padding: 15px;
     border-radius: 20px;
     border-top-right-radius: 100px;
     box-shadow: 5px 5px 5px 5px #c6c6c6;
+}
+
+.titolo-carte {
+    padding-bottom: 10px;
 }
 
 .service:hover {

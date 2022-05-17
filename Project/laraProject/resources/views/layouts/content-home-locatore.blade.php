@@ -36,7 +36,7 @@
         </div>
     </section>
 
-    @include('helpers/faq')
+   {{-- @include('helpers/faq') --}}
 
 </section>
 @endsection
