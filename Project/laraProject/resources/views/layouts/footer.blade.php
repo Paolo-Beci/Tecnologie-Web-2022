@@ -1,6 +1,6 @@
 <ul>
-    <li><a href="#">Contact Us</a></li>
-    <li><a href="#">Chi siamo</a></li>
+    <li><a href="#">Contattaci</a></li>
+    <li><a href="#chi-siamo">Chi siamo</a></li>
     <li><a href="#">Assistenza</a></li>
     <li><a href="#">Città</a></li>
     <li><a href="#">Privacy Policy</a></li>

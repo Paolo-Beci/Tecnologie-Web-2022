@@ -24,10 +24,7 @@ Route::get('/registrazione', function () {
 })->name('registrazione');
 
 // CATALOGO
-Route::get('/catalogo', function () {
-    return view('layouts/content-catalogo')
-    ->with('user', 'public');
-})->name('catalogo');
+Route::get('/catalogo', 'PublicController@showPublicCatalog')->name('catalogo');
 
 Route::get('/catalogo/dettagli-annuncio', function () {
     return view('layouts/content-dettagli-annuncio')

@@ -11,6 +11,7 @@ class PublicController extends Controller
     public function __construct()
     {
         $this->_publicUserModel = new PublicUser();
+
     }
 
     public function showPublicHome(){
@@ -20,7 +21,18 @@ class PublicController extends Controller
 
         return view('layouts/content-public')
             ->with('user', 'public')
-            ->with('faq', $faq); //la variabile faq viene passata alla view
+            ->with('faq', $faq); //la variabile faq (array) viene passata alla view
+    }
+
+    public function showPublicCatalog(){
+        $appartamenti = $this->_publicUserModel->getAlloggioByTip('Appartamento');
+        $posti_letto = $this->_publicUserModel->getAlloggioByTip('Posto letto');
+
+         //Alloggio
+         return view('layouts/content-catalogo')
+             ->with('user', 'public')
+             ->with('appartamenti', $appartamenti) //la variabile appartamenti (array) viene passato alla view
+             ->with('posti_letto', $posti_letto); //la variabile posti letto (array) viene passato alla view
     }
 
 }

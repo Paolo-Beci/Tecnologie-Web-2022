@@ -1,27 +1,32 @@
 footer {
     width: 100%;
-    height: 900px;
-    /* background-color: #414141; */
+    height: 700px;
+    padding-top: 250px;
+    box-sizing: border-box;
     background-image: url('../images/footer-decoration.png');
     display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
+    gap: 100px;
 }
 
 footer ul {
+    padding: 0;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    column-gap: 20px;
-    margin: auto;
     list-style: none;
-    height: 100%;
+    gap: 20px;
 }
 
 .copyright {
-    margin: auto;
+    /* margin: auto; */
 }
 
 footer a, .copyright {
-    font-size: 16px;
+    font-size: 20px;
     color: white;
     text-align: center;
 }

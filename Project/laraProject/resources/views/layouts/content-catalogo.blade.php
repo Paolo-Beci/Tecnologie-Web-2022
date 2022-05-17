@@ -5,6 +5,7 @@
     <aside class="lateral-bar">
         @include('helpers/filtri')
     </aside>
+    {{--
     <section class="container-inserzione">
             <h1>Alloggi in affitto</h1>
             <!-- Item inserzione -->
@@ -49,26 +50,28 @@
                 </section>
             </article>
     </section>
-    <!-- DA USARE UNA VOLTA IMPLEMENTATO IL DB -->
-{{--
-    @isset($alloggio)   <!-- esiste o non è null -->
-    @foreach ($alloggio as $alloggio)
+    --}}
+    <section class="container-inserzione">
+    @isset($appartamenti)   <!-- esiste o non è null -->
+    @foreach ($appartamenti as $appartamento)
         <!-- Item inserzione -->
+        <article class="item-inserzione" onclick="">
             <section class="item-immagine">@include('helpers/immagine-inserzione')</section>
             <section class="item-descrizione" onclick="">
-                <h1>{{ $alloggio->tipologia }}</h1>  <!-- Tipologia -->
-                <h1>----------------------------------------------</h1>
-                <h1>{{ $alloggio->via }}, {{ $alloggio->num_civico }}, Piano {{ $alloggio->piano }}, {{ $alloggio->citta }}, {{ $alloggio->CAP }}</h1> <!-- Via, Num.civico, Piano, Città, CAP -->
-                <h2>Dimensione: {{ $alloggio->dimensione }}mq, Periodo Locazione: {{ $alloggio->periodo_locaziome }} mesi, Genere: {{ $alloggio->genere }}</h2> <!-- Dimensione, PeriodoLocazione, Genere (DA MODIFICARE) -->
-                <h2 class="prezzo">Canone affitto: {{ $alloggio->canone_affitto }} &#8364; , Utenze: {{ $alloggio->utenze }} &#8364;</h2> <!-- CanoneAffitto, Utenze -->
-                <h2>{{ $alloggio->descrizione }}</h2> <!-- Descrizione -->
+                <h1>{{ $appartamento->tipologia }}</h1>  <!-- Tipologia -->
+                <hr>
+                <h1>{{ $appartamento->via }}, {{ $appartamento->num_civico }}, Piano {{ $appartamento->piano }}, {{ $appartamento->citta }}, {{ $appartamento->CAP }}</h1> <!-- Via, Num.civico, Piano, Città, CAP -->
+                <h2>Dimensione: {{ $appartamento->dimensione }}mq, Periodo Locazione: {{ $appartamento->periodo_locaziome }} mesi, Genere: {{ $appartamento->genere }}</h2> <!-- Dimensione, PeriodoLocazione, Genere (DA MODIFICARE) -->
+                <h2 class="prezzo">Canone affitto: {{ $appartamento->canone_affitto }} &#8364; , Utenze: {{ $appartamento->utenze }} &#8364;</h2> <!-- CanoneAffitto, Utenze -->
+                <h2>{{ $appartamento->descrizione }}</h2> <!-- Descrizione -->
             </section>
+        </article>
     @endforeach
-
+    @endisset()
+    </section>
+    {{--
     <!--Paginazione-->
     @include('pagination.paginator', ['paginator' => $products])
-
-    @endisset()
 --}}
 </section>
 @endsection
