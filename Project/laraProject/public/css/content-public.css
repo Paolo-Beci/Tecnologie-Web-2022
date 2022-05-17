@@ -272,6 +272,10 @@
     background: linear-gradient(45deg, #FFD625 30%, #414141 100%);
 }
 
+.img-container {
+    text-align: center;
+}
+
 /* Sezione chi siamo */
 
 .about-us {
@@ -300,6 +304,18 @@
     justify-content: center;
     align-items: center;
     gap: 30px
+}
+
+.email {
+    color: gray;
+}
+
+.email:hover {
+    text-decoration: underline;
+}
+
+.email:active {
+    color: rgb(65, 65, 65);
 }
 
 /* Sezione Dicono di noi */
@@ -407,14 +423,3 @@
     color: rgb(65, 65, 65);
 }
 
-.email {
-    color: gray;
-}
-
-.email:hover {
-    text-decoration: underline;
-}
-
-.email:active {
-    color: rgb(65, 65, 65);
-}
