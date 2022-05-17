@@ -296,6 +296,10 @@
     width: 400px;
     border-radius: 20px;
     box-shadow: 5px 5px 5px 5px #c6c6c6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px
 }
 
 /* Sezione Dicono di noi */
@@ -403,10 +407,6 @@
     color: rgb(65, 65, 65);
 }
 
-.img-container {
-    text-align: center;
-}
-
 .email {
     color: gray;
 }
@@ -418,9 +418,3 @@
 .email:active {
     color: rgb(65, 65, 65);
 }
-/*
-.right-content {
-    display: inline-block;
-    margin-left: 20px;
-}
-*/
