@@ -24,11 +24,13 @@
             <img src="{{asset('images/FlatMate_Logo_mini.png')}}" alt="FlatMate Logo">
         </a>
         <nav>
-            @if ($user=='locatore')
-                @include('layouts/_navbar-home-locatore')
-            @else
-                @include('layouts/_navbar-home-public')
-            @endif
+            @isset($user)
+                @if ($user=='locatore')
+                    @include('layouts/_navbar-home-locatore')
+                @else
+                    @include('layouts/_navbar-home-public')
+                @endif
+            @endisset
         </nav>
     </header>
         @yield('content')
