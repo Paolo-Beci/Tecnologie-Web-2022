@@ -12,10 +12,6 @@ h2 {
     color: black;
 }
 
-h1 {
-    margin-left: 50px;
-}
-
 input {
     font-size: 15px;
     margin-left: 50px;
@@ -118,11 +114,29 @@ label {
     border-radius: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
 }
 
-.bottoni_tipologia {
-    background-color: red;
+.section-bottoni-tipologia {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: center;
+}
+.select-button-appartamenti {
+    background-color: #ffd725;
+    margin: 20px;
+    font-size:22px;
+    border-radius:13px;
+    padding:13px 1px;
+    border: 0px;
+}
+.select-button-posti-letto {
+    background-color: #ffd725;
+    margin: 20px;
+    font-size:22px;
+    border-radius:13px;
+    border: 0px;
 }
 
 .item1 {
