@@ -26,6 +26,16 @@ Route::get('/registrazione', function () {
 // CATALOGO
 Route::get('/catalogo', 'PublicController@showPublicCatalog')->name('catalogo');
 
+Route::get('/catalogo-locatore', function () {
+    return view('layouts/content-catalogo-public')
+        ->with('user', 'locatore');
+})->name('catalogo-locatore');
+
+Route::get('/catalogo-locatario', function () {
+    return view('layouts/content-catalogo-locatario')
+        ->with('user', 'locatario');
+})->name('catalogo-locatario');
+
 Route::get('/catalogo/dettagli-annuncio', function () {
     return view('layouts/content-dettagli-annuncio')
         ->with('user', 'locatario');

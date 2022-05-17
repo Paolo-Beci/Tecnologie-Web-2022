@@ -11,7 +11,7 @@
         <a href="#messaggi" title="Messaggistica">Messaggi</a>
     </li>
     <li>
-        <a href="{{ route('catalogo') }}" title="Vai al catalogo annunci">Visualizza annunci</a>
+        <a href="{{ route('catalogo-locatore') }}" title="Vai al catalogo annunci">Visualizza annunci</a>
     </li>
     <li>
         <!-- TO DO -->

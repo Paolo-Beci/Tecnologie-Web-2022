@@ -1,7 +1,7 @@
 @extends('template-home')
 
 @section('content')
-<section id="content-home-locatore" class="content-home-locatore">
+<main id="content-home-locatore" class="content-home-locatore">
     <article>
         <p class="titolo">Dai un'occhiata agli ultimi annunci!</p>
     </article>
@@ -36,7 +36,7 @@
         </div>
     </section>
 
-   {{-- @include('helpers/faq') --}}
+   {{--DA CORREGGEREE @include('helpers/faq') --}}
 
-</section>
+</main>
 @endsection
