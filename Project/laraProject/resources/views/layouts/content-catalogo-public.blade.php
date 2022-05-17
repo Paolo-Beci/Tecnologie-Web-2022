@@ -2,7 +2,6 @@
 
 @section('content')
 <main id="catalogo" class="catalogo">
-
     <section class="container-inserzione">
         <h1>Alloggi in affitto</h1>
         <div class="section-bottoni-tipologia">

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
     <link rel="stylesheet" href="{{asset('css/animations.css')}}">
     <link rel="stylesheet" href="{{asset('css/catalogo.css')}}">
+    <link rel="stylesheet" href="{{asset('css/content-home-locatore.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{asset('js/menu-script.js')}}" defer></script>
     <script src="{{asset('js/sign-up-continue.js')}}" defer></script>
