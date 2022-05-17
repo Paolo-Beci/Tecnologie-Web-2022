@@ -52,12 +52,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('foto')->insert([
-            ['id_foto' => 1, 'alloggio' => 1],
-            ['id_foto' => 2, 'alloggio' => 1],
-            ['id_foto' => 3, 'alloggio' => 2],
-            ['id_foto' => 4, 'alloggio' => 2],
-            ['id_foto' => 5, 'alloggio' => 3],
-            ['id_foto' => 6, 'alloggio' => 3],
+            ['id_foto' => '1.jpg', 'alloggio' => 1],
+            ['id_foto' => '2.jpg', 'alloggio' => 1],
+            ['id_foto' => '3.gif', 'alloggio' => 2],
+            ['id_foto' => '4.jpg', 'alloggio' => 2],
+            ['id_foto' => '5.jpg', 'alloggio' => 3],
+            ['id_foto' => '6.gif', 'alloggio' => 3],
         ]);
 
         DB::table('faq')->insert([
