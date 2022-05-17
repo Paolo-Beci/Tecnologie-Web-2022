@@ -1,4 +1,3 @@
-{{--
 <section id="faq" class="faq">
     <h2>Hai dubbi o difficoltà?
         <br>
@@ -15,4 +14,3 @@
         @endforeach
     </div>
 </section>
---}}
