@@ -5,6 +5,7 @@
     <aside class="lateral-bar">
         @include('helpers/filtri')
     </aside>
+    {{--
     <section class="container-inserzione">
             <h1>Alloggi in affitto</h1>
             <!-- Item inserzione -->
@@ -49,10 +50,9 @@
                 </section>
             </article>
     </section>
-    <!-- DA USARE UNA VOLTA IMPLEMENTATO IL DB -->
-{{--
-    @isset($alloggio)   <!-- esiste o non è null -->
-    @foreach ($alloggio as $alloggio)
+    --}}
+    @isset($alloggi)   <!-- esiste o non è null -->
+    @foreach ($alloggi as $alloggio)
         <!-- Item inserzione -->
             <section class="item-immagine">@include('helpers/immagine-inserzione')</section>
             <section class="item-descrizione" onclick="">
@@ -64,11 +64,10 @@
                 <h2>{{ $alloggio->descrizione }}</h2> <!-- Descrizione -->
             </section>
     @endforeach
-
+{{--
     <!--Paginazione-->
     @include('pagination.paginator', ['paginator' => $products])
-
-    @endisset()
 --}}
+    @endisset()
 </section>
 @endsection
