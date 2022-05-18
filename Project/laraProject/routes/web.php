@@ -18,9 +18,7 @@ Route::get('/home-locatore', 'LocatoreController@showLocatoreHome')->name('home-
 
 Route::get('/home-locatario', 'LocatarioController@showLocatarioHome')->name('home-locatario');
 
-Route::get('/home-admin', 'AdminController@showAdminHome')/*function () {
-    return view('layouts/content-home-admin');
-})*/->name('home-admin');
+Route::get('/home-admin', 'AdminController@showAdminHome')->name('home-admin');
 
 Route::get('/registrazione', function () {
     return view('registrazione-dati-personali');

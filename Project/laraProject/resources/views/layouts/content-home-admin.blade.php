@@ -19,5 +19,23 @@
                 </article>
             </div>
         </section>
+        <section id="offerte_di_alloggio" class="oa_section">
+            <h2>Offerte di alloggio</h2>
+            <div>
+
+            </div>
+        </section>
+        <section id="offerte_di_locazione" class="ol_section">
+            <h2>Offerte di locazione</h2>
+            <div>
+
+            </div>
+        </section>
+        <section id="alloggi_locati" class="al_section">
+            <h2>Alloggi locati</h2>
+            <div>
+
+            </div>
+        </section>
     </main>
 @endsection
