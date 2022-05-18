@@ -18,76 +18,34 @@
                 POSTI LETTO
             </button>
         </article>
-        <!-- APPARTAMENTI -->
-        @isset($appartamenti)   <!-- esiste o non è null -->
-            @foreach ($appartamenti as $appartamento)
-            <!-- Appartamento -->
-            <article class="appartamenti visible">
-                <div class="appartamento" onclick="window.open('{{route('dettagli-annuncio',[$appartamento->id_appartamento])}}')">
+        <!-- ALLOGGI -->
+    @isset($alloggi)   <!-- esiste o non è null -->
+    @foreach ($alloggi as $alloggio)
+        <!-- Alloggio -->
+            <article class="alloggi">
+                <div class="alloggio">
+                    <img class="item-immagine" src="{{ asset('images_case/'.$alloggio->alloggioFoto()->first()->id_foto.".jpg") }}" alt="Immagine">
                     <div>
-                        <img class="item-immagine" src="{{ asset('images_case/'.$appartamento->alloggioFoto()->first()->id_foto.".jpg") }}"  width="100%" alt="Immagine">
-                    </div>
-                    <div>
-                        <h1>{{ $appartamento->tipologia }}</h1>  <!-- Tipologia -->
-                        <hr style="margin: 5px">
+                        <h1>{{ $alloggio->tipologia }}</h1>  <!-- Tipologia -->
+                        <hr style="margin: 10px">
                         <h1>
-                            {{ $appartamento->via }}, {{ $appartamento->num_civico }},
-                            Piano {{ $appartamento->piano }}
+                            {{ $alloggio->via }}, {{ $alloggio->num_civico }},
+                            Piano {{ $alloggio->piano }}
                             <br>
-                            {{ $appartamento->citta }}, {{ $appartamento->cap }}</h1> <!-- Via, Num.civico, Piano, Città, CAP -->
+                            {{ $alloggio->citta }}, {{ $alloggio->cap }}</h1> <!-- Via, Num.civico, Piano, Città, CAP -->
                         <h2 class="info">
-                            Dimensione: {{ $appartamento->dimensione }}mq,
-                            Periodo Locazione: {{ $appartamento->periodo_locazione }} mesi,
-                            Genere:<!--  Genere -->
-                            @if ($appartamento->genere == 'm')
-                                Maschio
-                            @elseif ($appartamento->genere == 'f')
-                                Femmina
-                            @else
-                                Tutti
-                            @endif
+                            Dimensione: {{ $alloggio->dimensione }}mq,
+                            Periodo Locazione: {{ $alloggio->periodo_locazione }} mesi,
+                            Genere: {{ $alloggio->genere }}</h2> <!-- Dimensione, PeriodoLocazione, Genere (DA MODIFICARE) -->
                         <h2 class="info">
-                            Canone affitto: &#8364;{{ $appartamento->canone_affitto }} / mese,
-                            Utenze: &#8364;{{ $appartamento->utenze }} / mese</h2> <!-- CanoneAffitto, Utenze -->
-                        <h2 class="info">{{ $appartamento->descrizione }}</h2> <!-- Descrizione -->
+                            Canone affitto: &#8364;{{ $alloggio->canone_affitto }} / mese,
+                            Utenze: &#8364;{{ $alloggio->utenze }} / mese</h2> <!-- CanoneAffitto, Utenze -->
+                        <h2 class="info">{{ $alloggio->descrizione }}</h2> <!-- Descrizione -->
                     </div>
                 </div>
             </article>
-            @endforeach
-        @endisset
-
-        <!-- POSTI LETTO -->
-        @isset($posti_letto)   <!-- esiste o non è null -->
-            @foreach ($posti_letto as $posto_letto)
-            <!-- Posto letto -->
-                <article class="posti-letto">
-                    <div class="posto-letto">
-                        <div>
-                            <img class="item-immagine" src="{{ asset('images_case/'.$posto_letto->alloggioFoto()->first()->id_foto.".jpg") }}"  width="100%" alt="Immagine">
-                        </div>
-                        <div>
-                            <h1>{{ $posto_letto->tipologia }}</h1>  <!-- Tipologia -->
-                            <hr>
-                            <h1>
-                                {{ $posto_letto->via }}, {{ $posto_letto->num_civico }},
-                                Piano {{ $posto_letto->piano }},
-                                <br>
-                                {{ $posto_letto->citta }}, {{ $posto_letto->cap }}</h1> <!-- Via, Num.civico, Piano, Città, CAP -->
-                            <h2 class="info">
-                                Dimensione: {{ $posto_letto->dimensione }}mq,
-                                Periodo Locazione: {{ $posto_letto->periodo_locazione }} mesi, Genere: {{ $posto_letto->genere }}</h2> <!-- Dimensione, PeriodoLocazione, Genere (DA MODIFICARE) -->
-                            <h2 class="info">Canone affitto: &#8364;{{ $posto_letto->canone_affitto }} / mese,
-                                &#8364;Utenze: {{ $posto_letto->utenze }} / mese</h2> <!-- CanoneAffitto, Utenze -->
-                            <h2 class="info">{{ $posto_letto->descrizione }}</h2> <!-- Descrizione -->
-                        </div>
-                    </div>
-                </article>
-            @endforeach
+        @endforeach
         @endisset
     </section>
-        {{--
-        <!--Paginazione-->
-        @include('pagination.paginator', ['paginator' => $products])
-        --}}
 </main>
 @endsection

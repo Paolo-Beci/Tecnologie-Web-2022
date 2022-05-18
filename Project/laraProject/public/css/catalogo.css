@@ -41,7 +41,6 @@ label {
 
 /* Regole barra laterale */
 .lateral-bar {
-    padding-top: 120px;
     height: 100%;
     width: 25%;
     color: black;
@@ -69,6 +68,7 @@ label {
 .main-container {
     display: flex;
     flex-direction: row;
+    padding-top: 100px;
 }
 
 /* Regole sezione centrale inserzioni */

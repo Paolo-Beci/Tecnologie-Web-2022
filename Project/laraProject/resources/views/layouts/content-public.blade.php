@@ -11,7 +11,7 @@
     </article>
     <article class="forms forms-anim" id="login">
         <div class="container">
-            <form class="login active.form" action="{{route('home-locatore')}}">
+            <form class="login active.form" action="{{route('home-locatario')}}">
                 <h1>Login</h1>
                 <fieldset class="login-fieldset">
                     <div class="username">

@@ -1,5 +1,7 @@
 <h1 style="margin: 10px">Filtri ricerca</h1>
 <hr style="margin: 10px">
+<h2 class="subtitle-filtri">Città</h2>
+    <input type="text" id="citta" name="citta" value="Ancona"><br>
 <h2 class="subtitle-filtri">Fascia di Prezzo</h2>
     <input type="text" placeholder="100" id="min-prezzo">
     <label for="min-prezzo">&#8364; Minimi</label>

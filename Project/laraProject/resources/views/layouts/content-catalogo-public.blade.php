@@ -18,7 +18,7 @@
             </button>
         </a>
     </article>
-    {{-- <!-- APPARTAMENTI --> --}}
+    <!-- ALLOGGI -->
     @isset($alloggi)   <!-- esiste o non è null -->
         @foreach ($alloggi as $alloggio)
         <!-- Alloggio -->
@@ -50,5 +50,5 @@
 
     <!--Paginazione-->
     @include('pagination.paginator', ['paginator' => $alloggi])
-   
+
 @endsection
