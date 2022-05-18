@@ -21,9 +21,9 @@
         <!-- Appartamento -->
         <article class="appartamenti visible">
             <div class="appartamento">
-                <div class="" >
+                <div class="item-immagine" >
                     {{--inserimento di un immagine--}}
-                    <img src="{{ asset('images_case/'.$appartamento->alloggioFoto()->first()->id_foto.".jpg") }}" alt="Immagine non disponibile">
+                    <img class="item-immagine" src="{{ asset('images_case/'.$appartamento->alloggioFoto()->first()->id_foto.".jpg") }}"  width="100%" alt="Immagine non disponibile">
                 </div>
                 <div>
                     <h1>{{ $appartamento->tipologia }}</h1>  <!-- Tipologia -->
@@ -54,9 +54,9 @@
         <!-- Posto letto -->
             <article class="posti-letto">
                 <div class="posto-letto">
-                    <div class="">
+                    <div>
                         {{--inserimento di un immagine--}}
-                        <img src="{{ asset('images_case/'.$posto_letto->alloggioFoto()->first()->id_foto.".jpg") }}" alt="Immagine non disponibile">
+                        <img class="item-immagine" src="{{ asset('images_case/'.$posto_letto->alloggioFoto()->first()->id_foto.".jpg") }}"  width="100%" alt="Immagine non disponibile">
                     </div>
                     <div>
                         <h1>{{ $posto_letto->tipologia }}</h1>  <!-- Tipologia -->
