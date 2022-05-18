@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
     <link rel="stylesheet" href="{{asset('css/animations.css')}}">
     <link rel="stylesheet" href="{{asset('css/content-home-loggato.css')}}">
+    <link rel="stylesheet" href="{{asset('css/content-home-admin.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{asset('js/menu-script.js')}}" defer></script>
     <script src="{{asset('js/forms-script.js')}}" defer></script>
@@ -28,10 +29,15 @@
             @isset($user)
                 @if ($user=='locatore')
                     @include('layouts/_navbar-home-locatore')
+<<<<<<< HEAD
+                @elseif($user=='admin')
+                    @include('layouts/_navbar-home-admin')
+=======
                 @elseif ($user=='locatario')
                     @include('layouts/_navbar-home-locatario')
                 @elseif($user=='amministratore')
                     @include('layouts/_navbar-home-public')
+>>>>>>> 2608d926ba2fac76a63e1426fe9f67ccd751fcbd
                 @else
                     @include('layouts/_navbar-home-public')
                 @endif
