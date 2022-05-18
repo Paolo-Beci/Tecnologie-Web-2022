@@ -29,6 +29,7 @@
     gap: 40px;
 }
 
+/*regole css per i campi da compilare per il filtraggio admin*/
 .filter_section {
     display: flex;
     flex-direction: column;
@@ -46,4 +47,129 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 40px;
+}
+
+/*regole css per i risultati dei filtri admin*/
+.results_container {
+    width: 150%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*flex-wrap: wrap;*/
+    gap: 40px;
+    margin: 0 50px;
+}
+
+.result {
+    /*height: 375px;*/
+    width: 600px;
+    padding: 15px;
+    border-radius: 20px;
+    /*border-top-right-radius: 100px;*/
+    box-shadow: 5px 5px 5px 5px #c6c6c6;
+}
+
+.content {
+    text-align: center;
+}
+
+.img_result {
+    width: 300px;
+    height: 300px;
+    border: 1px solid;
+    border-radius: 25px 25px 25px 25px;
+    background-size: cover;
+}
+
+/*regole css per le palline*/
+.loader {
+    width: 120px;
+    height: 75px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.ball {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: black;
+    animation: bounce .5s alternate
+    infinite;
+}
+
+.ball:nth-child(2) {
+    animation-delay: .16s;
+}
+
+.ball:nth-child(3) {
+    animation-delay: .32s;
+}
+
+@keyframes bounce {
+    from {
+        transform: scaleX(1.25);
+    }
+    to {
+        transform:
+        translateY(-25px) scaleX(1);
+    }
+}
+
+/*regole css per i bottoni filtra in admin*/
+.filter_button {
+    border-radius: 13px;
+    width: 350px;
+    height: 60px;
+    background-color: #ffd725;
+    border: 3px solid #414141;
+    text-decoration: none;
+    font-size: 25px;
+    color: #414141;
+    position: relative;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.filter_button::before,
+.filter_button::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: inherit;
+    transition: all .5s;
+}
+
+.filter_button::before {
+    border-top-left-radius: 13px;
+    left: -15px;
+    top: -15px;
+    border-width: 3px 0 0 3px;
+}
+
+.filter_button::after {
+    border-bottom-right-radius: 13px;
+    bottom: -15px;
+    right: -15px;
+    border-width: 0 3px 3px 0;
+}
+
+.filter_button:hover {
+    border-radius: 13px;
+    background-color: #414141;
+    color: #ffd725;
+    transition: 1s;
+    border-color: #ffd725;
+}
+
+.filter_button:hover::before,
+.filter_button:hover::after {
+    border-radius: 13px;
+    width: calc(100% + 27px);
+    height: calc(100% + 27px);
+    border-color: #ffd725;
 }
