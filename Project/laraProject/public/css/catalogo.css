@@ -105,7 +105,7 @@ label {
 }
 
 .appartamento, .posto-letto {
-    height: 300px;
+    height: 400px;
     width: 90%;
     margin: 30px;
     padding: 0px 30px;
@@ -118,8 +118,8 @@ label {
     gap: 50px;
 }
 
-.item2 {
-    height: 200px;
+.item-immagine {
+    height: 300px;
     width: 40%;
     border: 1px solid;
     border-radius: 25px 25px 25px 25px;

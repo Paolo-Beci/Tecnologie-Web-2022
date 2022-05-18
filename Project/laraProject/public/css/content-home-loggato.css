@@ -19,11 +19,6 @@
     color:#ffd725;
 }
 
-.immagine {
-    border-radius: 13px;
-    box-shadow: 10px 10px 5px #ccc;
-}
-
 /* Regole corpo del documento */
 .titolo {
     font-size: 30px !important;

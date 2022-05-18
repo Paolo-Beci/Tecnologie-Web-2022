@@ -11,7 +11,6 @@ class PublicController extends Controller
     public function __construct()
     {
         $this->_publicUserModel = new PublicUser();
-
     }
 
     public function showPublicHome(){

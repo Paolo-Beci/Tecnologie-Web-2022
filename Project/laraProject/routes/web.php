@@ -14,10 +14,13 @@
 // HOMEPAGE
 Route::get('/', 'PublicController@showPublicHome')->name('homepage');
 
-Route::get('/home-locatore', function () {
-    return view('layouts/content-home-locatore')
-        ->with('user', 'locatore');
-})->name('home-locatore');
+Route::get('/home-locatore', 'LocatoreController@showLocatoreHome')->name('home-locatore');
+
+Route::get('/home-locatario', 'LocatarioController@showLocatarioHome')->name('home-locatario');
+
+Route::get('/home-admin', function () {
+    return view('layouts/content-home-admin');
+})->name('home-admin');
 
 Route::get('/registrazione', function () {
     return view('registrazione-dati-personali');
@@ -28,10 +31,7 @@ Route::get('/catalogo', 'PublicController@showPublicCatalog')->name('catalogo');
 
 Route::get('/catalogo-locatore', 'LocatoreController@showLocatoreCatalog')->name('catalogo-locatore');
 
-Route::get('/catalogo-locatario', function () {
-    return view('layouts/content-catalogo-locatario')
-        ->with('user', 'locatario');
-})->name('catalogo-locatario');
+Route::get('/catalogo-locatario', 'LocatarioController@showLocatarioCatalog')->name('catalogo-locatario');
 
 Route::get('/catalogo/dettagli-annuncio', function () {
     return view('layouts/content-dettagli-annuncio')

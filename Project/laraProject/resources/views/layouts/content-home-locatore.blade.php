@@ -19,24 +19,24 @@
             </div>
         </div>
         <div class="immagine-paragrafo1">
-            <img class="immagine" src="{{asset('images_case/imm1.jpg')}}" alt="Immagine 1" width="100%" style="vertical-align:middle;horiz-align:left">
+            <img src="{{asset('images/gestione_image.jpg')}}" alt="Immagine 1" width="80%" style="vertical-align:middle;horiz-align:left">
         </div>
     </section>
     <section class="scopri-servizio">
         <div class="immagine-paragrafo2">
-            <img class="immagine" src="{{asset('images_case/imm2.jpg')}}" alt="Immagine 1" width="80%" style="vertical-align:middle;horiz-align:left">
+            <img src="{{asset('images/messaging_image.jpg')}}" alt="Immagine 2" width="80%" style="vertical-align:middle;horiz-align:left">
         </div>
         <div>
             <div>
                 <p class="titolo-paragrafo2">Scopri il nostro servizio di messaggistica!</p>
-                <p class="testo-paragrafo2">Con il nostro sistema di messaggistica potrai visualizzare tutti i messaggi<br>
-                    ricevuti dai clienti interessati ai tuoi alloggi e rispondere chiarendo<br>
+                <p class="testo-paragrafo2">Con il nostro sistema di messaggistica potrai visualizzare tutti i messaggi
+                    ricevuti dai clienti interessati ai tuoi alloggi e rispondere chiarendo
                     ogni loro eventuale dubbio.</p>
             </div>
         </div>
     </section>
-
-   {{--DA CORREGGEREE @include('helpers/faq') --}}
-
+    @isset($faq)
+        @include('helpers/faq')
+    @endisset
 </main>
 @endsection
