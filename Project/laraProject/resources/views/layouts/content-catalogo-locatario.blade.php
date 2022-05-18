@@ -24,7 +24,9 @@
             <!-- Appartamento -->
             <article class="appartamenti visible">
                 <div class="appartamento" onclick="window.open('{{route('dettagli-annuncio',[$appartamento->id_appartamento])}}')">
-                    <div class="item-immagine"></div>
+                    <div>
+                        <img class="item-immagine" src="{{ asset('images_case/'.$appartamento->alloggioFoto()->first()->id_foto.".jpg") }}"  width="100%" alt="Immagine">
+                    </div>
                     <div>
                         <h1>{{ $appartamento->tipologia }}</h1>  <!-- Tipologia -->
                         <hr style="margin: 5px">
@@ -36,7 +38,14 @@
                         <h2 class="info">
                             Dimensione: {{ $appartamento->dimensione }}mq,
                             Periodo Locazione: {{ $appartamento->periodo_locazione }} mesi,
-                            Genere: {{ $appartamento->genere }}</h2> <!-- Dimensione, PeriodoLocazione, Genere (DA MODIFICARE) -->
+                            Genere:<!--  Genere -->
+                            @if ($appartamento->genere == 'm')
+                                Maschio
+                            @elseif ($appartamento->genere == 'f')
+                                Femmina
+                            @else
+                                Tutti
+                            @endif
                         <h2 class="info">
                             Canone affitto: &#8364;{{ $appartamento->canone_affitto }} / mese,
                             Utenze: &#8364;{{ $appartamento->utenze }} / mese</h2> <!-- CanoneAffitto, Utenze -->
@@ -53,7 +62,9 @@
             <!-- Posto letto -->
                 <article class="posti-letto">
                     <div class="posto-letto">
-                        <div class="item-immagine"></div>
+                        <div>
+                            <img class="item-immagine" src="{{ asset('images_case/'.$posto_letto->alloggioFoto()->first()->id_foto.".jpg") }}"  width="100%" alt="Immagine">
+                        </div>
                         <div>
                             <h1>{{ $posto_letto->tipologia }}</h1>  <!-- Tipologia -->
                             <hr>
