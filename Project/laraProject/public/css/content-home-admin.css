@@ -28,3 +28,22 @@
     flex-wrap: wrap;
     gap: 40px;
 }
+
+.filter_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.form_container {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
