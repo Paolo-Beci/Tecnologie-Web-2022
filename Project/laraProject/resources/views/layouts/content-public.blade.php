@@ -112,7 +112,11 @@
         <br>
         fornire un servizio innovativo agli studenti di tutta Italia!
     </p>
+
     <div class="info-container">
+        <div class="team_image">
+            <img src="{{asset('images/team_image.jpeg')}}" alt="Immagine 1" width="50%" style="border-radius: 13px">
+        </div>
         <article class="info">
                 <img src="{{asset('images/icons_utente_chi_siamo.png')}}" alt="" height="75" width="75">
                 <div>

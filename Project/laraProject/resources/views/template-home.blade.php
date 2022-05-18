@@ -28,6 +28,10 @@
             @isset($user)
                 @if ($user=='locatore')
                     @include('layouts/_navbar-home-locatore')
+                @elseif ($user=='locatario')
+                    @include('layouts/_navbar-home-locatario')
+                @elseif($user=='amministratore')
+                    @include('layouts/_navbar-home-public')
                 @else
                     @include('layouts/_navbar-home-public')
                 @endif
