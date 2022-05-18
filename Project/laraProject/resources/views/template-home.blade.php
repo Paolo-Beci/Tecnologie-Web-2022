@@ -29,8 +29,15 @@
             @isset($user)
                 @if ($user=='locatore')
                     @include('layouts/_navbar-home-locatore')
+<<<<<<< HEAD
                 @elseif($user=='admin')
                     @include('layouts/_navbar-home-admin')
+=======
+                @elseif ($user=='locatario')
+                    @include('layouts/_navbar-home-locatario')
+                @elseif($user=='amministratore')
+                    @include('layouts/_navbar-home-public')
+>>>>>>> 2608d926ba2fac76a63e1426fe9f67ccd751fcbd
                 @else
                     @include('layouts/_navbar-home-public')
                 @endif

@@ -20,7 +20,8 @@
                 <p class="testo-paragrafo2">Con il nostro sistema di messaggistica potrai metterti
                     in contatto con gli inserzionisti degli alloggi che ti interessano per chiarire
                     ogni tuo dubbio.<br>
-                    Inoltre potrai esprimere il tuo interesse per l'alloggio che vuoi affittare!</p>
+                    Inoltre potrai esprimere il tuo interesse per l'alloggio che vuoi affittare direttamente
+                    dalla sua pagina dedicata!</p>
             </div>
         </div>
     </section>

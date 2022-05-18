@@ -314,6 +314,13 @@
     text-decoration: underline;
 }
 
+.team_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px
+}
+
 .email:active {
     color: rgb(65, 65, 65);
 }
