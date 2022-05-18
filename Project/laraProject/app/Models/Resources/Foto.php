@@ -8,4 +8,5 @@ class Foto extends Model{
     protected $table = 'foto';
     protected $primaryKey = 'id_foto';
     public $timestamps = false;
+
 }

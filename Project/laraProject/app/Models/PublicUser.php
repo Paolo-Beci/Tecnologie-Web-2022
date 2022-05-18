@@ -15,4 +15,5 @@ class PublicUser
     public function getAlloggioByTip($tipologia){
         return Alloggio::where('tipologia', $tipologia)->get();
     }
+
 }

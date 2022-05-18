@@ -21,10 +21,13 @@
         <!-- Appartamento -->
         <article class="appartamenti visible">
             <div class="appartamento">
-                <div class="item-immagine"></div>
+                <div class="" >
+                    {{--inserimento di un immagine--}}
+                    <img src="{{ asset('images_case/'.$appartamento->alloggioFoto()->first()->id_foto.".jpg") }}" alt="Immagine non disponibile">
+                </div>
                 <div>
                     <h1>{{ $appartamento->tipologia }}</h1>  <!-- Tipologia -->
-                    <hr style="margin: 10px">
+                    <hr>
                     <h1>
                         {{ $appartamento->via }}, {{ $appartamento->num_civico }},
                         Piano {{ $appartamento->piano }}
@@ -35,8 +38,8 @@
                         Periodo Locazione: {{ $appartamento->periodo_locazione }} mesi,
                         Genere: {{ $appartamento->genere }}</h2> <!-- Dimensione, PeriodoLocazione, Genere (DA MODIFICARE) -->
                     <h2 class="info">
-                        Canone affitto: &#8364;{{ $appartamento->canone_affitto }} / mese,
-                        Utenze: &#8364;{{ $appartamento->utenze }} / mese</h2> <!-- CanoneAffitto, Utenze -->
+                        Canone affitto: &#8364;{{ $appartamento->canone_affitto }},
+                        Utenze: &#8364;{{ $appartamento->utenze }}</h2> <!-- CanoneAffitto, Utenze -->
                     <h2 class="info">{{ $appartamento->descrizione }}</h2> <!-- Descrizione -->
                 </div>
             </div>
@@ -51,10 +54,13 @@
         <!-- Posto letto -->
             <article class="posti-letto">
                 <div class="posto-letto">
-                    <div class="item-immagine"></div>
+                    <div class="">
+                        {{--inserimento di un immagine--}}
+                        <img src="{{ asset('images_case/'.$posto_letto->alloggioFoto()->first()->id_foto.".jpg") }}" alt="Immagine non disponibile">
+                    </div>
                     <div>
                         <h1>{{ $posto_letto->tipologia }}</h1>  <!-- Tipologia -->
-                        <hr style="margin: 10px">
+                        <hr>
                         <h1>
                             {{ $posto_letto->via }}, {{ $posto_letto->num_civico }},
                             Piano {{ $posto_letto->piano }},
@@ -63,8 +69,8 @@
                         <h2 class="info">
                             Dimensione: {{ $posto_letto->dimensione }}mq,
                             Periodo Locazione: {{ $posto_letto->periodo_locazione }} mesi, Genere: {{ $posto_letto->genere }}</h2> <!-- Dimensione, PeriodoLocazione, Genere (DA MODIFICARE) -->
-                        <h2 class="info">Canone affitto: &#8364;{{ $posto_letto->canone_affitto }} / mese,
-                            &#8364;Utenze: {{ $posto_letto->utenze }} / mese</h2> <!-- CanoneAffitto, Utenze -->
+                        <h2 class="info">Canone affitto: &#8364;{{ $posto_letto->canone_affitto }},
+                            &#8364;Utenze: {{ $posto_letto->utenze }}</h2> <!-- CanoneAffitto, Utenze -->
                         <h2 class="info">{{ $posto_letto->descrizione }}</h2> <!-- Descrizione -->
                     </div>
                 </div>
