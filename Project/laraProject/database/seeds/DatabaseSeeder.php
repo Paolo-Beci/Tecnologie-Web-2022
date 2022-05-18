@@ -31,15 +31,21 @@ class DatabaseSeeder extends Seeder
             ['id_alloggio' => 1, 'descrizione' => 'Bellissimo appartamento arredato con nuovo mobilio', 'utenze' => 80, 'canone_affitto' => 500, 'periodo_locazione' => 12, 'genere' => 'u', 'eta_minima' => 18, 'eta_massima' => 35, 'dimensione' => 150, 'num_posti_letto_tot' => NULL, 'via' => 'Via della vittoria', 'citta' => 'Ancona', 'num_civico' => 43, 'cap' => 60123, 'interno' => 5, 'piano' => 1, 'data_inserimento_offerta' => now(), 'tipologia' => 'Appartamento'],
             ['id_alloggio' => 2, 'descrizione' => 'Bellissimo posto letto singolo arredato con nuovo mobilio', 'utenze' => NULL, 'canone_affitto' => 200, 'periodo_locazione' => 9, 'genere' => 'm', 'eta_minima' => 18, 'eta_massima' => 30, 'dimensione' => 30, 'num_posti_letto_tot' => 4, 'via' => 'Via Cesare Battisti', 'citta' => 'Ancona', 'num_civico' => 11, 'cap' => 60123, 'interno' => 3, 'piano' => 1, 'data_inserimento_offerta' => now(), 'tipologia' => 'Posto letto'],
             ['id_alloggio' => 3, 'descrizione' => NULL, 'utenze' => 60, 'canone_affitto' => 250, 'periodo_locazione' => 6, 'genere' => 'f', 'eta_minima' => 18, 'eta_massima' => 30, 'dimensione' => NULL, 'num_posti_letto_tot' => 3, 'via' => 'Via Vito Volterra', 'citta' => 'Ancona', 'num_civico' => 26, 'cap' => 60123, 'interno' => NULL, 'piano' => NULL, 'data_inserimento_offerta' => now(), 'tipologia' => 'Posto letto'],
+            ['id_alloggio' => 4, 'descrizione' => 'Bellissimo appartamento arredato con nuovo mobilio', 'utenze' => 80, 'canone_affitto' => 500, 'periodo_locazione' => 12, 'genere' => 'u', 'eta_minima' => 18, 'eta_massima' => 35, 'dimensione' => 150, 'num_posti_letto_tot' => NULL, 'via' => 'Via della vittoria', 'citta' => 'Ancona', 'num_civico' => 43, 'cap' => 60123, 'interno' => 5, 'piano' => 1, 'data_inserimento_offerta' => now(), 'tipologia' => 'Appartamento'],
+            ['id_alloggio' => 5, 'descrizione' => 'Bellissimo posto letto singolo arredato con nuovo mobilio', 'utenze' => NULL, 'canone_affitto' => 200, 'periodo_locazione' => 9, 'genere' => 'm', 'eta_minima' => 18, 'eta_massima' => 30, 'dimensione' => 30, 'num_posti_letto_tot' => 4, 'via' => 'Via Cesare Battisti', 'citta' => 'Ancona', 'num_civico' => 11, 'cap' => 60123, 'interno' => 3, 'piano' => 1, 'data_inserimento_offerta' => now(), 'tipologia' => 'Posto letto'],
+            ['id_alloggio' => 6, 'descrizione' => NULL, 'utenze' => 60, 'canone_affitto' => 250, 'periodo_locazione' => 6, 'genere' => 'f', 'eta_minima' => 18, 'eta_massima' => 30, 'dimensione' => NULL, 'num_posti_letto_tot' => 3, 'via' => 'Via Vito Volterra', 'citta' => 'Ancona', 'num_civico' => 26, 'cap' => 60123, 'interno' => NULL, 'piano' => NULL, 'data_inserimento_offerta' => now(), 'tipologia' => 'Posto letto'],
         ]);
 
         DB::table('appartamento')->insert([
             ['id_appartamento' => 1, 'num_camere' => 5, 'alloggio' => 1],
+            ['id_appartamento' => 2, 'num_camere' => 5, 'alloggio' => 4],
         ]);
 
         DB::table('posto_letto')->insert([
             ['id_posto_letto' => 1, 'tipologia' => 2, 'angolo_studio' => 1, 'alloggio' => 2],
             ['id_posto_letto' => 2, 'tipologia' => 1, 'angolo_studio' => 1, 'alloggio' => 3],
+            ['id_posto_letto' => 3, 'tipologia' => 2, 'angolo_studio' => 1, 'alloggio' => 5],
+            ['id_posto_letto' => 4, 'tipologia' => 1, 'angolo_studio' => 1, 'alloggio' => 6],
         ]);
 
         DB::table('servizio')->insert([
@@ -53,11 +59,11 @@ class DatabaseSeeder extends Seeder
 
         DB::table('foto')->insert([
             ['id_foto' => '1.jpg', 'alloggio' => 1],
-            ['id_foto' => '2.jpg', 'alloggio' => 1],
-            ['id_foto' => '3.gif', 'alloggio' => 2],
-            ['id_foto' => '4.jpg', 'alloggio' => 2],
-            ['id_foto' => '5.jpg', 'alloggio' => 3],
-            ['id_foto' => '6.gif', 'alloggio' => 3],
+            ['id_foto' => '2.gif', 'alloggio' => 2],
+            ['id_foto' => '3.jpg', 'alloggio' => 3],
+            ['id_foto' => '4.jpg', 'alloggio' => 4],
+            ['id_foto' => '5.jpg', 'alloggio' => 5],
+            ['id_foto' => '6.gif', 'alloggio' => 6],
         ]);
 
         DB::table('faq')->insert([

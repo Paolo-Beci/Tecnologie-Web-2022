@@ -11,9 +11,13 @@ class PublicUser
         return Faq::where('target', $target)->get();
     }
 
+    public function getAlloggi(){
+        return Alloggio::paginate(2);
+    }
+
     //metodo per tornare un'array di alloggi in base alla tipologia
     public function getAlloggioByTip($tipologia){
-        return Alloggio::where('tipologia', $tipologia)->get();
+        return Alloggio::where('tipologia', $tipologia)->paginate(2);
     }
 
 }

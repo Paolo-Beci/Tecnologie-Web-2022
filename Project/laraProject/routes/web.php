@@ -24,11 +24,17 @@ Route::get('/registrazione', function () {
     return view('registrazione-dati-personali');
 })->name('registrazione');
 
-// CATALOGO
+// CATALOGO PUBBLICO
 Route::get('/catalogo', 'PublicController@showPublicCatalog')->name('catalogo');
 
+Route::get('/catalogo/appartamenti', 'PublicController@showPublicCatalogAppartamenti')->name('catalogo-appartamenti');
+
+Route::get('/catalogo/posti-letto', 'PublicController@showPublicCatalogPostiLetto')->name('catalogo-posti-letto');
+
+// CATALOGO LOCATORE
 Route::get('/catalogo-locatore', 'LocatoreController@showLocatoreCatalog')->name('catalogo-locatore');
 
+// CATALOGO LOCATARIO
 Route::get('/catalogo-locatario', 'LocatarioController@showLocatarioCatalog')->name('catalogo-locatario');
 
 Route::get('/catalogo/dettagli-annuncio', function () {

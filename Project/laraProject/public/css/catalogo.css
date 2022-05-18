@@ -90,9 +90,14 @@ label {
     gap: 40px;
 }
 
-.appartamenti-button, .posti-letto-button {
+.alloggi-buttons a {
     height: 80px;
     width: 40%;
+}
+
+.appartamenti-button, .posti-letto-button {
+    height: 100%;
+    width: 100%;
     background-color: #ffd725;
     border: none;
     border-radius: 15px;
@@ -108,15 +113,15 @@ label {
     width: 10%;
 }
 
-.appartamenti, .posti-letto {
+.alloggi {
     width: 90%;
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.appartamento, .posto-letto {
+.alloggio {
     height: 400px;
     width: 90%;
     margin: 30px;
@@ -131,6 +136,7 @@ label {
 }
 
 .item-immagine {
+    max-width: 50%;
     height: 300px;
     border: 1px solid;
     border-radius: 25px 25px 25px 25px;
@@ -145,6 +151,8 @@ label {
     color: black;
 }
 
-.visible {
+.pagination {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
