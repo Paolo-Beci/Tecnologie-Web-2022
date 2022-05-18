@@ -1,0 +1,30 @@
+/*regola l'intera sezione (label e container)*/
+.stats-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+/*regola ogni singola statistica singolarmente*/
+.stats {
+    height: 50px;
+    width: 400px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 5px #c6c6c6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+/*regola il contenitore delle singole statistiche*/
+.stats-container {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
