@@ -1,16 +1,15 @@
 <ul class="menu">
     <li>
-        <a class="active" href="{{ route('homepage') }}" title="Home">Home</a>
+        <a class="active" href="{{ route('homepage') }}">Home</a>
     </li>
     <li>
-        <!-- TO DO -->
-        <a href="#statistiche" title="Statistiche">Statistiche</a>
+        <a class="" href="#inserisci">Inserisci</a>
     </li>
     <li>
-        <a href="{{ route('gestione_faq') }}" title="Gestione Faq">Gestione Faq</a>
+        <a class="" href="#modifica">Modifica</a>
     </li>
     <li>
-        <a href="{{ route('catalogo-locatore') }}" title="Vai al catalogo annunci">Visualizza annunci</a>
+        <a class="" href="#cancella">Cancella</a>
     </li>
     <li>
         <!-- TO DO -->

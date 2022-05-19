@@ -17,4 +17,11 @@ class AdminController
         return view('layouts/content-home-admin')
             ->with('user', 'admin');
     }
+
+    public function showFaq() {
+        $faq = $this->_controllerModel->getFaq();
+
+        return view('gestione-faq')
+            ->with('faq', $faq);
+    }
 }
