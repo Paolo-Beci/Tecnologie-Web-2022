@@ -42,6 +42,10 @@ Route::get('/catalogo/dettagli-annuncio', function () {
         ->with('user', 'locatario');
 })->name('dettagli-annuncio');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 // GESTIONE FAQ
 Route::get('/gestione_faq', 'AdminController@showFaq')->name('gestione_faq');
 
