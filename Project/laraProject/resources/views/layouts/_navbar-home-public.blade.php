@@ -3,15 +3,6 @@
         <a class="anchor active" href="#home" title="Home">Home</a>
     </li>
     <li>
-        <a class="anchor" href="#servizi" title="I nostri servizi">Servizi</a>
-    </li>
-    <li>
-        <a class="anchor" href="#chi-siamo" title="Il nostro profilo aziendale">Chi siamo</a>
-    </li>
-    <li>
-        <a class="anchor" href="#dicono-di-noi" title="Le vostre recensioni">Dicono di noi</a>
-    </li>
-    <li>
         <a class="anchor" href="#faq" title="Frequenty Asked Questions">FAQ</a>
     </li>
     <li>
