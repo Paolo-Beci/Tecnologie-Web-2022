@@ -19,6 +19,7 @@
     <script src="{{asset('js/sign-up-continue.js')}}" defer></script>
     <script src="{{asset('js/reviews.js')}}" defer></script>
     <script src="{{asset('js/popup-privacy.js')}}" defer></script>
+    <script src="{{asset('js/popup-condizioni-uso.js')}}" defer></script>
 </head>
 <body>
     <header class="header-anim">
@@ -45,6 +46,7 @@
     <footer>
         @include('layouts/footer')
         @include('helpers/popup-privacy')
+        @include('helpers/popup-condizioni-uso')
     </footer>
 </body>
 </html>
