@@ -9,8 +9,9 @@ class Alloggio extends Model{
     protected $primaryKey = 'id_alloggio';
     public $timestamps = false;
 
-    //relazione One-To-Many
+    //relazione One-To-One
     public function alloggioFoto(){
-         return $this->hasMany(Foto::class, 'alloggio', 'id_alloggio');
+         return $this->hasOne(Foto::class, 'alloggio', 'id_alloggio');
     }
+
 }

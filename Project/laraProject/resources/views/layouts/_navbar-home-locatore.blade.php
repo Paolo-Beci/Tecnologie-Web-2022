@@ -3,8 +3,7 @@
         <a class="active" href="{{ route('homepage') }}" title="Home">Home</a>
     </li>
     <li>
-        <!-- TO DO -->
-        <a href="#gestioneAlloggi" title="Gestione degli alloggi">Gestione alloggi</a>
+        <a href="{{ route('gestione_alloggi') }}" title="Gestione degli alloggi">Gestione alloggi</a>
     </li>
     <li>
         <!-- TO DO -->

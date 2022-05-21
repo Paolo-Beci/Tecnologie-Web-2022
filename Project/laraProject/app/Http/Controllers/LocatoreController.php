@@ -35,4 +35,13 @@ class LocatoreController extends Controller
 
     }
 
+    //metodo utilizzato per tornare gli alloggi in Gestione alloggi (per ora non sono ancora filtrati)
+    public function showLocatoreAlloggi(){
+        $alloggi = $this->_locatoreModel->getAlloggi();
+
+        return view('layouts/content-gestione-alloggi-locatore')
+            ->with('user', 'public')
+            ->with('alloggi', $alloggi);
+    }
+
 }

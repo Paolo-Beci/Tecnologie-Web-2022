@@ -16,4 +16,8 @@ class Locatore
         return Alloggio::where('tipologia', $tipologia)->get();
     }
 
+    public function getAlloggi(){
+        return Alloggio::paginate(2);
+    }
+
 }
