@@ -21,10 +21,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('utente')->insert([
-            ['username' => 'paolo_b', 'password' => 'tec_web22', 'ruolo' => 'locatore', 'dati_personali' => 1],
-            ['username' => 'izzi_g', 'password' => 'tec_web122', 'ruolo' => 'locatario', 'dati_personali' => 2],
-            ['username' => 'dom_00', 'password' => 'tec_web222', 'ruolo' => 'locatario', 'dati_personali' => 3],
-            ['username' => 'ema_f', 'password' => 'tec_web322', 'ruolo' => 'admin', 'dati_personali' => 4],
+            ['username' => 'lorelore', 'password' => 'BFbDeT62', 'ruolo' => 'locatore', 'dati_personali' => 1],
+            ['username' => 'lariolario', 'password' => 'BFbDeT62', 'ruolo' => 'locatario', 'dati_personali' => 2],
+            ['username' => 'adminadmin', 'password' => 'BFbDeT62', 'ruolo' => 'admin', 'dati_personali' => 4],
         ]);
 
         DB::table('alloggio')->insert([
