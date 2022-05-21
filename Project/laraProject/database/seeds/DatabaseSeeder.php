@@ -75,11 +75,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('interazione')->insert([
-            ['utente' => 'paolo_b', 'alloggio' => 1, 'data_interazione' => now()],
-            ['utente' => 'izzi_g', 'alloggio' => 1, 'data_interazione' => now()],
-            ['utente' => 'paolo_b', 'alloggio' => 2, 'data_interazione' => now()],
-            ['utente' => 'dom_00', 'alloggio' => 2, 'data_interazione' => now()],
-            ['utente' => 'paolo_b', 'alloggio' => 3, 'data_interazione' => now()],
+            ['utente' => 'lorelore', 'alloggio' => 1, 'data_interazione' => now()],
+            ['utente' => 'lariolario', 'alloggio' => 1, 'data_interazione' => now()],
+            ['utente' => 'lorelore', 'alloggio' => 2, 'data_interazione' => now()],
+            ['utente' => 'lariolario', 'alloggio' => 2, 'data_interazione' => now()],
+            ['utente' => 'lorelore', 'alloggio' => 3, 'data_interazione' => now()],
         ]);
 
         DB::table('disponibilita')->insert([
@@ -104,15 +104,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('messaggio')->insert([
-            ['data_invio' => now(), 'contenuto' => 'Ciao, sarei interessato', 'stato' => 1, 'mittente' => 'izzi_g', 'destinatario' => 'paolo_b', 'alloggio' => 1],
-            ['data_invio' => now(), 'contenuto' => 'Ti tengo in considerazione', 'stato' => 1, 'mittente' => 'paolo_b', 'destinatario' => 'izzi_g', 'alloggio' => 1],
-            ['data_invio' => now(), 'contenuto' => 'Buongiorno, sono interessato', 'stato' => 1, 'mittente' => 'dom_00', 'destinatario' => 'paolo_b', 'alloggio' => 2],
-            ['data_invio' => now(), 'contenuto' => 'Ti metto tra gli interessati', 'stato' => 1, 'mittente' => 'paolo_b', 'destinatario' => 'dom_00', 'alloggio' => 2],
-            ['data_invio' => now(), 'contenuto' => 'Perfetto, attendo aggiornamenti', 'stato' => 1, 'mittente' => 'izzi_g', 'destinatario' => 'paolo_b', 'alloggio' => 1],
-            ['data_invio' => now(), 'contenuto' => 'Grazie mille, aspetto riscontri', 'stato' => 1, 'mittente' => 'dom_00', 'destinatario' => 'paolo_b', 'alloggio' => 2],
-            ['data_invio' => now(), 'contenuto' => 'Ottimo, buona giornata', 'stato' => 0, 'mittente' => 'paolo_b', 'destinatario' => 'izzi_g', 'alloggio' => 1],
-            ['data_invio' => now(), 'contenuto' => 'Va bene, le auguro una buona giornata', 'stato' => 0, 'mittente' => 'paolo_b', 'destinatario' => 'dom_00', 'alloggio' => 2],
-            ['data_invio' => now(), 'contenuto' => 'Ciao, ho visto la casa e sono interessato', 'stato' => 0, 'mittente' => 'dom_00', 'destinatario' => 'paolo_b', 'alloggio' => 3],
+            ['data_invio' => now(), 'contenuto' => 'Ciao, sarei interessato', 'stato' => 1, 'mittente' => 'lariolario', 'destinatario' => 'lorelore', 'alloggio' => 1],
+            ['data_invio' => now(), 'contenuto' => 'Ti tengo in considerazione', 'stato' => 1, 'mittente' => 'lorelore', 'destinatario' => 'lariolario', 'alloggio' => 1],
+            ['data_invio' => now(), 'contenuto' => 'Buongiorno, sono interessato', 'stato' => 1, 'mittente' => 'lariolario', 'destinatario' => 'lorelore', 'alloggio' => 2],
+            ['data_invio' => now(), 'contenuto' => 'Ti metto tra gli interessati', 'stato' => 1, 'mittente' => 'lorelore', 'destinatario' => 'lariolario', 'alloggio' => 2],
+            ['data_invio' => now(), 'contenuto' => 'Perfetto, attendo aggiornamenti', 'stato' => 1, 'mittente' => 'lariolario', 'destinatario' => 'lorelore', 'alloggio' => 1],
+            ['data_invio' => now(), 'contenuto' => 'Grazie mille, aspetto riscontri', 'stato' => 1, 'mittente' => 'lariolario', 'destinatario' => 'lorelore', 'alloggio' => 2],
+            ['data_invio' => now(), 'contenuto' => 'Ottimo, buona giornata', 'stato' => 0, 'mittente' => 'lariolario', 'destinatario' => 'lorelore', 'alloggio' => 1],
+            ['data_invio' => now(), 'contenuto' => 'Va bene, le auguro una buona giornata', 'stato' => 0, 'mittente' => 'lorelore', 'destinatario' => 'lariolario', 'alloggio' => 2],
+            ['data_invio' => now(), 'contenuto' => 'Ciao, ho visto la casa e sono interessato', 'stato' => 0, 'mittente' => 'lariolario', 'destinatario' => 'lorelore', 'alloggio' => 3],
         ]);
 
     }
