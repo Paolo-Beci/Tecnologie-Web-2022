@@ -166,20 +166,17 @@
             </button>
         </article>
         <article class="right-review active-review" data-review="1">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-            ut aliquip ex ea commodo consequat.
+            Sono cliente da inizio 2022. C'è poco da dire: funziona tutto a meraviglia.
+            Il sito è velocissimo, le performance sono davvero degne di nota.
+            L'assistenza è ottima, anche se devo precisare di aver avuto bisogno di contattarla 2-3 volte al massimo.
         </article>
         <article class="right-review" data-review="2">
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-            sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Azienda molto professionale e sanno fare il loro lavoro.
+            Rispondono a ogni esigenza in brevissimo tempo e seguono la problematica con estrema cura.
+            I costi del servizio sono eccellenti e i loro server affidabili e sicuri. Bravi :)
         </article>
         <article class="right-review" data-review="3">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-            veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            sono alla mia prima esperienza con questo servizio, ma mi sembra che soddisfi le mie esigenze.
         </article>
     </div>
 </section>
