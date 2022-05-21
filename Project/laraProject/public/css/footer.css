@@ -42,7 +42,7 @@ footer a:hover:after {
 
 /* Popup */
 
-#privacy #condizioni-uso {
+footer ul li a {
     cursor: pointer;
 }
 
@@ -57,15 +57,22 @@ footer a:hover:after {
     background-color: rgba(0,0,0,0.4);
 }
 
-.popup-content {
+.popup-container {
     background-color: #fefefe;
     border-radius: 20px;
     margin: auto;
-    margin-top: 30px;
+    margin-top: 50px;
     padding: 20px;
     border: 1px solid #888;
-    height: 80%;
+    /* height: 80%; */
     width: 80%;
+}
+
+.popup-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .close {
@@ -79,4 +86,12 @@ footer a:hover:after {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+[data-popup-content] {
+    display: none;
+}
+
+[data-popup-content="dicono-di-noi"] .reviews-container {
+    width: 100%;
 }
