@@ -49,3 +49,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 // GESTIONE FAQ
 Route::get('/gestione_faq', 'AdminController@showFaq')->name('gestione_faq');
 
+//GESTIONE ALLOGGI
+Route::get('/gestione_alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione_alloggi');
