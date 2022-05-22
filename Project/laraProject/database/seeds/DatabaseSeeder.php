@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,9 +22,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('utente')->insert([
-            ['username' => 'lorelore', 'password' => 'BFbDeT62', 'ruolo' => 'locatore', 'dati_personali' => 1],
-            ['username' => 'lariolario', 'password' => 'BFbDeT62', 'ruolo' => 'locatario', 'dati_personali' => 2],
-            ['username' => 'adminadmin', 'password' => 'BFbDeT62', 'ruolo' => 'admin', 'dati_personali' => 4],
+            ['username' => 'lorelore', 'password' => Hash::make('BFbDeT62'), 'ruolo' => 'locatore', 'dati_personali' => 1],
+            ['username' => 'lariolario', 'password' => Hash::make('BFbDeT62'), 'ruolo' => 'locatario', 'dati_personali' => 2],
+            ['username' => 'lariolario2', 'password' => Hash::make('BFbDeT62'), 'ruolo' => 'locatario', 'dati_personali' => 3],
+            ['username' => 'adminadmin', 'password' => Hash::make('BFbDeT62'), 'ruolo' => 'admin', 'dati_personali' => 4],
         ]);
 
         DB::table('alloggio')->insert([
@@ -108,7 +110,7 @@ class DatabaseSeeder extends Seeder
             ['data_invio' => now(), 'contenuto' => 'Ti tengo in considerazione', 'stato' => 1, 'mittente' => 'lorelore', 'destinatario' => 'lariolario', 'alloggio' => 1],
             ['data_invio' => now(), 'contenuto' => 'Buongiorno, sono interessato', 'stato' => 1, 'mittente' => 'lariolario', 'destinatario' => 'lorelore', 'alloggio' => 2],
             ['data_invio' => now(), 'contenuto' => 'Ti metto tra gli interessati', 'stato' => 1, 'mittente' => 'lorelore', 'destinatario' => 'lariolario', 'alloggio' => 2],
-            ['data_invio' => now(), 'contenuto' => 'Perfetto, attendo aggiornamenti', 'stato' => 1, 'mittente' => 'lariolario', 'destinatario' => 'lorelore', 'alloggio' => 1],
+            ['data_invio' => now(), 'contenuto' => 'Perfetto, attendo aggiornamenti', 'stato' => 1, 'mittente' => 'lariolario2', 'destinatario' => 'lorelore', 'alloggio' => 1],
             ['data_invio' => now(), 'contenuto' => 'Grazie mille, aspetto riscontri', 'stato' => 1, 'mittente' => 'lariolario', 'destinatario' => 'lorelore', 'alloggio' => 2],
             ['data_invio' => now(), 'contenuto' => 'Ottimo, buona giornata', 'stato' => 0, 'mittente' => 'lariolario', 'destinatario' => 'lorelore', 'alloggio' => 1],
             ['data_invio' => now(), 'contenuto' => 'Va bene, le auguro una buona giornata', 'stato' => 0, 'mittente' => 'lorelore', 'destinatario' => 'lariolario', 'alloggio' => 2],

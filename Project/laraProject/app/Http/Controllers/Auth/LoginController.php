@@ -25,7 +25,33 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+//    protected $redirectTo = '/home';
+
+    /**
+     * Override:: definisce la homepage per i diversi utenti.
+     *
+     * @var string
+     */
+    protected function redirectTo() {
+        $role = auth()->user()->role;
+        switch ($role) {
+            case 'admin': return '/admin';
+                break;
+            case 'locatario': return '/locatario';
+                break;
+            case 'locatore': return '/locatore';
+                break;
+            default: return '/';
+        }
+    }
+
+    /**
+     * Override:: Login con 'username' al posto di 'email'.
+     *
+     */
+    public function username() {
+        return 'username';
+    }
 
     /**
      * Create a new controller instance.

@@ -18,6 +18,7 @@ class AuthServiceProvider extends ServiceProvider
 
     /**
      * Register any authentication / authorization services.
+     * Impostazione dei gates dell'applicazione
      *
      * @return void
      */
@@ -25,6 +26,16 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('isAdmin', function ($user) {
+            return $user->hasRole('admin');
+        });
+
+        Gate::define('isLocatore', function ($user) {
+            return $user->hasRole('locatore');
+        });
+
+        Gate::define('isLocatario', function ($user) {
+            return $user->hasRole('locatario');
+        });
     }
 }

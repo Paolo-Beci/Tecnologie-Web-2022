@@ -33,6 +33,11 @@ a {
     font-weight: bold;
 }
 
+button {
+    justify-content: center;
+    font-size: 15px;
+}
+
 /* Regole paginator */
 .pagination {
     height: fit-content;

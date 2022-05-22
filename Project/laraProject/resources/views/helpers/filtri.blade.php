@@ -54,4 +54,4 @@
     <label for="doppia"> Doppia</label>
 <h2 style="margin: 20px"></h2>
 
-<input type="button" onclick="alert('Filtraggio...')" value="Filtra" class="button-filtra">
+<button type="submit" onclick="alert('Filtraggio...')" value="Filtra" class="filter_stats_button">Filtra</button>

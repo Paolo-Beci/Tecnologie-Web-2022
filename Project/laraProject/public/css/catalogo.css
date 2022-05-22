@@ -156,3 +156,61 @@ label {
     justify-content: center;
     align-items: center;
 }
+
+/*regole css per i bottoni filtra in admin*/
+.filter_stats_button {
+    border-radius: 13px;
+    width: 200px;
+    height: 50px;
+    background-color: #ffd725;
+    border: 3px solid #414141;
+    text-decoration: none;
+    font-size: 20px;
+    color: #414141;
+    position: relative;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 70px;
+    margin-top: 20px;
+}
+
+.filter_stats_button::before,
+.filter_stats_button::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: inherit;
+    transition: all .5s;
+}
+
+.filter_stats_button::before {
+    border-top-left-radius: 13px;
+    left: -15px;
+    top: -15px;
+    border-width: 3px 0 0 3px;
+}
+
+.filter_stats_button::after {
+    border-bottom-right-radius: 13px;
+    bottom: -15px;
+    right: -15px;
+    border-width: 0 3px 3px 0;
+}
+
+.filter_stats_button:hover {
+    border-radius: 13px;
+    background-color: #414141;
+    color: #ffd725;
+    transition: 1s;
+    border-color: #ffd725;
+}
+
+.filter_stats_button:hover::before,
+.filter_stats_button:hover::after {
+    border-radius: 13px;
+    width: calc(100% + 27px);
+    height: calc(100% + 27px);
+    border-color: #ffd725;
+}
+
