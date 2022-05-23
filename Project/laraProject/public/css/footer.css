@@ -21,20 +21,21 @@ footer ul {
     gap: 20px;
 }
 
-footer a, .copyright {
+.footer-link, .copyright {
     font-size: 20px;
     color: white;
     text-align: center;
 }
 
-footer a:after {
+.footer-link::after {
     content: '';
     display: block;
     height: 3px;
-    transition: width 0.5s ease, background-color 1s ease;
+    width: 0%;
+    transition: width 0.3s ease, background-color 0.5s ease;
 }
 
-footer a:hover:after {
+.footer-link:hover::after {
     width: 100%;
     background: #FFD625;
 

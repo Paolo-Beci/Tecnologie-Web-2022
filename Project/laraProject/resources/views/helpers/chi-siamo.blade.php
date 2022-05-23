@@ -9,28 +9,28 @@
             <img src="{{asset('images/icons_utente_chi_siamo.png')}}" alt="" height="75" width="75">
             <div>
                 <h2>Paolo Beci</h2>
-                <a class="email" href="#">paolobeci@univpm.it</a>
+                <a class="email" href="mailto:s1092712@studenti.univpm.it">s1092712@studenti.univpm.it</a>
             </div>
     </article>
     <article class="info">
             <img src="{{asset('images/icons_utente_chi_siamo.png')}}" alt="" height="75" width="75">
             <div>
                 <h2>Emanuele Frisi</h2>
-                <a class="email" href="#">emanuelefrisi@univpm.it</a>
+                <a class="email" href="mailto:s1092866@studenti.univpm.it">s1092866@studenti.univpm.it</a>
             </div>
     </article>
     <article class="info">
             <img src="{{asset('images/icons_utente_chi_siamo.png')}}" alt="" height="75" width="75">
             <div>
                 <h2>Giuseppe Izzi</h2>
-                <a class="email" href="#">giuseppeizzi@univpm.it</a>
+                <a class="email" href="mailto:s1094052@studenti.univpm.it">s1094052@studenti.univpm.it</a>
             </div>
     </article>
     <article class="info">
             <img src="{{asset('images/icons_utente_chi_siamo.png')}}" alt="" height="75" width="75">
             <div>
                 <h2>Domenico La Porta</h2>
-                <a class="email" href="#">domenicolaporta@univpm.it</a>
+                <a class="email" href="mailto:s1095492@studenti.univpm.it">s1095492@studenti.univpm.it</a>
             </div>
     </article>
 </div>
