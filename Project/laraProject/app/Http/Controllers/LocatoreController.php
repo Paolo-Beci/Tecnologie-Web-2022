@@ -16,7 +16,7 @@ class LocatoreController extends Controller
     public function showLocatoreHome(){
 
         //Faq
-        $faq = $this->_locatoreModel->getFaqByTarget('locatore');
+        $faq = Locatore::getFaqByTarget('locatore');
 
         return view('layouts/content-home-locatore')
             ->with('user', 'locatore')
