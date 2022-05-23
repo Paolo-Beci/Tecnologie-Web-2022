@@ -47,7 +47,7 @@ Route::get('/home-locatore', 'LocatoreController@showLocatoreHome')->name('home-
 
 Route::get('/catalogo-locatore', 'LocatoreController@showLocatoreCatalog')->name('catalogo-locatore');
 
-Route::get('/gestione_alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione_alloggi');
+Route::get('/gestione-alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione-alloggi');
 
 //LOCATARIO
 Route::get('/home-locatario', 'LocatarioController@showLocatarioHome')->name('home-locatario');  // ->middleware('can:isLocatario')

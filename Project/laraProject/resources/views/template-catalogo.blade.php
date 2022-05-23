@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
     <link rel="stylesheet" href="{{asset('css/animations.css')}}">
     <link rel="stylesheet" href="{{asset('css/catalogo.css')}}">
+    <link rel="stylesheet" href="{{asset('css/content-public.css')}}">
     <link rel="stylesheet" href="{{asset('css/content-home-loggato.css')}}">
     <link rel="stylesheet" href="{{asset('css/content-home-admin.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{asset('js/menu-script.js')}}" defer></script>
-    <script src="{{asset('js/sign-up-continue.js')}}" defer></script>
+    <script src="{{asset('js/popup.js')}}" defer></script>
+    <script src="{{asset('js/reviews.js')}}" defer></script>
 </head>
 <body>
     <header class="header-anim">
@@ -35,6 +37,7 @@
     @yield('content')
     <footer>
         @include('layouts/footer')
+        @include('layouts/popup')
     </footer>
 </body>
 </html>

@@ -33,14 +33,14 @@
                         Piano {{ $alloggio->piano }}
                         <br>
                         {{ $alloggio->citta }}, {{ $alloggio->cap }}</h1> <!-- Via, Num.civico, Piano, Città, CAP -->
-                    <h2 class="info">
+                    <h2 class="info-alloggio">
                         Dimensione: {{ $alloggio->dimensione }}mq,
                         Periodo Locazione: {{ $alloggio->periodo_locazione }} mesi,
                         Genere: {{ $alloggio->genere }}</h2> <!-- Dimensione, PeriodoLocazione, Genere (DA MODIFICARE) -->
-                    <h2 class="info">
+                    <h2 class="info-alloggio">
                         Canone affitto: &#8364;{{ $alloggio->canone_affitto }} / mese,
                         Utenze: &#8364;{{ $alloggio->utenze }} / mese</h2> <!-- CanoneAffitto, Utenze -->
-                    <h2 class="info">{{ $alloggio->descrizione }}</h2> <!-- Descrizione -->
+                    <h2 class="info-alloggio">{{ $alloggio->descrizione }}</h2> <!-- Descrizione -->
                 </div>
             </div>
         </article>
