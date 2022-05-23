@@ -48,6 +48,8 @@ footer ul li a {
 
 .popup {
     display: none;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -61,11 +63,8 @@ footer ul li a {
     background-color: #fefefe;
     border-radius: 20px;
     margin: auto;
-    margin-top: 50px;
     padding: 20px;
     border: 1px solid #888;
-    /* height: 80%; */
-    width: 80%;
 }
 
 .popup-content {
@@ -92,6 +91,20 @@ footer ul li a {
     display: none;
 }
 
+[data-popup-content="servizi"] p, [data-popup-content="servizi"] .service-container,
+[data-popup-content="chi-siamo"] p, [data-popup-content="chi-siamo"] .info-container {
+    margin-top: 20px;
+}
+
+[data-popup-content="chi-siamo"] img {
+    display: none;
+}
+
 [data-popup-content="dicono-di-noi"] .reviews-container {
+    margin-top: 20px;
     width: 100%;
+}
+
+[data-popup-content="condizioni-uso"] p, [data-popup-content="privacy"] p {
+    max-width: 1000px;
 }

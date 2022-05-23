@@ -6,11 +6,21 @@
 
         <div class="popup-content">
 
+            <div data-popup-content="servizi">
+                @include('helpers/servizi')
+            </div>
+
+            <div data-popup-content="dicono-di-noi">
+                @include('helpers/dicono-di-noi')
+            </div>
+
+            <div data-popup-content="chi-siamo">
+                @include('helpers/chi-siamo')
+            </div>
+
             @include('helpers/condizioni-uso')
 
             @include('helpers/privacy')
-
-            @include('helpers/dicono-di-noi')
 
         </div>
 

@@ -1,6 +1,6 @@
-$('.popup-caller').on('click', function(){
+$('[data-popup-caller]').on('click', function(){
 
-    $('.popup').css('display', 'block');
+    $('.popup').css('display', 'flex');
 
     let id = $(this).attr('id');
 

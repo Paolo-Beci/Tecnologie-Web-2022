@@ -61,124 +61,13 @@
     </article>
 </section>
 <section id="servizi" class="services">
-
-    <h2>Un servizio eccezionale!</h2>
-    <p>Il nostro servizio clienti risponde 24 ore su 24, e ricorda,
-        <br>
-        puoi sempre contattare l'inserzionista dell'appartamento che ti interessa!
-    </p>
-    <div class="service-container">
-        <article class="service">
-            <div class="img-container">
-                <img src="{{asset('images/icons_mano.png')}}" alt="" height="75" width="75" >
-                <h2 class="titolo-carte">Puoi cercare alloggi</h2>
-                <p>Desideri ricercare un alloggio in una qualsiasi città italiana? FlatMate è il posto giusto per te!
-                    Scegli i tuoi filtri, ricerca l'alloggio migliore per te e contatta il suo proprietario per concludere l'affitto!</p>
-            </div>
-        </article>
-        <article class="service">
-            <div class="img-container">
-                <img src="{{asset('images/icons_casa.png')}}" alt="" height="75" width="75">
-                <h2 class="titolo-carte">Metti in affitto alloggi</h2>
-                <p>Hai un alloggio e desideri che i tuoi potenziali clienti possano saperlo? FlatMate ti offre
-                 la possibilità di inserire appartamenti e posti letto, in modo che tutti possano vederlo! Ascolta
-                 le offerte dei clienti e scegli con chi concludere l'affare!</p>
-            </div>
-        </article>
-        <article class="service">
-            <div class="img-container">
-                <img src="{{asset('images/icons_messaggi.png')}}" alt="" height="75" width="75">
-                <h2 class="titolo-carte">Messaggistica</h2>
-                <p>Hai necessità di contattare il proprietario di un alloggio? Sei un locatore e vuoi dare
-                maggiori delucidazioni sui tuoi alloggi? FlatMate offre un servizio di messaggistica
-                in cui il potenziale affittuario può contattare il padrone di casa che può a sua volta rispondere
-                chiarendo eventuali dubbi.</p>
-            </div>
-        </article>
-        <article class="service">
-            <div class="img-container">
-                <img src="{{asset('images/icons_domanda.png')}}" alt="" height="75" width="75">
-                <h2 class="titolo-carte">24/7 Help & Support</h2>
-                <p>Hai ancora dei dubbi sulle funzionalità di FlatMate? Desideri saperne di più su di noi?
-                Il nostro sito offre un'ampia sezione di faq dove puoi chiarire ogni tua perplessità!
-                Se desideri ancora approfondire qualcosa contattaci e saremo lieti di aiutarti.</p>
-            </div>
-        </article>
-    </div>
+    @include('helpers/servizi')
 </section>
 <section id="chi-siamo" class="about-us">
-    <h2>Cosa facciamo e chi siamo?</h2>
-    <p>Siamo una società immobiliare fondata ad Ancona nel 2022 che intende
-        <br>
-        fornire un servizio innovativo agli studenti di tutta Italia!
-    </p>
-
-    <div class="info-container">
-        <div class="team_image">
-            <img src="{{asset('images/team_image.jpeg')}}" alt="Immagine 1" width="50%" style="border-radius: 13px">
-        </div>
-        <article class="info">
-                <img src="{{asset('images/icons_utente_chi_siamo.png')}}" alt="" height="75" width="75">
-                <div>
-                    <h2>Paolo Beci</h2>
-                    <a class="email" href="#">paolobeci@univpm.it</a>
-                </div>
-        </article>
-        <article class="info">
-                <img src="{{asset('images/icons_utente_chi_siamo.png')}}" alt="" height="75" width="75">
-                <div>
-                    <h2>Emanuele Frisi</h2>
-                    <a class="email" href="#">emanuelefrisi@univpm.it</a>
-                </div>
-        </article>
-        <article class="info">
-                <img src="{{asset('images/icons_utente_chi_siamo.png')}}" alt="" height="75" width="75">
-                <div>
-                    <h2>Giuseppe Izzi</h2>
-                    <a class="email" href="#">giuseppeizzi@univpm.it</a>
-                </div>
-        </article>
-        <article class="info">
-                <img src="{{asset('images/icons_utente_chi_siamo.png')}}" alt="" height="75" width="75">
-                <div>
-                    <h2>Domenico La Porta</h2>
-                    <a class="email" href="#">domenicolaporta@univpm.it</a>
-                </div>
-        </article>
-    </div>
+    @include('helpers/chi-siamo')
 </section>
 <section id="dicono-di-noi" class="reviews">
-    <h2>Cosa dicono di noi?</h2>
-    <div class="reviews-container">
-        <article class="left-review">
-
-            <button class="review" data-review="1">
-                Mario Rossi
-                <span class="rating">4.5/5 ★</span>
-            </button>
-            <button class="review" data-review="2">
-                Luigi Bianchi
-                <span class="rating">4.3/5 ★</span>
-            </button>
-            <button class="review" data-review="3">
-                Andrea Grandine
-                <span class="rating">4/5 ★</span>
-            </button>
-        </article>
-        <article class="right-review active-review" data-review="1">
-            Sono cliente da inizio 2022. C'è poco da dire: funziona tutto a meraviglia.
-            Il sito è velocissimo, le performance sono davvero degne di nota.
-            L'assistenza è ottima, anche se devo precisare di aver avuto bisogno di contattarla 2-3 volte al massimo.
-        </article>
-        <article class="right-review" data-review="2">
-            Azienda molto professionale e sanno fare il loro lavoro.
-            Rispondono a ogni esigenza in brevissimo tempo e seguono la problematica con estrema cura.
-            I costi del servizio sono eccellenti e i loro server affidabili e sicuri. Bravi :)
-        </article>
-        <article class="right-review" data-review="3">
-            sono alla mia prima esperienza con questo servizio, ma mi sembra che soddisfi le mie esigenze.
-        </article>
-    </div>
+    @include('helpers/dicono-di-noi')
 </section>
 @isset($faq)
     @include('helpers/faq')
