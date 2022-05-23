@@ -11,7 +11,8 @@
     </article>
     <article class="forms forms-anim" id="login">
         <div class="container">
-            <form class="login active.form" action="{{route('home-locatario')}}">
+            {{--
+            <form class="login active.form" action="{{route('login')}}" method="post">
                 <h1>Login</h1>
                 <fieldset class="login-fieldset">
                     <div class="username">
@@ -31,6 +32,45 @@
                     <span>Non sei un membro? <a data-form="toSignUp">Registrati</a></span>
                 </div>
             </form>
+            --}}
+            {{ Form::open(array('route' => 'login', 'class' => 'login active-form')) }}
+
+            <h1>Login</h1>
+            <fieldset class="login-fieldset">
+                <div class="username">
+                    {{ Form::label('username', 'Username') }}
+                    {{ Form::text('username', '', ['id' => 'username']) }}
+                    <span class="underline"></span>
+                    @if ($errors->first('username'))
+                        <ul class="errors">
+                            @foreach ($errors->get('username') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+
+                </div>
+                <div class="password">
+                    {{ Form::label('password', 'Password') }}
+                    {{ Form::password('password', ['id' => 'password']) }}
+                    <span class="underline"></span>
+                    @if ($errors->first('password'))
+                        <ul class="errors">
+                            @foreach ($errors->get('password') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </fieldset>
+            <div class="login-extra">
+                <a class="forgot" href="">Password dimenticata?</a>
+                {{ Form::submit('Login', ['class' => 'submit']) }}
+                <span>Non sei un membro? <a data-form="toSignUp">Registrati</a></span>
+            </div>
+
+            {{ Form::close() }}
+
             <form class="sign-up inactive-form" action="{{route('registrazione')}}">
                 <h1>Registrazione</h1>
                 <fieldset class="sign-up-fieldset">

@@ -15,10 +15,7 @@
 Auth::routes();
 
 // AUTENTICAZIONE
-Route::get('login', 'Auth\LoginController@showLoginForm')   //    Noi abbiamo la nostra?
-    ->name('login');
-
-Route::post('login', 'Auth\LoginController@login');
+Route::post('/login', 'Auth\LoginController@login')->name('login');
 
 Route::post('logout', 'Auth\LoginController@logout')
     ->name('logout');
@@ -43,26 +40,26 @@ Route::get('/catalogo/appartamenti', 'PublicController@showPublicCatalogAppartam
 Route::get('/catalogo/posti-letto', 'PublicController@showPublicCatalogPostiLetto')->name('catalogo-posti-letto');
 
 //LOCATORE
-Route::get('/home-locatore', 'LocatoreController@showLocatoreHome')->name('home-locatore');  // ->middleware('can:isLocatore')
+Route::get('/home-locatore', 'LocatoreController@showLocatoreHome')->name('home-locatore')->middleware('can:isLocatore');
 
-Route::get('/catalogo-locatore', 'LocatoreController@showLocatoreCatalog')->name('catalogo-locatore');
+Route::get('/catalogo-locatore', 'LocatoreController@showLocatoreCatalog')->name('catalogo-locatore')->middleware('can:isLocatore');
 
-Route::get('/gestione-alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione-alloggi');
+Route::get('/gestione-alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione-alloggi')->middleware('can:isLocatore');
 
 //LOCATARIO
-Route::get('/home-locatario', 'LocatarioController@showLocatarioHome')->name('home-locatario');  // ->middleware('can:isLocatario')
+Route::get('/home-locatario', 'LocatarioController@showLocatarioHome')->name('home-locatario')->middleware('can:isLocatario');
 
-Route::get('/catalogo-locatario', 'LocatarioController@showLocatarioCatalog')->name('catalogo-locatario');
+Route::get('/catalogo-locatario', 'LocatarioController@showLocatarioCatalog')->name('catalogo-locatario')->middleware('can:isLocatario');
 
 Route::get('/catalogo/dettagli-annuncio', function () {
     return view('layouts/content-dettagli-annuncio')
         ->with('user', 'locatario');
-})->name('dettagli-annuncio');
+    })->name('dettagli-annuncio')->middleware('can:isLocatario');
 
 //ADMIN
-Route::get('/home-admin', 'AdminController@showAdminHome')->name('home-admin'); // ->middleware('can:isAdmin')
+Route::get('/home-admin', 'AdminController@showAdminHome')->name('home-admin')->middleware('can:isAdmin');
 
-Route::get('/gestione_faq', 'AdminController@showFaq')->name('gestione_faq');
+Route::get('/gestione_faq', 'AdminController@showFaq')->name('gestione_faq')->middleware('can:isAdmin');
 
 
 
