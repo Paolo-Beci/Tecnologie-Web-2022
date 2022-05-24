@@ -1,5 +1,6 @@
 {
     "require": {
-        "thiagoprz/eloquent-composite-key": "^1.0"
+        "thiagoprz/eloquent-composite-key": "^1.0",
+        "laravel/ui": "1.2"
     }
 }
