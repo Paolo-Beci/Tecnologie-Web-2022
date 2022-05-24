@@ -17,6 +17,14 @@ Route::get('/', 'GuestController@index')->name('home-guest');
 //LOCATORE
 Route::prefix('locatore')->group(function () {
     Route::get('/', 'LocatoreController@index')->name('home-locatore');
+
+    Route::prefix('catalogo')->group(function () {
+        Route::get('/', 'LocatoreController@showCatalog')->name('catalogo');
+
+        Route::get('/appartamenti', 'LocatoreController@showCatalogAppartamenti')->name('catalogo-appartamenti');
+
+        Route::get('/posti-letto', 'LocatoreController@showCatalogPostiLetto')->name('catalogo-posti-letto');
+    });
 });
 
 //LOCATARIO
@@ -44,9 +52,9 @@ Route::post('logout', 'Auth\LoginController@logout')
 
 //CATALOGO
 Route::prefix('catalogo')->group(function () {
-    Route::get('/catalogo', 'GuestController@showPublicCatalog')->name('catalogo');
+    Route::get('/', 'GuestController@showPublicCatalog')->name('catalogo');
 
-    Route::get('/catalogo/appartamenti', 'GuestController@showPublicCatalogAppartamenti')->name('catalogo-appartamenti');
+    Route::get('/appartamenti', 'GuestController@showPublicCatalogAppartamenti')->name('catalogo-appartamenti');
 
-    Route::get('/catalogo/posti-letto', 'GuestController@showPublicCatalogPostiLetto')->name('catalogo-posti-letto');
+    Route::get('/posti-letto', 'GuestController@showPublicCatalogPostiLetto')->name('catalogo-posti-letto');
 });
