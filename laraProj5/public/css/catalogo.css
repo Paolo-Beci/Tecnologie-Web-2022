@@ -1,0 +1,197 @@
+/* Regole catalogo */
+aside {
+    border-right: 1px solid rgb(65, 65, 65, 0.3);
+}
+
+input {
+    font-size: 20px;
+    margin-left: 50px;
+}
+
+label {
+    font-size: 20px;
+}
+
+.inserisci_annuncio {
+    background-color:#ffd725;
+    border-radius:13px;
+    border:2px solid #414141;
+    display:inline-block;
+    cursor:pointer;
+    color:#414141;
+    font-size:18px;
+    font-weight:bold;
+    padding:12px 1px;
+    text-decoration:none;
+}
+
+.inserisci_annuncio:hover {
+    background-color:#414141;
+    border:3px solid #ffd725;
+    color:#ffd725;
+}
+
+/* Regole barra laterale */
+.subtitle-filtri {
+    font-size: 22px;
+    text-align: left;
+    padding-left: 50px;
+    margin: 10px;
+}
+
+/* Regole barra laterale */
+.lateral-bar {
+    height: 100%;
+    width: 25%;
+    color: black;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    padding-top: 100px;
+}
+
+/* Regole sezione centrale inserzioni */
+.catalogo {
+    width: 75%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 150px;
+}
+
+.alloggi-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.alloggi-buttons a {
+    height: 80px;
+    width: 40%;
+}
+
+.appartamenti-button, .posti-letto-button {
+    height: 100%;
+    width: 100%;
+    background-color: #ffd725;
+    border: none;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.button-img {
+    width: 10%;
+}
+
+.alloggi {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.alloggio {
+    height: 400px;
+    width: 90%;
+    margin: 30px;
+    padding: 0px 30px;
+    border: 2px solid;
+    border-radius: 25px;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.item-immagine {
+    max-width: 50%;
+    height: 300px;
+    border: 1px solid;
+    border-radius: 25px 25px 25px 25px;
+    background-size: cover;
+}
+
+.info-alloggio {
+    font-size: 18px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+    color: black;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*regole css per i bottoni filtra in admin*/
+.filter_stats_button {
+    border-radius: 13px;
+    width: 200px;
+    height: 50px;
+    background-color: #ffd725;
+    border: 3px solid #414141;
+    text-decoration: none;
+    font-size: 20px;
+    color: #414141;
+    position: relative;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 70px;
+    margin-top: 20px;
+}
+
+.filter_stats_button::before,
+.filter_stats_button::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: inherit;
+    transition: all .5s;
+}
+
+.filter_stats_button::before {
+    border-top-left-radius: 13px;
+    left: -15px;
+    top: -15px;
+    border-width: 3px 0 0 3px;
+}
+
+.filter_stats_button::after {
+    border-bottom-right-radius: 13px;
+    bottom: -15px;
+    right: -15px;
+    border-width: 0 3px 3px 0;
+}
+
+.filter_stats_button:hover {
+    border-radius: 13px;
+    background-color: #414141;
+    color: #ffd725;
+    transition: 1s;
+    border-color: #ffd725;
+}
+
+.filter_stats_button:hover::before,
+.filter_stats_button:hover::after {
+    border-radius: 13px;
+    width: calc(100% + 27px);
+    height: calc(100% + 27px);
+    border-color: #ffd725;
+}
+

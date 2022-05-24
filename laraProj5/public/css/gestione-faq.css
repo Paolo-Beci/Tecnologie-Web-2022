@@ -1,0 +1,67 @@
+.faq {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.faq-container {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.q-a {
+    height: 150px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 5px #c6c6c6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.question {
+    font-size: 26px;
+    font-weight: bold;
+    color: black;
+}
+
+.answer {
+    font-size: 20px;
+    color: rgb(65, 65, 65);
+}
+
+.div_faq {
+    padding-top: 150px;
+}
+
+/*per il bottone profilo*/
+.bottone_profilo {
+    background-color: white;
+    border-radius:13px;
+    border:2px solid #414141;
+    display:inline-block;
+    cursor:pointer;
+    color:#414141;
+    font-size:18px;
+    font-weight:bold;
+    padding:13px 1px;
+    text-decoration:none;
+    width: 250px;
+}
+
+.bottone_profilo:hover {
+    background-color:#414141;
+    border:2px solid #ffd725;
+    color:#ffd725;
+}
