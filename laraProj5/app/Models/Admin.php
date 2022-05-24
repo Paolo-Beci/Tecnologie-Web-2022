@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\Resources\Category;
-use App\Models\Resources\Product;
+use App\Models\Resources\Faq;
 
 class Admin {
 
-    public function getProdsCats() {
-        return Category::where('parId', '!=', 0)->get();
+    public function getFaq(){
+        return Faq::all();
     }
 
 }

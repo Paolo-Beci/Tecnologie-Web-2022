@@ -9,7 +9,7 @@ class GuestController extends Controller {
     protected $_guestUserModel;
 
     public function __construct() {
-        $this->middleware('guest');
+        //$this->middleware('guest');
         $this->_guestUserModel = new Guest();
     }
 

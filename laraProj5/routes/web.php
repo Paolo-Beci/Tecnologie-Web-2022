@@ -27,8 +27,9 @@ Route::prefix('locatario')->group(function () {
 //ADMIN
 Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminController@index')->name('home-admin');
-});
 
+    Route::get('/gestione-faq', 'AdminController@showFaq')->name('gestione-faq');
+});
 
 //AUTENTICAZIONE E REGISTRAZIONE
 Route::get('/registrazione', function () {
