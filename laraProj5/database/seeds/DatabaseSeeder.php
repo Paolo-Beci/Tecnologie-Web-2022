@@ -16,16 +16,14 @@ class DatabaseSeeder extends Seeder {
             ['id_dati_personali' => 1, 'id_foto_profilo' => 1, 'cellulare' => 3256425968, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 4, 'cap' => 60123, 'nome' => 'Paolo', 'cognome' => 'Beci', 'data_nascita' => '2000-07-22 23:50:55', 'luogo_nascita' => 'Fabriano', 'sesso' => 'm', 'mail' => 'paolo.beci@gmail.com', 'codice_fiscale' => 'BCEPLA00L22D451H'],
             ['id_dati_personali' => 2, 'id_foto_profilo' => 2, 'cellulare' => NULL, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 25, 'cap' => 60123, 'nome' => 'Giuseppe', 'cognome' => 'Izzi', 'data_nascita' => '2000-07-26 23:50:55', 'luogo_nascita' => 'Vasto', 'sesso' => 'm', 'mail' => 'izzi.g@gmail.com', 'codice_fiscale' => 'SCCPRM10D08H501W'],
             ['id_dati_personali' => 3, 'id_foto_profilo' => NULL, 'cellulare' => 4568235971, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 23, 'cap' => 60123, 'nome' => 'Domenico', 'cognome' => 'La Porta', 'data_nascita' => '2000-05-10 23:50:55', 'luogo_nascita' => 'San Marco in Lamis', 'sesso' => 'm', 'mail' => 'd.laporta@gmail.com', 'codice_fiscale' => 'SCCPRM08S24H501C'],
-            //['id_dati_personali' => 4, 'id_foto_profilo' => 3, 'cellulare' => 3225874691, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 45, 'cap' => 60123, 'nome' => 'Emanuele', 'cognome' => 'Frisi', 'data_nascita' => '2000-11-03 23:50:55', 'luogo_nascita' => 'Foggia', 'sesso' => 'm', 'mail' => NULL, 'codice_fiscale' => 'FRSMNL00E11D643V'],
+            ['id_dati_personali' => 4, 'id_foto_profilo' => 3, 'cellulare' => 3225874691, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 45, 'cap' => 60123, 'nome' => 'Emanuele', 'cognome' => 'Frisi', 'data_nascita' => '2000-11-03 23:50:55', 'luogo_nascita' => 'Foggia', 'sesso' => 'm', 'mail' => NULL, 'codice_fiscale' => 'FRSMNL00E11D643V'],
         ]);
 
         DB::table('utente')->insert([
-            ['username' => 'alexalex',
-                'password' => Hash::make('alexalex'), 'ruolo' => 'locatore', 'dati_personali' => 1],
-            ['username' => 'izziizzi',
-                'password' => Hash::make('izziizzi'), 'ruolo' => 'locatario', 'dati_personali' => 2],
-            ['username' => 'adminadmin',
-                'password' => Hash::make('adminadmin'), 'ruolo' => 'admin', 'dati_personali' => 3]
+            ['username' => 'lorelore', 'password' => Hash::make('BFbDeT62'), 'ruolo' => 'locatore', 'dati_personali' => 1],
+            ['username' => 'lariolario', 'password' => Hash::make('BFbDeT62'), 'ruolo' => 'locatario', 'dati_personali' => 2],
+            ['username' => 'lariolario2', 'password' => Hash::make('BFbDeT62'), 'ruolo' => 'locatario', 'dati_personali' => 3],
+            ['username' => 'adminadmin', 'password' => Hash::make('BFbDeT62'), 'ruolo' => 'admin', 'dati_personali' => 4],
         ]);
 
         DB::table('alloggio')->insert([
