@@ -10,11 +10,18 @@ class AdminController extends Controller {
 
     public function __construct() {
         $this->middleware('can:isAdmin');
-        $this->_adminModel = new Admin;
+        $this->_adminModel = new Admin();
     }
 
     public function index() {
         return view('layouts/content-home');
+    }
+
+    public function showFaq() {
+        $faq = $this->_adminModel->getFaq();
+
+        return view('gestione-faq')
+            ->with('faq', $faq);
     }
 
 }

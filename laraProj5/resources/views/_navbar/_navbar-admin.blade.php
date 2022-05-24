@@ -3,7 +3,7 @@
     <a href="#statistiche" title="Statistiche">Statistiche</a>
 </li>
 <li>
-    <a href="#" title="Gestione Faq">Gestione Faq</a>
+    <a href="{{route('gestione-faq')}}" title="Gestione Faq">Gestione Faq</a>
 </li>
 <li>
     <a href="#" title="Vai al catalogo annunci">Visualizza annunci</a>

@@ -11,17 +11,17 @@
         <div>
             <div>
                 <p class="titolo-paragrafo1">Gestisci i tuoi alloggi</p>
-                <p>Puoi inserirne di nuovi, modificare quelli già esistenti<br>
+                <p class="testo-paragrafo1">Puoi inserirne di nuovi, modificare quelli già esistenti<br>
                     e cancellare quelli che non desideri più affittare!</p>
             </div>
         </div>
         <div class="immagine-paragrafo1">
-            <img src="{{asset('images/gestione_image.jpg')}}" alt="Immagine 1" width="80%" style="vertical-align:middle;horiz-align:left">
+            <img src="{{asset('images/gestione_image.jpg')}}" alt="Immagine 1" width="80%">
         </div>
     </section>
     <section class="scopri-servizio">
         <div class="immagine-paragrafo2">
-            <img src="{{asset('images/messaging_image.jpg')}}" alt="Immagine 2" width="80%" style="vertical-align:middle;horiz-align:left">
+            <img src="{{asset('images/messaging_image.jpg')}}" alt="Immagine 2" width="80%">
         </div>
         <div>
             <div>
