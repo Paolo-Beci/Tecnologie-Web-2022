@@ -10,6 +10,9 @@ class Utente extends Authenticatable
 {
     use Notifiable;
 
+    protected $table = 'utente';
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -30,6 +33,7 @@ class Utente extends Authenticatable
 
     public function hasRole($role) {
         $role = (array)$role;
-        return in_array($this->role, $role);
+        dd($this->ruolo);
+        return in_array($this->ruolo, $role);
     }
 }
