@@ -41,9 +41,14 @@
     padding-bottom: 10px;
 }
 
+.testo-paragrafo1 {
+    text-align: left !important;
+}
+
 .immagine-paragrafo1 {
     padding-right: 150px;
     padding-top: 50px;
+    padding-left: 400px;
 }
 
 /* Regole bottone secondo paragrafo */

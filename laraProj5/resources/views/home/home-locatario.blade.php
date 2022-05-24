@@ -9,7 +9,7 @@
     </section>
     <section class="scopri-servizio">
         <div class="immagine-paragrafo2">
-            <img src="{{asset('images/messaging_image.jpg')}}" alt="Immagine 1" width="80%" style="vertical-align:middle;horiz-align:left">
+            <img src="{{asset('images/messaging_image.jpg')}}" alt="Immagine 1" width="80%">
         </div>
         <div>
             <div>

@@ -19,7 +19,7 @@ Route::prefix('locatore')->group(function () {
     Route::get('/', 'LocatoreController@index')->name('home-locatore');
 
     Route::prefix('catalogo')->group(function () {
-        Route::get('/', 'LocatoreController@showCatalog')->name('catalogo');
+        Route::get('/', 'LocatoreController@showCatalog')->name('catalogo-locatore');
 
         Route::get('/appartamenti', 'LocatoreController@showCatalogAppartamenti')->name('catalogo-appartamenti');
 
@@ -30,6 +30,14 @@ Route::prefix('locatore')->group(function () {
 //LOCATARIO
 Route::prefix('locatario')->group(function () {
     Route::get('/', 'LocatarioController@index')->name('home-locatario');
+
+    Route::prefix('catalogo')->group(function () {
+        Route::get('/', 'LocatarioController@showCatalog')->name('catalogo-locatario');
+
+        Route::get('/appartamenti', 'LocatarioController@showCatalogAppartamenti')->name('catalogo-appartamenti');
+
+        Route::get('/posti-letto', 'LocatarioController@showCatalogPostiLetto')->name('catalogo-posti-letto');
+    });
 });
 
 //ADMIN
@@ -37,6 +45,14 @@ Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminController@index')->name('home-admin');
 
     Route::get('/gestione-faq', 'AdminController@showFaq')->name('gestione-faq');
+
+    Route::prefix('catalogo')->group(function () {
+        Route::get('/', 'AdminController@showCatalog')->name('catalogo-admin');
+
+        Route::get('/appartamenti', 'AdminController@showCatalogAppartamenti')->name('catalogo-appartamenti');
+
+        Route::get('/posti-letto', 'AdminController@showCatalogPostiLetto')->name('catalogo-posti-letto');
+    });
 });
 
 //AUTENTICAZIONE E REGISTRAZIONE
