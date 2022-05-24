@@ -132,6 +132,7 @@
     position: relative;
     cursor: pointer;
     font-weight: bold;
+    transition: 1s;
 }
 
 .filter_button::before,
@@ -162,7 +163,7 @@
     border-radius: 13px;
     background-color: #414141;
     color: #ffd725;
-    transition: 1s;
+    
     border-color: #ffd725;
 }
 
