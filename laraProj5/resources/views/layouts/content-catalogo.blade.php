@@ -1,4 +1,7 @@
 @extends('template-catalogo')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/catalogo.css') }}">
+@section('title', 'Catalogo')
+
 
 @section('content')
     <main class="main-container">

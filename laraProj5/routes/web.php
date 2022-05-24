@@ -44,7 +44,12 @@ Route::post('logout', 'Auth\LoginController@logout')
 
 
 //CATALOGO
-Route::get('/catalogo', function(){
-        return view('layouts/content-catalogo');
-})->name('catalogo');
+Route::prefix('catalogo')->group(function () {
+    Route::get('/catalogo', function(){
+            return view('layouts/content-catalogo');
+    })->name('catalogo');
 
+    Route::get('/catalogo/appartamenti', 'PublicController@showPublicCatalogAppartamenti')->name('catalogo-appartamenti');
+
+    Route::get('/catalogo/posti-letto', 'PublicController@showPublicCatalogPostiLetto')->name('catalogo-posti-letto');
+});

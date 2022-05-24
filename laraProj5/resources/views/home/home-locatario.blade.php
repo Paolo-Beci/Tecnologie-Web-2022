@@ -23,7 +23,7 @@
         </div>
     </section>
     @isset($faq)
-        @include('helpers/faq')
+        @include('helpers.faq')
     @endisset
 </main>
 
