@@ -7,22 +7,22 @@
 
     {{-- Sezione utente non autenticato --}}
     @guest
-        @include('layouts/home/home-guest')
+        @include('home/home-guest')
     @endguest
 
     {{-- Sezione locatore --}}
     @can('isLocatore')
-        @include('layouts/home/home-locatore')
+        @include('home/home-locatore')
     @endcan
 
     {{-- Sezione --}}
     @can('isLocatario')
-        @include('layouts/home/home-locatario')
+        @include('home/home-locatario')
     @endcan
 
     {{-- Sezione Admin --}}
     @can('isAdmin')
-        @include('layouts/home/home-admin')
+        @include('home/home-admin')
     @endcan
 
 @endsection
