@@ -17,20 +17,21 @@
 </head>
 <body>
 <header class="header-anim">
-    <a class="logo" href=#>
+    <a class="logo" href={{ route('gestione-faq') }}>
         <img src="{{asset('images/FlatMate_Logo_mini.png')}}" alt="FlatMate Logo">
     </a>
-    <nav>
+    {{--<nav>
         @include('_navbar/_navbar-gestione-faq')
-    </nav>
+    </nav>--}}
 </header>
 <div class="div_faq">
-    @isset($faq)
+    {{--@isset($faq)
         @include('helpers/faq')
-    @endisset
+    @endisset--}}
+    <h1>DELETE FAQ WORK IN PROGRESS</h1>
 </div>
 <footer>
-    @include('layouts/footer')
+    @include('layouts.footer')
 </footer>
 </body>
 </html>

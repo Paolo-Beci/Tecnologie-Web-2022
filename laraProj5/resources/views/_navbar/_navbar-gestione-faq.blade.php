@@ -6,10 +6,10 @@
         <a class="" href="{{ route('inserisci-faq') }}">Inserisci</a>
     </li>
     <li>
-        <a class="" href="#modifica">Modifica</a>
+        <a class="" href="{{ route('modifica-faq') }}">Modifica</a>
     </li>
     <li>
-        <a class="" href="#cancella">Cancella</a>
+        <a class="" href="{{ route('cancella-faq') }}">Cancella</a>
     </li>
     <li>
         <!-- TO DO -->

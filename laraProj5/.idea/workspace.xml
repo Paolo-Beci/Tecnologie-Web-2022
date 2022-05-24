@@ -5,6 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/_navbar/_navbar-gestione-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_navbar/_navbar-gestione-faq.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gestione-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faq/gestione-faq.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/insert-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faq/insert-faq.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,15 +132,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DELL\Desktop\Università\Terzo anno\Tecnologie web\Tecnologie-Web-2022\laraProj5\resources\views" />
       <recent name="C:\Users\DELL\Desktop\Università\Terzo anno\Tecnologie web\Tecnologie-Web-2022\laraProj5\app\Models" />
       <recent name="C:\Users\DELL\Desktop\Università\Terzo anno\Tecnologie web\Tecnologie-Web-2022\laraProj5\resources\views\_navbar" />
-      <recent name="C:\Users\DELL\Desktop\Università\Terzo anno\Tecnologie web\Tecnologie-Web-2022\laraProj5\resources\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DELL\Desktop\Università\Terzo anno\Tecnologie web\Tecnologie-Web-2022\laraProj5\resources\views\faq" />
     </key>
   </component>
   <component name="RunManager">
@@ -163,6 +168,7 @@
       <workItem from="1653407434517" duration="394000" />
       <workItem from="1653407935058" duration="2800000" />
       <workItem from="1653415248964" duration="689000" />
+      <workItem from="1653421916197" duration="992000" />
     </task>
     <servers />
   </component>

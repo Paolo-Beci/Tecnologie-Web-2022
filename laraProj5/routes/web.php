@@ -44,9 +44,15 @@ Route::prefix('locatario')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminController@index')->name('home-admin');
 
-    Route::get('/gestione-faq', 'AdminController@showFaq')->name('gestione-faq');
+    Route::prefix('gestione-faq')->group(function () {
+        Route::get('/', 'AdminController@showFaq')->name('gestione-faq');
 
-    Route::get('/inserisci-faq', 'AdminController@insertFaq')->name('inserisci-faq');
+        Route::get('/inserisci-faq', 'AdminController@insertFaq')->name('inserisci-faq');
+
+        Route::get('/cancella-faq', 'AdminController@deleteFaq')->name('cancella-faq');
+
+        Route::get('/modifica-faq', 'AdminController@modifyFaq')->name('modifica-faq');
+    });
 
     Route::prefix('catalogo')->group(function () {
         Route::get('/', 'AdminController@showCatalog')->name('catalogo-admin');

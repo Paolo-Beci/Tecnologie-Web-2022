@@ -28,10 +28,10 @@
     {{--@isset($faq)
         @include('helpers/faq')
     @endisset--}}
-    WORK IN PROGRESS
+    <h1>MODIFY FAQ WORK IN PROGRESS</h1>
 </div>
 <footer>
-    @include('layouts/footer')
+    @include('layouts.footer')
 </footer>
 </body>
 </html>
