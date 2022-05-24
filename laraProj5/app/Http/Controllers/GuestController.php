@@ -23,6 +23,35 @@ class GuestController extends Controller {
 
     }
 
+    public function showPublicCatalog(){
+
+        $alloggi = $this->_guestUserModel->getAlloggi();
+
+        return view('layouts/content-catalogo')
+            ->with('user', 'public')
+            ->with('alloggi', $alloggi); //la variabile alloggi (array) viene passata alla view
+
+    }
+
+    public function showPublicCatalogAppartamenti(){
+
+        $alloggi = $this->_guestUserModel->getAlloggioByTip('Appartamento');
+
+        return view('layouts/content-catalogo')
+            ->with('user', 'public')
+            ->with('alloggi', $alloggi); //la variabile appartamenti (array) viene passata alla view
+
+    }
+
+    public function showPublicCatalogPostiLetto(){
+
+        $alloggi = $this->_guestUserModel->getAlloggioByTip('Posto letto');
+
+        return view('layouts/content-catalogo')
+            ->with('user', 'public')
+            ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
+    }
+
 
 
 }
