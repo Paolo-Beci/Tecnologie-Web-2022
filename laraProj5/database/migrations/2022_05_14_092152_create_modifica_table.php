@@ -14,7 +14,7 @@ class CreateModificaTable extends Migration
     public function up()
     {
         Schema::create('modifica', function (Blueprint $table) {
-            $table->bigIncrements('utente');
+            $table->bigInteger('utente')->unsigned();
             $table->integer('faq')->unsigned();
             $table->dateTime('data_modifica');
             $table->primary(array('utente', 'faq'));

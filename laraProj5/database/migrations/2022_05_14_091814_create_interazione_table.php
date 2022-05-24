@@ -14,7 +14,7 @@ class CreateInterazioneTable extends Migration
     public function up()
     {
         Schema::create('interazione', function (Blueprint $table) {
-            $table->bigIncrements('utente');
+            $table->bigInteger('utente')->unsigned();
             $table->integer('alloggio')->unsigned();
             $table->dateTime('data_interazione');
             $table->primary(array('utente', 'alloggio'));

@@ -12,9 +12,7 @@
  */
 
 //GUEST
-Route::get('/', function(){
-        return view('layouts/content-home');
-})->name('home-guest');
+Route::get('/', 'GuestController@index')->name('home-guest');
 
 //LOCATORE
 Route::prefix('locatore')->group(function () {

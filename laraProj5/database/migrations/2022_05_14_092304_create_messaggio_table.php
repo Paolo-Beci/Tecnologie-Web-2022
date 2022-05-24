@@ -18,8 +18,8 @@ class CreateMessaggioTable extends Migration
             $table->dateTime('data_invio');
             $table->string('contenuto', 255);
             $table->binary('stato')->default(0);
-            $table->bigIncrements('mittente');
-            $table->bigIncrements('destinatario');
+            $table->bigInteger('mittente')->unsigned();
+            $table->bigInteger('destinatario')->unsigned();
             $table->integer('alloggio')->unsigned();
             $table->foreign('mittente')->references('id')->on('utente')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('destinatario')->references('id')->on('utente')->onUpdate('cascade')->onDelete('cascade');
