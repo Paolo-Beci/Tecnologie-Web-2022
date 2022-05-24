@@ -46,6 +46,8 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/gestione-faq', 'AdminController@showFaq')->name('gestione-faq');
 
+    Route::get('/inserisci-faq', 'AdminController@insertFaq')->name('inserisci-faq');
+
     Route::prefix('catalogo')->group(function () {
         Route::get('/', 'AdminController@showCatalog')->name('catalogo-admin');
 

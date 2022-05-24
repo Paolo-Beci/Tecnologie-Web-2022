@@ -24,4 +24,8 @@ class AdminController extends Controller {
             ->with('faq', $faq);
     }
 
+    public function insertFaq() {
+        return view('insert-faq');
+    }
+
 }
