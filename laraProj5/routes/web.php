@@ -11,16 +11,28 @@
   |
  */
 
+//GUEST
 Route::get('/', function(){
         return view('layouts/content-home');
 })->name('home-guest');
 
-Route::get('/locatore', 'LocatoreController@index')->name('home-locatore');
+//LOCATORE
+Route::prefix('locatore')->group(function () {
+    Route::get('/', 'LocatoreController@index')->name('home-locatore');
+});
 
-Route::get('/locatario', 'LocatarioController@index')->name('home-locatario');
+//LOCATARIO
+Route::prefix('locatario')->group(function () {
+    Route::get('/', 'LocatarioController@index')->name('home-locatario');
+});
 
-Route::get('/admin', 'AdminController@index')->name('home-admin');
+//ADMIN
+Route::prefix('admin')->group(function () {
+    Route::get('/', 'AdminController@index')->name('home-admin');
+});
 
+
+//AUTENTICAZIONE E REGISTRAZIONE
 Route::get('/registrazione', function () {
         return view('registrazione-dati-personali');
 })->name('registrazione');
@@ -30,6 +42,8 @@ Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::post('logout', 'Auth\LoginController@logout')
         ->name('logout');
 
+
+//CATALOGO
 Route::get('/catalogo', function(){
         return view('layouts/content-catalogo');
 })->name('catalogo');
