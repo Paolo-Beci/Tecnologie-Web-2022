@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewProductRequest;
 use App\Models\Admin;
+use App\Models\Resources\Faq;
 
 class AdminController extends Controller {
 
@@ -25,7 +27,22 @@ class AdminController extends Controller {
     }
 
     public function insertFaq() {
-        return view('faq/insert-faq');
+
+        $tg = ['locatore'=>'locatore', 'locatario'=>'locatario', 'utente non registrato'=>'utente non registrato'];
+        return view('faq/insert-faq')
+            ->with('tg', $tg);
+    }
+
+    public function storeFaq(NewProductRequest $request)
+    {
+        $new_faq = new Faq;
+        $new_faq->fill($request->validated());
+        $new_faq->save();
+
+        //temporaneo, dovremo metterci un popup di conferma
+        sleep(5);
+
+        return redirect()->action('AdminController@showFaq');
     }
 
     public function deleteFaq() {
