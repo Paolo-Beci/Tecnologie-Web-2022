@@ -45,7 +45,7 @@
 
             {{ Form::close() }}
 
-            <form class="sign-up inactive-form" action="{{route('registrazione')}}">
+            {{-- <form class="sign-up inactive-form" action="{{route('registrazione')}}">
                 <h1>Registrazione</h1>
                 <fieldset class="sign-up-fieldset">
                     <div class="username">
@@ -68,7 +68,31 @@
                     <button class="submit" type="submit">Continua</button>
                     <span>Sei già registrato? <a data-form="toLogin">Effettua il login</a></span>
                 </div>
-            </form>
+            </form> --}}
+            {{ Form::open(array('route' => 'registrazione', 'class' => 'sign-up inactive-form')) }}
+                <h1>Registrazione</h1>
+                <fieldset class="sign-up-fieldset">
+                    <div class="username">
+                        {{ Form::label('sign-up-username', 'Username') }}
+                        {{ Form::text('username', '', ['id' => 'sign-up-username']) }}
+                        <span class="underline"></span>
+                    </div>
+                    <div class="password">
+                        {{ Form::label('sign-up-username', 'Password') }}
+                        {{ Form::password('sign-up-password', ['id' => 'sign-up-password']) }}
+                        <span class="underline"></span>
+                    </div>
+                    <div class="confirm-password">
+                        {{ Form::label('confirm-password', 'Conferma password') }}
+                        {{ Form::password('confirm-password', ['id' => 'confirm-password']) }}
+                        <span class="underline"></span>
+                    </div>
+                </fieldset>
+                <div class="sign-up-extra">
+                    {{ Form::submit('Continua', ['class' => 'submit']) }}
+                    <span>Sei già registrato? <a data-form="toLogin">Effettua il login</a></span>
+                </div>
+            {{ Form::close() }}
             <div class="circle-to-sign-up"></div>
             <div class="circle-to-login"></div>
         </div>
