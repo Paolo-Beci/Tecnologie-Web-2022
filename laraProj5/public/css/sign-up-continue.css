@@ -32,15 +32,15 @@ body {
     transform: translateX(200px);
 }
 
-.sign-up-step:nth-child(1) {
+[data-step="0"] {
     height: 550px;
 }
 
-.sign-up-step:nth-child(2) {
+[data-step="1"] {
     height: 400px;
 }
 
-.sign-up-step:nth-child(3) {
+[data-step="2"] {
     height: 350px;
 }
 
@@ -96,7 +96,6 @@ body {
     padding: 3px;
     border: 1px solid #888;
     border-radius: 50%;
-    cursor: pointer;
 }
 
 .gender {
@@ -115,7 +114,7 @@ body {
     gap: 10px;
 }
 
-button {
+button, input[type="submit"] {
     height: 30px;
     width: 45%;
     border-radius: 15px;
@@ -127,6 +126,6 @@ button {
     transition: border 0.2s ease;
 }
 
-button:hover {
+button:hover, input[type="submit"]:hover {
     border: 3px solid #CAA80E;
 }

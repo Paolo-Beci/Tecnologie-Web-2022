@@ -16,15 +16,14 @@
                     {{ Form::label('username', 'Username') }}
                     {{ Form::text('username', '', ['id' => 'username']) }}
                     <span class="underline"></span>
-                    @if ($errors->first('username'))
+                </div>
+                @if ($errors->first('username'))
                         <ul class="errors">
                             @foreach ($errors->get('username') as $message)
                                 <li>{{ $message }}</li>
                             @endforeach
                         </ul>
-                    @endif
-
-                </div>
+                @endif
                 <div class="password">
                     {{ Form::label('password', 'Password') }}
                     {{ Form::password('password', ['id' => 'password']) }}
