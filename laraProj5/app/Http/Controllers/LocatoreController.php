@@ -5,6 +5,8 @@ use App\Models\Locatore;
 
 class LocatoreController extends Controller {
 
+    protected $_locatoreModel;
+
     public function __construct() {
         $this->middleware('can:isLocatore');
         $this->_locatoreModel = new Locatore();
@@ -46,5 +48,14 @@ class LocatoreController extends Controller {
         return view('layouts/content-catalogo')
             ->with('user', 'locatore')
             ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
+    }
+
+    //metodo utilizzato per tornare gli alloggi in Gestione alloggi (per ora non sono ancora filtrati)
+    public function showLocatoreAlloggi(){
+        $alloggi = $this->_locatoreModel->getAlloggi();
+
+        return view('layouts/content-gestione-alloggi-locatore')
+            ->with('user', 'public')
+            ->with('alloggi', $alloggi);
     }
 }

@@ -25,6 +25,8 @@ Route::prefix('locatore')->group(function () {
 
         Route::get('/posti-letto', 'LocatoreController@showCatalogPostiLetto')->name('catalogo-posti-letto');
     });
+
+    Route::get('/gestione-alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione-alloggi')->middleware('can:isLocatore');
 });
 
 //LOCATARIO

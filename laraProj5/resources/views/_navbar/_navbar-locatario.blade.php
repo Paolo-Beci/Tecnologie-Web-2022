@@ -1,11 +1,11 @@
 <li>
+    <a href="{{route('catalogo-locatario')}}" title="Vai al catalogo annunci">Visualizza annunci</a>
+</li>
+<li>
     <a href="#storicoAlloggi" title="Gestione degli alloggi">Storico alloggi</a>
 </li>
 <li>
     <a href="#messaggi" title="Messaggistica">Messaggi</a>
-</li>
-<li>
-    <a href="{{route('catalogo-locatario')}}" title="Vai al catalogo annunci">Visualizza annunci</a>
 </li>
 <li>
     <button class="bottone_profilo" href="#profilo">

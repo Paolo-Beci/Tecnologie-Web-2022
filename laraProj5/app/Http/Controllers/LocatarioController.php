@@ -6,6 +6,8 @@ use App\Models\Locatario;
 
 class LocatarioController extends Controller {
 
+    protected $_locatarioModel;
+
     public function __construct() {
         $this->middleware('can:isLocatario');
         $this->_locatarioModel = new Locatario();
