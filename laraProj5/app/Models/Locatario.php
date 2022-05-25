@@ -13,12 +13,11 @@ class Locatario {
     }
 
     public function getAlloggi(){
-        return Alloggio::paginate(2);
+        return Alloggio::paginate(3);
     }
 
     //metodo per tornare un'array di alloggi in base alla tipologia
     public function getAlloggioByTip($tipologia){
         return Alloggio::where('tipologia', $tipologia)->paginate(2);
     }
-
 }

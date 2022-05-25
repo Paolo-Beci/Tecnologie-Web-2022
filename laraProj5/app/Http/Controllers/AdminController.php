@@ -36,4 +36,32 @@ class AdminController extends Controller {
         return view('faq/modify-faq');
     }
 
+    public function showCatalog(){
+
+        $alloggi = $this->_adminModel->getAlloggi();
+
+        return view('layouts/content-catalogo')
+            ->with('user', 'admin')
+            ->with('alloggi', $alloggi); //la variabile alloggi (array) viene passata alla view
+
+    }
+
+    public function showCatalogAppartamenti(){
+
+        $alloggi = $this->_adminModel->getAlloggioByTip('Appartamento');
+
+        return view('layouts/content-catalogo')
+            ->with('user', 'admin')
+            ->with('alloggi', $alloggi); //la variabile appartamenti (array) viene passata alla view
+
+    }
+
+    public function showCatalogPostiLetto(){
+
+        $alloggi = $this->_adminModel->getAlloggioByTip('Posto letto');
+
+        return view('layouts/content-catalogo')
+            ->with('user', 'admin')
+            ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
+    }
 }
