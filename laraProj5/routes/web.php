@@ -53,6 +53,8 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/inserisci-faq', 'AdminController@insertFaq')->name('inserisci-faq');
 
+        Route::post('/inserisci-faq', 'AdminController@storeFaq')->name('inserisci-faq.store');
+
         Route::get('/cancella-faq', 'AdminController@deleteFaq')->name('cancella-faq');
 
         Route::get('/modifica-faq', 'AdminController@modifyFaq')->name('modifica-faq');
