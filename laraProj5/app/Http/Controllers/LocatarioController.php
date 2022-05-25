@@ -27,7 +27,6 @@ class LocatarioController extends Controller {
         $alloggi = $this->_locatarioModel->getAlloggi();
 
         return view('layouts/content-catalogo')
-            ->with('user', 'locatario')
             ->with('alloggi', $alloggi); //la variabile alloggi (array) viene passata alla view
 
     }
@@ -37,7 +36,6 @@ class LocatarioController extends Controller {
         $alloggi = $this->_locatarioModel->getAlloggioByTip('Appartamento');
 
         return view('layouts/content-catalogo')
-            ->with('user', 'locatario')
             ->with('alloggi', $alloggi); //la variabile appartamenti (array) viene passata alla view
 
     }
@@ -47,7 +45,13 @@ class LocatarioController extends Controller {
         $alloggi = $this->_locatarioModel->getAlloggioByTip('Posto letto');
 
         return view('layouts/content-catalogo')
-            ->with('user', 'locatario')
             ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
+    }
+
+    public function showDettaglioAlloggio($id_alloggio){
+        $alloggio = $this->_locatarioModel->getAlloggio($id_alloggio);
+
+        return view('layouts/dettagli-alloggio')
+            ->with('alloggio', $alloggio);
     }
 }

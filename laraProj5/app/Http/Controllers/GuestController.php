@@ -28,7 +28,6 @@ class GuestController extends Controller {
         $alloggi = $this->_guestUserModel->getAlloggi();
 
         return view('layouts/content-catalogo')
-            ->with('user', 'public')
             ->with('alloggi', $alloggi); //la variabile alloggi (array) viene passata alla view
 
     }
@@ -38,7 +37,6 @@ class GuestController extends Controller {
         $alloggi = $this->_guestUserModel->getAlloggioByTip('Appartamento');
 
         return view('layouts/content-catalogo')
-            ->with('user', 'public')
             ->with('alloggi', $alloggi); //la variabile appartamenti (array) viene passata alla view
 
     }
@@ -48,7 +46,6 @@ class GuestController extends Controller {
         $alloggi = $this->_guestUserModel->getAlloggioByTip('Posto letto');
 
         return view('layouts/content-catalogo')
-            ->with('user', 'public')
             ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
     }
 }
