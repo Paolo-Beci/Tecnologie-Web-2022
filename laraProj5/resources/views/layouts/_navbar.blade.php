@@ -3,7 +3,7 @@
     {{-- Tutti gli utenti --}}
 
     <li>
-        <a class="anchor active" href="#home" title="Home">Home</a>
+        <a class="anchor active" href="{{route('home-guest')}}" title="Home">Home</a>
     </li>
     <li>
         <a class="anchor" href="#faq" title="Frequenty Asked Questions">FAQ</a>

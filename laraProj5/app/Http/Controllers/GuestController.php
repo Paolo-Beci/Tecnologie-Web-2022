@@ -51,7 +51,4 @@ class GuestController extends Controller {
             ->with('user', 'public')
             ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
     }
-
-
-
 }
