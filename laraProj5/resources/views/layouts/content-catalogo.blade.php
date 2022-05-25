@@ -1,5 +1,6 @@
 @extends('template')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/catalogo.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/content-home-loggato.css') }}">
 @section('title', 'Catalogo')
 
 

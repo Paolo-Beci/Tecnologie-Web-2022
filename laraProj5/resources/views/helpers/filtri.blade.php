@@ -3,7 +3,6 @@
 {{ Form::open(array('route' => 'catalogo-locatario', 'class' => 'filtri active-form')) }}
 
 <h2 class="subtitle-filtri">Città</h2>
-    {{ Form::label('citta', 'Città') }}
     {{ Form::text('citta', 'Ancona') }}<br>
 <h2 class="subtitle-filtri">Fascia di Prezzo</h2>
     {{ Form::text('min-prezzo', '100') }}
@@ -26,8 +25,11 @@
     {{ Form::text('num_camere', '1') }}
 <h2 class="subtitle-filtri">Genere ammesso</h2>
     {{ Form::radio('female', 'Femmine') }}
+    {{ Form::label('female', 'Femmine') }}<br>
     {{ Form::radio('male', 'Maschi') }}
+    {{ Form::label('male', 'Maschi') }}<br>
     {{ Form::radio('all', 'Tutti', true) }}
+    {{ Form::label('all', 'Tutti') }}<br>
 <h2 class="subtitle-filtri">Piano</h2>
     {{ Form::selectRange('number', 0, 127) }}
 <h2 class="subtitle-filtri">Num. posti letto appartamento</h2>
@@ -36,11 +38,17 @@
     {{ Form::selectRange('number', 1, 20) }}
 <h2 class="subtitle-filtri">Servizi</h2>
     {{ Form::checkbox('check1', 'Bagno') }}
+    {{ Form::label('Bagno', 'Bagno') }}<br>
     {{ Form::checkbox('check2', 'Cucina') }}
+    {{ Form::label('Cucina', 'Cucina') }}<br>
     {{ Form::checkbox('check3', 'Lavanderia') }}
+    {{ Form::label('Lavanderia', 'Lavanderia') }}<br>
     {{ Form::checkbox('check4', 'Ripostiglio') }}
+    {{ Form::label('Ripostiglio', 'Ripostiglio') }}<br>
     {{ Form::checkbox('check5', 'Garage') }}
+    {{ Form::label('Garage', 'Garage') }}<br>
     {{ Form::checkbox('check6', 'Giardino') }}
+    {{ Form::label('Giardino', 'Giardino') }}<br>
 <h2 class="subtitle-filtri">Tipo posto letto</h2>
     {{ Form::select('tipo', ['S' => 'Singola', 'D' => 'Doppia']) }}
 <h2 style="margin: 20px"></h2>
