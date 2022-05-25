@@ -14,7 +14,8 @@ class CreateFotoTable extends Migration
     public function up()
     {
         Schema::create('foto', function (Blueprint $table) {
-            $table->string('id_foto', 10)->primary();
+            $table->bigIncrements('id_foto');
+            $table->string('estensione', 4);
             $table->integer('alloggio')->unsigned();
             $table->foreign('alloggio')->references('id_alloggio')->on('alloggio')->onUpdate('cascade')->onDelete('cascade');
         });

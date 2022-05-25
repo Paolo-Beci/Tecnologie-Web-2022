@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder {
 
@@ -57,12 +58,12 @@ class DatabaseSeeder extends Seeder {
         ]);
 
         DB::table('foto')->insert([
-            ['id_foto' => '1.jpg', 'alloggio' => 1],
-            ['id_foto' => '2.gif', 'alloggio' => 2],
-            ['id_foto' => '3.jpg', 'alloggio' => 3],
-            ['id_foto' => '4.jpg', 'alloggio' => 4],
-            ['id_foto' => '5.jpg', 'alloggio' => 5],
-            ['id_foto' => '6.gif', 'alloggio' => 6],
+            ['estensione' => '.jpg', 'alloggio' => 1],
+            ['estensione' => '.jpg', 'alloggio' => 2],
+            ['estensione' => '.jpg', 'alloggio' => 3],
+            ['estensione' => '.jpg', 'alloggio' => 4],
+            ['estensione' => '.jpg', 'alloggio' => 5],
+            ['estensione' => '.jpg', 'alloggio' => 6],
         ]);
 
         DB::table('faq')->insert([

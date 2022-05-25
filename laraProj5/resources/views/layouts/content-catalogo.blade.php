@@ -33,7 +33,7 @@
                 <!-- Alloggio -->
                 <article class="alloggi">
                     <div class="alloggio">
-                        <img class="item-immagine" src="{{ asset('images_case/'.$alloggio->alloggioFoto()->first()->id_foto.".jpg") }}" alt="Immagine">
+                        <img class="item-immagine" src="{{ asset('images_case/'.$alloggio->alloggioFoto()->first()->id_foto.$alloggio->alloggioFoto()->first()->estensione) }}" alt="Immagine">
                         <div>
                             <h1>{{ $alloggio->tipologia }}</h1>  <!-- Tipologia -->
                             <hr style="margin: 10px">
