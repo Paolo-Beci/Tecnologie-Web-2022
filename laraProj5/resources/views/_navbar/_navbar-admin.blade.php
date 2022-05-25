@@ -6,7 +6,7 @@
     <a href="{{route('gestione-faq')}}" title="Gestione Faq">Gestione Faq</a>
 </li>
 <li>
-    <a href="#" title="Vai al catalogo annunci">Visualizza annunci</a>
+    <a href="{{route('catalogo-admin')}}" title="Vai al catalogo annunci">Visualizza annunci</a>
 </li>
 <li>
     <!-- TO DO -->
