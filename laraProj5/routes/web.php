@@ -57,7 +57,15 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/cancella-faq', 'AdminController@deleteFaq')->name('cancella-faq');
 
-        Route::get('/modifica-faq', 'AdminController@modifyFaq')->name('modifica-faq');
+        Route::get('/delete/{id}', 'AdminController@deleteFaqById')->name('cancella-faq.store');
+
+        Route::prefix('modifica-faq')->group(function () {
+            Route::get('/', 'AdminController@modifyFaq')->name('modifica-faq');
+
+            Route::get('/show-faq/{id}', 'AdminController@showFaqById')->name('show-faq');
+        });
+
+        Route::post('/modifica-faq', 'AdminController@modifyFaqStore')->name('modifica-faq.store');
     });
 
     Route::prefix('catalogo')->group(function () {

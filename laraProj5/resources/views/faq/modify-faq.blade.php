@@ -20,15 +20,38 @@
     <a class="logo" href={{ route('gestione-faq') }}>
         <img src="{{asset('images/FlatMate_Logo_mini.png')}}" alt="FlatMate Logo">
     </a>
-    {{--<nav>
-        @include('_navbar/_navbar-gestione-faq')
-    </nav>--}}
+    <nav>
+        <ul class="menu">
+            <li>
+                <a class="" href="{{ route('modifica-faq') }}">Modifica</a>
+            </li>
+            <li>
+                <!-- TO DO -->
+                <button class="bottone_profilo" href="#profilo">
+                    <img src="{{asset('images/user_icon.png')}}" alt="User Logo" width="10%" style="vertical-align:middle;horiz-align:left">
+                    "Nome Utente"
+                </button>
+            </li>
+        </ul>
+    </nav>
 </header>
 <div class="div_faq">
-    {{--@isset($faq)
-        @include('helpers/faq')
-    @endisset--}}
-    <h1>MODIFY FAQ WORK IN PROGRESS</h1>
+    <section id="faq" class="faq">
+        <div class="faq-container">
+            @foreach ($faq as $singleFaq)
+                <article class="q-a_modify-delete">
+                    <div class="descr">
+                        <p class="question">{!!$singleFaq->domanda!!}</p>
+                        <p class="answer">{!!$singleFaq->risposta!!}</p>
+                        <p class="question">{!!$singleFaq->target!!}</p>
+                    </div>
+                    <div>
+                        <a href="{{ route('show-faq', [$singleFaq->id_faq]) }}"><img src="{{asset('images/icons_modificare.png')}}" alt="Modifica"/></a>
+                    </div>
+                </article>
+            @endforeach
+        </div>
+    </section>
 </div>
 <footer>
     @include('layouts.footer')

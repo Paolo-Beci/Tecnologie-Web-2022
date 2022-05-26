@@ -11,6 +11,10 @@ class Admin {
         return Faq::all();
     }
 
+    public function getFaqById($id){
+        return Faq::find($id);
+    }
+
     public function getAlloggi(){
         return Alloggio::paginate(3);
     }

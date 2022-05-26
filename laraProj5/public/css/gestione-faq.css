@@ -30,6 +30,15 @@
     box-sizing: border-box;
 }
 
+.q-a_modify-delete {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 5px #c6c6c6;
+    display: flex;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
 .question {
     font-size: 26px;
     font-weight: bold;
@@ -43,6 +52,13 @@
 
 .div_faq {
     padding-top: 150px;
+}
+
+.descr {
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
 }
 
 /*per il bottone profilo*/

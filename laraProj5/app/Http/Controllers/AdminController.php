@@ -26,13 +26,23 @@ class AdminController extends Controller {
             ->with('faq', $faq);
     }
 
+    //questa funzione apre la sezione di inserimento
     public function insertFaq() {
 
         $tg = ['locatore'=>'locatore', 'locatario'=>'locatario', 'utente non registrato'=>'utente non registrato'];
         return view('faq/insert-faq')
-            ->with('tg', $tg);
+            ->with('navbar', 'Inserisci')
+            ->with('rotta_navbar', 'inserisci-faq')
+            ->with('descrizione', 'Utilizza questa form per inserire una nuova faq')
+            ->with('rotta', 'inserisci-faq.store')
+            ->with('tg', $tg)
+            ->with('domanda', '')
+            ->with('risposta', '')
+            ->with('target', '')
+            ->with('azione', 'Aggiungi Faq');
     }
 
+    //questa funzione inserisce effettivamente la faq
     public function storeFaq(NewProductRequest $request)
     {
         $new_faq = new Faq;
@@ -45,12 +55,66 @@ class AdminController extends Controller {
         return redirect()->action('AdminController@showFaq');
     }
 
+    //questa funzione apre la sezione cancella
     public function deleteFaq() {
-        return view('faq/delete-faq');
+
+        $faq = $this->_adminModel->getFaq();
+
+        return view('faq/delete-faq')
+            ->with('faq', $faq);
     }
 
+    //questa funzione cancella effettivamente la particolare faq
+    public function deleteFaqById($id) {
+
+        $faq = $this->_adminModel->getFaqById($id);
+        $faq->delete();
+
+        sleep(5);
+        return redirect()->action('AdminController@deleteFaq');
+    }
+
+    //questa funzione apre la sezione modifica
     public function modifyFaq() {
-        return view('faq/modify-faq');
+
+        $faq = $this->_adminModel->getFaq();
+
+        return view('faq/modify-faq')
+            ->with('faq', $faq);
+    }
+
+    //questa sezione apre la modifica della particolare faq
+    public function showFaqById($id) {
+
+        $faq = $this->_adminModel->getFaqById($id);
+
+        $tg = ['locatore'=>'locatore', 'locatario'=>'locatario', 'utente non registrato'=>'utente non registrato'];
+        return view('faq/insert-faq')
+            ->with('navbar', 'Modifica')
+            ->with('rotta_navbar', 'modifica-faq')
+            ->with('descrizione', 'Utilizza questa form per modificare la faq selezionata')
+            ->with('rotta', 'modifica-faq.store')
+            ->with('tg', $tg)
+            ->with('domanda', $faq->domanda)
+            ->with('risposta', $faq->risposta)
+            ->with('target', $faq->target)
+            ->with('azione', 'Modifica Faq')
+            //passo l'id faq per metterlo nel campo nascosto della form nel caso di modifica faq
+            ->with('hidden', $faq->id_faq);
+    }
+
+    //questa funzione aggiorna effettivamente la particolare faq
+    public function modifyFaqStore(NewProductRequest $request) {
+
+        $faq = $this->_adminModel->getFaqById($request->id_faq);
+
+        $faq->domanda = $request->domanda;
+        $faq->risposta = $request->risposta;
+        $faq->target = $request->target;
+        $faq->save();
+
+        return redirect()->action('AdminController@modifyFaq');
+
     }
 
     public function showCatalog(){
