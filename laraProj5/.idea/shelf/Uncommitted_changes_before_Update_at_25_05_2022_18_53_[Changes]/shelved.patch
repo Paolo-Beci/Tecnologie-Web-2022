@@ -1,0 +1,337 @@
+Index: public/css/gestione-faq.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>.faq {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n    gap: 40px;\r\n}\r\n\r\n.faq-container {\r\n    width: 60%;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n    flex-wrap: wrap;\r\n    gap: 40px;\r\n}\r\n\r\n.q-a {\r\n    height: 150px;\r\n    width: 100%;\r\n    border-radius: 20px;\r\n    box-shadow: 5px 5px 5px 5px #c6c6c6;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n    gap: 40px;\r\n    padding: 20px;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.question {\r\n    font-size: 26px;\r\n    font-weight: bold;\r\n    color: black;\r\n}\r\n\r\n.answer {\r\n    font-size: 20px;\r\n    color: rgb(65, 65, 65);\r\n}\r\n\r\n.div_faq {\r\n    padding-top: 150px;\r\n}\r\n\r\n/*per il bottone profilo*/\r\n.bottone_profilo {\r\n    background-color: white;\r\n    border-radius:13px;\r\n    border:2px solid #414141;\r\n    display:inline-block;\r\n    cursor:pointer;\r\n    color:#414141;\r\n    font-size:18px;\r\n    font-weight:bold;\r\n    padding:13px 1px;\r\n    text-decoration:none;\r\n    width: 250px;\r\n}\r\n\r\n.bottone_profilo:hover {\r\n    background-color:#414141;\r\n    border:2px solid #ffd725;\r\n    color:#ffd725;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/public/css/gestione-faq.css b/public/css/gestione-faq.css
+--- a/public/css/gestione-faq.css	(revision b64494b8e0d2b2a04a021d4a2191a67caf94cf7e)
++++ b/public/css/gestione-faq.css	(date 1653491875702)
+@@ -65,3 +65,86 @@
+     border:2px solid #ffd725;
+     color:#ffd725;
+ }
++
++/*inserimento*/
++.static {
++    padding-top: 150px;
++}
++
++.container-contact {
++    display: -webkit-box;
++    display: -webkit-flex;
++    display: -moz-box;
++    display: -ms-flexbox;
++    display: flex;
++    flex-wrap: wrap;
++    flex-direction: column;
++    justify-content: center;
++    align-items: center;
++    padding: 15px;
++    background-repeat: no-repeat;
++    background-position: center center;
++    background-size: cover;
++}
++
++.wrap-contact {
++    max-width: 960px;
++    background: #CAA80E;
++    border-radius: 50px;
++    padding: 30px 120px;
++    position: relative;
++}
++
++.wrap-input {
++    width: 100%;
++    position: relative;
++    background-color: transparent;
++    margin-bottom: 12px;
++}
++
++/*.rs1-wrap-input {
++    width: calc((100% - 30px) / 2);
++}*/
++
++.errors {
++    color: #f93d00;
++    font-size: 12px;
++}
++
++.errors ul {
++    line-height: 100%;
++}
++
++.label-input {
++    /*font-family: Arial, Helvetica, sans-serif;
++    font-size: 12px;
++    color: #555555;
++    line-height: 1.5;*/
++}
++
++.input {
++    display: block;
++    width: 90%;
++    background: #f2f2f2;
++    border-radius: 13px;
++    color: #686868;
++    padding: 5px;
++    -webkit-transition: all 0.4s;
++    -o-transition: all 0.4s;
++    -moz-transition: all 0.4s;
++    transition: all 0.4s;
++
++    margin-top: 5px;
++}
++
++.container-form-btn {
++    width: 100%;
++    display: -webkit-box;
++    display: -webkit-flex;
++    display: -moz-box;
++    display: -ms-flexbox;
++    display: flex;
++    flex-wrap: wrap;
++    justify-content: center;
++    margin-top: 30px;
++}
+Index: routes/web.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\n/*\r\n  |--------------------------------------------------------------------------\r\n  | Web Routes\r\n  |--------------------------------------------------------------------------\r\n  |\r\n  | Here is where you can register web routes for your application. These\r\n  | routes are loaded by the RouteServiceProvider within a group which\r\n  | contains the \"web\" middleware group. Now create something great!\r\n  |\r\n */\r\n\r\n//GUEST\r\nRoute::get('/', 'GuestController@index')->name('home-guest');\r\n\r\n//LOCATORE\r\nRoute::prefix('locatore')->group(function () {\r\n    Route::get('/', 'LocatoreController@index')->name('home-locatore');\r\n\r\n    Route::prefix('catalogo')->group(function () {\r\n        Route::get('/', 'LocatoreController@showCatalog')->name('catalogo-locatore');\r\n\r\n        Route::get('/appartamenti', 'LocatoreController@showCatalogAppartamenti')->name('catalogo-appartamenti');\r\n\r\n        Route::get('/posti-letto', 'LocatoreController@showCatalogPostiLetto')->name('catalogo-posti-letto');\r\n    });\r\n});\r\n\r\n//LOCATARIO\r\nRoute::prefix('locatario')->group(function () {\r\n    Route::get('/', 'LocatarioController@index')->name('home-locatario');\r\n\r\n    Route::prefix('catalogo')->group(function () {\r\n        Route::get('/', 'LocatarioController@showCatalog')->name('catalogo-locatario');\r\n\r\n        Route::get('/appartamenti', 'LocatarioController@showCatalogAppartamenti')->name('catalogo-appartamenti');\r\n\r\n        Route::get('/posti-letto', 'LocatarioController@showCatalogPostiLetto')->name('catalogo-posti-letto');\r\n    });\r\n});\r\n\r\n//ADMIN\r\nRoute::prefix('admin')->group(function () {\r\n    Route::get('/', 'AdminController@index')->name('home-admin');\r\n\r\n    Route::prefix('gestione-faq')->group(function () {\r\n        Route::get('/', 'AdminController@showFaq')->name('gestione-faq');\r\n\r\n        Route::get('/inserisci-faq', 'AdminController@insertFaq')->name('inserisci-faq');\r\n\r\n        Route::get('/cancella-faq', 'AdminController@deleteFaq')->name('cancella-faq');\r\n\r\n        Route::get('/modifica-faq', 'AdminController@modifyFaq')->name('modifica-faq');\r\n    });\r\n\r\n    Route::prefix('catalogo')->group(function () {\r\n        Route::get('/', 'AdminController@showCatalog')->name('catalogo-admin');\r\n\r\n        Route::get('/appartamenti', 'AdminController@showCatalogAppartamenti')->name('catalogo-appartamenti');\r\n\r\n        Route::get('/posti-letto', 'AdminController@showCatalogPostiLetto')->name('catalogo-posti-letto');\r\n    });\r\n});\r\n\r\n//AUTENTICAZIONE E REGISTRAZIONE\r\nRoute::get('/registrazione', function () {\r\n        return view('registrazione-dati-personali');\r\n})->name('registrazione');\r\n\r\nRoute::post('login', 'Auth\\LoginController@login')->name('login');\r\n\r\nRoute::post('logout', 'Auth\\LoginController@logout')\r\n        ->name('logout');\r\n\r\n\r\n//CATALOGO\r\nRoute::prefix('catalogo')->group(function () {\r\n    Route::get('/', 'GuestController@showPublicCatalog')->name('catalogo');\r\n\r\n    Route::get('/appartamenti', 'GuestController@showPublicCatalogAppartamenti')->name('catalogo-appartamenti');\r\n\r\n    Route::get('/posti-letto', 'GuestController@showPublicCatalogPostiLetto')->name('catalogo-posti-letto');\r\n});\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/routes/web.php b/routes/web.php
+--- a/routes/web.php	(revision b64494b8e0d2b2a04a021d4a2191a67caf94cf7e)
++++ b/routes/web.php	(date 1653488697518)
+@@ -49,6 +49,8 @@
+ 
+         Route::get('/inserisci-faq', 'AdminController@insertFaq')->name('inserisci-faq');
+ 
++        Route::post('/inserisci-faq', 'AdminController@storeFaq')->name('inserisci-faq.store');
++
+         Route::get('/cancella-faq', 'AdminController@deleteFaq')->name('cancella-faq');
+ 
+         Route::get('/modifica-faq', 'AdminController@modifyFaq')->name('modifica-faq');
+Index: resources/views/faq/insert-faq.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"{{ str_replace('_', '-', app()->getLocale()) }}\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>FlatMate | Gestione Faq</title>\r\n    <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap\" rel=\"stylesheet\">\r\n    <link rel=\"stylesheet\" href=\"{{asset('css/style.css')}}\">\r\n    <link rel=\"stylesheet\" href=\"{{asset('css/header.css')}}\">\r\n    <link rel=\"stylesheet\" href=\"{{asset('css/footer.css')}}\">\r\n    {{--<link rel=\"stylesheet\" href=\"{{asset('css/animations.css')}}\">--}}\r\n    {{--<link rel=\"stylesheet\" href=\"{{asset('css/catalogo.css')}}\">--}}\r\n    {{--<link rel=\"stylesheet\" href=\"{{asset('css/content-home-loggato.css')}}\">--}}\r\n    <link rel=\"stylesheet\" href=\"{{asset('css/gestione-faq.css')}}\">\r\n    {{--<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\r\n    <script src=\"{{asset('js/menu-script.js')}}\" defer></script>\r\n    <script src=\"{{asset('js/sign-up-continue.js')}}\" defer></script>--}}\r\n</head>\r\n<body>\r\n<header class=\"header-anim\">\r\n    <a class=\"logo\" href={{ route('gestione-faq') }}>\r\n        <img src=\"{{asset('images/FlatMate_Logo_mini.png')}}\" alt=\"FlatMate Logo\">\r\n    </a>\r\n    {{--<nav>\r\n        @include('_navbar/_navbar-gestione-faq')\r\n    </nav>--}}\r\n</header>\r\n<div class=\"div_faq\">\r\n    {{--@isset($faq)\r\n        @include('helpers/faq')\r\n    @endisset--}}\r\n    <h1>INSERT FAQ WORK IN PROGRESS</h1>\r\n</div>\r\n<footer>\r\n    @include('layouts.footer')\r\n</footer>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/faq/insert-faq.blade.php b/resources/views/faq/insert-faq.blade.php
+--- a/resources/views/faq/insert-faq.blade.php	(revision b64494b8e0d2b2a04a021d4a2191a67caf94cf7e)
++++ b/resources/views/faq/insert-faq.blade.php	(date 1653496494458)
+@@ -7,13 +7,8 @@
+     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+     <link rel="stylesheet" href="{{asset('css/header.css')}}">
+     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
+-    {{--<link rel="stylesheet" href="{{asset('css/animations.css')}}">--}}
+-    {{--<link rel="stylesheet" href="{{asset('css/catalogo.css')}}">--}}
+-    {{--<link rel="stylesheet" href="{{asset('css/content-home-loggato.css')}}">--}}
+     <link rel="stylesheet" href="{{asset('css/gestione-faq.css')}}">
+-    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+-    <script src="{{asset('js/menu-script.js')}}" defer></script>
+-    <script src="{{asset('js/sign-up-continue.js')}}" defer></script>--}}
++    <link rel="stylesheet" href="{{asset('css/content-home-admin.css')}}">
+ </head>
+ <body>
+ <header class="header-anim">
+@@ -24,11 +19,57 @@
+         @include('_navbar/_navbar-gestione-faq')
+     </nav>--}}
+ </header>
+-<div class="div_faq">
+-    {{--@isset($faq)
+-        @include('helpers/faq')
+-    @endisset--}}
+-    <h1>INSERT FAQ WORK IN PROGRESS</h1>
++<div class="static">
++    <h1>Aggiungi Faq</h1>
++    <p>Utilizza questa form per inserire una nuova faq</p>
++
++    <div class="container-contact">
++        <div class="wrap-contact">
++
++            {{--apertura form--}}
++            {{ Form::open(array('route' => 'inserisci-faq.store', 'id' => 'addfaq', 'files' => true)) }}
++
++            {{--div per la domanda--}}
++            <div  class="wrap-input  {{--rs1-wrap-input--}}">
++                {{ Form::label('domanda', 'Domanda', ['class' => 'label-input']) }}
++                {{ Form::textarea('domanda', '', ['class' => 'input', 'id' => 'domanda', 'rows' => 3]) }}
++                @if ($errors->first('domanda'))
++                    <ul class="errors">
++                        @foreach ($errors->get('domanda') as $message)
++                            <li>{{ $message }}</li>
++                        @endforeach
++                    </ul>
++                @endif
++            </div>
++
++            {{--div per la risposta--}}
++            <div  class="wrap-input  {{--rs1-wrap-input--}}">
++                {{ Form::label('risposta', 'Risposta', ['class' => 'label-input']) }}
++                {{ Form::textarea('risposta', '', ['class' => 'input', 'id' => 'risposta', 'rows' => 3]) }}
++                @if ($errors->first('risposta'))
++                    <ul class="errors">
++                        @foreach ($errors->get('risposta') as $message)
++                            <li>{{ $message }}</li>
++                        @endforeach
++                    </ul>
++                @endif
++            </div>
++
++            {{--div per la categoria--}}
++            <div  class="wrap-input  {{--rs1-wrap-input--}}">
++                {{ Form::label('target', 'Target', ['class' => 'label-input']) }}
++                {{ Form::select('target', $tg, '', ['class' => 'input','id' => 'target']) }}
++            </div>
++
++            {{--bottone di conferma--}}
++            <div class="container-form-btn">
++                {{ Form::submit('Aggiungi Faq', ['class' => 'filter_button']) }}
++            </div>
++
++            {{--chiusura form--}}
++            {{ Form::close() }}
++        </div>
++    </div>
+ </div>
+ <footer>
+     @include('layouts.footer')
+Index: app/Models/Resources/Faq.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nnamespace App\\Models\\Resources;\r\n\r\nuse \\Illuminate\\Database\\Eloquent\\Model;\r\n\r\nclass Faq extends Model{\r\n    protected $table = 'faq';\r\n    protected $primaryKey = 'id_faq';\r\n    public $timestamps = false;\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/Models/Resources/Faq.php b/app/Models/Resources/Faq.php
+--- a/app/Models/Resources/Faq.php	(revision b64494b8e0d2b2a04a021d4a2191a67caf94cf7e)
++++ b/app/Models/Resources/Faq.php	(date 1653495484133)
+@@ -8,5 +8,8 @@
+     protected $table = 'faq';
+     protected $primaryKey = 'id_faq';
+     public $timestamps = false;
++
++    protected $fillable = ['domanda', 'risposta', 'target'];
++    protected $guarded = ['id_faq'];
+ }
+ 
+Index: app/Http/Requests/NewProductRequest.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nnamespace App\\Http\\Requests;\r\n\r\nuse Illuminate\\Foundation\\Http\\FormRequest;\r\nuse Illuminate\\Validation\\Rule;\r\n\r\nclass NewProductRequest extends FormRequest {\r\n\r\n    /**\r\n     * Determine if the user is authorized to make this request.\r\n     *\r\n     * @return bool\r\n     */\r\n    public function authorize() {\r\n        // Nella form non mettiamo restrizioni d'uso su base utente\r\n        // Gestiamo l'autorizzazione ad un altro livello\r\n        return true;\r\n    }\r\n\r\n    /**\r\n     * Get the validation rules that apply to the request.\r\n     *\r\n     * @return array\r\n     */\r\n    public function rules() {\r\n        return [\r\n            'name' => 'required|max:25',\r\n            'catId' => 'required',\r\n            'descShort' => 'required|max:30',\r\n            'image' => 'image|max:1024',\r\n            'price' => 'required|numeric|min:0',\r\n            'discountPerc' => 'required|integer|min:0|max:100',\r\n            'discounted' => 'required',\r\n            'descLong' => 'required|max:2500'\r\n        ];\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/Http/Requests/NewProductRequest.php b/app/Http/Requests/NewProductRequest.php
+--- a/app/Http/Requests/NewProductRequest.php	(revision b64494b8e0d2b2a04a021d4a2191a67caf94cf7e)
++++ b/app/Http/Requests/NewProductRequest.php	(date 1653496323500)
+@@ -25,14 +25,9 @@
+      */
+     public function rules() {
+         return [
+-            'name' => 'required|max:25',
+-            'catId' => 'required',
+-            'descShort' => 'required|max:30',
+-            'image' => 'image|max:1024',
+-            'price' => 'required|numeric|min:0',
+-            'discountPerc' => 'required|integer|min:0|max:100',
+-            'discounted' => 'required',
+-            'descLong' => 'required|max:2500'
++            'domanda' => 'required',
++            'risposta' => 'required',
++            'target' => 'required',
+         ];
+     }
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"285392cd-5a16-4734-960c-57fa4f6d72f8\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/Http/Controllers/AdminController.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/Http/Controllers/AdminController.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/resources/views/_navbar/_navbar-gestione-faq.blade.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/resources/views/_navbar/_navbar-gestione-faq.blade.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/resources/views/gestione-faq.blade.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/resources/views/faq/gestione-faq.blade.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/resources/views/insert-faq.blade.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/resources/views/faq/insert-faq.blade.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/routes/web.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/routes/web.php\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\" doNotAsk=\"true\" synchronizationState=\"SYNCHRONIZE\">\r\n    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>\r\n    <execution />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"PhpWorkspaceProjectConfiguration\">\r\n    <include_path>\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/console\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/mockery/mockery\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-php72\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/phpunit\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-mbstring\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-token-stream\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/facade/ignition-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-iconv\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/composer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-timer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/mime\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-ctype\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/facade/ignition\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-kernel\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/facade/flare-client-php\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/laravel/tinker\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/laravel/framework\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/nikic/php-parser\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/opis/closure\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/filp/whoops\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/egulias/email-validator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-text-template\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psy/psysh\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-file-iterator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/simple-cache\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/log\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-code-coverage\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/container\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-foundation\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/finder\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/vlucas/phpdotenv\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpdocumentor/type-resolver\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpdocumentor/reflection-common\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/scrivo/highlight.php\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/dragonmantank/cron-expression\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/swiftmailer/swiftmailer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/event-dispatcher\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/nunomaduro/collision\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/fzaninotto/faker\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/webmozart/assert\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpspec/prophecy\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/version\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/resource-operations\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/type\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/object-reflector\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/recursion-context\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/global-state\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/object-enumerator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/environment\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/debug\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/exporter\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/comparator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/diff\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/theseer/tokenizer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phar-io/version\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpoption/phpoption\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/translation-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phar-io/manifest\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/var-dumper\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/paragonie/random_compat\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/fideloper/proxy\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/hamcrest/hamcrest-php\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/instantiator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/lexer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/inflector\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/css-selector\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/translation\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/service-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/ramsey/uuid\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/myclabs/deep-copy\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/nesbot/carbon\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/routing\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/monolog/monolog\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-php73\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/process\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/league/flysystem\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/laravel/ui\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/league/mime-type-detection\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/league/commonmark\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/laravelcollective/html\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/php-parallel-lint/php-console-highlighter\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/php-parallel-lint/php-console-color\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/error-handler\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-client-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/thiagoprz/eloquent-composite-key\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-php80\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/deprecation-contracts\" />\r\n    </include_path>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"29cDWTqPyhJrltUr40rkLxrT6lo\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/resources/views\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"yarn\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\DELL\\Desktop\\Università\\Terzo anno\\Tecnologie web\\Tecnologie-Web-2022\\laraProj5\\resources\\views\" />\r\n      <recent name=\"C:\\Users\\DELL\\Desktop\\Università\\Terzo anno\\Tecnologie web\\Tecnologie-Web-2022\\laraProj5\\app\\Models\" />\r\n      <recent name=\"C:\\Users\\DELL\\Desktop\\Università\\Terzo anno\\Tecnologie web\\Tecnologie-Web-2022\\laraProj5\\resources\\views\\_navbar\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\DELL\\Desktop\\Università\\Terzo anno\\Tecnologie web\\Tecnologie-Web-2022\\laraProj5\\resources\\views\\faq\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"phpunit.xml\" type=\"PHPUnitRunConfigurationType\" factoryName=\"PHPUnit\">\r\n      <TestRunner scope=\"XML\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"285392cd-5a16-4734-960c-57fa4f6d72f8\" name=\"Changes\" comment=\"\" />\r\n      <created>1653403516946</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1653403516946</updated>\r\n      <workItem from=\"1653403522758\" duration=\"30000\" />\r\n      <workItem from=\"1653403556256\" duration=\"120000\" />\r\n      <workItem from=\"1653403679405\" duration=\"440000\" />\r\n      <workItem from=\"1653406238322\" duration=\"159000\" />\r\n      <workItem from=\"1653406882791\" duration=\"53000\" />\r\n      <workItem from=\"1653407434517\" duration=\"394000\" />\r\n      <workItem from=\"1653407935058\" duration=\"2800000\" />\r\n      <workItem from=\"1653415248964\" duration=\"689000\" />\r\n      <workItem from=\"1653421916197\" duration=\"992000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision b64494b8e0d2b2a04a021d4a2191a67caf94cf7e)
++++ b/.idea/workspace.xml	(date 1653497463204)
+@@ -4,9 +4,11 @@
+     <list default="true" id="285392cd-5a16-4734-960c-57fa4f6d72f8" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/resources/views/_navbar/_navbar-gestione-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_navbar/_navbar-gestione-faq.blade.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/resources/views/gestione-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faq/gestione-faq.blade.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/resources/views/insert-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faq/insert-faq.blade.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/Http/Requests/NewProductRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/NewProductRequest.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/Models/Resources/Faq.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Resources/Faq.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/database/migrations/2022_05_14_091429_create_faq_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_05_14_091429_create_faq_table.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/public/css/gestione-faq.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/gestione-faq.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/resources/views/faq/insert-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faq/insert-faq.blade.php" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -132,7 +134,7 @@
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+     <property name="nodejs_package_manager_path" value="yarn" />
+     <property name="vue.rearranger.settings.migration" value="true" />
+   </component>
+@@ -169,6 +171,7 @@
+       <workItem from="1653407935058" duration="2800000" />
+       <workItem from="1653415248964" duration="689000" />
+       <workItem from="1653421916197" duration="992000" />
++      <workItem from="1653486136130" duration="11208000" />
+     </task>
+     <servers />
+   </component>
+Index: app/Http/Controllers/AdminController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nnamespace App\\Http\\Controllers;\r\n\r\nuse App\\Models\\Admin;\r\n\r\nclass AdminController extends Controller {\r\n\r\n    protected $_adminModel;\r\n\r\n    public function __construct() {\r\n        $this->middleware('can:isAdmin');\r\n        $this->_adminModel = new Admin();\r\n    }\r\n\r\n    public function index() {\r\n        return view('layouts/content-home');\r\n    }\r\n\r\n    public function showFaq() {\r\n        $faq = $this->_adminModel->getFaq();\r\n\r\n        return view('faq/gestione-faq')\r\n            ->with('faq', $faq);\r\n    }\r\n\r\n    public function insertFaq() {\r\n        return view('faq/insert-faq');\r\n    }\r\n\r\n    public function deleteFaq() {\r\n        return view('faq/delete-faq');\r\n    }\r\n\r\n    public function modifyFaq() {\r\n        return view('faq/modify-faq');\r\n    }\r\n\r\n    public function showCatalog(){\r\n\r\n        $alloggi = $this->_adminModel->getAlloggi();\r\n\r\n        return view('layouts/content-catalogo')\r\n            ->with('user', 'admin')\r\n            ->with('alloggi', $alloggi); //la variabile alloggi (array) viene passata alla view\r\n\r\n    }\r\n\r\n    public function showCatalogAppartamenti(){\r\n\r\n        $alloggi = $this->_adminModel->getAlloggioByTip('Appartamento');\r\n\r\n        return view('layouts/content-catalogo')\r\n            ->with('user', 'admin')\r\n            ->with('alloggi', $alloggi); //la variabile appartamenti (array) viene passata alla view\r\n\r\n    }\r\n\r\n    public function showCatalogPostiLetto(){\r\n\r\n        $alloggi = $this->_adminModel->getAlloggioByTip('Posto letto');\r\n\r\n        return view('layouts/content-catalogo')\r\n            ->with('user', 'admin')\r\n            ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/Http/Controllers/AdminController.php b/app/Http/Controllers/AdminController.php
+--- a/app/Http/Controllers/AdminController.php	(revision b64494b8e0d2b2a04a021d4a2191a67caf94cf7e)
++++ b/app/Http/Controllers/AdminController.php	(date 1653497332435)
+@@ -2,7 +2,9 @@
+ 
+ namespace App\Http\Controllers;
+ 
++use App\Http\Requests\NewProductRequest;
+ use App\Models\Admin;
++use App\Models\Resources\Faq;
+ 
+ class AdminController extends Controller {
+ 
+@@ -25,7 +27,22 @@
+     }
+ 
+     public function insertFaq() {
+-        return view('faq/insert-faq');
++
++        $tg = ['locatore'=>'locatore', 'locatario'=>'locatario', 'utente non registrato'=>'utente non registrato'];
++        return view('faq/insert-faq')
++            ->with('tg', $tg);
++    }
++
++    public function storeFaq(NewProductRequest $request)
++    {
++        $new_faq = new Faq;
++        $new_faq->fill($request->validated());
++        $new_faq->save();
++
++        //temporaneo, dovremo metterci un popup di conferma
++        sleep(5);
++
++        return redirect()->action('AdminController@showFaq');
+     }
+ 
+     public function deleteFaq() {
