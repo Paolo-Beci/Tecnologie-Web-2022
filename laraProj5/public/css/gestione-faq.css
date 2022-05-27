@@ -167,6 +167,7 @@
 
 .click:hover {
     background-color: #ffd725;
+    border-radius: 12px;
 }
 
 .icona{
