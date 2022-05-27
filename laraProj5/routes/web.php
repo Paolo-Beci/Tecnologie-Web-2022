@@ -67,6 +67,8 @@ Route::prefix('admin')->group(function () {
         });
 
         Route::post('/modifica-faq', 'AdminController@modifyFaqStore')->name('modifica-faq.store');
+
+        Route::get('/conferma', 'AdminController@confirm')->name('conferma');
     });
 
     Route::prefix('catalogo')->group(function () {

@@ -49,10 +49,7 @@ class AdminController extends Controller {
         $new_faq->fill($request->validated());
         $new_faq->save();
 
-        //temporaneo, dovremo metterci un popup di conferma
-        sleep(5);
-
-        return redirect()->action('AdminController@showFaq');
+        return redirect()->action('AdminController@confirm');
     }
 
     //questa funzione apre la sezione cancella
@@ -70,8 +67,7 @@ class AdminController extends Controller {
         $faq = $this->_adminModel->getFaqById($id);
         $faq->delete();
 
-        sleep(5);
-        return redirect()->action('AdminController@deleteFaq');
+        return redirect()->action('AdminController@confirm');
     }
 
     //questa funzione apre la sezione modifica
@@ -113,8 +109,13 @@ class AdminController extends Controller {
         $faq->target = $request->target;
         $faq->save();
 
-        return redirect()->action('AdminController@modifyFaq');
+        return redirect()->action('AdminController@confirm');
 
+    }
+
+    //questa funzione mostra una pagina di conferma operazione andata a buon fine
+    public function confirm() {
+        return view('faq/confirm');
     }
 
     public function showCatalog(){

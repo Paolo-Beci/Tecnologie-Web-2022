@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="285392cd-5a16-4734-960c-57fa4f6d72f8" name="Changes" comment="Implementate funzionalità per eliminazione e modifica faq" />
+    <list default="true" id="285392cd-5a16-4734-960c-57fa4f6d72f8" name="Changes" comment="Implementate funzionalità per eliminazione e modifica faq">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -125,7 +129,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -164,6 +168,7 @@
       <workItem from="1653415248964" duration="689000" />
       <workItem from="1653421916197" duration="992000" />
       <workItem from="1653486136130" duration="25878000" />
+      <workItem from="1653656607304" duration="2396000" />
     </task>
     <task id="LOCAL-00001" summary="Implementata funzionalità per inserimento faq">
       <created>1653497770572</created>
