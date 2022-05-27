@@ -20,7 +20,7 @@ class Locatore {
 
     //metodo per tornare un'array di alloggi in base alla tipologia
     public function getAlloggioByTip($tipologia){
-        return Alloggio::where('tipologia', $tipologia)->paginate(2);
+        return Alloggio::where('tipologia', $tipologia)->paginate(3);
     }
 
     //metodo per tornare un'array di faq in base ad un target dato
@@ -31,6 +31,6 @@ class Locatore {
             ->join('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
             ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('utente', $locatore)
-            ->get();
+             ->paginate(3);
     }
 }

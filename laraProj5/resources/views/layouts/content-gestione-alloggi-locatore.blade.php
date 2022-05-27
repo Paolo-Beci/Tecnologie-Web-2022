@@ -25,6 +25,6 @@
         </section>
     </main>
     <!--Paginazione-->
-    {{--@include('pagination.paginator', ['paginator' => $alloggioLocatore])--}}
+    @include('pagination.paginator', ['paginator' => $alloggiLocatore])
 
 @endsection
