@@ -25,8 +25,8 @@ class NewProductRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'domanda' => 'required',
-            'risposta' => 'required',
+            'domanda' => 'required|max:255',
+            'risposta' => 'required|max:255',
             'target' => 'required',
         ];
     }
