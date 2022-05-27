@@ -17,7 +17,7 @@
 </head>
 <body>
 <header class="header-anim">
-    <a class="logo" href=#>
+    <a class="logo" href={{ route('home-admin') }}>
         <img src="{{asset('images/FlatMate_Logo_mini.png')}}" alt="FlatMate Logo">
     </a>
     <nav>

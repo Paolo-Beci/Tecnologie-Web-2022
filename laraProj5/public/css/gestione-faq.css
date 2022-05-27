@@ -164,3 +164,14 @@
     justify-content: center;
     margin-top: 30px;
 }
+
+.click:hover {
+    background-color: #ffd725;
+}
+
+.icona{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}

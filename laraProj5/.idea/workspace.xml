@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="285392cd-5a16-4734-960c-57fa4f6d72f8" name="Changes" comment="Aggiunta pagina di conferma operazione andata a buon fine">
-      <change beforePath="$PROJECT_DIR$/resources/views/_navbar/_navbar-gestione-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_navbar/_navbar-gestione-faq.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/faq/confirm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faq/confirm.blade.php" afterDir="false" />
+    <list default="true" id="285392cd-5a16-4734-960c-57fa4f6d72f8" name="Changes" comment="Aggiunto limite lunghezza per domande e risposte delle faq">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/gestione-faq.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/gestione-faq.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/faq/delete-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faq/delete-faq.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/faq/insert-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faq/insert-faq.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/faq/gestione-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faq/gestione-faq.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/faq/modify-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faq/modify-faq.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +170,7 @@
       <workItem from="1653415248964" duration="689000" />
       <workItem from="1653421916197" duration="992000" />
       <workItem from="1653486136130" duration="25878000" />
-      <workItem from="1653656607304" duration="3018000" />
+      <workItem from="1653656607304" duration="4846000" />
     </task>
     <task id="LOCAL-00001" summary="Implementata funzionalità per inserimento faq">
       <created>1653497770572</created>
@@ -193,7 +193,21 @@
       <option name="project" value="LOCAL" />
       <updated>1653659135387</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Adesso viene visualizzato il nome corretto dell'utente anche nelle navbar per la gestione delle faq">
+      <created>1653659743062</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1653659743062</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Aggiunto limite lunghezza per domande e risposte delle faq">
+      <created>1653659959722</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1653659959722</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,6 +228,8 @@
     <MESSAGE value="Implementata funzionalità per inserimento faq" />
     <MESSAGE value="Implementate funzionalità per eliminazione e modifica faq" />
     <MESSAGE value="Aggiunta pagina di conferma operazione andata a buon fine" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta pagina di conferma operazione andata a buon fine" />
+    <MESSAGE value="Adesso viene visualizzato il nome corretto dell'utente anche nelle navbar per la gestione delle faq" />
+    <MESSAGE value="Aggiunto limite lunghezza per domande e risposte delle faq" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunto limite lunghezza per domande e risposte delle faq" />
   </component>
 </project>

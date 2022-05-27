@@ -45,8 +45,8 @@
                         <p class="answer">{!!$singleFaq->risposta!!}</p>
                         <p class="question">{!!$singleFaq->target!!}</p>
                     </div>
-                    <div>
-                        <a href="{{ route('show-faq', [$singleFaq->id_faq]) }}"><img src="{{asset('images/icons_modificare.png')}}" alt="Modifica"/></a>
+                    <div class="icona">
+                        <a class="click" href="{{ route('show-faq', [$singleFaq->id_faq]) }}"><img src="{{asset('images/icons_modificare.png')}}" alt="Modifica"/></a>
                     </div>
                 </article>
             @endforeach
