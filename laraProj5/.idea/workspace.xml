@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="285392cd-5a16-4734-960c-57fa4f6d72f8" name="Changes" comment="Implementate funzionalità per eliminazione e modifica faq">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    <list default="true" id="285392cd-5a16-4734-960c-57fa4f6d72f8" name="Changes" comment="Aggiunta pagina di conferma operazione andata a buon fine">
+      <change beforePath="$PROJECT_DIR$/resources/views/_navbar/_navbar-gestione-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_navbar/_navbar-gestione-faq.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/faq/confirm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faq/confirm.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/faq/delete-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faq/delete-faq.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/faq/insert-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faq/insert-faq.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/faq/modify-faq.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faq/modify-faq.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +170,7 @@
       <workItem from="1653415248964" duration="689000" />
       <workItem from="1653421916197" duration="992000" />
       <workItem from="1653486136130" duration="25878000" />
-      <workItem from="1653656607304" duration="2396000" />
+      <workItem from="1653656607304" duration="3018000" />
     </task>
     <task id="LOCAL-00001" summary="Implementata funzionalità per inserimento faq">
       <created>1653497770572</created>
@@ -184,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653602737598</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Aggiunta pagina di conferma operazione andata a buon fine">
+      <created>1653659135387</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1653659135387</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +213,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implementata funzionalità per inserimento faq" />
     <MESSAGE value="Implementate funzionalità per eliminazione e modifica faq" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementate funzionalità per eliminazione e modifica faq" />
+    <MESSAGE value="Aggiunta pagina di conferma operazione andata a buon fine" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta pagina di conferma operazione andata a buon fine" />
   </component>
 </project>
