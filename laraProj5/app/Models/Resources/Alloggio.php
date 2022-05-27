@@ -13,5 +13,4 @@ class Alloggio extends Model{
     public function alloggioFoto(){
          return $this->hasOne(Foto::class, 'alloggio', 'id_alloggio');
     }
-
 }

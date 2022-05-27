@@ -102,12 +102,13 @@
     @include('helpers.servizi')
 </section>
 <section id="chi-siamo" class="about-us">
-    @include('helpers.chi-siamo')
+{{--{{Auth::user->id}}--}}
+@include('helpers.chi-siamo')
 </section>
 <section id="dicono-di-noi" class="reviews">
-    @include('helpers.dicono-di-noi')
+@include('helpers.dicono-di-noi')
 </section>
 @isset($faq)
-    @include('helpers.faq')
+@include('helpers.faq')
 @endisset
 

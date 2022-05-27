@@ -14,6 +14,7 @@
 //GUEST
 Route::get('/', 'GuestController@index')->name('home-guest');
 
+
 //LOCATORE
 Route::prefix('locatore')->group(function () {
     Route::get('/', 'LocatoreController@index')->name('home-locatore');

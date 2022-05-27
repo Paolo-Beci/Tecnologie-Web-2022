@@ -1,0 +1,62 @@
+.parent {
+    text-align: center;
+}
+.child {
+    display: inline-block;
+    padding: 1rem 1rem;
+    vertical-align: middle;
+}
+.filter_button {
+    border-radius: 13px;
+    width: 350px;
+    height: 60px;
+    background-color: #ffd725;
+    border: 3px solid #414141;
+    text-decoration: none;
+    font-size: 25px;
+    color: #414141;
+    position: relative;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 1s;
+}
+
+.filter_button::before,
+.filter_button::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: inherit;
+    transition: all .5s;
+}
+
+.filter_button::before {
+    border-top-left-radius: 13px;
+    left: -15px;
+    top: -15px;
+    border-width: 3px 0 0 3px;
+}
+
+.filter_button::after {
+    border-bottom-right-radius: 13px;
+    bottom: -15px;
+    right: -15px;
+    border-width: 0 3px 3px 0;
+}
+
+.filter_button:hover {
+    border-radius: 13px;
+    background-color: #414141;
+    color: #ffd725;
+
+    border-color: #ffd725;
+}
+
+.filter_button:hover::before,
+.filter_button:hover::after {
+    border-radius: 13px;
+    width: calc(100% + 27px);
+    height: calc(100% + 27px);
+    border-color: #ffd725;
+}

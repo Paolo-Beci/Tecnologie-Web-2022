@@ -1,5 +1,5 @@
 <li>
-    <a href="{{route('catalogo-locatario')}}" title="Vai al catalogo annunci">Visualizza annunci</a>
+    <a href="{{route('catalogo-locatario')}}" title="Vai al catalogo annunci">Catalogo</a>
 </li>
 <li>
     <a href="#storicoAlloggi" title="Gestione degli alloggi">Storico alloggi</a>
@@ -10,6 +10,6 @@
 <li>
     <button class="bottone_profilo" href="#profilo">
         <img src="{{asset('images/user_icon.png')}}" alt="User Logo" width="10%" style="vertical-align:middle;horiz-align:left">
-        "Nome Utente"
+        {{Auth::user()->username}}
     </button>
 </li>
