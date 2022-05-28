@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use App\Models\Resources\Alloggio;
-use App\Models\Resources\Annuncio;
+use App\Models\Resources\Disponibilita;
 use App\Models\Resources\Faq;
+use App\Models\Resources\Foto;
 
 class Locatario {
 
@@ -24,5 +25,15 @@ class Locatario {
 
     public function getAlloggio($idAlloggio){
         return Alloggio::where('id_alloggio', $idAlloggio)->get();
+    }
+
+    public function getFotoAlloggio($id_alloggio)
+    {
+        return Foto::where('alloggio', $id_alloggio)->get();
+    }
+
+    public function getServiziAlloggio($id_alloggio)
+    {
+        return Disponibilita::where('alloggio', $id_alloggio)->get();
     }
 }

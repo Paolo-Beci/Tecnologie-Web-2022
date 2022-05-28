@@ -55,6 +55,9 @@ class DatabaseSeeder extends Seeder {
             ['nome_servizio' => 'Ripostiglio'],
             ['nome_servizio' => 'Garage'],
             ['nome_servizio' => 'Giardino'],
+            ['nome_servizio' => 'AriaCondizionata'],
+            ['nome_servizio' => 'WiFi'],
+            ['nome_servizio' => 'AngoloStudio'],
         ]);
 
         DB::table('foto')->insert([

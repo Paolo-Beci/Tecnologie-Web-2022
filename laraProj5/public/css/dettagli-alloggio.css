@@ -1,0 +1,88 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+.primo-box {
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    background-color: #ffd725;
+}
+
+.secondo-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    background-color: green;
+}
+
+.image-container {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.immagine-alloggio {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 13px;
+}
+
+.testo-alloggio {
+    width: 100%;
+    height: 100%;
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}
+
+.item-testo {
+
+}
+
+.icon {
+    margin-right: 16px;
+}
+
+.icon-false {
+    text-decoration: line-through solid red 15%;
+    margin-right: 16px;
+}
+
+.contatto-alloggio {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    background-color: blue;
+}
+
+.mappa-alloggio {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    background-color: magenta;
+}

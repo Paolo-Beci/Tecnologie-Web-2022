@@ -50,8 +50,12 @@ class LocatarioController extends Controller {
 
     public function showDettaglioAlloggio($id_alloggio){
         $alloggio = $this->_locatarioModel->getAlloggio($id_alloggio);
+        $foto = $this->_locatarioModel->getFotoAlloggio($id_alloggio);
+        $servizi = $this->_locatarioModel->getServiziAlloggio($id_alloggio);
 
         return view('layouts/dettagli-alloggio')
-            ->with('alloggio', $alloggio);
+            ->with('alloggio', $alloggio)
+            ->with('foto', $foto)
+            ->with('servizi', $servizi);
     }
 }

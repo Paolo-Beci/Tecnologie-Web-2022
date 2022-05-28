@@ -18,6 +18,8 @@
     <script src="{{asset('js/sign-up-continue.js')}}" defer></script>
     <script src="{{asset('js/reviews.js')}}" defer></script>
     <script src="{{asset('js/popup.js')}}" defer></script>
+    <!-- FONTAWESOME ICONS -->
+    <script src="https://kit.fontawesome.com/644d83f971.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header class="header-anim">
