@@ -16,7 +16,13 @@ class AdminController extends Controller {
     }
 
     public function index() {
-        return view('layouts/content-home');
+        $numOffAll = $this->_adminModel->getOfferteAlloggio();
+        $alloggiStats = $this->_adminModel->getStatsAlloggi();
+        
+        return view('layouts/content-home')
+            ->with('numOffAll', $numOffAll)
+            ->with('alloggiStats', $alloggiStats);
+        //mancano i with relativi agli altri due campi delle stats e quelli relativi ad appartamenti e posti letto
     }
 
     public function showFaq() {

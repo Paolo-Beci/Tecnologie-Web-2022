@@ -5,7 +5,7 @@
         <div class="stats-container">
             <article class="stats">
                 <a href="#1">Offerte di alloggio</a>
-                <p>100</p>
+                <p>{{$numOffAll}}</p>
             </article>
             <article class="stats">
                 <a href="#2">Offerte di locazione</a>
@@ -45,7 +45,17 @@
                 <button class="filter_button" type="submit" onclick=alert('WorkInProgress')>Filtra</button>
             </div>
             <div class="results_container">
-                <article class="result">
+                @isset($alloggiStats)
+                    @foreach($alloggiStats as $alloggio)
+                        <article class="result">
+                            <div class="content">
+                                <img class="img_result" src="{{asset('images_case/5.jpg')}}" alt="Alloggio 1">
+                                <h2>{{$alloggio->citta}}, {{$alloggio->via}} {{$alloggio->num_civico}}</h2>
+                            </div>
+                        </article>
+                    @endforeach
+                @endisset
+                {{--<article class="result">
                     <div class="content">
                         <img class="img_result" src="{{asset('images_case/5.jpg')}}" alt="Alloggio 1">
                         <h2>Foggia, Via Roma 4, interno 2 </h2>
@@ -56,7 +66,7 @@
                         <img class="img_result" src="{{asset('images_case/6.jpg')}}" alt="Alloggio 1">
                         <h2>Venezia, Via Marziale 2, interno 3 </h2>
                     </div>
-                </article>
+                </article>--}}
             </div>
         </div>
     </section>
