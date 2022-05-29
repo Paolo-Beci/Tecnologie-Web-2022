@@ -6,10 +6,11 @@ use App\Models\Resources\Alloggio;
 use App\Models\Resources\Disponibilita;
 use App\Models\Resources\Faq;
 use App\Models\Resources\Foto;
+use Illuminate\Support\Facades\DB;
 
 class Locatario {
 
-    //metodo per tornare un'array di faq in base ad un target dato
+    //metodo per tornare un' array di faq in base a un target dato
     public function getFaqByTarget($target){
         return Faq::where('target', $target)->get();
     }
@@ -18,7 +19,7 @@ class Locatario {
         return Alloggio::paginate(3);
     }
 
-    //metodo per tornare un'array di alloggi in base alla tipologia
+    //metodo per tornare un' array di alloggi in base alla tipologia
     public function getAlloggioByTip($tipologia){
         return Alloggio::where('tipologia', $tipologia)->paginate(3);
     }

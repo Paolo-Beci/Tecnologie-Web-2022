@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Locatario;
+use Illuminate\Support\Facades\DB;
 
 class LocatarioController extends Controller {
 
@@ -52,6 +53,7 @@ class LocatarioController extends Controller {
         $alloggio = $this->_locatarioModel->getAlloggio($id_alloggio);
         $foto = $this->_locatarioModel->getFotoAlloggio($id_alloggio);
         $servizi = $this->_locatarioModel->getServiziAlloggio($id_alloggio);
+//        $tipologia = $this->_locatarioModel->getTipAlloggio($id_alloggio);    come lo collego alle altre tabelle??
 
         return view('layouts/dettagli-alloggio')
             ->with('alloggio', $alloggio)
