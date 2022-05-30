@@ -32,12 +32,22 @@ class Locatore {
             ->join('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
             ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('utente', $locatore)
-             ->paginate(3);
+            ->paginate(3);
     }
 
-    public function getDatiPersonali() {
+    public function getDatiPersonali(){
         $locatore = auth()->user()->getAuthIdentifier();
 
-        return DatiPersonali::where('id_dati_personali', $locatore)->get();
+        return DatiPersonali::where('id_dati_personali', $locatore);
+    }
+
+    //metodo al posto del precedente
+    public function getDatiPersonali2() {
+        $locatore = auth()->user()->getAuthIdentifier();
+
+        return DB::table('utente')
+            ->join('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
+            ->where('id_dati_personali', $locatore)
+            ->get();
     }
 }

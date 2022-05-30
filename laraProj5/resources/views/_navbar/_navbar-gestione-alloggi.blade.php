@@ -3,7 +3,7 @@
         <a class="active" href="{{ route('home-admin') }}">Home</a>
     </li>
     <li>
-        <a class="" href="{{ route('inserisci-faq') }}" title="Inserisci alloggio">Inserisci</a>
+        <a class="" href="{{ route('inserisci-') }}" title="Inserisci alloggio">Inserisci</a>
     </li>
     <li>
         <!-- TO DO -->

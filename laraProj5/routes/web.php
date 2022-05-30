@@ -19,6 +19,8 @@ Route::get('/', 'GuestController@index')->name('home-guest');
 Route::prefix('locatore')->group(function () {
     Route::get('/', 'LocatoreController@index')->name('home-locatore');
 
+    Route::get('/inserisci-annuncio', 'LocatoreController@insertAnnuncio')->name('inserisci-annuncio');
+
     Route::get('/gestione-alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione-alloggi');
 
     Route::get('/account', 'LocatoreController@showAccount')->name('account-locatore');
@@ -45,7 +47,7 @@ Route::prefix('locatario')->group(function () {
 
         Route::get('/posti-letto', 'LocatarioController@showCatalogPostiLetto')->name('catalogo-posti-letto');
 
-        Route::get('/dettagli-alloggio/{id_alloggio}', 'LocatarioController@showDettaglioAlloggio')->name('dettagli-alloggio');
+        Route::get('/dettagli-alloggio/{id_alloggio}/{tipologia_alloggio}', 'LocatarioController@showDettaglioAlloggio2')->name('dettagli-alloggio');
     });
 });
 

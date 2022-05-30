@@ -1,5 +1,5 @@
 <article class="alloggi">
-    <div class="alloggio" data-href="{{route('dettagli-alloggio', [$alloggio->id_alloggio])}}">
+    <div class="alloggio" data-href="{{route('dettagli-alloggio', [$alloggio->id_alloggio], [$alloggio->tipologia_alloggio])}}">
         <img class="item-immagine" src="{{ asset('images_case/'.$alloggio->alloggioFoto()->first()->id_foto.$alloggio->alloggioFoto()->first()->estensione) }}" alt="Immagine">
         <div>
             <h1>{{ $alloggio->tipologia }}</h1>  <!-- Tipologia -->

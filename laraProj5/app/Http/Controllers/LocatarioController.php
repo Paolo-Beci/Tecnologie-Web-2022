@@ -65,6 +65,14 @@ class LocatarioController extends Controller {
             ->with('servizi', $servizi);
     }
 
+    //metodo sostitutivo del precedente
+    public function showDettaglioAlloggio2($id_alloggio, $tipologia){
+        $info_generali = $this->_locatarioModel->getAlloggio($id_alloggio, $tipologia);
+
+        return view('layouts/dettagli-alloggio')
+            ->with('info_generali', $info_generali);
+    }
+
     // metodo utilizzato per tornare i dettagli dell'account attualmente loggato
     public function showAccount() {
         $dati_personali = $this->_locatarioModel->getDatiPersonali();

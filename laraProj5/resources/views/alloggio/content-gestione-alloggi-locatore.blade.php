@@ -19,12 +19,11 @@
             @isset($alloggiLocatore)   <!-- esiste o non è null -->
                 @foreach ($alloggiLocatore as $alloggioLocatore)
                 <!-- Alloggio -->
-                @include('helpers/alloggio-locatore')
+                @include('helpers.alloggio-locatore')
                 @endforeach
             @endisset
         </section>
     </main>
     <!--Paginazione-->
     @include('pagination.paginator', ['paginator' => $alloggiLocatore])
-
 @endsection

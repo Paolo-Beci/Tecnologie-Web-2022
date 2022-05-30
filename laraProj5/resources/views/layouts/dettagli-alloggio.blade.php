@@ -5,6 +5,19 @@
 
 
 @section('content')
+    {{-- Sezione di prova --}}
+    @isset($info_generali)
+        @if($info_generali->first()->tipologia == 'Appartamento')
+            <h1>Ciaooooooo</h1>
+            <div>{{$info_generali->first()->num_camere}}</div>
+        @endif
+
+        @if($info_generali->first()->tipologia != 'Appartamento')
+            <div>{{$info_generali->first()->angolo_studio}}</div>
+            <h1>Aoooooooo</h1>
+        @endif
+    @endisset
+    {{--
 @isset($alloggio)
 @foreach($alloggio as $dettaglioalloggio)
     <main class="main-container">
@@ -111,5 +124,5 @@
     </main>
 @endforeach
 @endisset
-
+--}}
 @endsection
