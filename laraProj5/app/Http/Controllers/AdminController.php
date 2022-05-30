@@ -125,11 +125,11 @@ class AdminController extends Controller {
     }
 
     public function getStatsAlloggioByTipAndDate($tipologia, $data_init, $data_fin){
-        
+
         $alloggiTipDate = $this->_adminModel->getStatsAlloggioByTipAndDate($tipologia, $data_init, $data_fin);
-        
+
         return $alloggiTipDate;
-        
+
     }
 
     public function showCatalog(){

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" http-equiv="refresh" content="5;URL={{ route('gestione-faq') }}">
     <title>FlatMate | Gestione Faq</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
@@ -31,10 +31,11 @@
         <h2>
             Operazione andata a buon fine!
         </h2>
-        <p>Puoi tornare alla pagina di gestione Faq cliccando sul logo in alto a sinistra!
+        <p>Attendi cinque secondi per tornare alla schermata di gestione delle faq!
         </p>
     </section>
 </div>
+<div class="loader"></div>
 <footer>
     @include('layouts.footer')
 </footer>

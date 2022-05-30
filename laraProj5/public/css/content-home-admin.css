@@ -19,6 +19,12 @@
     gap: 30px;
 }
 
+/*css per le label delle statistiche iniziali*/
+.indicazione:hover {
+    color: rgb(255, 214, 37);
+    text-decoration: underline rgb(255, 214, 37);
+}
+
 /*regola il contenitore delle singole statistiche*/
 .stats-container {
     width: 40%;

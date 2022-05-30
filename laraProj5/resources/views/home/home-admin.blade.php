@@ -4,15 +4,15 @@
         <h1 class="titolo">Statistiche</h1>
         <div class="stats-container">
             <article class="stats">
-                <a href="#1">Offerte di alloggio</a>
+                <a class="indicazione" href="#1">Offerte di alloggio</a>
                 <p>{{$numOffAll}}</p>
             </article>
             <article class="stats">
-                <a href="#2">Offerte di locazione</a>
+                <a class="indicazione" href="#2">Offerte di locazione</a>
                 <p>27</p>
             </article>
             <article class="stats">
-                <a href="#3">Alloggi locati</a>
+                <a class="indicazione" href="#3">Alloggi locati</a>
                 <p>83</p>
             </article>
         </div>
