@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Resources\Alloggio;
+use App\Models\Resources\DatiPersonali;
 use App\Models\Resources\Faq;
 
 class Admin {
@@ -50,5 +51,11 @@ class Admin {
     //metodo per tornare un'array di alloggi in base alla tipologia in catalogo (si paginate)
     public function getAlloggioByTip($tipologia){
         return Alloggio::where('tipologia', $tipologia)->paginate(3);
+    }
+
+    public function getDatiPersonali() {
+        $admin = auth()->user()->getAuthIdentifier();
+
+        return DatiPersonali::where('id_dati_personali', $admin)->get();
     }
 }

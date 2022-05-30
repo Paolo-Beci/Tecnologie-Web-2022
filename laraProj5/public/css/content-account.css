@@ -1,0 +1,81 @@
+/* Regole vista area privata account */
+
+/* Regole generali */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+.primo-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 70px;
+}
+
+.secondo-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+}
+
+.terzo-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+/* Regole dati */
+.colonna {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.form-group {
+    width: 100%;
+    border: none;
+    gap: 50px;
+}
+
+/*.underline {*/
+/*    width: 0%;*/
+/*    height: 3px;*/
+/*    background-color: #FFD625;*/
+/*    transform: translateY(2px);*/
+/*    transition: width 0.5s ease-out;*/
+/*}*/
+
+/* Immagine profilo */
+.img-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.img-profilo {
+    width: 15%;
+    height: 15%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

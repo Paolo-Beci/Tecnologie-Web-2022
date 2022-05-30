@@ -21,6 +21,7 @@ class LocatoreController extends Controller {
             ->with('faq', $faq); //la variabile faq (array) viene passata alla view
     }
 
+    // metodo utilizzato per tornare gli alloggi in catalogo
     public function showCatalog(){
 
         $alloggi = $this->_locatoreModel->getAlloggi();
@@ -30,6 +31,7 @@ class LocatoreController extends Controller {
 
     }
 
+    // metodo utilizzato per tornare gli appartamenti in catalogo
     public function showCatalogAppartamenti(){
 
         $alloggi = $this->_locatoreModel->getAlloggioByTip('Appartamento');
@@ -39,6 +41,7 @@ class LocatoreController extends Controller {
 
     }
 
+    // metodo utilizzato per tornare i posti letto in catalogo
     public function showCatalogPostiLetto(){
 
         $alloggi = $this->_locatoreModel->getAlloggioByTip('Posto letto');
@@ -47,7 +50,7 @@ class LocatoreController extends Controller {
             ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
     }
 
-    //metodo utilizzato per tornare gli alloggi in Gestione alloggi (per ora non sono ancora filtrati)
+    // metodo utilizzato per tornare i dettagli dell'alloggio selezionato in catalogo
     public function showLocatoreAlloggi(){
         //$alloggiLocatore = $this->_locatoreModel->getAlloggiByLocatore($locatore);
         $alloggiLocatore = $this->_locatoreModel->getAlloggiByLocatore();
@@ -56,5 +59,11 @@ class LocatoreController extends Controller {
             ->with('alloggiLocatore', $alloggiLocatore);
     }
 
+    // metodo utilizzato per tornare i dettagli dell'account attualmente loggato
+    public function showAccount() {
+        $dati_personali = $this->_locatoreModel->getDatiPersonali();
 
+        return view('layouts/content-account')
+            ->with('dati_personali', $dati_personali);
+    }
 }
