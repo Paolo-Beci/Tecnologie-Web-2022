@@ -21,8 +21,10 @@
                 {{ Form::open(array('route' => 'modifica-dati', 'class' => 'modifica-dati')) }}
                 <section class="secondo-box">
                     <fieldset class="colonna form-group">
-                        <div class="underline">
+                        <div class="item">
+                            {{ Form::label('name', 'Nome', ['class' => 'label-form'])}}
                             {{ Form::text('name', $dati->nome, ['placeholder' => 'Nome']) }}
+                            <span class="underline"></span>
                         </div>
 
                         @if ($errors->first('name'))
@@ -33,8 +35,10 @@
                             </ul>
                         @endif
 
-                        <div class="underline">
+                        <div class="item">
+                            {{ Form::label('birthplace', 'Luogo di nascita', ['class' => 'label-form'])}}
                             {{ Form::text('birthplace', $dati->luogo_nascita, ['placeholder' => 'Luogo di nascita']) }}
+                            <span class="underline"></span>
                         </div>
 
                         @if ($errors->first('birthplace'))
@@ -45,7 +49,8 @@
                             </ul>
                         @endif
 
-                        <div class="gender">
+                        <div class="item">
+                            {{ Form::label('gender', 'Sesso', ['class' => 'label-form'])}}
                             @if($dati->sesso == 'm')
                                 <div>
                                     {{ Form::radio('gender', 'm', ['id' => 'male']) }}
@@ -67,8 +72,10 @@
                             @endif
                         </div>
 
-                        <div class="underline">
+                        <div class="item">
+                            {{ Form::label('city', 'Città', ['class' => 'label-form'])}}
                             {{ Form::text('city', $dati->citta, ['placeholder' => 'Città']) }}
+                            <span class="underline"></span>
                         </div>
 
                         @if ($errors->first('city'))
@@ -79,8 +86,10 @@
                             </ul>
                         @endif
 
-                        <div class="underline">
+                        <div class="item">
+                            {{ Form::label('house-number', 'Numero civico', ['class' => 'label-form'])}}
                             {{ Form::text('house-number', $dati->num_civico, ['placeholder' => 'Numero civico']) }}
+                            <span class="underline"></span>
                         </div>
 
                         @if ($errors->first('house-number'))
@@ -91,14 +100,18 @@
                             </ul>
                         @endif
 
-                        <div class="underline">
+                        <div class="item">
+                            {{ Form::label('email', 'Email', ['class' => 'label-form'])}}
                             {{ Form::text('email', $dati->mail, ['placeholder' => 'E-mail']) }}
+                            <span class="underline"></span>
                         </div>
 
                     </fieldset>
                     <fieldset class="colonna form-group">
-                        <div class="underline">
+                        <div class="item">
+                            {{ Form::label('surname', 'Cognome', ['class' => 'label-form'])}}
                             {{ Form::text('surname', $dati->cognome, ['placeholder' => 'Cognome']) }}
+                            <span class="underline"></span>
                         </div>
 
                         @if ($errors->first('surname'))
@@ -109,8 +122,10 @@
                             </ul>
                         @endif
 
-                        <div class="underline">
-                            {{ Form::date('birthtime', $dati->data_nascita, ['placeholder' => 'Data di nascita']) }}    {{-- non funzionaaaaah --}}
+                        <div class="item">
+                            {{ Form::label('birthtime', 'Data di nascita', ['class' => 'label-form'])}}
+                            {{ Form::date('birthtime', $dati->data_nascita) }}    {{-- non funzionaaaaah --}}
+                            <span class="underline"></span>
                         </div>
 
                         @if ($errors->first('birthtime'))
@@ -121,8 +136,10 @@
                             </ul>
                         @endif
 
-                        <div class="underline">
+                        <div class="item">
+                            {{ Form::label('cf', 'Codice fiscale', ['class' => 'label-form'])}}
                             {{ Form::text('cf', $dati->codice_fiscale, ['placeholder' => 'Codice fiscale']) }}
+                            <span class="underline"></span>
                         </div>
 
                         @if ($errors->first('cf'))
@@ -133,8 +150,10 @@
                             </ul>
                         @endif
 
-                        <div class="underline">
+                        <div class="item">
+                            {{ Form::label('street', 'Via', ['class' => 'label-form'])}}
                             {{ Form::text('street', $dati->via, ['placeholder' => 'Via']) }}
+                            <span class="underline"></span>
                         </div>
 
                         @if ($errors->first('street'))
@@ -145,8 +164,10 @@
                             </ul>
                         @endif
 
-                        <div class="underline">
+                        <div class="item">
+                            {{ Form::label('cap', 'CAP', ['class' => 'label-form'])}}
                             {{ Form::text('cap', $dati->cap, ['placeholder' => 'CAP']) }}
+                            <span class="underline"></span>
                         </div>
 
                         @if ($errors->first('cap'))
@@ -157,8 +178,10 @@
                             </ul>
                         @endif
 
-                        <div class="underline">
+                        <div class="item">
+                            {{ Form::label('telephone', 'Cellulare', ['class' => 'label-form'])}}
                             {{ Form::text('telephone', $dati->cellulare, ['placeholder' => 'Cellulare']) }}
+                            <span class="underline"></span>
                         </div>
 
                         @if ($errors->first('telephone'))

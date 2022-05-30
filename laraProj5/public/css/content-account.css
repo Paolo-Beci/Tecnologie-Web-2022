@@ -42,21 +42,27 @@
     justify-content: center;
     align-items: center;
     padding: 50px;
+    border: 0;
+    gap: 25px;
 }
 
-.form-group {
-    width: 100%;
-    border: none;
-    gap: 50px;
+.item {
+    display: flex;
+    flex-direction: column;
 }
 
-/*.underline {*/
-/*    width: 0%;*/
-/*    height: 3px;*/
-/*    background-color: #FFD625;*/
-/*    transform: translateY(2px);*/
-/*    transition: width 0.5s ease-out;*/
-/*}*/
+.label-form {
+    font-weight: bold;
+    gap: 10px;
+}
+
+.underline {
+    width: 0%;
+    height: 3px;
+    background-color: #FFD625;
+    transform: translateY(2px);
+    transition: width 0.5s ease-out;
+}
 
 /* Immagine profilo */
 .img-container {
