@@ -118,10 +118,6 @@
     margin-bottom: 12px;
 }
 
-/*.rs1-wrap-input {
-    width: calc((100% - 30px) / 2);
-}*/
-
 .errors {
     color: #f93d00;
     font-size: 12px;
@@ -131,16 +127,9 @@
     line-height: 100%;
 }
 
-.label-input {
-    /*font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: #555555;
-    line-height: 1.5;*/
-}
-
 .input {
     display: block;
-    width: 90%;
+    width: 100%;
     background: #f2f2f2;
     border-radius: 13px;
     color: #686868;

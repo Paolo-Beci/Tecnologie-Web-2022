@@ -25,9 +25,9 @@ class Admin {
         return Alloggio::all();
     }
 
-    //metodo per tornare un'array di alloggi in base alla tipologia in stats (no paginate per ora)
-    public function getStatsAlloggioByTip($tipologia){
-        return Alloggio::where('tipologia', $tipologia);
+    //metodo per tornare un'array di alloggi in base alla tipologia e alla data in stats (no paginate per ora)
+    public function getStatsAlloggioByTipAndDate($tipologia, $data_init, $data_fin){
+        return Alloggio::where('tipologia', $tipologia)->where('data_inserimento_offerta', '<', $data_fin)->where('data_inserimento_offerta', '>', $data_init)->get();
     }
 
     //da mettere la funzione per le foto

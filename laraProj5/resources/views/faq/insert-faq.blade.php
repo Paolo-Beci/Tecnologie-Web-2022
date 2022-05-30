@@ -47,7 +47,7 @@
 
             {{--div per la domanda--}}
             <div  class="wrap-input  {{--rs1-wrap-input--}}">
-                {{ Form::label('domanda', 'Domanda', ['class' => 'label-input']) }}
+                {{ Form::label('domanda', 'Domanda') }}
                 {{ Form::textarea('domanda', $domanda, ['class' => 'input', 'id' => 'domanda', 'rows' => 3]) }}
                 @if ($errors->first('domanda'))
                     <ul class="errors">
@@ -60,7 +60,7 @@
 
             {{--div per la risposta--}}
             <div  class="wrap-input  {{--rs1-wrap-input--}}">
-                {{ Form::label('risposta', 'Risposta', ['class' => 'label-input']) }}
+                {{ Form::label('risposta', 'Risposta') }}
                 {{ Form::textarea('risposta', $risposta, ['class' => 'input', 'id' => 'risposta', 'rows' => 3]) }}
                 @if ($errors->first('risposta'))
                     <ul class="errors">
@@ -73,13 +73,13 @@
 
             {{--div per la categoria--}}
             <div  class="wrap-input  {{--rs1-wrap-input--}}">
-                {{ Form::label('target', 'Target', ['class' => 'label-input']) }}
+                {{ Form::label('target', 'Target') }}
                 {{ Form::select('target', $tg, $target, ['class' => 'input','id' => 'target']) }}
             </div>
 
             {{--bottone di conferma--}}
             <div class="container-form-btn">
-                {{ Form::submit($azione, ['class' => 'filter_button']) }}
+                {{ Form::submit($azione, ['class' => 'filter_button_home']) }}
             </div>
 
             {{--chiusura form--}}

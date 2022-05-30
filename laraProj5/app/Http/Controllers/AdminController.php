@@ -18,7 +18,7 @@ class AdminController extends Controller {
     public function index() {
         $numOffAll = $this->_adminModel->getOfferteAlloggio();
         $alloggiStats = $this->_adminModel->getStatsAlloggi();
-        
+
         return view('layouts/content-home')
             ->with('numOffAll', $numOffAll)
             ->with('alloggiStats', $alloggiStats);
@@ -122,6 +122,14 @@ class AdminController extends Controller {
     //questa funzione mostra una pagina di conferma operazione andata a buon fine
     public function confirm() {
         return view('faq/confirm');
+    }
+
+    public function getStatsAlloggioByTipAndDate($tipologia, $data_init, $data_fin){
+        
+        $alloggiTipDate = $this->_adminModel->getStatsAlloggioByTipAndDate($tipologia, $data_init, $data_fin);
+        
+        return $alloggiTipDate;
+        
     }
 
     public function showCatalog(){

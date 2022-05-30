@@ -69,6 +69,8 @@ Route::prefix('admin')->group(function () {
         Route::post('/modifica-faq', 'AdminController@modifyFaqStore')->name('modifica-faq.store');
 
         Route::get('/conferma', 'AdminController@confirm')->name('conferma');
+
+        Route::post('/tip/{tipologia}/data_init/{data_init}/data_fin/{data_fin}', 'AdminController@getStatsAlloggioByTipAndDate')->name('getStats');
     });
 
     Route::prefix('catalogo')->group(function () {
