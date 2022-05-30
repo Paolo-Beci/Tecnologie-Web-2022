@@ -53,8 +53,6 @@ Route::prefix('locatario')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminController@index')->name('home-admin');
 
-    Route::get('/account', 'AdminController@showAccount')->name('account-admin');
-
     Route::prefix('gestione-faq')->group(function () {
         Route::get('/', 'AdminController@showFaq')->name('gestione-faq');
 

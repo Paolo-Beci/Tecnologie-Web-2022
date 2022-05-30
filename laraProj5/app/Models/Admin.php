@@ -52,10 +52,4 @@ class Admin {
     public function getAlloggioByTip($tipologia){
         return Alloggio::where('tipologia', $tipologia)->paginate(3);
     }
-
-    public function getDatiPersonali() {
-        $admin = auth()->user()->getAuthIdentifier();
-
-        return DatiPersonali::where('id_dati_personali', $admin)->get();
-    }
 }

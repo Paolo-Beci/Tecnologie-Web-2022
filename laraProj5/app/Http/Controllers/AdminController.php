@@ -149,12 +149,4 @@ class AdminController extends Controller {
         return view('layouts/content-catalogo')
             ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
     }
-
-    // metodo utilizzato per tornare i dettagli dell'account attualmente loggato
-    public function showAccount() {
-        $dati_personali = $this->_adminModel->getDatiPersonali();
-
-        return view('layouts/content-account')
-            ->with('dati_personali', $dati_personali);
-    }
 }
