@@ -18,7 +18,7 @@ class User extends Authenticatable {
      * @var array
      */
     protected $fillable = [
-        'username', 'password',
+        'username', 'password', 'ruolo', 'dati_personali'
     ];
 
     /**
@@ -27,8 +27,10 @@ class User extends Authenticatable {
      * @var array
      */
     protected $hidden = [
-        'username', 'password',
+        // 'username', 'password',
     ];
+
+    public $timestamps = false;
 
     public function hasRole($role) {
         $role = (array)$role;

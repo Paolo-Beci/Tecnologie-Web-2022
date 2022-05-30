@@ -84,7 +84,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 50px;
+    gap: 30px;
     transform: translateY(-513px);
 }
 
@@ -115,15 +115,15 @@
 }
 
 .login label, .sign-up label {
-    transform: translateY(25px);
+    /* transform: translateY(25px); */
     cursor: text;
     margin-left: 3px;
     transition: transform 0.2s ease-out;
 }
 
 .focus {
-    transform: translateY(0px) !important;
-    color: #FFD625 !important;
+    /* transform: translateY(0px) !important; */
+    color: #FFD625;
 }
 
 .login input, .sign-up input {
@@ -159,7 +159,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 25px;
 }
 
 .forgot {
@@ -176,6 +176,13 @@
 
 .forgot:active {
     color: rgb(65, 65, 65);
+}
+
+.role {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .submit {
@@ -221,6 +228,8 @@
     width: 100%;
     list-style: none;
     padding: 0;
+    margin-top: -15px;
+    margin-bottom: -15px;
 }
 
 .errors li {

@@ -81,9 +81,11 @@ Route::prefix('admin')->group(function () {
 });
 
 //AUTENTICAZIONE E REGISTRAZIONE
-Route::get('/registrazione', function () {
-        return view('registrazione-dati-personali');
-})->name('registrazione');
+Route::get('/registrazione-dati-personali', 'GuestController@showRegisterDatiPersonaliGet');
+
+Route::post('/registrazione-dati-personali', 'GuestController@showRegisterDatiPersonaliPost')->name('registrazione-dati-personali');
+
+Route::post('registrazione', 'Auth\RegisterController@register')->name('registrazione');
 
 Route::post('login', 'Auth\LoginController@login')->name('login');
 

@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewUserRequest;
 use App\Models\Guest;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class GuestController extends Controller {
 
     protected $_guestUserModel;
 
     public function __construct() {
-        //$this->middleware('guest');
+        $this->middleware('guest');
         $this->_guestUserModel = new Guest();
     }
 
@@ -48,4 +52,32 @@ class GuestController extends Controller {
         return view('layouts/content-catalogo')
             ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
     }
+
+    protected function showRegisterDatiPersonaliPost(NewUserRequest $request) {
+
+        $array = $request->all();
+
+
+        if(isset($array['sign-up-username'], $array['sign-up-password'], $array['role'])){
+            Session::put('sign-up-username', $array['sign-up-username']);
+            Session::put('sign-up-password', $array['sign-up-password']);
+            Session::put('role', $array['role']);
+        }
+
+        return view('auth/register-dati-personali');
+
+    }
+    
+    protected function showRegisterDatiPersonaliGet(Request $request) {
+
+        $array = $request->all();
+
+        if(Session::has(['sign-up-username', 'sign-up-password', 'role']) ){
+            return view('auth/register-dati-personali');
+        } else {
+            return redirect()->route('home-guest');
+        }
+
+    }
+
 }

@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\Resources\DatiPersonali;
+use App\Models\Resources\User;
+
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -48,14 +53,21 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
+    protected function validator(array $data) {
         return Validator::make($data, [
+            //no profile-picture validation
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'username' => ['required', 'string', 'min:8', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'birthplace' => ['required', 'string', 'max:255'],
+            'birthtime' => ['required', 'date'],
+            //no gender validation
+            'cf' => ['required', 'string', 'min:16', 'max:16'],
+            'city' => ['required', 'string', 'max:255'],
+            'street' => ['required', 'string', 'max:255'],
+            'house-number' => ['required', 'numeric', 'max:1000000'],
+            'cap' => ['required', 'string', 'max:5'],
+            //email validation in regex
+            //telephone validation in regex
         ]);
     }
 
@@ -67,12 +79,39 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $username = Session::get('sign-up-username');
+        $password = Session::get('sign-up-password');
+        $role = Session::get('role');
+
+        Session::forget(['sign-up-username', 'sign-up-password', 'role']);
+
+        $id_dati_personali = DatiPersonali::create([
+            'cellulare' => $data['telephone'],
+            'via' => $data['street'],
+            'citta' => $data['city'],
+            'num_civico' => $data['house-number'],
+            'cap' => $data['cap'],
+            'nome' => $data['name'],
+            'cognome' => $data['surname'],
+            'data_nascita' => $data['birthtime'],
+            'luogo_nascita' => $data['birthplace'],
+            'sesso' => $data['gender'],
+            'mail' => $data['email'],
+            'codice_fiscale' => $data['cf']
+        ])->id_dati_personali;
+
         return User::create([
-            'name' => $data['name'],
-            'surname' => $data['surname'],
-            'email' => $data['email'],
-            'username' => $data['username'],
-            'password' => Hash::make($data['password']),
+            'username' => $username,
+            'password' => Hash::make($password),
+            'ruolo' => $role,
+            'dati_personali' => $id_dati_personali
         ]);
+
     }
+
+    protected function registered(Request $request, $user) {
+        Auth::logout();
+    }
+
 }
