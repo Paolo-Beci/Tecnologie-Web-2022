@@ -38,6 +38,10 @@ button {
     font-size: 15px;
 }
 
+input[type="radio"] {
+    cursor: pointer;
+}
+
 /* Regole paginator */
 .pagination {
     height: fit-content;

@@ -59,7 +59,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
             'birthplace' => ['required', 'string', 'max:255'],
-            'birthtime' => ['required', 'date'],
+            'birthtime' => ['required', 'date', 'before:-18 years'],
             //no gender validation
             'cf' => ['required', 'string', 'min:16', 'max:16'],
             'city' => ['required', 'string', 'max:255'],

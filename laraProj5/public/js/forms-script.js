@@ -1,10 +1,10 @@
-$("form input").on("focus", function(){
+$("fieldset input").on("focus", function(){
     $(this).prev().addClass("focus");
     $(this).next().addClass("expand");
     $(".sign-up").addClass("test")
 });
 
-$("form input").on("blur", function(){
+$("fieldset input").on("blur", function(){
     if(this.value == "") {
         $(this).prev().removeClass("focus");
         $(this).next().removeClass("expand");

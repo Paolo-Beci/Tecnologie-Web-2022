@@ -21,7 +21,9 @@ return [
     'alpha_dash'           => "':attribute' può contenere solamente lettere, numeri e trattini.",
     'alpha_num'            => "':attribute' può contenere solamente lettere e numeri.",
     'array'                => "':attribute' deve essere un array.",
-    'before'               => "':attribute' deve essere una data antecedente a :date.",
+    // 'before'               => "':attribute' deve essere una data antecedente a :date.",
+    //Usiamo before solo per controllare che un utente registrato sia maggiorenne, quindi
+    'before'               => "Per registrarsi bisogna aver compiuto 18 anni.",
     'before_or_equal'      => "':attribute' deve essere una data antecedente o uguale a :date.",
     'between'              => [
         'numeric' => "':attribute' deve essere compreso tra :min e :max.",
