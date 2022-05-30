@@ -37,8 +37,8 @@ class AdminController extends Controller {
 
         $tg = ['locatore'=>'locatore', 'locatario'=>'locatario', 'utente non registrato'=>'utente non registrato'];
         return view('faq/insert-faq')
-            ->with('navbar', 'Inserisci')
-            ->with('rotta_navbar', 'inserisci-faq')
+            ->with('insert', 'active')
+            ->with('edit', '')
             ->with('descrizione', 'Utilizza questa form per inserire una nuova faq')
             ->with('rotta', 'inserisci-faq.store')
             ->with('tg', $tg)
@@ -92,8 +92,8 @@ class AdminController extends Controller {
 
         $tg = ['locatore'=>'locatore', 'locatario'=>'locatario', 'utente non registrato'=>'utente non registrato'];
         return view('faq/insert-faq')
-            ->with('navbar', 'Modifica')
-            ->with('rotta_navbar', 'modifica-faq')
+            ->with('insert', '')
+            ->with('edit', 'active')
             ->with('descrizione', 'Utilizza questa form per modificare la faq selezionata')
             ->with('rotta', 'modifica-faq.store')
             ->with('tg', $tg)

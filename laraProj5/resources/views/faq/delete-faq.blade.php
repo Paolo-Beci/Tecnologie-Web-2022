@@ -23,7 +23,16 @@
     <nav>
         <ul class="menu">
             <li>
-                <a class="" href="{{ route('cancella-faq') }}">Cancella</a>
+                <a class="" href="{{ route('gestione-faq') }}">Home</a>
+            </li>
+            <li>
+                <a class="" href="{{ route('inserisci-faq') }}" title="Inserisci Faq">Inserisci</a>
+            </li>
+            <li>
+                <a class="" href="{{ route('modifica-faq') }}" title="Modifica Faq">Modifica</a>
+            </li>
+            <li>
+                <a class="active" href="{{ route('cancella-faq') }}">Cancella</a>
             </li>
             <li>
                 <!-- TO DO -->
