@@ -68,9 +68,7 @@ class GuestController extends Controller {
 
     }
     
-    protected function showRegisterDatiPersonaliGet(Request $request) {
-
-        $array = $request->all();
+    protected function showRegisterDatiPersonaliGet() {
 
         if(Session::has(['sign-up-username', 'sign-up-password', 'role']) ){
             return view('auth/register-dati-personali');

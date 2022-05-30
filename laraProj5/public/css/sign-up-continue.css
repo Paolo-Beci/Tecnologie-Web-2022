@@ -32,7 +32,7 @@ body {
 }
 
 [data-step="0"] {
-    height: 600px;
+    height: 450px;
 }
 
 [data-step="1"] {
@@ -87,14 +87,6 @@ body {
 .underline-active::after {
     width: 100%;
     transition: width 0.5s ease-out;
-}
-
-.profile {
-    width: 75px;
-    height: 75px;
-    padding: 3px;
-    border: 1px solid #888;
-    border-radius: 50%;
 }
 
 .gender {
