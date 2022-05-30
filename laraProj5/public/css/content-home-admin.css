@@ -53,21 +53,20 @@
 /*regole css per il contenitore di tutti risultati dei filtri admin*/
 .results_container {
     width: 150%;
-    display: flex;
     justify-content: center;
     align-items: center;
-    /*flex-wrap: wrap;*/
     gap: 40px;
     margin: 0 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 350px);
+    grid-gap: 1em;
 }
 
 /*regole css per ogni article che rappresenta un risultato*/
 .result {
-    /*height: 375px;*/
-    width: 600px;
+    width: 300px;
     padding: 15px;
     border-radius: 20px;
-    /*border-top-right-radius: 100px;*/
     box-shadow: 5px 5px 5px 5px #c6c6c6;
 }
 
