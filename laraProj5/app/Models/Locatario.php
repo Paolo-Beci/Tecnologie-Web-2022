@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use App\Models\Resources\Alloggio;
+use App\Models\Resources\DatiPersonali;
 use App\Models\Resources\Disponibilita;
 use App\Models\Resources\Faq;
 use App\Models\Resources\Foto;
+use App\Models\Resources\User;
 use Illuminate\Support\Facades\DB;
 
 class Locatario {
@@ -36,5 +38,11 @@ class Locatario {
     public function getServiziAlloggio($id_alloggio)
     {
         return Disponibilita::where('alloggio', $id_alloggio)->get();
+    }
+
+    public function getDatiPersonali() {
+        $locatario = auth()->user()->getAuthIdentifier();
+
+        return DatiPersonali::where('id_dati_personali', $locatario)->get();
     }
 }

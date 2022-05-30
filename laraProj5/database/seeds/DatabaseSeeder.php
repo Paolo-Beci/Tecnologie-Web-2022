@@ -42,10 +42,10 @@ class DatabaseSeeder extends Seeder {
         ]);
 
         DB::table('posto_letto')->insert([
-            ['id_posto_letto' => 1, 'tipologia' => 2, 'angolo_studio' => 1, 'alloggio' => 2],
-            ['id_posto_letto' => 2, 'tipologia' => 1, 'angolo_studio' => 1, 'alloggio' => 3],
-            ['id_posto_letto' => 3, 'tipologia' => 2, 'angolo_studio' => 1, 'alloggio' => 5],
-            ['id_posto_letto' => 4, 'tipologia' => 1, 'angolo_studio' => 1, 'alloggio' => 6],
+            ['id_posto_letto' => 1, 'tipologia' => 2, 'alloggio' => 2],
+            ['id_posto_letto' => 2, 'tipologia' => 1, 'alloggio' => 3],
+            ['id_posto_letto' => 3, 'tipologia' => 2, 'alloggio' => 5],
+            ['id_posto_letto' => 4, 'tipologia' => 1, 'alloggio' => 6],
         ]);
 
         DB::table('servizio')->insert([
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder {
             ['nome_servizio' => 'Giardino'],
             ['nome_servizio' => 'AriaCondizionata'],
             ['nome_servizio' => 'WiFi'],
-            ['nome_servizio' => 'AngoloStudio'],    /* da eliminare se esiste già in posto_letto */
+            ['nome_servizio' => 'AngoloStudio'],
         ]);
 
         DB::table('foto')->insert([
@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder {
         ]);
 
         DB::table('interazione')->insert([
-            ['utente' => 1, 'alloggio' => 1, 'data_interazione' => now()],
+            ['utente' => 1, 'alloggio' => 1, 'data_interazione' => now()],   /* data_interazione si intende come data di effettiva conclusione del contratto d'affitto? */
             ['utente' => 2, 'alloggio' => 1, 'data_interazione' => now()],
             ['utente' => 1, 'alloggio' => 2, 'data_interazione' => now()],
             ['utente' => 2, 'alloggio' => 2, 'data_interazione' => now()],

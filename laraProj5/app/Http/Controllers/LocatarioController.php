@@ -23,6 +23,7 @@ class LocatarioController extends Controller {
             ->with('faq', $faq); //la variabile faq (array) viene passata alla view
     }
 
+    // metodo utilizzato per tornare gli alloggi in catalogo
     public function showCatalog(){
 
         $alloggi = $this->_locatarioModel->getAlloggi();
@@ -32,6 +33,7 @@ class LocatarioController extends Controller {
 
     }
 
+    // metodo utilizzato per tornare gli appartamenti in catalogo
     public function showCatalogAppartamenti(){
 
         $alloggi = $this->_locatarioModel->getAlloggioByTip('Appartamento');
@@ -41,6 +43,7 @@ class LocatarioController extends Controller {
 
     }
 
+    // metodo utilizzato per tornare i posti letto in catalogo
     public function showCatalogPostiLetto(){
 
         $alloggi = $this->_locatarioModel->getAlloggioByTip('Posto letto');
@@ -49,6 +52,7 @@ class LocatarioController extends Controller {
             ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
     }
 
+    // metodo utilizzato per tornare i dettagli dell'alloggio selezionato in catalogo
     public function showDettaglioAlloggio($id_alloggio){
         $alloggio = $this->_locatarioModel->getAlloggio($id_alloggio);
         $foto = $this->_locatarioModel->getFotoAlloggio($id_alloggio);
@@ -59,5 +63,13 @@ class LocatarioController extends Controller {
             ->with('alloggio', $alloggio)
             ->with('foto', $foto)
             ->with('servizi', $servizi);
+    }
+
+    // metodo utilizzato per tornare i dettagli dell'account attualmente loggato
+    public function showAccount() {
+        $dati_personali = $this->_locatarioModel->getDatiPersonali();
+
+        return view('layouts/content-account')
+            ->with('dati_personali', $dati_personali);
     }
 }

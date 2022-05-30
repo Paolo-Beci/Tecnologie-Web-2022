@@ -8,10 +8,3 @@
 <li>
     <a href="{{route('catalogo-admin')}}" title="Vai al catalogo annunci">Visualizza annunci</a>
 </li>
-<li>
-    <!-- TO DO -->
-    <button class="bottone_profilo" href="#profilo">
-        <img src="{{asset('images/user_icon.png')}}" alt="User Logo" width="10%" style="vertical-align:middle;horiz-align:left">
-        {{Auth::user()->username}}
-    </button>
-</li>

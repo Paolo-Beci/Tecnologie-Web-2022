@@ -13,8 +13,6 @@
             <h1>Dati personali</h1>
             <fieldset class="form-group">
 
-                <img class="profile" src="{{asset('images/profile-default.png')}}" alt="Foto profilo default">
-                {{Form::file('profile-picture')}}
                 <div class="underline">
                     {{ Form::text('name', '', ['placeholder' => 'Nome']) }}
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Resources\Alloggio;
+use App\Models\Resources\DatiPersonali;
 use App\Models\Resources\Faq;
 
 class Admin {

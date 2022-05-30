@@ -19,6 +19,10 @@ Route::get('/', 'GuestController@index')->name('home-guest');
 Route::prefix('locatore')->group(function () {
     Route::get('/', 'LocatoreController@index')->name('home-locatore');
 
+    Route::get('/gestione-alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione-alloggi');
+
+    Route::get('/account', 'LocatoreController@showAccount')->name('account-locatore');
+
     Route::prefix('catalogo')->group(function () {
         Route::get('/', 'LocatoreController@showCatalog')->name('catalogo-locatore');
 
@@ -26,13 +30,13 @@ Route::prefix('locatore')->group(function () {
 
         Route::get('/posti-letto', 'LocatoreController@showCatalogPostiLetto')->name('catalogo-posti-letto');
     });
-
-    Route::get('/gestione-alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione-alloggi')->middleware('can:isLocatore');
 });
 
 //LOCATARIO
 Route::prefix('locatario')->group(function () {
     Route::get('/', 'LocatarioController@index')->name('home-locatario');
+
+    Route::get('/account', 'LocatarioController@showAccount')->name('account-locatario');
 
     Route::prefix('catalogo')->group(function () {
         Route::get('/', 'LocatarioController@showCatalog')->name('catalogo-locatario');
@@ -93,6 +97,8 @@ Route::post('login', 'Auth\LoginController@login')->name('login');
 
 Route::post('logout', 'Auth\LoginController@logout')
         ->name('logout');
+
+Route::post('modifica-dati', 'Auth\ModifyController@modify')->name('modifica-dati');   // TO DO
 
 
 //CATALOGO
