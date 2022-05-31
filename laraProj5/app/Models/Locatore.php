@@ -35,19 +35,13 @@ class Locatore {
             ->paginate(3);
     }
 
-    public function getDatiPersonali(){
-        $locatore = auth()->user()->getAuthIdentifier();
-
-        return DatiPersonali::where('id_dati_personali', $locatore);
-    }
-
-    //metodo al posto del precedente
-    public function getDatiPersonali2() {
+    // metodo per tornare i dati di un locatore
+    public function getDatiLocatore(){
         $locatore = auth()->user()->getAuthIdentifier();
 
         return DB::table('utente')
+            ->where('id', $locatore)
             ->join('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
-            ->where('id_dati_personali', $locatore)
             ->get();
     }
 }

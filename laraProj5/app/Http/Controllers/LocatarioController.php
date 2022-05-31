@@ -53,7 +53,7 @@ class LocatarioController extends Controller {
     }
 
     // metodo utilizzato per tornare i dettagli dell'alloggio selezionato in catalogo
-    public function showDettaglioAlloggio($id_alloggio){
+    public function showDettaglioAlloggio2($id_alloggio){
         $alloggio = $this->_locatarioModel->getAlloggio($id_alloggio);
         $foto = $this->_locatarioModel->getFotoAlloggio($id_alloggio);
         $servizi = $this->_locatarioModel->getServiziAlloggio($id_alloggio);
@@ -66,7 +66,7 @@ class LocatarioController extends Controller {
     }
 
     //metodo sostitutivo del precedente
-    public function showDettaglioAlloggio2($id_alloggio, $tipologia){
+    public function showDettaglioAlloggio($id_alloggio, $tipologia){
         $info_generali = $this->_locatarioModel->getAlloggio($id_alloggio, $tipologia);
 
         return view('layouts/dettagli-alloggio')
@@ -75,7 +75,7 @@ class LocatarioController extends Controller {
 
     // metodo utilizzato per tornare i dettagli dell'account attualmente loggato
     public function showAccount() {
-        $dati_personali = $this->_locatarioModel->getDatiPersonali();
+        $dati_personali = $this->_locatarioModel->getDatiLocatario();
 
         return view('layouts/content-account')
             ->with('dati_personali', $dati_personali);
