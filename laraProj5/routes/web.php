@@ -47,7 +47,7 @@ Route::prefix('locatario')->group(function () {
 
         Route::get('/posti-letto', 'LocatarioController@showCatalogPostiLetto')->name('catalogo-posti-letto');
 
-        Route::get('/dettagli-alloggio/{id_alloggio}/{tipologia_alloggio}', 'LocatarioController@showDettaglioAlloggio2')->name('dettagli-alloggio');
+        Route::get('/dettagli-alloggio/{id_alloggio?}/{tipologia_alloggio?}', 'LocatarioController@showDettaglioAlloggio2')->name('dettagli-alloggio');
     });
 });
 
