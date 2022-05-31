@@ -25,6 +25,7 @@
         </div>
     </div>
 @endcan
+@cannot('isLocatario')
     <div class="alloggio" id="accedi" data-popup-caller>
         <img class="item-immagine" src="{{ asset('images_case/'.$alloggio->alloggioFoto()->first()->id_foto.$alloggio->alloggioFoto()->first()->estensione) }}" alt="Immagine">
         <div>
@@ -49,4 +50,5 @@
             <h2 class="info-alloggio">{{ $alloggio->descrizione }}</h2> <!-- Descrizione -->
         </div>
     </div>
+@endcannot
 </article>

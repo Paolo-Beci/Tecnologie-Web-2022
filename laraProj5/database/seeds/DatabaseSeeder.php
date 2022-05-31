@@ -42,10 +42,10 @@ class DatabaseSeeder extends Seeder {
         ]);
 
         DB::table('posto_letto')->insert([
-            ['id_posto_letto' => 1, 'tipologia' => 2, 'alloggio' => 2],
-            ['id_posto_letto' => 2, 'tipologia' => 1, 'alloggio' => 3],
-            ['id_posto_letto' => 3, 'tipologia' => 2, 'alloggio' => 5],
-            ['id_posto_letto' => 4, 'tipologia' => 1, 'alloggio' => 6],
+            ['id_posto_letto' => 1, 'tipologia_stanza' => 2, 'alloggio' => 2],
+            ['id_posto_letto' => 2, 'tipologia_stanza' => 1, 'alloggio' => 3],
+            ['id_posto_letto' => 3, 'tipologia_stanza' => 2, 'alloggio' => 5],
+            ['id_posto_letto' => 4, 'tipologia_stanza' => 1, 'alloggio' => 6],
         ]);
 
         DB::table('servizio')->insert([
