@@ -13,7 +13,6 @@
                     <h1>Ciao {{$dati->nome}} {{$dati->cognome}} !<br> Questa è la tua area privata!</h1>
                     <p style="margin-top: 10px"> Puoi visualizzare e modificare i tuoi dati personali </p>
                     <div class="img-container">
-
                         <img src="{{asset('images_profilo/no_image.png')}}" alt="immagine profilo" class="img-profilo">
                     </div>
                 </section>

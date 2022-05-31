@@ -16,7 +16,12 @@
 
             <div class="testo-alloggio">
                 <div class="item-desc">
-                    <h1>{{$info_generali->first()->tipologia}}  {{$info_generali->first()->via}}
+                    @if($info_generali->first()->tipologia == 'Appartamento')
+                        <h1>{{$info_generali->first()->tipologia}}</h1>
+                    @else
+                        <h1>Posto letto</h1>
+                    @endif
+                    <h1>{{$info_generali->first()->via}}
                         , {{$info_generali->first()->num_civico}}
                         , {{$info_generali->first()->citta}} {{$info_generali->first()->cap}}<br>
                         Piano: {{$info_generali->first()->piano}} Interno: {{$info_generali->first()->interno}}</h1>
@@ -35,6 +40,15 @@
                             <p>Numero di posti letto totali: NON SPECIFICATO</p>
                         @else
                             <p>Numero di posti letto totali: {{$info_generali->first()->num_posti_letto_tot}}</p>
+                        @endif
+                        @if($info_generali->first()->tipologia == 'Appartamento')
+                            <p>Numero di camere: {{$info_generali->first()->num_camere}}</p>
+                        @elseif($info_generali->first()->tipologia == 'Posto_letto')
+                            @if($info_generali->first()->tipologia_stanza == 2)
+                                <p>Tipologia di camera: <i class="icon fa-solid fa-user-group"></i>Doppia</p>
+                            @elseif($info_generali->first()->tipologia_stanza == 1)
+                                <p>Tipologia di camera: <i class="icon fa-solid fa-user"></i>Singola</p>
+                            @endif
                         @endif
                     </div>
                     <div class="item-desc">
@@ -84,16 +98,25 @@
             <div class="contatto-alloggio">
                 <h2>Contatti host</h2>
                 <div class="img-contatto">
-                    <p>Immagine</p>
+                    <img src="{{asset('images_profilo/no_image.png')}}" alt="immagine profilo" class="img-profilo">
                 </div>
                 <div class="info-contatto">
-                    <p class="item-desc">Nome - Cognome - username</p>
-                    <p class="item-desc fa-solid fa-envelope">Mail</p><br>
-                    <p class="item-desc fa-solid fa-phone">Telefono</p>
+                    <p class="item-desc">{{$info_generali->first()->nome}} {{$info_generali->first()->cognome}} - {{$info_generali->first()->username}}</p>
+                    <p class="item-desc"><i class="icon fa-solid fa-envelope"></i>{{$info_generali->first()->mail}}</p>
+                    <p class="item-desc"><i class="icon fa-solid fa-phone"></i>{{$info_generali->first()->cellulare}}</p>
                 </div>
-                <button class="filter_button" type="submit" onclick=alert('Inviato!')>Comunicagli il tuo
-                    interesse!
-                </button>
+                <div class="btn-contatto">
+                    <button class="filter_button" type="submit" onclick=alert('Inviato!')>
+                        Comunicagli il tuo interesse!
+                    </button>
+                </div>
+                <div class="btn-contatto">
+                    <a href="#vista-messaggistica-di-locatore-corrispondente">
+                        <button class="filter_button" type="submit">
+                            Inizia una chat!
+                        </button>
+                    </a>
+                </div>
             </div>
             <div class="mappa-alloggio">
                 <iframe width="600" height="500" id="gmap_canvas" loading="lazy" allowfullscreen
