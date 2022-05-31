@@ -16,18 +16,27 @@ class AdminController extends Controller {
     }
 
     public function index() {
+
+        //per offerte di alloggio
         $numOffAll = $this->_adminModel->getNumOfferteAlloggio();
         $offAll = $this->_adminModel->getOfferteAlloggio();
-        
+
+        //per offerte di locazione
+        $numOffLoc = $this->_adminModel->getNumOfferteLocazione();
+        $offLoc = $this->_adminModel->getOfferteLocazione();
+
+        //per alloggi allocati
         $numAllAllocati = $this->_adminModel->getNumAlloggiAllocati();
         $allAllocati = $this->_adminModel->getAlloggiAllocati();
 
         return view('layouts/content-home')
             ->with('numOffAll', $numOffAll)
             ->with('offAll', $offAll)
+            ->with('numOffLoc', $numOffLoc)
+            ->with('offLoc', $offLoc)
             ->with('numAllAllocati', $numAllAllocati)
             ->with('allAllocati', $allAllocati);
-        //mancano i with relativi al secondo campo delle stats e quelli relativi ad appartamenti e posti letto
+        //mancano i with relativi ad appartamenti e posti letto
     }
 
     public function showFaq() {

@@ -38,9 +38,20 @@ class Admin {
 
     //da mettere la funzione per le foto
 
-    //metodo per ritornare il numero di offerte di locazione
+    //metodo per ritornare le istanze di offerte di locazione (alloggi che interessano, tramite messaggio, a qualcuno)
     public function getOfferteLocazione(){
+        return DB::table('messaggio')
+            ->join('alloggio', 'messaggio.alloggio', '=', 'alloggio.id_alloggio')
+            ->join('utente', 'messaggio.mittente', '=', 'utente.id')
+            ->where('messaggio.contenuto', '=', 'Ciao, ho visto la casa e sono interessato')
+            ->get();
+    }
 
+    //metodo per ritornare il numero di offerte di locazione
+    public function getNumOfferteLocazione(){
+        return DB::table('messaggio')
+            ->where('messaggio.contenuto', '=', 'Ciao, ho visto la casa e sono interessato')
+            ->count();
     }
 
     //metodo per ritornare le istanze di alloggi allocati con il locatario
@@ -48,7 +59,7 @@ class Admin {
         return DB::table('interazione')
             ->join('utente', 'interazione.utente', 'utente.id')
             ->join('alloggio', 'interazione.alloggio', 'alloggio.id_alloggio')
-            ->where('utente.ruolo', 'locatario')
+            ->where('utente.ruolo', '=', 'locatario')
             ->get();
     }
 

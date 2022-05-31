@@ -4,15 +4,15 @@
         <h1 class="titolo">Statistiche</h1>
         <div class="stats-container">
             <article class="stats">
-                <a class="indicazione" href="#1">Offerte di alloggio</a>
+                <a title="Numero di alloggi presenti sul mercato" class="indicazione" href="#1">Offerte di alloggio</a>
                 <p>{{$numOffAll}}</p>
             </article>
             <article class="stats">
-                <a class="indicazione" href="#2">Offerte di locazione</a>
-                <p>27</p>
+                <a title="Numero di alloggi a cui qualcuno è interessato" class="indicazione" href="#2">Offerte di locazione</a>
+                <p>{{$numOffLoc}}</p>
             </article>
             <article class="stats">
-                <a class="indicazione" href="#3">Alloggi locati</a>
+                <a title="Numero di alloggi allocati" class="indicazione" href="#3">Alloggi locati</a>
                 <p>{{$numAllAllocati}}</p>
             </article>
         </div>
@@ -54,24 +54,6 @@
                 {{--chiusura form--}}
                 {{ Form::close() }}
             </div>
-
-            {{--<div>
-                <label for="da">Da</label>
-                <input type="datetime-local" step="1" id="da">
-                <label for="a">A</label>
-                <input type="datetime-local" step="1" id="a">
-            </div>
-            <div>
-                <label>Tipologia di alloggio
-                    <select name="type" id="type_id">
-                        <option>Appartamento
-                        <option>Posto letto
-                    </select>
-                </label>
-            </div>
-            <div>
-                <button class="filter_button" type="submit" onclick={{!!route('conferma')}}>Filtra</button>
-            </div>--}}
 
             {{--sezione javascript--}}
             <script>
@@ -145,36 +127,19 @@
                 {{--chiusura form--}}
                 {{ Form::close() }}
             </div>
-            {{--<div>
-                <label for="da2">Da</label>
-                <input type="datetime-local" id="da2">
-                <label for="a2">A</label>
-                <input type="datetime-local" id="a2">
-            </div>
-            <div>
-                <label>Tipologia di alloggio
-                    <select name="type2">
-                        <option>Appartamento
-                        <option>Posto letto
-                    </select>
-                </label>
-            </div>
-            <div>
-                <button class="filter_button" type="submit" onclick=alert('WorkInProgress')>Filtra</button>
-            </div>--}}
             <div class="results_container">
-                <article class="result">
-                    <div class="content">
-                        <img class="img_result" src="{{asset('images_case/1.jpg')}}" alt="Alloggio 1">
-                        <h2>Milano, Via Giuseppe Rossi 2, interno 1 </h2>
-                    </div>
-                </article>
-                <article class="result">
-                    <div class="content">
-                        <img class="img_result" src="{{asset('images_case/2.jpg')}}" alt="Alloggio 1">
-                        <h2>Firenze, Via Dante Alighieri 18, interno 3 </h2>
-                    </div>
-                </article>
+                @isset($offLoc)
+                    @foreach($offLoc as $alloggio)
+                        <article class="result">
+                            <div class="content">
+                                <img class="img_result" src="{{asset('images_case/5.jpg')}}" alt="Alloggio 1">
+                                <h2>{{$alloggio->citta}}, {{$alloggio->via}} {{$alloggio->num_civico}}</h2>
+                                <p>Interessato: {{$alloggio->mittente}}</p>
+                                <a class="dettagli_locatore" title="Clicca qui per informazioni sul locatore" href="#id_result">Id alloggio: {{$alloggio->id_alloggio}}</a>
+                            </div>
+                        </article>
+                    @endforeach
+                @endisset
             </div>
         </div>
     </section>
@@ -216,37 +181,6 @@
                 {{--chiusura form--}}
                 {{ Form::close() }}
             </div>
-            {{--<div>
-                <label for="da3">Da</label>
-                <input type="datetime-local" id="da3">
-                <label for="a3">A</label>
-                <input type="datetime-local" id="a3">
-            </div>
-            <div>
-                <label>Tipologia di alloggio
-                    <select name="type3">
-                        <option>Appartamento
-                        <option>Posto letto
-                    </select>
-                </label>
-            </div>
-            <div>
-                <button class="filter_button" type="submit" onclick=alert('WorkInProgress')>Filtra</button>
-            </div>--}}
-            {{--<div class="results_container">
-                <article class="result">
-                    <div class="content">
-                        <img class="img_result" src="{{asset('images_case/3.jpg')}}" alt="Alloggio 1">
-                        <h2>Ancona, Via Colleverde 18, interno 4 </h2>
-                    </div>
-                </article>
-                <article class="result">
-                    <div class="content">
-                        <img class="img_result" src="{{asset('images_case/4.jpg')}}" alt="Alloggio 1">
-                        <h2>Torino, Via della Mole 10, interno 8 </h2>
-                    </div>
-                </article>
-            </div>--}}
             <div class="results_container">
                 @isset($allAllocati)
                     @foreach($allAllocati as $alloggio)
