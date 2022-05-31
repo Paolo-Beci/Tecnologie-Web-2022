@@ -55,7 +55,7 @@
                         <p class="question">{!!$singleFaq->target!!}</p>
                     </div>
                     <div class="icona">
-                        <a class="click" href="{{ route('cancella-faq.store', [$singleFaq->id_faq]) }}"><img src="{{asset('images/icons_cestino.png')}}" alt="Modifica"/></a>
+                        <a class="click" onclick="return confirm('Sei sicuro di voler proseguire?')" href="{{ route('cancella-faq.store', [$singleFaq->id_faq]) }}"><img src="{{asset('images/icons_cestino.png')}}" alt="Modifica"/></a>
                     </div>
                 </article>
             @endforeach

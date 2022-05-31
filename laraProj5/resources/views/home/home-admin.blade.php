@@ -78,7 +78,7 @@
                     @foreach($offAll as $alloggio)
                         <article class="result">
                             <div class="content">
-                                <img class="img_result" src="{{asset('images_case/5.jpg')}}" alt="Alloggio 1">
+                                <img class="img_result" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Foto alloggio">
                                 <h2>{{$alloggio->citta}}, {{$alloggio->via}} {{$alloggio->num_civico}}</h2>
                                 <p>Locatore: {{$alloggio->username}}</p>
                                 <p>Id alloggio: {{$alloggio->id_alloggio}}</p>
@@ -132,7 +132,7 @@
                     @foreach($offLoc as $alloggio)
                         <article class="result">
                             <div class="content">
-                                <img class="img_result" src="{{asset('images_case/5.jpg')}}" alt="Alloggio 1">
+                                <img class="img_result" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Foto alloggio">
                                 <h2>{{$alloggio->citta}}, {{$alloggio->via}} {{$alloggio->num_civico}}</h2>
                                 <p>Interessato: {{$alloggio->username}}</p>
                                 <a class="dettagli_locatore" title="Clicca qui per informazioni sul locatore" href="#id_result">Id alloggio: {{$alloggio->id_alloggio}}</a>
@@ -186,7 +186,7 @@
                     @foreach($allAllocati as $alloggio)
                         <article class="result">
                             <div class="content">
-                                <img class="img_result" src="{{asset('images_case/5.jpg')}}" alt="Alloggio 1">
+                                <img class="img_result" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Foto alloggio">
                                 <h2>{{$alloggio->citta}}, {{$alloggio->via}} {{$alloggio->num_civico}}</h2>
                                 <p>Locatario: {{$alloggio->username}}</p>
                                 <a class="dettagli_locatore" title="Clicca qui per informazioni sul locatore" href="#id_result">Id alloggio: {{$alloggio->id_alloggio}}</a>

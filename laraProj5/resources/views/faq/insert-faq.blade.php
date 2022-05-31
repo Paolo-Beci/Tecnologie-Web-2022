@@ -88,7 +88,7 @@
 
             {{--bottone di conferma--}}
             <div class="container-form-btn">
-                {{ Form::submit($azione, ['class' => 'filter_button_home']) }}
+                {{ Form::submit($azione, ['class' => 'filter_button_home', 'onclick' => "return confirm('Sei sicuro di voler proseguire?')"]) }}
             </div>
 
             {{--chiusura form--}}
