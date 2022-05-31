@@ -27,6 +27,7 @@ class Admin {
         return DB::table('alloggio')
             ->join('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
             ->join('utente', 'interazione.utente', '=', 'utente.id')
+            ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('utente.ruolo', 'locatore')
             ->get();
     }
@@ -36,13 +37,12 @@ class Admin {
         return Alloggio::where('tipologia', $tipologia)->where('data_inserimento_offerta', '<', $data_fin)->where('data_inserimento_offerta', '>', $data_init)->get();
     }
 
-    //da mettere la funzione per le foto
-
     //metodo per ritornare le istanze di offerte di locazione (alloggi che interessano, tramite messaggio, a qualcuno)
     public function getOfferteLocazione(){
         return DB::table('messaggio')
             ->join('alloggio', 'messaggio.alloggio', '=', 'alloggio.id_alloggio')
             ->join('utente', 'messaggio.mittente', '=', 'utente.id')
+            ->join('foto', 'messaggio.alloggio', '=', 'foto.alloggio')
             ->where('messaggio.contenuto', '=', 'Ciao, ho visto la casa e sono interessato')
             ->get();
     }
@@ -59,6 +59,7 @@ class Admin {
         return DB::table('interazione')
             ->join('utente', 'interazione.utente', 'utente.id')
             ->join('alloggio', 'interazione.alloggio', 'alloggio.id_alloggio')
+            ->join('foto', 'interazione.alloggio', '=', 'foto.alloggio')
             ->where('utente.ruolo', '=', 'locatario')
             ->get();
     }
