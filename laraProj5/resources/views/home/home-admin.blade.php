@@ -134,7 +134,7 @@
                             <div class="content">
                                 <img class="img_result" src="{{asset('images_case/5.jpg')}}" alt="Alloggio 1">
                                 <h2>{{$alloggio->citta}}, {{$alloggio->via}} {{$alloggio->num_civico}}</h2>
-                                <p>Interessato: {{$alloggio->mittente}}</p>
+                                <p>Interessato: {{$alloggio->username}}</p>
                                 <a class="dettagli_locatore" title="Clicca qui per informazioni sul locatore" href="#id_result">Id alloggio: {{$alloggio->id_alloggio}}</a>
                             </div>
                         </article>
