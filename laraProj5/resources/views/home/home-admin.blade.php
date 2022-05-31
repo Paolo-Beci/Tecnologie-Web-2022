@@ -13,7 +13,7 @@
             </article>
             <article class="stats">
                 <a class="indicazione" href="#3">Alloggi locati</a>
-                <p>83</p>
+                <p>{{$numAllAllocati}}</p>
             </article>
         </div>
         <div id="1" class="loader">
@@ -91,13 +91,15 @@
 
             </script>
 
-            <div class="results_container">
-                @isset($alloggiStats)
-                    @foreach($alloggiStats as $alloggio)
+            <div id="id_result" class="results_container">
+                @isset($offAll)
+                    @foreach($offAll as $alloggio)
                         <article class="result">
                             <div class="content">
                                 <img class="img_result" src="{{asset('images_case/5.jpg')}}" alt="Alloggio 1">
                                 <h2>{{$alloggio->citta}}, {{$alloggio->via}} {{$alloggio->num_civico}}</h2>
+                                <p>Locatore: {{$alloggio->username}}</p>
+                                <p>Id alloggio: {{$alloggio->id_alloggio}}</p>
                             </div>
                         </article>
                     @endforeach
@@ -231,7 +233,7 @@
             <div>
                 <button class="filter_button" type="submit" onclick=alert('WorkInProgress')>Filtra</button>
             </div>--}}
-            <div class="results_container">
+            {{--<div class="results_container">
                 <article class="result">
                     <div class="content">
                         <img class="img_result" src="{{asset('images_case/3.jpg')}}" alt="Alloggio 1">
@@ -244,6 +246,20 @@
                         <h2>Torino, Via della Mole 10, interno 8 </h2>
                     </div>
                 </article>
+            </div>--}}
+            <div class="results_container">
+                @isset($allAllocati)
+                    @foreach($allAllocati as $alloggio)
+                        <article class="result">
+                            <div class="content">
+                                <img class="img_result" src="{{asset('images_case/5.jpg')}}" alt="Alloggio 1">
+                                <h2>{{$alloggio->citta}}, {{$alloggio->via}} {{$alloggio->num_civico}}</h2>
+                                <p>Locatario: {{$alloggio->username}}</p>
+                                <a class="dettagli_locatore" title="Clicca qui per informazioni sul locatore" href="#id_result">Id alloggio: {{$alloggio->id_alloggio}}</a>
+                            </div>
+                        </article>
+                    @endforeach
+                @endisset
             </div>
         </div>
     </section>

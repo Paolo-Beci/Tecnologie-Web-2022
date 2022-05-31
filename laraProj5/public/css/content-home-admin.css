@@ -230,3 +230,9 @@
     justify-content: center;
     margin-top: 30px;
 }
+
+/*regole css per l'ancora che visualizza info sul locatore in stats admin*/
+.dettagli_locatore:hover {
+    color: rgb(255, 214, 37);
+    text-decoration: underline rgb(255, 214, 37);
+}

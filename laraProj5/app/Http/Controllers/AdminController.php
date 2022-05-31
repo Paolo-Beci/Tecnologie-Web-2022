@@ -16,13 +16,18 @@ class AdminController extends Controller {
     }
 
     public function index() {
-        $numOffAll = $this->_adminModel->getOfferteAlloggio();
-        $alloggiStats = $this->_adminModel->getStatsAlloggi();
+        $numOffAll = $this->_adminModel->getNumOfferteAlloggio();
+        $offAll = $this->_adminModel->getOfferteAlloggio();
+        
+        $numAllAllocati = $this->_adminModel->getNumAlloggiAllocati();
+        $allAllocati = $this->_adminModel->getAlloggiAllocati();
 
         return view('layouts/content-home')
             ->with('numOffAll', $numOffAll)
-            ->with('alloggiStats', $alloggiStats);
-        //mancano i with relativi agli altri due campi delle stats e quelli relativi ad appartamenti e posti letto
+            ->with('offAll', $offAll)
+            ->with('numAllAllocati', $numAllAllocati)
+            ->with('allAllocati', $allAllocati);
+        //mancano i with relativi al secondo campo delle stats e quelli relativi ad appartamenti e posti letto
     }
 
     public function showFaq() {

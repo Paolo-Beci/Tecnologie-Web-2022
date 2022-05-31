@@ -84,6 +84,9 @@ class DatabaseSeeder extends Seeder {
             ['utente' => 1, 'alloggio' => 2, 'data_interazione' => now()],
             ['utente' => 2, 'alloggio' => 2, 'data_interazione' => now()],
             ['utente' => 1, 'alloggio' => 3, 'data_interazione' => now()],
+            ['utente' => 1, 'alloggio' => 4, 'data_interazione' => now()],
+            ['utente' => 1, 'alloggio' => 5, 'data_interazione' => now()],
+            ['utente' => 1, 'alloggio' => 6, 'data_interazione' => now()],
         ]);
 
         DB::table('disponibilita')->insert([

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Resources\Alloggio;
 use App\Models\Resources\DatiPersonali;
 use App\Models\Resources\Faq;
+use Illuminate\Support\Facades\DB;
 
 class Admin {
 
@@ -17,13 +18,17 @@ class Admin {
     }
 
     //metodo per ritornare il numero di offerte di alloggio
-    public function getOfferteAlloggio(){
+    public function getNumOfferteAlloggio(){
         return Alloggio::count();
     }
 
-    //metodo per ritornare tutti gli alloggi per visualizzarli in stats (no paginate per ora)
-    public function getStatsAlloggi(){
-        return Alloggio::all();
+    //metodo per ritornare tutti gli alloggi con il locatore per visualizzarli in stats
+    public function getOfferteAlloggio(){
+        return DB::table('alloggio')
+            ->join('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
+            ->join('utente', 'interazione.utente', '=', 'utente.id')
+            ->where('utente.ruolo', 'locatore')
+            ->get();
     }
 
     //metodo per tornare un'array di alloggi in base alla tipologia e alla data in stats (no paginate per ora)
@@ -38,9 +43,21 @@ class Admin {
 
     }
 
-    //metodo per ritornare il numero di alloggi allocati
+    //metodo per ritornare le istanze di alloggi allocati con il locatario
     public function getAlloggiAllocati(){
+        return DB::table('interazione')
+            ->join('utente', 'interazione.utente', 'utente.id')
+            ->join('alloggio', 'interazione.alloggio', 'alloggio.id_alloggio')
+            ->where('utente.ruolo', 'locatario')
+            ->get();
+    }
 
+    //metodo per ritornare il numero di alloggi allocati
+    public function getNumAlloggiAllocati(){
+        return DB::table('interazione')
+            ->join('utente', 'interazione.utente', 'utente.id')
+            ->where('utente.ruolo', 'locatario')
+            ->count();
     }
 
     //metodo per ritornare tutti gli alloggi per visualizzarli in catalogo (si paginate)
