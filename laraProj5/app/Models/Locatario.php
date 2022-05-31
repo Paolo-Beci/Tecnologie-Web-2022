@@ -33,41 +33,47 @@ class Locatario {
             return DB::table('alloggio')
                 ->where('id_alloggio', $idAlloggio)
                 ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-                ->join('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
                 ->join('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
+                ->join('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
                 ->join('utente', 'interazione.utente', '=', 'utente.id')
+                ->where('ruolo','=', 'locatore')
                 ->join('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
                 ->join('appartamento', 'alloggio.id_alloggio', '=', 'appartamento.alloggio')
                 ->get();
         }
         else{
             return DB::table('alloggio')
-            ->where('id_alloggio', $idAlloggio)
-            ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-            ->join('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
-            ->join('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
-            ->join('utente', 'interazione.utente', '=', 'utente.id')
-            ->join('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
-            ->join('posto_letto', 'alloggio.id_alloggio', '=', 'posto_letto.alloggio')
-            ->get();
-
+                ->where('id_alloggio', $idAlloggio)
+                ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+                ->join('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
+                ->join('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
+                ->join('utente', 'interazione.utente', '=', 'utente.id')
+                ->where('ruolo', '=', 'locatore')
+                ->join('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
+                ->join('posto_letto', 'alloggio.id_alloggio', '=', 'posto_letto.alloggio')
+                ->get();
         }
-
     }
 
+    //non serve
     public function getFotoAlloggio($id_alloggio)
     {
         return Foto::where('alloggio', $id_alloggio)->get();
     }
 
+    //non serve
     public function getServiziAlloggio($id_alloggio)
     {
         return Disponibilita::where('alloggio', $id_alloggio)->get();
     }
 
-    public function getDatiPersonali() {
+    // metodo per tornare i dati di un locatario
+    public function getDatiLocatario(){
         $locatario = auth()->user()->getAuthIdentifier();
 
-        return DatiPersonali::where('id_dati_personali', $locatario)->get();
+        return DB::table('utente')
+            ->where('id', $locatario)
+            ->join('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
+            ->get();
     }
 }

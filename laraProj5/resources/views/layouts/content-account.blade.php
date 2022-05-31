@@ -13,7 +13,7 @@
                     <h1>Ciao {{$dati->nome}} {{$dati->cognome}} !<br> Questa è la tua area privata!</h1>
                     <p style="margin-top: 10px"> Puoi visualizzare e modificare i tuoi dati personali </p>
                     <div class="img-container">
-{{--                        TO DO con vere immagini --}}
+
                         <img src="{{asset('images_profilo/no_image.png')}}" alt="immagine profilo" class="img-profilo">
                     </div>
                 </section>
@@ -124,7 +124,7 @@
 
                         <div class="item">
                             {{ Form::label('birthtime', 'Data di nascita', ['class' => 'label-form'])}}
-                            {{ Form::date('birthtime', $dati->data_nascita) }}    {{-- non funzionaaaaah --}}
+                            {{ Form::date('birthtime', $dati->data_nascita) }}
                             <span class="underline"></span>
                         </div>
 
@@ -201,5 +201,4 @@
             </main>
     @endforeach
     @endisset
-
 @endsection

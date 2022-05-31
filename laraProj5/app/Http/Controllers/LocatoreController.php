@@ -54,20 +54,13 @@ class LocatoreController extends Controller {
     public function showLocatoreAlloggi(){
         $alloggiLocatore = $this->_locatoreModel->getAlloggiByLocatore();
         return view('alloggio/content-gestione-alloggi-locatore')
-            ->with('alloggiLocatore', $alloggiLocatore);
-    }
-
-    // metodo utilizzato per tornare i dettagli dell'account attualmente loggato
-    public function showAccount() {
-        $dati_personali = $this->_locatoreModel->getDatiPersonali();
-        return view('alloggio/content-gestione-alloggi-locatore')
-            ->with('dati_personali', $dati_personali);
+            ->with('alloggi_locatore', $alloggiLocatore);
     }
 
     //metodo da utilizzare al posto del precedente
-    public function showAccount2(){
-        $dati_locatore = $this->_locatoreModel->getDatiPersonali();
-        return view('alloggio/content-gestione-alloggi-locatore')
-            ->with('datiLocatore', $dati_locatore);
+    public function showAccount(){
+        $dati_personali = $this->_locatoreModel->getDatiLocatore();
+        return view('layouts/content-account')
+            ->with('dati_personali', $dati_personali);
     }
 }
