@@ -44,7 +44,7 @@ class LocatoreController extends Controller {
     // metodo utilizzato per tornare i posti letto in catalogo
     public function showCatalogPostiLetto(){
 
-        $alloggi = $this->_locatoreModel->getAlloggioByTip('Posto letto');
+        $alloggi = $this->_locatoreModel->getAlloggioByTip('Posto_letto');
 
         return view('layouts/content-catalogo')
             ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view

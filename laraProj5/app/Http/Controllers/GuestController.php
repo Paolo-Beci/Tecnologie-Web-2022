@@ -47,7 +47,7 @@ class GuestController extends Controller {
 
     public function showPublicCatalogPostiLetto(){
 
-        $alloggi = $this->_guestUserModel->getAlloggioByTip('Posto letto');
+        $alloggi = $this->_guestUserModel->getAlloggioByTip('Posto_letto');
 
         return view('layouts/content-catalogo')
             ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
@@ -67,7 +67,7 @@ class GuestController extends Controller {
         return view('auth/register-dati-personali');
 
     }
-    
+
     protected function showRegisterDatiPersonaliGet() {
 
         if(Session::has(['sign-up-username', 'sign-up-password', 'role']) ){

@@ -166,7 +166,7 @@ class AdminController extends Controller {
 
     public function showCatalogPostiLetto(){
 
-        $alloggi = $this->_adminModel->getAlloggioByTip('Posto letto');
+        $alloggi = $this->_adminModel->getAlloggioByTip('Posto_letto');
 
         return view('layouts/content-catalogo')
             ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
