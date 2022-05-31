@@ -18,6 +18,10 @@
                 @include('helpers/chi-siamo')
             </div>
 
+            <div data-popup-content="accedi">
+                @include('helpers/popup-accedi')
+            </div>
+
             @include('helpers/condizioni-uso')
 
             @include('helpers/privacy')

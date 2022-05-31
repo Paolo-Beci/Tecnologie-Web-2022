@@ -195,3 +195,18 @@ label {
     border-color: #ffd725;
 }
 
+/* regole  POPUP */
+
+[data-popup-content] {
+    display: none;
+}
+
+[data-popup-content="accedi"] p {
+    max-width: 1000px;
+}
+
+.button {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+}
