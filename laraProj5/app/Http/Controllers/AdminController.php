@@ -138,12 +138,76 @@ class AdminController extends Controller {
         return view('faq/confirm');
     }
 
-    public function getStatsAlloggioByTipAndDate($tipologia, $data_init, $data_fin){
+    //questa funzione mostra le offerte di alloggio filtrate per tipologia e data
+    public function getOfferteAlloggioByTipAndDate($tipologia, $data_init, $data_fin){
 
-        $alloggiTipDate = $this->_adminModel->getStatsAlloggioByTipAndDate($tipologia, $data_init, $data_fin);
+        //per offerte di alloggio
+        $numOffAll = $this->_adminModel->getNumOfferteAlloggio();
+        $offAll = $this->_adminModel->getOfferteAlloggioByTipAndDate($tipologia, $data_init, $data_fin);
 
-        return $alloggiTipDate;
+        //per offerte di locazione
+        $numOffLoc = $this->_adminModel->getNumOfferteLocazione();
+        $offLoc = $this->_adminModel->getOfferteLocazione();
 
+        //per alloggi allocati
+        $numAllAllocati = $this->_adminModel->getNumAlloggiAllocati();
+        $allAllocati = $this->_adminModel->getAlloggiAllocati();
+
+        return view('layouts/content-home')
+            ->with('numOffAll', $numOffAll)
+            ->with('offAll', $offAll)
+            ->with('numOffLoc', $numOffLoc)
+            ->with('offLoc', $offLoc)
+            ->with('numAllAllocati', $numAllAllocati)
+            ->with('allAllocati', $allAllocati);
+    }
+
+    //questa funzione mostra le offerte di locazione filtrate per tipologia e data
+    public function getOfferteLocazioneByTipAndDate($tipologia, $data_init, $data_fin){
+
+        //per offerte di alloggio
+        $numOffAll = $this->_adminModel->getNumOfferteAlloggio();
+        $offAll = $this->_adminModel->getOfferteAlloggio();
+
+        //per offerte di locazione
+        $numOffLoc = $this->_adminModel->getNumOfferteLocazione();
+        $offLoc = $this->_adminModel->getOfferteLocazioneByTipAndDate($tipologia, $data_init, $data_fin);
+
+        //per alloggi allocati
+        $numAllAllocati = $this->_adminModel->getNumAlloggiAllocati();
+        $allAllocati = $this->_adminModel->getAlloggiAllocati();
+
+        return view('layouts/content-home')
+            ->with('numOffAll', $numOffAll)
+            ->with('offAll', $offAll)
+            ->with('numOffLoc', $numOffLoc)
+            ->with('offLoc', $offLoc)
+            ->with('numAllAllocati', $numAllAllocati)
+            ->with('allAllocati', $allAllocati);
+    }
+
+    //questa funzione mostra gli alloggi locati filtrate per tipologia e data
+    public function getAlloggiAllocatiByTipAndDate($tipologia, $data_init, $data_fin){
+
+        //per offerte di alloggio
+        $numOffAll = $this->_adminModel->getNumOfferteAlloggio();
+        $offAll = $this->_adminModel->getOfferteAlloggio();
+
+        //per offerte di locazione
+        $numOffLoc = $this->_adminModel->getNumOfferteLocazione();
+        $offLoc = $this->_adminModel->getOfferteLocazione();
+
+        //per alloggi allocati
+        $numAllAllocati = $this->_adminModel->getNumAlloggiAllocati();
+        $allAllocati = $this->_adminModel->getAlloggiAllocatiByTipAndDate($tipologia, $data_init, $data_fin);
+
+        return view('layouts/content-home')
+            ->with('numOffAll', $numOffAll)
+            ->with('offAll', $offAll)
+            ->with('numOffLoc', $numOffLoc)
+            ->with('offLoc', $offLoc)
+            ->with('numAllAllocati', $numAllAllocati)
+            ->with('allAllocati', $allAllocati);
     }
 
     public function showCatalog(){
