@@ -60,6 +60,8 @@ Route::prefix('admin')->group(function () {
     Route::prefix('gestione-faq')->group(function () {
         Route::get('/', 'AdminController@showFaq')->name('gestione-faq');
 
+        Route::get('/account', 'AdminController@showAccount')->name('account-admin');
+
         Route::get('/inserisci-faq', 'AdminController@insertFaq')->name('inserisci-faq');
 
         Route::post('/inserisci-faq', 'AdminController@storeFaq')->name('inserisci-faq.store');
