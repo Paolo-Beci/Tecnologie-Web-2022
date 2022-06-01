@@ -1,7 +1,7 @@
 <article class="alloggi">
 @can('isLocatario')
     <div class="alloggio" data-href="{{route('dettagli-alloggio', [$alloggio->id_alloggio, $alloggio->tipologia])}}">
-        <img class="item-immagine" src="{{ asset('images_case/'.$alloggio->alloggioFoto()->first()->id_foto.$alloggio->alloggioFoto()->first()->estensione) }}" alt="Immagine">
+        <img class="item-immagine" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Immagine">
         <div>
             @if($alloggio->tipologia == 'Posto_letto')
                 <h1>Posto letto</h1>
@@ -27,7 +27,7 @@
 @endcan
 @cannot('isLocatario')
     <div class="alloggio" id="accedi" data-popup-caller>
-        <img class="item-immagine" src="{{ asset('images_case/'.$alloggio->alloggioFoto()->first()->id_foto.$alloggio->alloggioFoto()->first()->estensione) }}" alt="Immagine">
+        <img class="item-immagine" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Immagine">
         <div>
             @if($alloggio->tipologia == 'Posto_letto')
                 <h1>Posto letto</h1>

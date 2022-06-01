@@ -23,7 +23,6 @@ class LocatoreController extends Controller {
 
     // metodo utilizzato per tornare gli alloggi in catalogo
     public function showCatalog(){
-
         $alloggi = $this->_locatoreModel->getAlloggi();
 
         return view('layouts/content-catalogo')
@@ -54,7 +53,7 @@ class LocatoreController extends Controller {
     public function showLocatoreAlloggi(){
         $alloggiLocatore = $this->_locatoreModel->getAlloggiByLocatore();
         return view('alloggio/content-gestione-alloggi-locatore')
-            ->with('alloggi_locatore', $alloggiLocatore);
+            ->with('alloggiLocatore', $alloggiLocatore);
     }
 
     public function showInserisciAlloggio(){

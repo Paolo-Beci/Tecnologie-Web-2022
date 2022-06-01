@@ -17,8 +17,11 @@ class Locatario {
         return Faq::where('target', $target)->get();
     }
 
+    //metodo che torna gli alloggi insieme alle info sulle foto
     public function getAlloggi(){
-        return Alloggio::paginate(3);
+        return DB::table('alloggio')
+            ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+            ->paginate(3);
     }
 
     //metodo per tornare un' array di alloggi in base alla tipologia

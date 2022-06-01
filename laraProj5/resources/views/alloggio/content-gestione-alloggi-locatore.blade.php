@@ -12,16 +12,16 @@
                     <h1>I tuoi alloggi:</h1>
                 </div>
                 <div class='child'>
-                    <a href="{{route('')}}">
+                    <a href="#">
                     <button class="filter_button" type="submit" onclick=alert('WorkInProgress')>Inserisci annuncio</button>
                     </a>
                 </div>
             </div>
             <!-- ALLOGGI -->
             @isset($alloggiLocatore)   <!-- esiste o non è null -->
-                @foreach ($alloggiLocatore as $alloggioLocatore)
+                @foreach ($alloggiLocatore as $alloggio)
                 <!-- Alloggio -->
-                @include('helpers.alloggio-locatore')
+                @include('helpers.alloggio')
                 @endforeach
             @endisset
         </section>
