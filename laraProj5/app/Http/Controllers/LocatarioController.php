@@ -52,24 +52,11 @@ class LocatarioController extends Controller {
             ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
     }
 
-    // metodo utilizzato per tornare i dettagli dell'alloggio selezionato in catalogo
-    public function showDettaglioAlloggio2($id_alloggio){
-        $alloggio = $this->_locatarioModel->getAlloggio($id_alloggio);
-        $foto = $this->_locatarioModel->getFotoAlloggio($id_alloggio);
-        $servizi = $this->_locatarioModel->getServiziAlloggio($id_alloggio);
-//        $tipologia = $this->_locatarioModel->getTipAlloggio($id_alloggio);    come lo collego alle altre tabelle??
-
-        return view('layouts/dettagli-alloggio')
-            ->with('alloggio', $alloggio)
-            ->with('foto', $foto)
-            ->with('servizi', $servizi);
-    }
-
     //metodo sostitutivo del precedente
     public function showDettaglioAlloggio($id_alloggio, $tipologia){
         $info_generali = $this->_locatarioModel->getAlloggio($id_alloggio, $tipologia);
 
-        return view('layouts/dettagli-alloggio')
+        return view('alloggio/dettagli-alloggio')
             ->with('info_generali', $info_generali);
     }
 

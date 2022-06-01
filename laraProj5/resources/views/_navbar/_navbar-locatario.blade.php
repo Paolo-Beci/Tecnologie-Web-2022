@@ -1,4 +1,11 @@
 <li>
+    @if(Route::current()->getName() != 'home-locatario')
+        <a class="anchor" href="{{route('home-locatario')}}/#faq" title="Frequenty Asked Questions">FAQ</a>
+    @else
+        <a class="anchor" href="#faq" title="Frequenty Asked Questions">FAQ</a>
+    @endif
+</li>
+<li>
     <a href="{{route('catalogo-locatario')}}" title="Vai al catalogo annunci">Catalogo</a>
 </li>
 <li>

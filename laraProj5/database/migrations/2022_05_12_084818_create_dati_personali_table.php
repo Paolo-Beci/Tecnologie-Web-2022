@@ -16,7 +16,7 @@ class CreateDatiPersonaliTable extends Migration
         Schema::create('dati_personali', function (Blueprint $table) {
             $table->increments('id_dati_personali');
             $table->integer('id_foto_profilo')->nullable()->unsigned();
-            $table->string('estensione', 4)->nullable();
+            $table->string('estensione_p', 4)->nullable();
             $table->char('cellulare',10)->nullable();
             $table->string('via',255);
             $table->string('citta',255);

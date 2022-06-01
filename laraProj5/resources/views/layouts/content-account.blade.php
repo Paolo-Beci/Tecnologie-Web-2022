@@ -16,7 +16,7 @@
                         @if(is_null($dati->id_foto_profilo))
                             <img src="{{ asset('images_profilo/no_image.png') }}" alt="immagine profilo" class="img-profilo">
                         @else
-                            <img src="{{ asset('images_profilo/'.$dati->id_foto_profilo.$dati->estensione) }}" alt="immagine profilo" class="img-profilo">
+                            <img src="{{ asset('images_profilo/'.$dati->id_foto_profilo.$dati->estensione_p) }}" alt="immagine profilo" class="img-profilo">
                         @endif
                     </div>
                 </section>

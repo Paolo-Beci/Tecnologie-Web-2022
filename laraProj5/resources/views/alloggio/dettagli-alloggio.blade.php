@@ -98,7 +98,12 @@
             <div class="contatto-alloggio">
                 <h2>Contatti host</h2>
                 <div class="img-contatto">
-                    <img src="{{asset('images_profilo/no_image.png')}}" alt="immagine profilo" class="img-profilo">
+{{--                    @php dd($info_generali) @endphp--}}
+                    @if(is_null($info_generali->first()->id_foto_profilo))
+                        <img src="{{ asset('images_profilo/no_image.png') }}" alt="immagine profilo" class="img-profilo">
+                    @else
+                        <img src="{{ asset('images_profilo/'.$info_generali->first()->id_foto_profilo.$info_generali->first()->estensione_p) }}" alt="immagine profilo" class="img-profilo">
+                    @endif
                 </div>
                 <div class="info-contatto">
                     <p class="item-desc">{{$info_generali->first()->nome}} {{$info_generali->first()->cognome}} - {{$info_generali->first()->username}}</p>

@@ -1,12 +1,11 @@
+<script src="{{asset('js/redirect.js')}}" defer></script>
+
 <ul class="menu">
 
     {{-- Tutti gli utenti --}}
 
     <li>
         <a class="anchor active" href="{{route('home-guest')}}" title="Home">Home</a>
-    </li>
-    <li>
-        <a class="anchor" href="#faq" title="Frequenty Asked Questions">FAQ</a>
     </li>
 
     {{-- Sezione locatore --}}
