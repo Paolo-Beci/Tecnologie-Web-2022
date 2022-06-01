@@ -54,7 +54,7 @@
                     <div class="item-desc">
                         <h2>Servizi</h2>
                         <div class="box-servizi">
-                            @include('helpers/dettaglio-servizi')
+                            @include('helpers.dettaglio-servizi')
                         </div>
                     </div>
                     <div class="item-desc">

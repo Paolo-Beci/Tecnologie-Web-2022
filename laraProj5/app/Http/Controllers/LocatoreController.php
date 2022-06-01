@@ -57,6 +57,21 @@ class LocatoreController extends Controller {
             ->with('alloggi_locatore', $alloggiLocatore);
     }
 
+    public function showInserisciAlloggio(){
+        return view('alloggio/inserisci-alloggio');
+    }
+
+    public function inserisciAlloggio(){  // TO DO
+//        $alloggio = new Alloggio();
+//        $alloggio->nome = request('nome');
+//        $alloggio->tipologia = request('tipologia');
+//        $alloggio->descrizione = request('descrizione');
+//        $alloggio->prezzo = request('prezzo');
+//        $alloggio->utente = auth()->user()->getAuthIdentifier();
+//        $alloggio->save();
+        return redirect('/locatore/gestione-alloggi');
+    }
+
     //metodo da utilizzare al posto del precedente
     public function showAccount(){
         $dati_personali = $this->_locatoreModel->getDatiLocatore();

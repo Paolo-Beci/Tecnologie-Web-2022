@@ -19,9 +19,11 @@ Route::get('/', 'GuestController@index')->name('home-guest');
 Route::prefix('locatore')->group(function () {
     Route::get('/', 'LocatoreController@index')->name('home-locatore');
 
-    Route::get('/inserisci-annuncio', 'LocatoreController@insertAnnuncio')->name('inserisci-annuncio');
-
     Route::get('/gestione-alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione-alloggi');
+
+    Route::get('/inserisci-annuncio', 'LocatoreController@showInserisciAlloggio')->name('inserisci-alloggio');
+
+    Route::post('inserimento_alloggio', 'LocatoreController@inserisciAlloggio')->name('inserisci');   // TO DO
 
     Route::get('/account', 'LocatoreController@showAccount')->name('account-locatore');
 
@@ -97,8 +99,7 @@ Route::post('registrazione', 'Auth\RegisterController@register')->name('registra
 
 Route::post('login', 'Auth\LoginController@login')->name('login');
 
-Route::post('logout', 'Auth\LoginController@logout')
-        ->name('logout');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::post('modifica-dati', 'Auth\ModifyController@modify')->name('modifica-dati');   // TO DO
 

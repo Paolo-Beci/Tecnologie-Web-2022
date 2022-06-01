@@ -12,7 +12,9 @@
                     <h1>I tuoi alloggi:</h1>
                 </div>
                 <div class='child'>
+                    <a href="{{route('')}}">
                     <button class="filter_button" type="submit" onclick=alert('WorkInProgress')>Inserisci annuncio</button>
+                    </a>
                 </div>
             </div>
             <!-- ALLOGGI -->
