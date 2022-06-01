@@ -25,7 +25,6 @@ class LocatarioController extends Controller {
 
     // metodo utilizzato per tornare gli alloggi in catalogo
     public function showCatalog(){
-
         $alloggi = $this->_locatarioModel->getAlloggi();
 
         return view('layouts/content-catalogo')
