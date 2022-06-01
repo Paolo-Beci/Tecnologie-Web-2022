@@ -70,8 +70,8 @@ class Admin {
             ->join('foto', 'messaggio.alloggio', '=', 'foto.alloggio')
             ->where('messaggio.contenuto', '=', 'Ciao, ho visto la casa e sono interessato')
             ->where('tipologia', $tipologia)
-            ->where('data_interazione', '<', $data_fin)
-            ->where('data_interazione', '>', $data_init)
+            ->where('data_invio', '<', $data_fin)
+            ->where('data_invio', '>', $data_init)
             ->get();
     }
 
