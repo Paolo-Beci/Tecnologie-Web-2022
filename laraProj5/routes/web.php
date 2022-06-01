@@ -19,13 +19,15 @@ Route::get('/', 'GuestController@index')->name('home-guest');
 Route::prefix('locatore')->group(function () {
     Route::get('/', 'LocatoreController@index')->name('home-locatore');
 
-    Route::get('/gestione-alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione-alloggi');
-
     Route::get('/inserisci-annuncio', 'LocatoreController@showInserisciAlloggio')->name('inserisci-alloggio');
 
     Route::post('inserimento_alloggio', 'LocatoreController@inserisciAlloggio')->name('inserisci');   // TO DO
 
     Route::get('/account', 'LocatoreController@showAccount')->name('account-locatore');
+
+    Route::get('/gestione-alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione-alloggi');
+
+    Route::get('/gestione-alloggi/dettagli-alloggio/{id_alloggio?}/{tipologia_alloggio?}', 'LocatoreController@showDettaglioAlloggio')->name('dettagli-alloggio-locatore');
 
     Route::prefix('catalogo')->group(function () {
         Route::get('/', 'LocatoreController@showCatalog')->name('catalogo-locatore');
