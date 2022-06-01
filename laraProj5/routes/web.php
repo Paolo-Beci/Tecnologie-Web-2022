@@ -21,9 +21,7 @@ Route::prefix('locatore')->group(function () {
 
     Route::get('/gestione-alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione-alloggi');
 
-    Route::get('/inserisci-annuncio', 'LocatoreController@showInserisciAlloggio')->name('inserisci-alloggio');
-
-    Route::post('inserimento_alloggio', 'LocatoreController@inserisciAlloggio')->name('inserisci');   // TO DO
+    Route::get('/inserisci-annuncio', 'LocatoreController@showInserisciAnnuncio')->name('inserisci-alloggio');
 
     Route::get('/account', 'LocatoreController@showAccount')->name('account-locatore');
 

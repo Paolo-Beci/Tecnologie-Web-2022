@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\NewProductRequest;
 use App\Models\Locatore;
 
 class LocatoreController extends Controller {
@@ -56,11 +57,7 @@ class LocatoreController extends Controller {
             ->with('alloggiLocatore', $alloggiLocatore);
     }
 
-    public function showInserisciAlloggio(){
-        return view('alloggio/inserisci-alloggio');
-    }
-
-    public function inserisciAlloggio(){  // TO DO
+    public function inserisciAnnuncio2(){
 //        $alloggio = new Alloggio();
 //        $alloggio->nome = request('nome');
 //        $alloggio->tipologia = request('tipologia');
@@ -71,7 +68,31 @@ class LocatoreController extends Controller {
         return redirect('/locatore/gestione-alloggi');
     }
 
-    //metodo da utilizzare al posto del precedente
+    //questa funzione apre la sezione di inserimento annuncio
+    public function inserisciAnnuncio() {
+        $tg = ['locatore'=>'locatore', 'locatario'=>'locatario', 'utente non registrato'=>'utente non registrato'];
+        return view('faq/insert-faq')
+            ->with('insert', 'active')
+            ->with('edit', '')
+            ->with('descrizione', 'Utilizza questa form per inserire una nuova faq')
+            ->with('rotta', 'inserisci-faq.store')
+            ->with('tg', $tg)
+            ->with('domanda', '')
+            ->with('risposta', '')
+            ->with('target', '')
+            ->with('azione', 'Aggiungi Faq');
+    }
+
+    //questa funzione inserisce effettivamente l'annuncio
+    public function storeFaq(NewProductRequest $request)
+    {
+        $new_faq = new Faq;
+        $new_faq->fill($request->validated());
+        $new_faq->save();
+
+        return redirect()->action('AdminController@confirm');
+    }
+
     public function showAccount(){
         $dati_personali = $this->_locatoreModel->getDatiLocatore();
         return view('layouts/content-account')
