@@ -24,7 +24,7 @@ class CreateDatiPersonaliTable extends Migration
             $table->char('cap',5);
             $table->string('nome',255);
             $table->string('cognome',255);
-            $table->dateTime('data_nascita');
+            $table->date('data_nascita');
             $table->string('luogo_nascita',255);
             $table->char('sesso',1);
             $table->string('mail',255)->nullable();

@@ -51,7 +51,7 @@ class LocatarioController extends Controller {
             ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
     }
 
-    //metodo sostitutivo del precedente
+    // metodo utilizzato per tornare i dettagli dell'alloggio selezionato in catalogo
     public function showDettaglioAlloggio($id_alloggio, $tipologia){
         $info_generali = $this->_locatarioModel->getAlloggio($id_alloggio, $tipologia);
 

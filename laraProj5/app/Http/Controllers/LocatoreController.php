@@ -68,6 +68,15 @@ class LocatoreController extends Controller {
         return redirect('/locatore/gestione-alloggi');
     }
 
+    // metodo utilizzato per tornare i dettagli dell'alloggio selezionato in catalogo
+    public function showDettaglioAlloggio($id_alloggio, $tipologia){
+        $info_generali = $this->_locatoreModel->getAlloggio($id_alloggio, $tipologia);
+
+        return view('alloggio/dettagli-alloggio')
+            ->with('info_generali', $info_generali);
+    }
+
+    //metodo da utilizzare al posto del precedente
     //questa funzione apre la sezione di inserimento annuncio
     public function inserisciAnnuncio() {
         $tg = ['locatore'=>'locatore', 'locatario'=>'locatario', 'utente non registrato'=>'utente non registrato'];
@@ -95,6 +104,7 @@ class LocatoreController extends Controller {
 
     public function showAccount(){
         $dati_personali = $this->_locatoreModel->getDatiLocatore();
+
         return view('layouts/content-account')
             ->with('dati_personali', $dati_personali);
     }
