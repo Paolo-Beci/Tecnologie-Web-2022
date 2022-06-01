@@ -1,7 +1,7 @@
 <main id="content-home-admin" class="content-home-admin">
     {{--sezione riassunto filtri--}}
     <section id="statistiche" class="stats-section">
-        <h1 class="titolo">Statistiche</h1>
+        <h1 title="I tre dati seguenti non sono soggetti a filtraggio" class="titolo">Statistiche</h1>
         <div class="stats-container">
             <article class="stats">
                 <a title="Numero di alloggi presenti sul mercato" class="indicazione" href="#1">Offerte di alloggio</a>
@@ -29,7 +29,7 @@
         <div class="form_container">
             <div class="wrap-contact">
                 {{--apertura form; bisogna capire come passare i dati della form al posto di now e posto letto--}}
-                {{ Form::open(array('route' => array('getStats', 'posto letto', now(), now()), 'id' => 'filtri_id', 'files' => true)) }}
+                {{ Form::open(array('route' => array('getOffAllFiltered', 'posto letto', '2025-11-20', '2032-12-31'), 'id' => 'filtri_id', 'files' => true)) }}
 
                 {{--div per date--}}
                 <div class="wrap-input">
@@ -67,21 +67,39 @@
                     return a_value
                 }
                 const getTipologiaValue = () =>{
-                    let tipologia_value = document.getElementById("type_id").value;
+                    let tipologia_value = document.getElementById("type").value;
                     return tipologia_value
                 }
 
             </script>
 
-            <div id="id_result" class="results_container">
+            {{--<div id="id_result" class="results_container">
                 @isset($offAll)
                     @foreach($offAll as $alloggio)
                         <article class="result">
                             <div class="content">
                                 <img class="img_result" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Foto alloggio">
                                 <h2>{{$alloggio->citta}}, {{$alloggio->via}} {{$alloggio->num_civico}}</h2>
+                                <p>Tipo: {{$alloggio->tipologia}}</p>
                                 <p>Locatore: {{$alloggio->username}}</p>
                                 <p>Id alloggio: {{$alloggio->id_alloggio}}</p>
+                                <p>Data inserimento: {{$alloggio->data_inserimento_offerta}}</p>
+                            </div>
+                        </article>
+                    @endforeach
+                @endisset
+            </div>--}}
+            <div id="id_result" class="results_container">
+                @isset($offAll)
+                    @foreach($offAll as $alloggio)
+                        <article class="card">
+                            <img class="card__image" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Foto alloggio">
+                            <div class="card__image">
+                                <h2>{{$alloggio->citta}}, {{$alloggio->via}} {{$alloggio->num_civico}}</h2>
+                                <p>Tipo: {{$alloggio->tipologia}}</p>
+                                <p>Locatore: {{$alloggio->username}}</p>
+                                <p>Id alloggio: {{$alloggio->id_alloggio}}</p>
+                                <p>Data inserimento: {{$alloggio->data_inserimento_offerta}}</p>
                             </div>
                         </article>
                     @endforeach
@@ -102,7 +120,7 @@
             <div class="wrap-contact">
                 {{--apertura form; bisogna capire come passare i dati della form al posto di now e posto letto.
                 Temporaneamente la rotta è la stessa del primo caso; da modificare--}}
-                {{ Form::open(array('route' => array('getStats', 'posto letto', now(), now()), 'id' => 'filtri_id2', 'files' => true)) }}
+                {{ Form::open(array('route' => array('getOffLocFiltered', 'posto letto', '2021-10-20', '2021-12-31'), 'id' => 'filtri_id', 'files' => true)) }}
 
                 {{--div per date--}}
                 <div class="wrap-input">
@@ -127,14 +145,31 @@
                 {{--chiusura form--}}
                 {{ Form::close() }}
             </div>
-            <div class="results_container">
+            {{--<div class="results_container">
                 @isset($offLoc)
                     @foreach($offLoc as $alloggio)
                         <article class="result">
                             <div class="content">
                                 <img class="img_result" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Foto alloggio">
                                 <h2>{{$alloggio->citta}}, {{$alloggio->via}} {{$alloggio->num_civico}}</h2>
+                                <p>Tipo: {{$alloggio->tipologia}}</p>
                                 <p>Interessato: {{$alloggio->username}}</p>
+                                <a class="dettagli_locatore" title="Clicca qui per informazioni sul locatore" href="#id_result">Id alloggio: {{$alloggio->id_alloggio}}</a>
+                            </div>
+                        </article>
+                    @endforeach
+                @endisset
+            </div>--}}
+            <div id="id_result" class="results_container">
+                @isset($offLoc)
+                    @foreach($offLoc as $alloggio)
+                        <article class="card">
+                            <img class="card__image" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Foto alloggio">
+                            <div class="card__image">
+                                <h2>{{$alloggio->citta}}, {{$alloggio->via}} {{$alloggio->num_civico}}</h2>
+                                <p>Tipo: {{$alloggio->tipologia}}</p>
+                                <p>Interessato: {{$alloggio->username}}</p>
+                                <p>Data interessamento: {{$alloggio->data_invio}}</p>
                                 <a class="dettagli_locatore" title="Clicca qui per informazioni sul locatore" href="#id_result">Id alloggio: {{$alloggio->id_alloggio}}</a>
                             </div>
                         </article>
@@ -156,7 +191,7 @@
             <div class="wrap-contact">
                 {{--apertura form; bisogna capire come passare i dati della form al posto di now e posto letto.
                 Temporaneamente la rotta è la stessa del primo caso; da modificare--}}
-                {{ Form::open(array('route' => array('getStats', 'posto letto', now(), now()), 'id' => 'filtri_id3', 'files' => true)) }}
+                {{ Form::open(array('route' => array('getAllAlLocatiFiltered', 'posto letto', '2021-10-20', '2021-12-31'), 'id' => 'filtri_id', 'files' => true)) }}
 
                 {{--div per date--}}
                 <div class="wrap-input">
@@ -181,14 +216,31 @@
                 {{--chiusura form--}}
                 {{ Form::close() }}
             </div>
-            <div class="results_container">
+            {{--<div class="results_container">
                 @isset($allAllocati)
                     @foreach($allAllocati as $alloggio)
                         <article class="result">
                             <div class="content">
                                 <img class="img_result" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Foto alloggio">
                                 <h2>{{$alloggio->citta}}, {{$alloggio->via}} {{$alloggio->num_civico}}</h2>
+                                <p>Tipo: {{$alloggio->tipologia}}</p>
                                 <p>Locatario: {{$alloggio->username}}</p>
+                                <a class="dettagli_locatore" title="Clicca qui per informazioni sul locatore" href="#id_result">Id alloggio: {{$alloggio->id_alloggio}}</a>
+                            </div>
+                        </article>
+                    @endforeach
+                @endisset
+            </div>--}}
+            <div id="id_result" class="results_container">
+                @isset($allAllocati)
+                    @foreach($allAllocati as $alloggio)
+                        <article class="card">
+                            <img class="card__image" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Foto alloggio">
+                            <div class="card__image">
+                                <h2>{{$alloggio->citta}}, {{$alloggio->via}} {{$alloggio->num_civico}}</h2>
+                                <p>Tipo: {{$alloggio->tipologia}}</p>
+                                <p>Locatario: {{$alloggio->username}}</p>
+                                <p>Data interessamento: {{$alloggio->data_interazione}}</p>
                                 <a class="dettagli_locatore" title="Clicca qui per informazioni sul locatore" href="#id_result">Id alloggio: {{$alloggio->id_alloggio}}</a>
                             </div>
                         </article>

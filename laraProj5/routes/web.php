@@ -78,7 +78,11 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/conferma', 'AdminController@confirm')->name('conferma');
 
-        Route::post('/tip/{tipologia}/data_init/{data_init}/data_fin/{data_fin}', 'AdminController@getStatsAlloggioByTipAndDate')->name('getStats');
+        Route::post('offerte-alloggio/tip/{tipologia}/data_init/{data_init}/data_fin/{data_fin}', 'AdminController@getOfferteAlloggioByTipAndDate')->name('getOffAllFiltered');
+
+        Route::post('offerte-locazione/tip/{tipologia}/data_init/{data_init}/data_fin/{data_fin}', 'AdminController@getOfferteLocazioneByTipAndDate')->name('getOffLocFiltered');
+
+        Route::post('alloggi-allocati/tip/{tipologia}/data_init/{data_init}/data_fin/{data_fin}', 'AdminController@getAlloggiAllocatiByTipAndDate')->name('getAllAlLocatiFiltered');
     });
 
     Route::prefix('catalogo')->group(function () {
