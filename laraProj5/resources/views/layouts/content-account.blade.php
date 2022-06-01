@@ -13,7 +13,11 @@
                     <h1>Ciao {{$dati->nome}} {{$dati->cognome}} !<br> Questa è la tua area privata!</h1>
                     <p style="margin-top: 10px"> Puoi visualizzare e modificare i tuoi dati personali </p>
                     <div class="img-container">
-                        <img src="{{asset('images_profilo/no_image.png')}}" alt="immagine profilo" class="img-profilo">
+                        @if(is_null($dati->id_foto_profilo))
+                            <img src="{{ asset('images_profilo/no_image.png') }}" alt="immagine profilo" class="img-profilo">
+                        @else
+                            <img src="{{ asset('images_profilo/'.$dati->id_foto_profilo.$dati->estensione) }}" alt="immagine profilo" class="img-profilo">
+                        @endif
                     </div>
                 </section>
                 <hr style="margin-right: 50px; margin-left: 50px">
@@ -194,7 +198,9 @@
                     </fieldset>
                 </section>
                 <section class="terzo-box">
-                    {{ Form::submit('Modifica', ['class' => 'filter_button']) }}
+                    @cannot('isAdmin')
+                        {{ Form::submit('Modifica', ['class' => 'filter_button']) }}
+                    @endcannot
                 </section>
                 {!! Form::close() !!}
             </main>

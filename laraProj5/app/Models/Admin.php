@@ -115,4 +115,14 @@ class Admin {
     public function getAlloggioByTip($tipologia){
         return Alloggio::where('tipologia', $tipologia)->paginate(3);
     }
+
+    // metodo per tornare i dati di un locatario
+    public function getDatiAdmin(){
+        $admin = auth()->user()->getAuthIdentifier();
+
+        return DB::table('utente')
+            ->where('id', $admin)
+            ->join('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
+            ->get();
+    }
 }

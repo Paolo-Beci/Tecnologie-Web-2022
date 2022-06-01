@@ -11,4 +11,12 @@
 <li>
     <a href="{{route('gestione-faq')}}" title="Gestione Faq">Gestione Faq</a>
 </li>
+<li>
+    <a href="{{route('account-admin')}}">
+        <button class="bottone_profilo">
+            <img src="{{asset('images/user_icon.png')}}" alt="User Logo" width="10%" style="vertical-align:middle;horiz-align:left">
+            {{Auth::user()->username}}
+        </button>
+    </a>
+</li>
 
