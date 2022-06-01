@@ -104,6 +104,7 @@ class LocatoreController extends Controller {
 
     public function showAccount(){
         $dati_personali = $this->_locatoreModel->getDatiLocatore();
+
         return view('layouts/content-account')
             ->with('dati_personali', $dati_personali);
     }

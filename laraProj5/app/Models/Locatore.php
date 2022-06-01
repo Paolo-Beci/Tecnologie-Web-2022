@@ -6,6 +6,7 @@ use App\Models\Resources\Alloggio;
 use App\Models\Resources\DatiPersonali;
 use App\Models\Resources\Faq;
 use App\Models\Resources\Interazione;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class Locatore {
