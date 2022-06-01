@@ -53,6 +53,13 @@
 
                 {{--chiusura form--}}
                 {{ Form::close() }}
+
+                @isset($_POST['type'], $_POST['da'], $_POST['a'])
+                    <p>{{ $_POST['type'] }}</p>
+                    <p>{{ $_POST['da'] }}</p>
+                    <p>{{ $_POST['a'] }}</p>
+                @endisset
+
             </div>
 
             {{--sezione javascript--}}
