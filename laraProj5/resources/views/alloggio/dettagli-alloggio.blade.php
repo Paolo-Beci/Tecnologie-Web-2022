@@ -44,11 +44,7 @@
                         @if($info_generali->first()->tipologia == 'Appartamento')
                             <p>Numero di camere: {{$info_generali->first()->num_camere}}</p>
                         @elseif($info_generali->first()->tipologia == 'Posto_letto')
-                            @if($info_generali->first()->tipologia_stanza == 2)
-                                <p>Tipologia di camera: <i class="icon fa-solid fa-user-group"></i>Doppia</p>
-                            @elseif($info_generali->first()->tipologia_stanza == 1)
-                                <p>Tipologia di camera: <i class="icon fa-solid fa-user"></i>Singola</p>
-                            @endif
+                            <p>Tipologia di camera: {{$info_generali->first()->tipologia_camera}}</p>
                         @endif
                     </div>
                     <div class="item-desc">

@@ -56,6 +56,11 @@ class Locatore {
         }
     }
 
+    //metodo che torna le tipologie degli alloggi
+    public function getTipologieAlloggio(){
+        return Alloggio::select('tipologia')->distinct()->get();
+    }
+
     //metodo per tornare un' array di alloggi di un locatore
     public function getAlloggiByLocatore(){
         $locatore = auth()->user()->getAuthIdentifier();

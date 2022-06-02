@@ -57,6 +57,13 @@ class LocatoreController extends Controller {
             ->with('alloggiLocatore', $alloggiLocatore);
     }
 
+    //metodo per tornare le tipologie di alloggio
+    public function tipologieAlloggio(){
+        $tipologieAlloggio = $this->_locatoreModel->getTipologieAlloggio();
+        return view('alloggio/inserisci-annuncio')
+            ->with('tipologieAlloggio', $tipologieAlloggio);
+    }
+
     public function inserisciAnnuncio2(){
 //        $alloggio = new Alloggio();
 //        $alloggio->nome = request('nome');

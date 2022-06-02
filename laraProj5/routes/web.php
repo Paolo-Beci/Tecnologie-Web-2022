@@ -19,15 +19,13 @@ Route::get('/', 'GuestController@index')->name('home-guest');
 Route::prefix('locatore')->group(function () {
     Route::get('/', 'LocatoreController@index')->name('home-locatore');
 
-    Route::get('/inserisci-annuncio', 'LocatoreController@showInserisciAlloggio')->name('inserisci-alloggio');
-
-    Route::post('inserimento_alloggio', 'LocatoreController@inserisciAlloggio')->name('inserisci');   // TO DO
-
-    Route::get('/account', 'LocatoreController@showAccount')->name('account-locatore');
-
     Route::get('/gestione-alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione-alloggi');
 
-    Route::get('/gestione-alloggi/dettagli-alloggio/{id_alloggio?}/{tipologia_alloggio?}', 'LocatoreController@showDettaglioAlloggio')->name('dettagli-alloggio-locatore');
+    Route::get('/inserisci-annuncio', 'LocatoreController@insertAnnuncio')->name('new-annuncio');
+
+    Route::post('/inserisci-annuncio', 'LocatoreController@storeAnnuncio')->name('new-annuncio.store');
+
+    Route::get('/account', 'LocatoreController@showAccount')->name('account-locatore');
 
     Route::prefix('catalogo')->group(function () {
         Route::get('/', 'LocatoreController@showCatalog')->name('catalogo-locatore');
@@ -82,11 +80,11 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/conferma', 'AdminController@confirm')->name('conferma');
 
-        Route::post('offerte-alloggio-filtrate', 'AdminController@getOfferteAlloggioByTipAndDate')->name('getOffAllFiltered');
+        Route::post('offerte-alloggio/tip/{tipologia}/data_init/{data_init}/data_fin/{data_fin}', 'AdminController@getOfferteAlloggioByTipAndDate')->name('getOffAllFiltered');
 
-        Route::post('offerte-locazione-filtrate', 'AdminController@getOfferteLocazioneByTipAndDate')->name('getOffLocFiltered');
+        Route::post('offerte-locazione/tip/{tipologia}/data_init/{data_init}/data_fin/{data_fin}', 'AdminController@getOfferteLocazioneByTipAndDate')->name('getOffLocFiltered');
 
-        Route::post('alloggi-allocati-filtrati', 'AdminController@getAlloggiAllocatiByTipAndDate')->name('getAllAlLocatiFiltered');
+        Route::post('alloggi-allocati/tip/{tipologia}/data_init/{data_init}/data_fin/{data_fin}', 'AdminController@getAlloggiAllocatiByTipAndDate')->name('getAllAlLocatiFiltered');
     });
 
     Route::prefix('catalogo')->group(function () {

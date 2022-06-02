@@ -15,7 +15,7 @@ class CreatePostoLettoTable extends Migration
     {
         Schema::create('posto_letto', function (Blueprint $table) {
             $table->increments('id_posto_letto');
-            $table->tinyInteger('tipologia_stanza')->default(1);
+            $table->string('tipologia_camera', 7)->default('Singola');
             $table->integer('alloggio')->unsigned();
             $table->foreign('alloggio')->references('id_alloggio')->on('alloggio')->onUpdate('cascade')->onDelete('cascade');
         });
