@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Locatario;
+use App\Models\Resources\DatiPersonali;
 use Illuminate\Support\Facades\DB;
 
 class LocatarioController extends Controller {
@@ -65,5 +67,17 @@ class LocatarioController extends Controller {
 
         return view('layouts/content-account')
             ->with('dati_personali', $dati_personali);
+    }
+
+    public function showModificaAccount(UpdateProfileRequest $request){
+        $data = $request->all();
+
+        DatiPersonali::where('id_dati_personali', auth()->user()->getAuthIdentifier())
+            ->update(['nome' => $data['name'], 'cognome' => $data['surname'], 'luogo_nascita' => $data['birthplace']
+                , 'sesso' => $data['gender'], 'citta' => $data['city'], 'num_civico' => $data['house-number']
+                , 'mail' => $data['email'], 'data_nascita' => $data['birthtime'], 'codice_fiscale' => $data['cf']
+                , 'via' => $data['street'], 'cap' => $data['cap'], 'cellulare' => $data['telephone']]);
+
+        return redirect()->action('LocatarioController@showAccount');
     }
 }
