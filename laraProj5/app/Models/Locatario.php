@@ -70,6 +70,17 @@ class Locatario {
         return Disponibilita::where('alloggio', $id_alloggio)->get();
     }
 
+    //metodo per tornare un' array di alloggi locati da un locatario
+    public function getStoricoAlloggiByLocatario(){
+        $locatario = auth()->user()->getAuthIdentifier();
+
+        return DB::table('alloggio')   // TO DO
+            ->join('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
+            ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+            ->where('utente', $locatario)
+            ->paginate(3);
+    }
+
     // metodo per tornare i dati di un locatario
     public function getDatiLocatario(){
         $locatario = auth()->user()->getAuthIdentifier();

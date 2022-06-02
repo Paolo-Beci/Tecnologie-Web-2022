@@ -30,6 +30,20 @@
         @endcan
         <section class="secondo-box">
             <fieldset class="colonna form-group">
+                <!-- Username -->
+                <div class="item">
+                    {{ Form::label('username', 'Username', ['class' => 'label-form']) }}
+                    {{ Form::text('username', $dati->username, ['id' => 'sign-up-username']) }}
+                    <span class="underline"></span>
+                </div>
+                @if ($errors->first('username'))
+                    <ul class="errors">
+                        @foreach ($errors->get('username') as $message)
+                            <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+
                 <!-- Nome -->
                 <div class="item">
                     {{ Form::label('name', 'Nome', ['class' => 'label-form'])}}
@@ -119,6 +133,20 @@
 
             </fieldset>
             <fieldset class="colonna form-group">
+                <!-- Password -->
+                <div class="item">
+                    {{ Form::label('password', 'Password') }}
+                    {{ Form::input('password', 'password', $dati->password) }}
+                    <span class="underline"></span>
+                </div>
+                @if ($errors->first('password'))
+                    <ul class="errors">
+                        @foreach ($errors->get('password') as $message)
+                            <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+
                 <!-- Cognome -->
                 <div class="item">
                     {{ Form::label('surname', 'Cognome', ['class' => 'label-form'])}}

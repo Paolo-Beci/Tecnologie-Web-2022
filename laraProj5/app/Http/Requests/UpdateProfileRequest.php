@@ -26,6 +26,8 @@ class UpdateProfileRequest extends FormRequest {
     public function rules() {
         // Nella form mettiamo restrizioni d'immissione: qui sono elencate le regole per ogni campo
         return[
+            'username' => ['required', 'string', 'max:20'],    // da trovare un modo per saltare il controllo sullo stesso utente che opera. Provato ad usare   unique:utente->ignore($this->user ma non funziona
+            'password' => ['required', 'string', 'max:191'],
             'name' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
             'surname' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
             'birthplace' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
@@ -36,7 +38,7 @@ class UpdateProfileRequest extends FormRequest {
             'house-number' => ['required', 'numeric', 'max:1000000'],
             'cap' => ['required', 'string', 'max:5'],
             // bisogna fare controllo mail
-            'telephone' => ['numeric', 'min:10'],  //bisogna fare controllo telefono
+            //bisogna fare controllo telefono
         ];
     }
 }

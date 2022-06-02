@@ -9,7 +9,7 @@
     <a href="{{route('catalogo-locatario')}}" title="Vai al catalogo annunci">Catalogo</a>
 </li>
 <li>
-    <a href="#storicoAlloggi" title="Gestione degli alloggi">Storico alloggi</a>
+    <a href="{{route('storico-alloggi')}}" title="Storico degli alloggi">Storico alloggi</a>
 </li>
 <li>
     <a href="#messaggi" title="Messaggistica">Messaggi</a>

@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Locatario;
 use App\Models\Resources\DatiPersonali;
-use Illuminate\Support\Facades\DB;
+use App\Models\Resources\User;
+use Illuminate\Support\Facades\Hash;
 
 class LocatarioController extends Controller {
 
@@ -53,11 +54,18 @@ class LocatarioController extends Controller {
             ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
     }
 
+    // metodo utilizzato per tornare gli alloggi locati da un determinato locatario
+    public function showStoricoAlloggi(){
+        $alloggiLocatario = $this->_locatarioModel->getStoricoAlloggiByLocatario();
+        return view('alloggio/content-storico-alloggi-locatario')
+            ->with('alloggiLocatario', $alloggiLocatario);
+    }
+
     // metodo utilizzato per tornare i dettagli dell'alloggio selezionato in catalogo
     public function showDettaglioAlloggio($id_alloggio, $tipologia){
         $info_generali = $this->_locatarioModel->getAlloggio($id_alloggio, $tipologia);
 
-        return view('alloggio/dettagli-alloggio')
+        return view('alloggio/content-dettagli-alloggio')
             ->with('info_generali', $info_generali);
     }
 
@@ -70,13 +78,15 @@ class LocatarioController extends Controller {
     }
 
     public function showModificaAccount(UpdateProfileRequest $request){
-        $data = $request->all();
 
         DatiPersonali::where('id_dati_personali', auth()->user()->getAuthIdentifier())
-            ->update(['nome' => $data['name'], 'cognome' => $data['surname'], 'luogo_nascita' => $data['birthplace']
-                , 'sesso' => $data['gender'], 'citta' => $data['city'], 'num_civico' => $data['house-number']
-                , 'mail' => $data['email'], 'data_nascita' => $data['birthtime'], 'codice_fiscale' => $data['cf']
-                , 'via' => $data['street'], 'cap' => $data['cap'], 'cellulare' => $data['telephone']]);
+            ->update(['nome' => $request['name'], 'cognome' => $request['surname'], 'luogo_nascita' => $request['birthplace']
+                , 'sesso' => $request['gender'], 'citta' => $request['city'], 'num_civico' => $request['house-number']
+                , 'mail' => $request['email'], 'data_nascita' => $request['birthtime'], 'codice_fiscale' => $request['cf']
+                , 'via' => $request['street'], 'cap' => $request['cap'], 'cellulare' => $request['telephone']]);
+
+        User::where('id', auth()->user()->getAuthIdentifier())
+            ->update(['username' => $request['username'], 'password' => Hash::make($request['password'])]);
 
         return redirect()->action('LocatarioController@showAccount');
     }
