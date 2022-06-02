@@ -19,7 +19,7 @@ Route::get('/', 'GuestController@index')->name('home-guest');
 Route::prefix('locatore')->group(function () {
     Route::get('/', 'LocatoreController@index')->name('home-locatore');
 
-    Route::post('modifica-dati', 'LocatoreController@showModificaAccount')->name('modifica-dati');
+    Route::post('/modifica-dati', 'LocatoreController@showModificaAccount')->name('modifica-dati-locatore');
 
     Route::get('/gestione-alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione-alloggi');
 
@@ -44,7 +44,7 @@ Route::prefix('locatario')->group(function () {
 
     Route::get('/account', 'LocatarioController@showAccount')->name('account-locatario');
 
-    Route::post('modifica-dati', 'LocatarioController@showModificaAccount')->name('modifica-dati');
+    Route::post('/modifica-dati', 'LocatarioController@showModificaAccount')->name('modifica-dati-locatario');
 
     Route::prefix('catalogo')->group(function () {
         Route::get('/', 'LocatarioController@showCatalog')->name('catalogo-locatario');

@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/gestione-alloggi.css') }}">
 @section('title', 'Account')
 
-
+<!-- Vista che visualizza i dati personali e li rende modificabili all'utente loggato -->
 @section('content')
 @isset($dati_personali)
 @foreach($dati_personali as $dati)
@@ -21,15 +21,21 @@
             </div>
         </section>
         <hr style="margin-right: 50px; margin-left: 50px">
-        {{ Form::open(array('route' => 'modifica-dati', 'class' => 'modifica-dati')) }}
+        <!-- Differenziazione delle rotte in base al tipo di utente -->
+        @can('isLocatore')
+            {{ Form::open(array('route' => 'modifica-dati-locatore', 'class' => 'modifica-dati')) }}
+        @endcan
+        @can('isLocatario')
+            {{ Form::open(array('route' => 'modifica-dati-locatario', 'class' => 'modifica-dati')) }}
+        @endcan
         <section class="secondo-box">
             <fieldset class="colonna form-group">
+                <!-- Nome -->
                 <div class="item">
                     {{ Form::label('name', 'Nome', ['class' => 'label-form'])}}
                     {{ Form::text('name', $dati->nome, ['placeholder' => 'Nome']) }}
                     <span class="underline"></span>
                 </div>
-
                 @if ($errors->first('name'))
                     <ul class="errors">
                         @foreach ($errors->get('name') as $message)
@@ -38,12 +44,12 @@
                     </ul>
                 @endif
 
+                <!-- Luogo di nascita -->
                 <div class="item">
                     {{ Form::label('birthplace', 'Luogo di nascita', ['class' => 'label-form'])}}
                     {{ Form::text('birthplace', $dati->luogo_nascita, ['placeholder' => 'Luogo di nascita']) }}
                     <span class="underline"></span>
                 </div>
-
                 @if ($errors->first('birthplace'))
                     <ul class="errors">
                         @foreach ($errors->get('birthplace') as $message)
@@ -52,6 +58,7 @@
                     </ul>
                 @endif
 
+                <!-- Sesso -->
                 <div class="item">
                     {{ Form::label('gender', 'Sesso', ['class' => 'label-form'])}}
                     @if($dati->sesso == 'm')
@@ -75,12 +82,12 @@
                     @endif
                 </div>
 
+                <!-- Città -->
                 <div class="item">
                     {{ Form::label('city', 'Città', ['class' => 'label-form'])}}
                     {{ Form::text('city', $dati->citta, ['placeholder' => 'Città']) }}
                     <span class="underline"></span>
                 </div>
-
                 @if ($errors->first('city'))
                     <ul class="errors">
                         @foreach ($errors->get('city') as $message)
@@ -89,12 +96,12 @@
                     </ul>
                 @endif
 
+                <!-- Numero civico -->
                 <div class="item">
                     {{ Form::label('house-number', 'Numero civico', ['class' => 'label-form'])}}
                     {{ Form::text('house-number', $dati->num_civico, ['placeholder' => 'Numero civico']) }}
                     <span class="underline"></span>
                 </div>
-
                 @if ($errors->first('house-number'))
                     <ul class="errors">
                         @foreach ($errors->get('house-number') as $message)
@@ -103,6 +110,7 @@
                     </ul>
                 @endif
 
+                <!-- Mail -->
                 <div class="item">
                     {{ Form::label('email', 'Email', ['class' => 'label-form'])}}
                     {{ Form::text('email', $dati->mail, ['placeholder' => 'E-mail']) }}
@@ -111,12 +119,12 @@
 
             </fieldset>
             <fieldset class="colonna form-group">
+                <!-- Cognome -->
                 <div class="item">
                     {{ Form::label('surname', 'Cognome', ['class' => 'label-form'])}}
                     {{ Form::text('surname', $dati->cognome, ['placeholder' => 'Cognome']) }}
                     <span class="underline"></span>
                 </div>
-
                 @if ($errors->first('surname'))
                     <ul class="errors">
                         @foreach ($errors->get('surname') as $message)
@@ -125,12 +133,12 @@
                     </ul>
                 @endif
 
+                <!-- Data di nascita -->
                 <div class="item">
                     {{ Form::label('birthtime', 'Data di nascita',  ['class' => 'label-form'])}}
                     {{ Form::date('birthtime', $dati->data_nascita) }}
                     <span class="underline"></span>
                 </div>
-
                 @if ($errors->first('birthtime'))
                     <ul class="errors">
                         @foreach ($errors->get('birthtime') as $message)
@@ -139,12 +147,12 @@
                     </ul>
                 @endif
 
+                <!-- Codice fiscale -->
                 <div class="item">
                     {{ Form::label('cf', 'Codice fiscale', ['class' => 'label-form'])}}
                     {{ Form::text('cf', $dati->codice_fiscale, ['placeholder' => 'Codice fiscale']) }}
                     <span class="underline"></span>
                 </div>
-
                 @if ($errors->first('cf'))
                     <ul class="errors">
                         @foreach ($errors->get('cf') as $message)
@@ -153,12 +161,12 @@
                     </ul>
                 @endif
 
+                <!-- Via -->
                 <div class="item">
                     {{ Form::label('street', 'Via', ['class' => 'label-form'])}}
                     {{ Form::text('street', $dati->via, ['placeholder' => 'Via']) }}
                     <span class="underline"></span>
                 </div>
-
                 @if ($errors->first('street'))
                     <ul class="errors">
                         @foreach ($errors->get('street') as $message)
@@ -167,12 +175,12 @@
                     </ul>
                 @endif
 
+                <!-- CAP -->
                 <div class="item">
                     {{ Form::label('cap', 'CAP', ['class' => 'label-form'])}}
                     {{ Form::text('cap', $dati->cap, ['placeholder' => 'CAP']) }}
                     <span class="underline"></span>
                 </div>
-
                 @if ($errors->first('cap'))
                     <ul class="errors">
                         @foreach ($errors->get('cap') as $message)
@@ -181,12 +189,12 @@
                     </ul>
                 @endif
 
+                <!-- Cellulare -->
                 <div class="item">
                     {{ Form::label('telephone', 'Cellulare', ['class' => 'label-form'])}}
                     {{ Form::text('telephone', $dati->cellulare, ['placeholder' => 'Cellulare']) }}
                     <span class="underline"></span>
                 </div>
-
                 @if ($errors->first('telephone'))
                     <ul class="errors">
                         @foreach ($errors->get('telephone') as $message)
@@ -199,7 +207,7 @@
         </section>
         <section class="terzo-box">
             @cannot('isAdmin')
-                {{ Form::submit('Modifica', ['class' => 'filter_button']) }}
+                {{ Form::submit('Modifica', ['class' => 'filter_button', 'onclick' => "return confirm('Dati inviati!    Controlla siano corretti!')"]) }}
             @endcannot
         </section>
         {!! Form::close() !!}
