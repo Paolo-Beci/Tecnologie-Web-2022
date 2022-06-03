@@ -70,3 +70,15 @@ input[type="radio"] {
     background-color: #ffd725;
     border-radius: 10px;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #222223; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #787879; 
+}

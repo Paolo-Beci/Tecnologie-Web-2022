@@ -15,7 +15,7 @@
     <a href="{{route('gestione-alloggi')}}" title="Gestione degli alloggi">Gestione alloggi</a>
 </li>
 <li>
-    <a href="#messaggi" title="Messaggistica">Messaggi</a>
+    <a href="{{route('messaggistica')}}" title="Messaggistica">Messaggi</a>
 </li>
 <li>
     <a href="{{route('account-locatore')}}">

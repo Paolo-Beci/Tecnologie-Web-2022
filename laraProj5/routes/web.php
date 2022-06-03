@@ -119,3 +119,7 @@ Route::prefix('catalogo')->group(function () {
 
     Route::get('/posti-letto', 'GuestController@showPublicCatalogPostiLetto')->name('catalogo-posti-letto');
 });
+
+//MESSAGGISTICA
+
+Route::any('/messaggistica', 'MessaggisticaController@showMessaggistica')->name('messaggistica');

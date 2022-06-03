@@ -84,4 +84,5 @@ class Locatore {
             ->join('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
             ->get();
     }
+
 }

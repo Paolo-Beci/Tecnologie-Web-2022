@@ -12,7 +12,7 @@
     <a href="{{route('storico-alloggi')}}" title="Storico degli alloggi">Storico alloggi</a>
 </li>
 <li>
-    <a href="#messaggi" title="Messaggistica">Messaggi</a>
+    <a href="{{route('messaggistica')}}" title="Messaggistica">Messaggi</a>
 </li>
 <li>
     <a href="{{route('account-locatario')}}">
