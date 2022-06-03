@@ -30,7 +30,7 @@ class CreateAlloggioTable extends Migration
             $table->char('cap',5);
             $table->smallInteger('interno')->nullable();
             $table->tinyInteger('piano')->nullable();
-            $table->dateTime('data_inserimento_offerta');
+            $table->date('data_inserimento_offerta');
             $table->string('tipologia',12);
         });
     }

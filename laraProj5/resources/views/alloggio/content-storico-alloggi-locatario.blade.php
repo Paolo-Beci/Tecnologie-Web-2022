@@ -12,19 +12,19 @@
                     <h1>I tuoi alloggi:</h1>
                 </div>
             </div>
-            <!-- ALLOGGI -->
-        @if(@isset($alloggiLocatario))   <!-- esiste o non è null -->
-            @foreach ($alloggiLocatario as $alloggio)
-                <!-- Alloggio -->
-                    @include('helpers.alloggio')
-            @endforeach
-        @else
+        <!-- ALLOGGI -->
+        @if($alloggiLocatario->isEmpty())
             <div class="parent">
                 <div class="child">
                     <i class="fa-solid fa-house-circle-xmark fa-2xl" style="margin: 50px"></i>
                     <h1>Non hai nessun alloggio locato da visualizzare!</h1>
                 </div>
             </div>
+        @else
+            @foreach ($alloggiLocatario as $alloggio)
+                <!-- Alloggio -->
+                    @include('helpers.alloggio')
+            @endforeach
         @endisset
         </section>
     </main>

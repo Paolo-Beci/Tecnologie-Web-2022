@@ -37,7 +37,7 @@
                 @endcan
                 @can('isLocatore')
                     <a href="{{route('catalogo-posti-letto-locatore')}}">
-                 @endcan
+                @endcan
                 @guest
                     <a href="{{route('catalogo-posti-letto')}}">
                 @endcan

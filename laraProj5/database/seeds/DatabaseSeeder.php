@@ -79,14 +79,14 @@ class DatabaseSeeder extends Seeder {
         ]);
 
         DB::table('interazione')->insert([
-            ['utente' => 1, 'alloggio' => 1, 'data_interazione' => now()],   /* data_interazione si intende come data di effettiva conclusione del contratto d'affitto? */
-            ['utente' => 2, 'alloggio' => 1, 'data_interazione' => now()],
-            ['utente' => 1, 'alloggio' => 2, 'data_interazione' => now()],
-            ['utente' => 2, 'alloggio' => 2, 'data_interazione' => now()],
-            ['utente' => 1, 'alloggio' => 3, 'data_interazione' => now()],
-            ['utente' => 1, 'alloggio' => 4, 'data_interazione' => now()],
-            ['utente' => 1, 'alloggio' => 5, 'data_interazione' => now()],
-            ['utente' => 1, 'alloggio' => 6, 'data_interazione' => now()],
+            ['utente' => 1, 'alloggio' => 1, 'data_interazione' => '2020-06-11'],   /* data_interazione si intende come data di effettiva conclusione del contratto d'affitto? */
+            ['utente' => 2, 'alloggio' => 1, 'data_interazione' => '2020-09-01'],
+            ['utente' => 1, 'alloggio' => 2, 'data_interazione' => '2021-05-17'],
+            ['utente' => 2, 'alloggio' => 2, 'data_interazione' => '2021-09-01'],
+            ['utente' => 1, 'alloggio' => 3, 'data_interazione' => '2022-04-01'],
+            ['utente' => 1, 'alloggio' => 4, 'data_interazione' => '2022-01-01'],
+            ['utente' => 1, 'alloggio' => 5, 'data_interazione' => '2021-11-16'],
+            ['utente' => 1, 'alloggio' => 6, 'data_interazione' => '2020-09-25'],
         ]);
 
         DB::table('disponibilita')->insert([

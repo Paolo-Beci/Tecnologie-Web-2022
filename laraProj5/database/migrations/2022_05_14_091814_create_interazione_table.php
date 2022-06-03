@@ -16,7 +16,7 @@ class CreateInterazioneTable extends Migration
         Schema::create('interazione', function (Blueprint $table) {
             $table->bigInteger('utente')->unsigned();
             $table->integer('alloggio')->unsigned();
-            $table->dateTime('data_interazione');
+            $table->date('data_interazione');
             $table->primary(array('utente', 'alloggio'));
             $table->foreign('utente')->references('id')->on('utente')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('alloggio')->references('id_alloggio')->on('alloggio')->onUpdate('cascade')->onDelete('cascade');

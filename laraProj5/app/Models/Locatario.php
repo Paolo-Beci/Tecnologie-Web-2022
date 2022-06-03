@@ -21,6 +21,7 @@ class Locatario {
     public function getAlloggi(){
         return DB::table('alloggio')
             ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+            ->join('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
             ->paginate(3);
     }
 
@@ -82,6 +83,7 @@ class Locatario {
             ->join('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
             ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('utente', $locatario)
+            ->orderBy('data_interazione', 'DESC')
             ->paginate(3);
     }
 

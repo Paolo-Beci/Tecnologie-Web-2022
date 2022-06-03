@@ -132,6 +132,14 @@ label {
     color: black;
 }
 
+.info-alloggio-red {
+    font-size: 25px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+    color: red;
+}
+
 .pagination {
     display: flex;
     justify-content: center;
