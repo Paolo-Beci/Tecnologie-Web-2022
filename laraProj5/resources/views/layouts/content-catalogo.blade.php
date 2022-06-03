@@ -15,18 +15,40 @@
         <section class="catalogo">
             <h1>Alloggi in affitto</h1>
             <article class="alloggi-buttons">
-                <a href="{{route('catalogo-appartamenti')}}">
+                @can('isLocatario')
+                    <a href="{{route('catalogo-appartamenti-locatario')}}">
+                @endcan
+                @can('isLocatore')
+                    <a href="{{route('catalogo-appartamenti-locatore')}}">
+                @endcan
+                @guest
+                    <a href="{{route('catalogo-appartamenti')}}">
+                @endcan
+                @can('isAdmin')
+                    <a href="{{route('catalogo-appartamenti-admin')}}">
+                @endcan
                     <button class="appartamenti-button">
-                    <img class="button-img" src="{{asset('images/apartment_icon.png')}}" alt="Appartamenti">
-                    APPARTAMENTI
+                        <img class="button-img" src="{{asset('images/apartment_icon.png')}}" alt="Appartamenti">
+                        APPARTAMENTI
                     </button>
                 </a>
-                <a href="{{route('catalogo-posti-letto')}}">
+                @can('isLocatario')
+                    <a href="{{route('catalogo-posti-letto-locatario')}}">
+                @endcan
+                @can('isLocatore')
+                    <a href="{{route('catalogo-posti-letto-locatore')}}">
+                 @endcan
+                @guest
+                    <a href="{{route('catalogo-posti-letto')}}">
+                @endcan
+                @can('isAdmin')
+                    <a href="{{route('catalogo-posti-letto-admin')}}">
+                @endcan
                     <button class="posti-letto-button">
                         <img class="button-img" src="{{asset('images/bed_icon.png')}}" alt="Posti letto">
                         POSTI LETTO
                     </button>
-                </a>
+                </a></a></a></a></a></a></a>
             </article>
             <!-- ALLOGGI -->
             @isset($alloggi)   <!-- esiste o non è null -->

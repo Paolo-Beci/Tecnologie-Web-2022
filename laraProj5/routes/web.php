@@ -30,9 +30,9 @@ Route::prefix('locatore')->group(function () {
     Route::prefix('catalogo')->group(function () {
         Route::get('/', 'LocatoreController@showCatalog')->name('catalogo-locatore');
 
-        Route::get('/appartamenti', 'LocatoreController@showCatalogAppartamenti')->name('catalogo-appartamenti');
+        Route::get('/appartamenti', 'LocatoreController@showCatalogAppartamenti')->name('catalogo-appartamenti-locatore');
 
-        Route::get('/posti-letto', 'LocatoreController@showCatalogPostiLetto')->name('catalogo-posti-letto');
+        Route::get('/posti-letto', 'LocatoreController@showCatalogPostiLetto')->name('catalogo-posti-letto-locatore');
     });
 });
 
@@ -48,9 +48,9 @@ Route::prefix('locatario')->group(function () {
     Route::prefix('catalogo')->group(function () {
         Route::get('/', 'LocatarioController@showCatalog')->name('catalogo-locatario');
 
-        Route::get('/appartamenti', 'LocatarioController@showCatalogAppartamenti')->name('catalogo-appartamenti');
+        Route::get('/appartamenti', 'LocatarioController@showCatalogAppartamenti')->name('catalogo-appartamenti-locatario');
 
-        Route::get('/posti-letto', 'LocatarioController@showCatalogPostiLetto')->name('catalogo-posti-letto');
+        Route::get('/posti-letto', 'LocatarioController@showCatalogPostiLetto')->name('catalogo-posti-letto-locatario');
 
         Route::get('/dettagli-alloggio/{id_alloggio?}/{tipologia_alloggio?}', 'LocatarioController@showDettaglioAlloggio')->name('dettagli-alloggio');
     });
@@ -93,9 +93,9 @@ Route::prefix('admin')->group(function () {
     Route::prefix('catalogo')->group(function () {
         Route::get('/', 'AdminController@showCatalog')->name('catalogo-admin');
 
-        Route::get('/appartamenti', 'AdminController@showCatalogAppartamenti')->name('catalogo-appartamenti');
+        Route::get('/appartamenti', 'AdminController@showCatalogAppartamenti')->name('catalogo-appartamenti-admin');
 
-        Route::get('/posti-letto', 'AdminController@showCatalogPostiLetto')->name('catalogo-posti-letto');
+        Route::get('/posti-letto', 'AdminController@showCatalogPostiLetto')->name('catalogo-posti-letto-admin');
     });
 });
 

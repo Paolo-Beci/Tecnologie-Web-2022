@@ -24,11 +24,13 @@ class Locatario {
             ->paginate(3);
     }
 
-    //metodo per tornare un' array di alloggi in base alla tipologia
+    //metodo per tornare un'array di alloggi in base alla tipologia
     public function getAlloggioByTip($tipologia){
-        return Alloggio::where('tipologia', $tipologia)->paginate(3);
+        return DB::table('alloggio')
+            ->where('tipologia', $tipologia)
+            ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+            ->paginate(3);
     }
-
 
     //funzione che torna l'istanza dell'alloggio considerato insieme alle sue foto e alle info del locatore
     public function getAlloggio($idAlloggio, $tipologia){
@@ -73,6 +75,8 @@ class Locatario {
     //metodo per tornare un' array di alloggi locati da un locatario
     public function getStoricoAlloggiByLocatario(){
         $locatario = auth()->user()->getAuthIdentifier();
+
+        // ordinarlo per la data di locazione
 
         return DB::table('alloggio')   // TO DO
             ->join('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')

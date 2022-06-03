@@ -114,9 +114,12 @@ class Admin {
             ->paginate(3);
     }
 
-    //metodo per tornare un'array di alloggi in base alla tipologia in catalogo (si paginate)
+    //metodo per tornare un'array di alloggi in base alla tipologia
     public function getAlloggioByTip($tipologia){
-        return Alloggio::where('tipologia', $tipologia)->paginate(3);
+        return DB::table('alloggio')
+            ->where('tipologia', $tipologia)
+            ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+            ->paginate(3);
     }
 
     // metodo per tornare i dati di un locatario
