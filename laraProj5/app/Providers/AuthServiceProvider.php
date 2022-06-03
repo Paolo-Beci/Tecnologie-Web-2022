@@ -36,5 +36,9 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasRole('admin');
         });
 
+        Gate::define('messaggistica', function($user) {
+            return $user->hasRole(['locatore', 'locatario']);
+        });
+
     }
 }

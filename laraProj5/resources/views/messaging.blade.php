@@ -162,7 +162,7 @@
 
                 <div class="chat-bottom-bar">
 
-                    {{ Form::open(array('route' => 'messaggistica-locatore', 'class' => 'send-message')) }}
+                    {{ Form::open(array('route' => 'messaggistica', 'class' => 'send-message')) }}
 
                         {{ Form::text('message-content', '', ['placeholder' => 'Scrivi un messaggio']) }}
                         {{ Form::hidden('mittente', $auth_id) }}
