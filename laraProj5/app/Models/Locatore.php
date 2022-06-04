@@ -16,6 +16,11 @@ class Locatore {
         return Faq::where('target', $target)->get();
     }
 
+    //metodo che torna l'alloggio relativo all'id passato
+    public function getAlloggioById($idAlloggio){
+        return Alloggio::where('id_alloggio', $idAlloggio)->get();
+    }
+
     //metodo che torna gli alloggi insieme alle info sulle foto
     public function getAlloggi(){
         return DB::table('alloggio')
@@ -59,11 +64,6 @@ class Locatore {
         }
     }
 
-    //metodo che torna le tipologie degli alloggi
-    public function getTipologieAlloggio(){
-        return Alloggio::select('tipologia')->distinct()->get();
-    }
-
     //metodo per tornare un' array di alloggi di un locatore
     public function getAlloggiByLocatore(){
         $locatore = auth()->user()->getAuthIdentifier();
@@ -85,4 +85,18 @@ class Locatore {
             ->get();
     }
 
+    //metodo che tornare le tipologie degli alloggi
+    public function getTipologieAlloggio(){
+        return Alloggio::select('tipologia')->distinct();
+    }
+
+    //metodo che tornare il genere di locatario per gli alloggi
+    public function getGenereAlloggio(){
+        return Alloggio::select('genere')->distinct()->get();
+    }
+
+    //metodo che tornare il genere di locatario per gli alloggi
+    public function getPeriodoLocazioneAlloggio(){
+        return Alloggio::select('periodo_locazione')->distinct()->get();
+    }
 }

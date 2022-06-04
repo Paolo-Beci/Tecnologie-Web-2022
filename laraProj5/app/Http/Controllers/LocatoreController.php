@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\NewAlloggioRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Locatore;
+use App\Models\Resources\Alloggio;
 use App\Models\Resources\DatiPersonali;
+use App\Models\Resources\Foto;
 use App\Models\Resources\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -67,49 +70,12 @@ class LocatoreController extends Controller {
             ->with('tipologieAlloggio', $tipologieAlloggio);
     }
 
-    public function inserisciAnnuncio2(){
-//        $alloggio = new Alloggio();
-//        $alloggio->nome = request('nome');
-//        $alloggio->tipologia = request('tipologia');
-//        $alloggio->descrizione = request('descrizione');
-//        $alloggio->prezzo = request('prezzo');
-//        $alloggio->utente = auth()->user()->getAuthIdentifier();
-//        $alloggio->save();
-        return redirect('/locatore/gestione-alloggi');
-    }
-
     // metodo utilizzato per tornare i dettagli dell'alloggio selezionato in catalogo
     public function showDettaglioAlloggio($id_alloggio, $tipologia){
         $info_generali = $this->_locatoreModel->getAlloggio($id_alloggio, $tipologia);
 
         return view('alloggio/content-dettagli-alloggio')
             ->with('info_generali', $info_generali);
-    }
-
-    //metodo da utilizzare al posto del precedente
-    //questa funzione apre la sezione di inserimento annuncio
-    public function inserisciAnnuncio() {
-        $tg = ['locatore'=>'locatore', 'locatario'=>'locatario', 'utente non registrato'=>'utente non registrato'];
-        return view('faq/insert-faq')
-            ->with('insert', 'active')
-            ->with('edit', '')
-            ->with('descrizione', 'Utilizza questa form per inserire una nuova faq')
-            ->with('rotta', 'inserisci-faq.store')
-            ->with('tg', $tg)
-            ->with('domanda', '')
-            ->with('risposta', '')
-            ->with('target', '')
-            ->with('azione', 'Aggiungi Faq');
-    }
-
-    //questa funzione inserisce effettivamente l'annuncio
-    public function storeFaq(NewProductRequest $request)
-    {
-        $new_faq = new Faq;
-        $new_faq->fill($request->validated());
-        $new_faq->save();
-
-        return redirect()->action('AdminController@confirm');
     }
 
     public function showAccount(){
@@ -136,5 +102,59 @@ class LocatoreController extends Controller {
 
         return redirect()->action('LocatoreController@showAccount');
     }
+
+    //metodo che apre la sezione di inserimento annuncio
+    public function insertAnnuncio(){
+        $tipologie = ["Appartamento" => 'Appartamento', "Posto letto" => 'Posto letto'];
+        $genere = $this->_locatoreModel->getGenereAlloggio()->pluck('genere');
+        $periodoLocazione = $this->_locatoreModel->getPeriodoLocazioneAlloggio()->pluck('periodo_locazione');
+        return view('alloggio.inserisci-annuncio')
+            ->with('tipologie', $tipologie)
+            ->with('genere', $genere)
+            ->with('periodoLocazione', $periodoLocazione);
+    }
+
+    //metodo per inserire un annuncio
+    public function storeAnnuncio(NewAlloggioRequest $request) {
+
+        //creo l'alloggio
+        $alloggio = new Alloggio;
+        $alloggio->fill($request->validated());
+        $alloggio->save();
+
+        //creo la foto legata all'alloggio
+        $foto = new Foto();
+
+        if ($request->hasFile('immagine')) {
+            $image = $request->file('immagine');
+            $imageName = $image->getClientOriginalName();
+            $array = explode('.', $imageName);
+            $foto->fill($request->validated());
+            $foto->estensione = '.'.$array(1);
+            //rinomino l'immagine
+            $imageName = $foto->id_foto.$foto->estensione;
+        } else {
+            $foto->fill($request->validated());
+            $foto->estensione = NULL;
+        }
+        $foto->save();
+
+        if (!is_null($foto->estensione)) {
+            $destinationPath = public_path() . '/images/images_case';
+            $image->move($destinationPath, $imageName);
+        }
+
+        return response()->json(['redirect' => route('locatore/gestione-alloggi')]);
+    }
+
+    // funzione che cancella l'alloggio selezionato
+    public function deleteAlloggioById($id) {
+
+        $annuncio = $this->_locatoreModel->getAlloggioById($id);
+        $annuncio->delete();
+
+        return redirect()->action('LocatoreController@showLocatoreAlloggi');
+    }
+
 
 }

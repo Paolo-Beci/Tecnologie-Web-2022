@@ -22,12 +22,20 @@ Route::prefix('locatore')->group(function () {
     Route::get('/account', 'LocatoreController@showAccount')->name('account-locatore');
     Route::post('/modifica-dati', 'LocatoreController@showModificaAccount')->name('modifica-dati-locatore');
 
-    Route::get('/gestione-alloggi', 'LocatoreController@showLocatoreAlloggi')->name('gestione-alloggi');
     Route::get('/dettagli-alloggio/{id_alloggio?}/{tipologia_alloggio?}', 'LocatoreController@showDettaglioAlloggio')->name('dettagli-alloggio-locatore');
+
+    Route::prefix('gestione-alloggi')->group(function () {
+        Route::get('/','LocatoreController@showLocatoreAlloggi')->name('gestione-alloggi');
+
+        Route::get('/dettagli-alloggio/{id_alloggio?}/{tipologia_alloggio?}', 'LocatoreController@showDettaglioAlloggio')->name('dettagli-alloggio-locatore');
+
+        Route::get('/delete/{id}', 'LocatoreController@deleteAlloggioById')->name('cancella-alloggio.store');
+    });
 
 
     Route::get('/inserisci-annuncio', 'LocatoreController@insertAnnuncio')->name('new-annuncio');
     Route::post('/inserisci-annuncio', 'LocatoreController@storeAnnuncio')->name('new-annuncio.store');
+
 
     Route::prefix('catalogo')->group(function () {
         Route::get('/', 'LocatoreController@showCatalog')->name('catalogo-locatore');
