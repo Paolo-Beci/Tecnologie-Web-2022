@@ -32,8 +32,9 @@
             <fieldset class="colonna form-group">
                 <!-- Username -->
                 <div class="item">
-                    {{ Form::label('username', 'Username', ['class' => 'label-form']) }}
-                    {{ Form::text('username', $dati->username, ['id' => 'sign-up-username']) }}
+                    {{ Form::label('username', 'Username attuale: ', ['class' => 'label-form']) }}
+                    {{ Form::label('username', $dati->username, ['class' => 'label-form']) }}
+                    {{ Form::text('username', '', ['placeholder' => 'Nuovo Username']) }}
                     <span class="underline"></span>
                 </div>
                 @if ($errors->first('username'))
@@ -130,6 +131,13 @@
                     {{ Form::text('email', $dati->mail, ['placeholder' => 'E-mail']) }}
                     <span class="underline"></span>
                 </div>
+                @if ($errors->first('email'))
+                    <ul class="errors">
+                        @foreach ($errors->get('email') as $message)
+                            <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                @endif
 
             </fieldset>
             <fieldset class="colonna form-group">

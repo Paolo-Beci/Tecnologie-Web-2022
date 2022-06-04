@@ -127,8 +127,12 @@ class LocatoreController extends Controller {
                 , 'mail' => $request['email'], 'data_nascita' => $request['birthtime'], 'codice_fiscale' => $request['cf']
                 , 'via' => $request['street'], 'cap' => $request['cap'], 'cellulare' => $request['telephone']]);
 
-        User::where('id', auth()->user()->getAuthIdentifier())
-            ->update(['username' => $request['username'], 'password' => Hash::make($request['password'])]);
+        if(is_null($request['username']))
+            User::where('id', auth()->user()->getAuthIdentifier())
+                ->update(['password' => Hash::make($request['password'])]);
+        else
+            User::where('id', auth()->user()->getAuthIdentifier())
+                ->update(['username' => $request['username'], 'password' => Hash::make($request['password'])]);
 
         return redirect()->action('LocatoreController@showAccount');
     }

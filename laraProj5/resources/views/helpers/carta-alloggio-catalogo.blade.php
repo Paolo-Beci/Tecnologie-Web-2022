@@ -19,5 +19,13 @@
         Canone affitto: &#8364;{{ $alloggio->canone_affitto }} / mese,
         Utenze: &#8364;{{ $alloggio->utenze }} / mese</h2> <!-- CanoneAffitto, Utenze -->
     <h2 class="info-alloggio">{{ $alloggio->descrizione }}</h2> <!-- Descrizione -->
-    <h1 class="info-alloggio-red">Alloggio locato il:  {{ $alloggio->data_interazione }}</h1>
+    <div class="info-alloggio">
+        @if($alloggio->stato == 'libero')
+            <h2 style="color: green"> Libero </h2>
+        @elseif($alloggio->stato == 'opzionato')
+            <h2 style="color: coral"> Opzionato </h2>
+        @else
+            <h2 style="color: red"> Locato </h2>
+        @endif
+    </div>
 </div>

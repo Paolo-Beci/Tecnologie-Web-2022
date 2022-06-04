@@ -10,7 +10,7 @@
         <section class="primo-box">
             <div class="image-container">
                 <img class="immagine-alloggio"
-                     src="{{ asset('images_case/'.$info_generali->first()->id_foto.$info_generali->first()->estensione) }}"
+                     src="{{ asset('images_case/'.$info_generali->first()->alloggio.$info_generali->first()->estensione) }}"
                      alt="Immagine">
             </div>
 
@@ -25,6 +25,14 @@
                         , {{$info_generali->first()->num_civico}}
                         , {{$info_generali->first()->citta}} {{$info_generali->first()->cap}}<br>
                         Piano: {{$info_generali->first()->piano}} Interno: {{$info_generali->first()->interno}}</h1>
+
+                    @if($info_generali->first()->stato == 'libero')
+                        <h2 style="color: green"> Libero -> pubblicato il: {{$info_generali->first()->data_interazione}}</h2>
+                    @elseif($info_generali->first()->stato == 'opzionato')
+                        <h2 style="color: coral"> Opzionato </h2>
+                    @else
+                        <h2 style="color: red"> Locato </h2>
+                    @endif
 
                     <div class="item-desc">
                         <h2>Descrizione</h2>
@@ -106,11 +114,13 @@
                     <p class="item-desc"><i class="icon fa-solid fa-envelope"></i>{{$info_generali->first()->mail}}</p>
                     <p class="item-desc"><i class="icon fa-solid fa-phone"></i>{{$info_generali->first()->cellulare}}</p>
                 </div>
-                <div class="btn-contatto">
-                    <button class="filter_button" type="submit" onclick=alert('Inviato!')>
-                        Comunicagli il tuo interesse!
-                    </button>
-                </div>
+                @if(!$info_generali->first()->stato == 'locato')
+                    <div class="btn-contatto">
+                        <button class="filter_button" type="submit" onclick=alert('Inviato!')>
+                            Comunicagli il tuo interesse!
+                        </button>
+                    </div>
+                @endif
                 <div class="btn-contatto">
                     <a href="#vista-messaggistica-di-locatore-corrispondente">
                         <button class="filter_button" type="submit">

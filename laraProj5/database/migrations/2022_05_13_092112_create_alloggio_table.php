@@ -32,6 +32,7 @@ class CreateAlloggioTable extends Migration
             $table->tinyInteger('piano')->nullable();
             $table->date('data_inserimento_offerta');
             $table->string('tipologia',12);
+            $table->string('stato',9)->default('libero');
         });
     }
 
