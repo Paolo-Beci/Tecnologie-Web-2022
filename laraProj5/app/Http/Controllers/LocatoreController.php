@@ -156,5 +156,4 @@ class LocatoreController extends Controller {
         return redirect()->action('LocatoreController@showLocatoreAlloggi');
     }
 
-
 }

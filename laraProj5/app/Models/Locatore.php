@@ -18,7 +18,7 @@ class Locatore {
 
     //metodo che torna l'alloggio relativo all'id passato
     public function getAlloggioById($idAlloggio){
-        return Alloggio::where('id_alloggio', $idAlloggio)->get();
+        return Alloggio::find( $idAlloggio);
     }
 
     //metodo che torna gli alloggi insieme alle info sulle foto
