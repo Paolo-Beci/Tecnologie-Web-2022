@@ -11,4 +11,8 @@ class Messaggio extends Model{
     protected $table = 'messaggio';
     protected $primaryKey = ['mittente', 'destinatario', 'alloggio'];
     public $timestamps = false;
+
+    protected $fillable = [
+        'data_invio', 'contenuto', 'mittente', 'destinatario', 'alloggio'
+    ];
 }

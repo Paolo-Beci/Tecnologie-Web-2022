@@ -111,15 +111,15 @@ class DatabaseSeeder extends Seeder {
         ]);
 
         DB::table('messaggio')->insert([
-            ['data_invio' => now(), 'contenuto' => 'Ciao, sarei interessato', 'stato' => 1, 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 1],
-            ['data_invio' => now(), 'contenuto' => 'Ti tengo in considerazione', 'stato' => 1, 'mittente' => 1, 'destinatario' => 2, 'alloggio' => 1],
-            ['data_invio' => now(), 'contenuto' => 'Buongiorno, sono interessato', 'stato' => 1, 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 2],
-            ['data_invio' => now(), 'contenuto' => 'Ti metto tra gli interessati', 'stato' => 1, 'mittente' => 1, 'destinatario' => 2, 'alloggio' => 2],
-            ['data_invio' => now(), 'contenuto' => 'Perfetto, attendo aggiornamenti', 'stato' => 1, 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 1],
-            ['data_invio' => now(), 'contenuto' => 'Grazie mille, aspetto riscontri', 'stato' => 1, 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 2],
-            ['data_invio' => now(), 'contenuto' => 'Ottimo, buona giornata', 'stato' => 0, 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 1],
-            ['data_invio' => now(), 'contenuto' => 'Va bene, le auguro una buona giornata', 'stato' => 0, 'mittente' => 1, 'destinatario' => 2, 'alloggio' => 2],
-            ['data_invio' => now(), 'contenuto' => 'Ciao, ho visto la casa e sono interessato', 'stato' => 0, 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 3],
+            ['data_invio' => now(), 'contenuto' => 'Ciao, sarei interessato', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 1],
+            ['data_invio' => now(), 'contenuto' => 'Ti tengo in considerazione', 'mittente' => 1, 'destinatario' => 2, 'alloggio' => 1],
+            ['data_invio' => now(), 'contenuto' => 'Buongiorno, sono interessato', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 2],
+            ['data_invio' => now(), 'contenuto' => 'Ti metto tra gli interessati', 'mittente' => 1, 'destinatario' => 2, 'alloggio' => 2],
+            ['data_invio' => now(), 'contenuto' => 'Perfetto, attendo aggiornamenti', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 1],
+            ['data_invio' => now(), 'contenuto' => 'Grazie mille, aspetto riscontri', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 2],
+            ['data_invio' => now(), 'contenuto' => 'Ottimo, buona giornata', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 1],
+            ['data_invio' => now(), 'contenuto' => 'Va bene, le auguro una buona giornata', 'mittente' => 1, 'destinatario' => 2, 'alloggio' => 2],
+            ['data_invio' => now(), 'contenuto' => 'Ciao, ho visto la casa e sono interessato', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 3],
         ]);
     }
 

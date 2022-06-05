@@ -17,7 +17,6 @@ class CreateMessaggioTable extends Migration
             $table->increments('id_messaggio');
             $table->dateTime('data_invio');
             $table->string('contenuto', 255);
-            $table->binary('stato')->default(0);
             $table->bigInteger('mittente')->unsigned();
             $table->bigInteger('destinatario')->unsigned();
             $table->integer('alloggio')->unsigned();

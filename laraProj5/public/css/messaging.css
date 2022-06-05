@@ -36,6 +36,7 @@ body {
 .messaging-menu img, .contact img, .chat-top-bar img {
     height: 50px;
     width: 50px;
+    border-radius: 50%;
 }
 
 .contacts {
@@ -227,10 +228,6 @@ body {
     color: #8c8c8c;
     font-size: 12px;
     align-self: flex-end;
-}
-
-.status {
-    height: 15px;
 }
 
 .chat-bottom-bar {

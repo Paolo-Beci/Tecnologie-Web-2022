@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Messaggistica;
+use Illuminate\Http\Request;
 
 class MessaggisticaController extends Controller {
 
@@ -28,8 +29,7 @@ class MessaggisticaController extends Controller {
 
             if(!array_key_exists($alloggio, $contacts))
                 $contacts[$alloggio] = array();
-            // else
-            //     array_push($contacts[$alloggio], $message);
+
         }
 
         // Generazione secondo livello array contact. Username
@@ -71,11 +71,21 @@ class MessaggisticaController extends Controller {
             
         }
 
-
         // echo "<pre>".print_r($contacts, true)."</pre>";
 
         return view('messaging')
             ->with('contacts', $contacts);
+
+    }
+
+    public function sendMessage(Request $request) {
+        
+        $message = $request->all();
+
+        $message_created = $this->_messaggisticaModel->createMessage($message['contenuto'], $message['mittente'],
+                                                $message['destinatario'], $message['alloggio']);
+
+        return response()->json(['data_invio' => $message_created->data_invio]);
 
     }
 

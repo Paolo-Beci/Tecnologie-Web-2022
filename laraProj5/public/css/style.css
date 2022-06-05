@@ -12,6 +12,8 @@ html, body{
 
 html {
     overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 110px;
 }
 
 h1 {

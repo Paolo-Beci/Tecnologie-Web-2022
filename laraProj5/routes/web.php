@@ -132,4 +132,6 @@ Route::prefix('catalogo')->group(function () {
 
 //MESSAGGISTICA
 
-Route::any('/messaggistica', 'MessaggisticaController@showMessaggistica')->name('messaggistica');
+Route::get('/messaggistica', 'MessaggisticaController@showMessaggistica')->name('messaggistica');
+
+Route::post('/messaggistica', 'MessaggisticaController@sendMessage')->name('send-message');
