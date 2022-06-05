@@ -98,48 +98,79 @@ class Locatario {
 
     //funzioni di filtro (una funzione per ogni parametro)
     public function getAlloggiByCity($citta) {
-
+        return DB::table('foto')
+            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+            ->where('citta', $citta)
+            ->paginate(3);
     }
 
     public function getAlloggiByFasciaPrezzo($prezzo_min = 0, $prezzo_max = 999999) {
-
+        return DB::table('foto')
+            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+            ->where('canone_affitto', '<', $prezzo_max)
+            ->where('canone_affitto', '>', $prezzo_min)
+            ->get();
     }
 
     public function getAlloggiByPeriodoLocazione($periodo) {
-
+        return DB::table('foto')
+            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+            ->where('periodo_locazione', $periodo)
+            ->get();
     }
 
     public function getAlloggiByFasciaSup($sup_min = 0, $sup_max = 999999) {
-
+        return DB::table('foto')
+            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+            ->where('dimensione', '<', $sup_max)
+            ->where('dimensione', '>', $sup_min)
+            ->get();
     }
 
     public function getAlloggiByNumCamere($num_camere) {
-
+        return DB::table('foto')
+            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+            ->join('appartamento', 'foto.alloggio', '=', 'appartamento.alloggio')
+            ->where('num_camere', $num_camere)
+            ->get();
     }
 
     public function getAlloggiByGenere($genere) {
-
+        return DB::table('foto')
+            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+            ->where('genere', $genere)
+            ->get();
     }
 
     public function getAlloggiByPiano($piano) {
-
+        return DB::table('foto')
+            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+            ->where('piano', $piano)
+            ->get();
     }
 
     public function getAlloggiByNumPostiLettoApp($num_posti_letto_app) {
-
+        return DB::table('foto')
+            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+            ->where('num_posti_letto_tot', $num_posti_letto_app)
+            ->where('tipologia', 'Appartamento')
+            ->get();
     }
 
     public function getAlloggiByNumPostiLettoCamere($num_posti_letto_camere) {
-
+        return DB::table('foto')
+            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+            ->where('num_posti_letto_tot', $num_posti_letto_camere)
+            ->where('tipologia', 'Posto_letto')
+            ->get();
     }
 
     public function getAlloggiByTipoPostoLetto($tipo) {
-
-    }
-
-    //funzione per filtrare gli alloggi con tutti i parametri di filtro in input
-    public function getAlloggiFiltered(/*lista di parametri*/) {
-
+        return DB::table('foto')
+            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+            ->join('posto_letto', 'foto.alloggio', '=', 'posto_letto.alloggio')
+            ->where('tipologia_camera', $tipo)
+            ->get();
     }
 
 }

@@ -1,6 +1,6 @@
 <h1 style="margin: 20px">Filtri ricerca</h1>
 <hr style="margin: 10px">
-{{ Form::open(array('route' => 'catalogo-locatario', 'class' => 'filtri active-form')) }}
+{{ Form::open(array('route' => 'filtered', 'class' => 'filtri active-form')) }}
 
 <h2 class="subtitle-filtri">Città</h2>
     {{ Form::text('citta', 'Ancona') }}<br>
