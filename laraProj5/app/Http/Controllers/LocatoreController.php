@@ -95,10 +95,10 @@ class LocatoreController extends Controller {
 
         if(is_null($request['username']))
             User::where('id', auth()->user()->getAuthIdentifier())
-                ->update(['password' => Hash::make($request['password'])]);
+                ->update(['password' => $request['password']]);
         else
             User::where('id', auth()->user()->getAuthIdentifier())
-                ->update(['username' => $request['username'], 'password' => Hash::make($request['password'])]);
+                ->update(['username' => $request['username'], 'password' => $request['password']]);
 
         return redirect()->action('LocatoreController@showAccount');
     }
@@ -156,4 +156,7 @@ class LocatoreController extends Controller {
         return redirect()->action('LocatoreController@showLocatoreAlloggi');
     }
 
+    public function showImmagineProfilo(){
+        return redirect()->action('LocatoreController@showAccount');
+    }
 }

@@ -27,7 +27,7 @@
             <h2 class="titolo-carte">Messaggistica</h2>
             <p>Hai necessità di contattare il proprietario di un alloggio? Sei un locatore e vuoi dare
             maggiori delucidazioni sui tuoi alloggi? FlatMate offre un servizio di messaggistica
-            in cui il potenziale affittuario può contattare il padrone di casa che può a sua volta rispondere
+            in cui il potenziale affittuario può contattare il padrone di casa che può rispondere
             chiarendo eventuali dubbi.</p>
         </div>
     </article>

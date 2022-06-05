@@ -19,6 +19,10 @@
                     <img src="{{ asset('images_profilo/'.$dati->id_foto_profilo.$dati->estensione_p) }}" alt="immagine profilo" class="img-profilo">
                 @endif
             </div>
+            <div class="item">
+                <h1>Inserisci o modifica l'immagine di profilo!</h1>
+                {{ Form::file('immagine', ['id' => 'immagine']) }}
+            </div>
         </section>
         <hr style="margin-right: 50px; margin-left: 50px">
         <!-- Differenziazione delle rotte in base al tipo di utente -->

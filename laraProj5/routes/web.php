@@ -21,6 +21,7 @@ Route::prefix('locatore')->group(function () {
 
     Route::get('/account', 'LocatoreController@showAccount')->name('account-locatore');
     Route::post('/modifica-dati', 'LocatoreController@showModificaAccount')->name('modifica-dati-locatore');
+    Route::post('/account/immagine-profilo', 'LocatoreController@showImmagineProfilo')->name('immagine-profilo-locatore');
 
     Route::get('/dettagli-alloggio/{id_alloggio?}/{tipologia_alloggio?}', 'LocatoreController@showDettaglioAlloggio')->name('dettagli-alloggio-locatore');
 
@@ -52,6 +53,7 @@ Route::prefix('locatario')->group(function () {
 
     Route::get('/account', 'LocatarioController@showAccount')->name('account-locatario');
     Route::post('/modifica-dati', 'LocatarioController@showModificaAccount')->name('modifica-dati-locatario');
+    Route::post('/account/immagine-profilo', 'LocatarioController@showImmagineProfilo')->name('immagine-profilo-locatario');
 
     Route::get('/storico-alloggi', 'LocatarioController@showStoricoAlloggi')->name('storico-alloggi');
 

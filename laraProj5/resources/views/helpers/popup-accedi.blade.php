@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/gestione-alloggi.css') }}">
 
-@can('isGuest')
+@guest
 <h1>Accedi o Registrati!</h1>
     <p style="margin: 10px">Per accedere ai dettagli degli annunci devi effettuare il login o registrarti!</p>
 <div class="button">
@@ -14,7 +14,7 @@
     <h1>Non puoi visualizzare i dettagli!</h1>
     <p style="margin: 10px">Per accedere ai dettagli dell'alloggio devi essere un locatario!</p>
     <div class="button">
-        <a href="{{route('home-guest')}}">
+        <a href="{{route('home-locatore')}}">
             <button class="filter_button"> Torna alla home</button>
         </a>
     </div>
@@ -24,7 +24,7 @@
     <h1>Non puoi visualizzare i dettagli!</h1>
     <p style="margin: 10px">Per accedere ai dettagli dell'alloggio devi essere un locatario!</p>
     <div class="button">
-        <a href="{{route('home-guest')}}">
+        <a href="{{route('home-admin')}}">
             <button class="filter_button"> Torna alla home</button>
         </a>
     </div>
