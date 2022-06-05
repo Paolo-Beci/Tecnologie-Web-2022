@@ -59,6 +59,8 @@ Route::prefix('locatario')->group(function () {
 
     Route::prefix('catalogo')->group(function () {
         Route::get('/', 'LocatarioController@showCatalog')->name('catalogo-locatario');
+        
+        Route::post('/filtered', 'LocatarioController@showAlloggiByCity')->name('filtered');
 
         Route::get('/appartamenti', 'LocatarioController@showCatalogAppartamenti')->name('catalogo-appartamenti-locatario');
 

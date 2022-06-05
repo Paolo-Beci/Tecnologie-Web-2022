@@ -69,6 +69,14 @@ class LocatarioController extends Controller {
         return view('alloggio/content-dettagli-alloggio')
             ->with('info_generali', $info_generali);
     }
+    
+    //metodo utilizzato per tornare gli alloggi in base alla città
+    public function showAlloggiByCity() {
+        $alloggiByCity = $this->_locatarioModel->getAlloggiByCity($_POST['citta']);
+        
+        return view('layouts/content-catalogo')
+            ->with('alloggi', $alloggiByCity);
+    }
 
     // metodo utilizzato per tornare i dettagli dell'account attualmente loggato
     public function showAccount() {
