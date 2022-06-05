@@ -19,19 +19,22 @@
                     <img src="{{ asset('images_profilo/'.$dati->id_foto_profilo.$dati->estensione_p) }}" alt="immagine profilo" class="img-profilo">
                 @endif
             </div>
+
+            <!-- Differenziazione delle rotte in base al tipo di utente -->
+            @can('isLocatore')
+                {{ Form::open(array('route' => 'modifica-dati-locatore', 'files' => true, 'class' => 'modifica-dati')) }}
+            @endcan
+            @can('isLocatario')
+                {{ Form::open(array('route' => 'modifica-dati-locatario', 'files' => true, 'class' => 'modifica-dati')) }}
+            @endcan
+
             <div class="item">
                 <h1>Inserisci o modifica l'immagine di profilo!</h1>
-                {{ Form::file('immagine', ['id' => 'immagine']) }}
+                {{ Form::file('image', ['id' => 'image']) }}
             </div>
         </section>
         <hr style="margin-right: 50px; margin-left: 50px">
-        <!-- Differenziazione delle rotte in base al tipo di utente -->
-        @can('isLocatore')
-            {{ Form::open(array('route' => 'modifica-dati-locatore', 'class' => 'modifica-dati')) }}
-        @endcan
-        @can('isLocatario')
-            {{ Form::open(array('route' => 'modifica-dati-locatario', 'class' => 'modifica-dati')) }}
-        @endcan
+
         <section class="secondo-box">
             <fieldset class="colonna form-group">
                 <!-- Username -->

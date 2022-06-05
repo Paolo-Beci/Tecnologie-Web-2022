@@ -69,11 +69,11 @@ class LocatarioController extends Controller {
         return view('alloggio/content-dettagli-alloggio')
             ->with('info_generali', $info_generali);
     }
-    
+
     //metodo utilizzato per tornare gli alloggi in base alla città
     public function showAlloggiByCity() {
         $alloggiByCity = $this->_locatarioModel->getAlloggiByCity($_POST['citta']);
-        
+
         return view('layouts/content-catalogo')
             ->with('alloggi', $alloggiByCity);
     }
@@ -87,31 +87,31 @@ class LocatarioController extends Controller {
     }
 
     public function showModificaAccount(UpdateProfileRequest $request){
-        $imageName = DatiPersonali::select('id_foto_profilo')->max('id_foto_profilo');
-        $imageName = $imageName + 1;
+        //prendo l'id_foto_profilo più grande nel DB
+        $imageName = DatiPersonali::select('id_foto_profilo')->max('id_foto_profilo') + 1;
         // rinomino l'immagine
-        if($request->hasFile('immagine')) {
-            $image = $request->file('immagine');
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
             $oldName = $image->getClientOriginalName();
             $array = explode('.', $oldName);
-            $fullImageName = $imageName . '.' . $array(1);
+            $estensione = '.'.$array[1];
+            $fullImageName = $imageName.$estensione;
+
 
             DatiPersonali::where('id_dati_personali', auth()->user()->getAuthIdentifier())
                 ->update(['nome' => $request['name'], 'cognome' => $request['surname'], 'luogo_nascita' => $request['birthplace']
                     , 'sesso' => $request['gender'], 'citta' => $request['city'], 'num_civico' => $request['house-number']
                     , 'mail' => $request['email'], 'data_nascita' => $request['birthtime'], 'codice_fiscale' => $request['cf']
                     , 'via' => $request['street'], 'cap' => $request['cap'], 'cellulare' => $request['telephone']
-                    , 'id_foto_profilo' => $imageName, 'estensione_p' => $array(1)]);
-        } else{
-            $imageName = NULL;
-        }
+                    , 'id_foto_profilo' => $imageName, 'estensione_p' => $estensione]);
 
-        if(!is_null($imageName)){
-            $destinationPath = public_path('/images_profilo');
-            $image->move($destinationPath, $fullImageName);
-            dd($fullImageName);
-        }
+            if(!is_null($imageName)){
+                $destinationPath = public_path().'/images_profilo';
+                $image->move($destinationPath, $fullImageName);
+            }
 
+        }
 
 
         if(is_null($request['username']))
@@ -121,7 +121,9 @@ class LocatarioController extends Controller {
             User::where('id', auth()->user()->getAuthIdentifier())
                 ->update(['username' => $request['username'], 'password' => $request['password']]);
 
+
         return redirect()->action('LocatarioController@showAccount');
+
     }
 
     public function showImmagineProfilo(){
