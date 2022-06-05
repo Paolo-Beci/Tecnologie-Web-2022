@@ -95,4 +95,51 @@ class Locatario {
             ->join('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
             ->get();
     }
+
+    //funzioni di filtro (una funzione per ogni parametro)
+    public function getAlloggiByCity($citta) {
+
+    }
+
+    public function getAlloggiByFasciaPrezzo($prezzo_min = 0, $prezzo_max = 999999) {
+
+    }
+
+    public function getAlloggiByPeriodoLocazione($periodo) {
+
+    }
+
+    public function getAlloggiByFasciaSup($sup_min = 0, $sup_max = 999999) {
+
+    }
+
+    public function getAlloggiByNumCamere($num_camere) {
+
+    }
+
+    public function getAlloggiByGenere($genere) {
+
+    }
+
+    public function getAlloggiByPiano($piano) {
+
+    }
+
+    public function getAlloggiByNumPostiLettoApp($num_posti_letto_app) {
+
+    }
+
+    public function getAlloggiByNumPostiLettoCamere($num_posti_letto_camere) {
+
+    }
+
+    public function getAlloggiByTipoPostoLetto($tipo) {
+
+    }
+
+    //funzione per filtrare gli alloggi con tutti i parametri di filtro in input
+    public function getAlloggiFiltered(/*lista di parametri*/) {
+
+    }
+
 }
