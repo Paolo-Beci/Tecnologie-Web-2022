@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
+
     <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}" type="image/x-icon">
     <link rel="icon" href="{{asset('images/favicon.ico')}}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
     <link rel="stylesheet" href="{{asset('css/animations.css')}}">
     <link rel="stylesheet" href="{{asset('css/gestione-alloggi.css')}}">
+    @yield('link')
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{asset('js/menu-script.js')}}" defer></script>
@@ -20,6 +22,7 @@
     <script src="{{asset('js/popup.js')}}" defer></script>
     <!-- FONTAWESOME ICONS -->
     <script src="https://kit.fontawesome.com/644d83f971.js" crossorigin="anonymous"></script>
+    @yield('scripts')
 
     <title>FlatMate | @yield('title', 'Homepage')</title>
 </head>

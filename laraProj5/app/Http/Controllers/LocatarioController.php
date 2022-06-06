@@ -123,7 +123,7 @@ class LocatarioController extends Controller {
             $estensione = '.'.$array[1];
             $fullImageName = $imageName.$estensione;
 
-
+            //update del DB con immagine
             DatiPersonali::where('id_dati_personali', auth()->user()->getAuthIdentifier())
                 ->update(['nome' => $request['name'], 'cognome' => $request['surname'], 'luogo_nascita' => $request['birthplace']
                     , 'sesso' => $request['gender'], 'citta' => $request['city'], 'num_civico' => $request['house-number']
@@ -131,12 +131,22 @@ class LocatarioController extends Controller {
                     , 'via' => $request['street'], 'cap' => $request['cap'], 'cellulare' => $request['telephone']
                     , 'id_foto_profilo' => $imageName, 'estensione_p' => $estensione]);
 
-            if(!is_null($imageName)){
+            //spostiamo l'immagine
+            if(!is_null($imageName))
+            {
                 $destinationPath = public_path().'/images_profilo';
                 $image->move($destinationPath, $fullImageName);
             }
-
+            }
+        else{
+            //update del DB senza immagine
+            DatiPersonali::where('id_dati_personali', auth()->user()->getAuthIdentifier())
+                ->update(['nome' => $request['name'], 'cognome' => $request['surname'], 'luogo_nascita' => $request['birthplace']
+                    , 'sesso' => $request['gender'], 'citta' => $request['city'], 'num_civico' => $request['house-number']
+                    , 'mail' => $request['email'], 'data_nascita' => $request['birthtime'], 'codice_fiscale' => $request['cf']
+                    , 'via' => $request['street'], 'cap' => $request['cap'], 'cellulare' => $request['telephone']]);
         }
+
 
 
         if(is_null($request['username']))
@@ -148,7 +158,6 @@ class LocatarioController extends Controller {
 
 
         return redirect()->action('LocatarioController@showAccount');
-
     }
 
     public function showImmagineProfilo(){

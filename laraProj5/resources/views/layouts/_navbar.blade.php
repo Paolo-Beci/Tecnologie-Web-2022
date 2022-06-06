@@ -5,7 +5,7 @@
     {{-- Tutti gli utenti --}}
 
     <li>
-        <a class="anchor active" href="{{route('home-guest')}}" title="Home">Home</a>
+        <a class="active" href="{{route('home-guest')}}" title="Home">Home</a>
     </li>
 
     {{-- Sezione locatore --}}

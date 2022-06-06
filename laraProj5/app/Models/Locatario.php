@@ -20,7 +20,7 @@ class Locatario {
     //metodo che torna gli alloggi insieme alle info sulle foto
     public function getAlloggi(){
         return DB::table('alloggio')
-            ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->paginate(3);
     }
 
@@ -28,7 +28,7 @@ class Locatario {
     public function getAlloggioByTip($tipologia){
         return DB::table('alloggio')
             ->where('tipologia', $tipologia)
-            ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->paginate(3);
     }
 
@@ -37,25 +37,25 @@ class Locatario {
         if($tipologia == 'Appartamento'){
             return DB::table('alloggio')
                 ->where('id_alloggio', $idAlloggio)
-                ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-                ->join('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
-                ->join('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
-                ->join('utente', 'interazione.utente', '=', 'utente.id')
+                ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+                ->leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
+                ->leftJoin('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
+                ->leftJoin('utente', 'interazione.utente', '=', 'utente.id')
                 ->where('ruolo','=', 'locatore')
-                ->join('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
-                ->join('appartamento', 'alloggio.id_alloggio', '=', 'appartamento.alloggio')
+                ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
+                ->leftJoin('appartamento', 'alloggio.id_alloggio', '=', 'appartamento.alloggio')
                 ->get();
         }
         else{
             return DB::table('alloggio')
                 ->where('id_alloggio', $idAlloggio)
-                ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-                ->join('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
-                ->join('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
-                ->join('utente', 'interazione.utente', '=', 'utente.id')
+                ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+                ->leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
+                ->leftJoin('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
+                ->leftJoin('utente', 'interazione.utente', '=', 'utente.id')
                 ->where('ruolo', '=', 'locatore')
-                ->join('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
-                ->join('posto_letto', 'alloggio.id_alloggio', '=', 'posto_letto.alloggio')
+                ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
+                ->leftJoin('posto_letto', 'alloggio.id_alloggio', '=', 'posto_letto.alloggio')
                 ->get();
         }
     }
@@ -79,8 +79,8 @@ class Locatario {
         // ordinarlo per la data di locazione
 
         return DB::table('alloggio')   // TO DO
-            ->join('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
-            ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+            ->leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
+            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('utente', $locatario)
             ->orderBy('data_interazione', 'DESC')
             ->paginate(3);
@@ -92,14 +92,14 @@ class Locatario {
 
         return DB::table('utente')
             ->where('id', $locatario)
-            ->join('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
+            ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
             ->get();
     }
 
     //funzioni di filtro (una funzione per ogni parametro)
     public function getAlloggiByCity($citta) {
-        return DB::table('foto')
-            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+        return DB::table('alloggio')
+            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('citta', $citta)
             ->paginate(3);
     }
@@ -112,70 +112,70 @@ class Locatario {
     }
 
     public function getAlloggiByFasciaPrezzo($prezzo_min = 0, $prezzo_max = 999999) {
-        return DB::table('foto')
-            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+        return DB::table('alloggio')
+            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('canone_affitto', '<', $prezzo_max)
             ->where('canone_affitto', '>', $prezzo_min)
             ->get();
     }
 
     public function getAlloggiByPeriodoLocazione($periodo) {
-        return DB::table('foto')
-            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+        return DB::table('alloggio')
+            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('periodo_locazione', $periodo)
             ->get();
     }
 
     public function getAlloggiByFasciaSup($sup_min = 0, $sup_max = 999999) {
-        return DB::table('foto')
-            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+        return DB::table('alloggio')
+            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('dimensione', '<', $sup_max)
             ->where('dimensione', '>', $sup_min)
             ->get();
     }
 
     public function getAlloggiByNumCamere($num_camere) {
-        return DB::table('foto')
-            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
-            ->join('appartamento', 'foto.alloggio', '=', 'appartamento.alloggio')
+        return DB::table('alloggio')
+            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+            ->leftJoin('appartamento', 'foto.alloggio', '=', 'appartamento.alloggio')
             ->where('num_camere', $num_camere)
             ->get();
     }
 
     public function getAlloggiByGenere($genere) {
-        return DB::table('foto')
-            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+        return DB::table('alloggio')
+            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('genere', $genere)
             ->get();
     }
 
     public function getAlloggiByPiano($piano) {
-        return DB::table('foto')
-            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+        return DB::table('alloggio')
+            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('piano', $piano)
             ->get();
     }
 
     public function getAlloggiByNumPostiLettoApp($num_posti_letto_app) {
-        return DB::table('foto')
-            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+        return DB::table('alloggio')
+            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('num_posti_letto_tot', $num_posti_letto_app)
             ->where('tipologia', 'Appartamento')
             ->get();
     }
 
     public function getAlloggiByNumPostiLettoCamere($num_posti_letto_camere) {
-        return DB::table('foto')
-            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+        return DB::table('alloggio')
+            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('num_posti_letto_tot', $num_posti_letto_camere)
             ->where('tipologia', 'Posto_letto')
             ->get();
     }
 
     public function getAlloggiByTipoPostoLetto($tipo) {
-        return DB::table('foto')
-            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
-            ->join('posto_letto', 'foto.alloggio', '=', 'posto_letto.alloggio')
+        return DB::table('alloggio')
+            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+            ->leftJoin('posto_letto', 'foto.alloggio', '=', 'posto_letto.alloggio')
             ->where('tipologia_camera', $tipo)
             ->get();
     }

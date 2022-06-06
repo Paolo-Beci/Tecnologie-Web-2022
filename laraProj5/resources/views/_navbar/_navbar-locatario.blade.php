@@ -1,6 +1,6 @@
 <li>
     @if(Route::current()->getName() != 'home-locatario')
-        <a class="anchor" href="{{route('home-locatario')}}/#faq" title="Frequenty Asked Questions">FAQ</a>
+        <a href="{{route('home-locatario')}}/#faq" title="Frequenty Asked Questions">FAQ</a>
     @else
         <a class="anchor" href="#faq" title="Frequenty Asked Questions">FAQ</a>
     @endif

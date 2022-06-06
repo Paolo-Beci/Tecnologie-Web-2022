@@ -1,4 +1,9 @@
-<img class="item-immagine" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Immagine">
+@if(isset($alloggio->id_foto))
+    <img class="item-immagine" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Immagine">
+@else
+    <img class="item-immagine" src="{{ asset('images/icons_casa.png') }}" alt="Immagine">
+@endif
+
 <div>
     @if($alloggio->tipologia == 'Posto_letto')
         <h1>Posto letto</h1>
@@ -22,8 +27,6 @@
     <div class="info-alloggio">
         @if($alloggio->stato == 'libero')
             <h2 style="color: green"> Libero </h2>
-        @elseif($alloggio->stato == 'opzionato')
-            <h2 style="color: coral"> Opzionato </h2>
         @else
             <h2 style="color: red"> Locato </h2>
         @endif
@@ -33,7 +36,7 @@
 @if(Route::current()->getName() == 'gestione-alloggi')
 <div>
     <div class="icona">
-        <a href="#modifica"><img class="click" src="{{asset('images/icons_modificare.png')}}" alt="Modifica"/></a>
+        <a href="{{route('modifica-annuncio', [$alloggio->id_alloggio, $alloggio->tipologia])}}"><img class="click" src="{{asset('images/icons_modificare.png')}}" alt="Modifica"/></a>
     </div>
     <div class="icona">
         <a href="{{ route('cancella-alloggio.store', [$alloggio->id_alloggio]) }}" onclick="return confirm('Sei sicuro di voler proseguire?')"><img class="click"  src="{{asset('images/icons_cestino.png')}}" alt="Elimina"/></a>

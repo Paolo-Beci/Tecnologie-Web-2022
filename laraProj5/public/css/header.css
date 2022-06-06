@@ -30,6 +30,10 @@ header {
     margin-left: 4%;
 }
 
+.menu li a {
+    font-size: 18px;
+}
+
 .menu li a:hover {
     color: rgb(255, 214, 37);
 }

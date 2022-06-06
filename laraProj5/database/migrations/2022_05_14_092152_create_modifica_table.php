@@ -14,10 +14,10 @@ class CreateModificaTable extends Migration
     public function up()
     {
         Schema::create('modifica', function (Blueprint $table) {
+            $table->bigIncrements('id_modifica');
             $table->bigInteger('utente')->unsigned();
             $table->integer('faq')->unsigned();
             $table->dateTime('data_modifica');
-            $table->primary(array('utente', 'faq'));
             $table->foreign('utente')->references('id')->on('utente')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('faq')->references('id_faq')->on('faq')->onUpdate('cascade')->onDelete('cascade');
         });

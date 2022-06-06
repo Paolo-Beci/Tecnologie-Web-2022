@@ -6,36 +6,31 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/gestione-alloggi.css') }}">
 @endsection
 
-@section('scripts')
-@parent
-<script src="{{ asset('js/inserisci-annuncio.js') }}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    $(function () {
-        var actionUrl = "{{ route('new-annuncio.store') }}";
-        var formId = 'inserisci-annuncio';
-        $(":input").on('blur', function (event) {
-            var formElementId = $(this).attr('id');
-            doElemValidation(formElementId, actionUrl, formId);
-        });
-        $("#inserisci-annuncio").on('submit', function (event) {
-            event.preventDefault();
-            doFormValidation(actionUrl, formId);
-        });
-    });
-</script>
-@endsection
-
 @section('title', 'Inserisci annuncio')
 
 @section('content')
     <main class="main-container">
+
+        {{ Form::open(array('route' => 'modifica-annuncio', 'id' => 'inserisci-annuncio','files' => true, 'class' => 'inserisci-annuncio')) }}
+
         <section class="primo-box">
-            <h2>Utilizza questa form per inserire un nuovo annuncio nel Catalogo</h2>
+            <h2>Utilizza questa form per modificare l' annuncio selezionato</h2>
+            <div class="img-container">
+                @foreach($servizi as $servizio)
+                    <h1>{{$servizio->servizio}}</h1>
+                @endforeach
+
+                {{--Da modificare
+                @if(is_null($alloggio->id_foto))
+                    <img src="{{ asset('images_profilo/no_image.png') }}" alt="immagine profilo" class="img-profilo">
+                @else
+                    <img src="{{ asset('images_profilo/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="immagine profilo" class="img-profilo">
+                @endif
+                --}}
+            </div>
         </section>
 
-        {{ Form::open(array('route' => 'new-annuncio.store', 'id' => 'inserisci-annuncio','files' => true, 'class' => 'inserisci-annuncio')) }}
-
+{{--
         <section class="parent">
                 <div class="colonna">
                     <fieldset title="Inserisci le caratteristiche strutturali" class="fieldset">
@@ -43,22 +38,22 @@
                         <!-- Tipologia -->
                         <div>
                             {{Form::label('tipologia', 'Tipologia')}}
-                            {{Form::select('tipologia', $tipologie, '', ['id' => 'tipologia'])}}
+                            {{Form::select('tipologia', $alloggio->tipologia, ['id' => 'tipologia'])}}
                         </div>
                         <!-- Dimensione -->
                         <div class="item">
                             {{ Form::label('dimensione', 'Dimensione (mq)') }}
-                            {{ Form::text('dimensione', '', ['id' => 'dimensione']) }}
+                            {{ Form::text('dimensione', $alloggio->dimensione, ['id' => 'dimensione']) }}
                         </div>
                         <!-- Num posti letto totali -->
                         <div>
                             {{ Form::label('numPostiLettoTot', 'Num posti letto totali') }}
-                            {{ Form::selectRange('numPostiLettoTot', 1, 20, ['id' => 'numPostiLettoTot']) }}
+                            {{ Form::selectRange('number', 1, 20, $alloggio->num_posti_letto_tot, ['id' => 'numPostiLettoTot']) }}
                         </div>
                         <!-- Num camere (appartemento)-->
                         <div>
                             {{ Form::label('numCamere', 'Num camere') }}
-                            {{ Form::selectRange('numCamere', 1, 20, ['id' => 'numCamere']) }}
+                            {{ Form::selectRange('number', 1, 20, ['id' => 'numCamere']) }}
                         </div>
                         <!-- Tipologia camera (posto letto) -->
                         <div>
@@ -78,9 +73,9 @@
                         <div>
                             <p class="item">Fascia di età:</p>
                             {{ Form::label('etaMin', 'Min') }}
-                            {{ Form::selectRange('etaMin', 18, 100, ['id' => 'etaMin']) }}
+                            {{ Form::selectRange('number', 18, 100, ['id' => 'etaMin']) }}
                             {{ Form::label('etaMax', 'Max') }}
-                            {{ Form::selectRange('etaMax', 18, 100, ['id' => 'etaMax']) }}
+                            {{ Form::selectRange('number', 18, 100, ['id' => 'etaMax']) }}
                         </div>
                         <!-- Periodo locazione -->
                         <div>
@@ -93,12 +88,12 @@
                         <legend><h2>Servizi</h2></legend>
                             <!-- Bagni -->
                             <div>
-                                {{ Form::selectRange('bagno', 1, 9, ['id' => 'bagno']) }}
+                                {{ Form::selectRange('number', 1, 9, ['id' => 'bagno']) }}
                                 {{ Form::label('bagno', 'Bagno/i') }}
                             </div>
                             <!-- Cucine -->
                             <div>
-                                {{ Form::selectRange('cucina', 1, 9, ['id' => 'cucina']) }}
+                                {{ Form::selectRange('number', 1, 9, ['id' => 'cucina']) }}
                                 {{ Form::label('cucina', 'Cucina/e') }}
                             </div>
                             <!-- Locale ricreativo -->
@@ -172,12 +167,12 @@
                         <!-- Interno -->
                         <div>
                             {{ Form::label('interno', 'Interno') }}
-                            {{ Form::selectRange('interno', 1, 508, ['id' => 'interno']) }}
+                            {{ Form::selectRange('number', 1, 508, ['id' => 'interno']) }}
                         </div>
                         <!-- Piano -->
                         <div>
                             {{ Form::label('piano', 'Piano') }}
-                            {{ Form::selectRange('piano', 0, 127, ['id' => 'piano']) }}
+                            {{ Form::selectRange('number', 0, 127, ['id' => 'piano']) }}
                         </div>
                     </fieldset>
 
@@ -198,22 +193,22 @@
                         <!-- Descrizione -->
                         <fieldset title="Inserisci una desrizione" class="fieldset">
                             <legend><h2>Descrizione</h2></legend>
-                            {{ Form::textarea('descrizione', '' , ['id' => 'descrizione', 'rows' => 3, 'placeholder' => 'Inserisci una descrizione...']) }}
+                            {{ Form::textarea('descrizione', 'Inserisci una descrizione...' , ['id' => 'descrizione', 'rows' => 3]) }}
                         </fieldset>
 
                         <!-- Immagine alloggio -->
                         <fieldset title="Inserisci una foto dell'alloggio" class="fieldset">
-                            <legend><h2>Inserisci una foto dell'alloggio</h2></legend>
+                            <legend><h2>Inserisci/Modifica la foto dell'alloggio</h2></legend>
                             {{ Form::file('immagine', ['id' => 'immagine']) }}
                         </fieldset>
 
                 </div>
 
         </section>
-
+    --}}
         <section class="ultimo-box">
             {{--Bottone per annullare l'inerimento--}}
-            <a href="{{route('gestione-alloggi')}}">
+            <a class="anchor" href="{{route('gestione-alloggi')}}">
                 <button class="bottone">Annulla inserimento</button>
             </a>
             {{--bottone di conferma--}}
@@ -227,6 +222,7 @@
 
         {{ Form::close() }}
     </main>
+
 @endsection
 
 

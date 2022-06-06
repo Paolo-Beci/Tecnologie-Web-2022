@@ -28,8 +28,6 @@
 
                     @if($info_generali->first()->stato == 'libero')
                         <h2 style="color: green"> Libero -> pubblicato il: {{$info_generali->first()->data_interazione}}</h2>
-                    @elseif($info_generali->first()->stato == 'opzionato')
-                        <h2 style="color: coral"> Opzionato </h2>
                     @else
                         <h2 style="color: red"> Locato </h2>
                     @endif
@@ -102,7 +100,6 @@
             <div class="contatto-alloggio">
                 <h2>Contatti host</h2>
                 <div class="img-contatto">
-{{--                    @php dd($info_generali) @endphp--}}
                     @if(is_null($info_generali->first()->id_foto_profilo))
                         <img src="{{ asset('images_profilo/no_image.png') }}" alt="immagine profilo" class="img-profilo">
                     @else
@@ -114,20 +111,17 @@
                     <p class="item-desc"><i class="icon fa-solid fa-envelope"></i>{{$info_generali->first()->mail}}</p>
                     <p class="item-desc"><i class="icon fa-solid fa-phone"></i>{{$info_generali->first()->cellulare}}</p>
                 </div>
-                @if(!$info_generali->first()->stato == 'locato')
+                @if($info_generali->first()->stato != 'locato')
                     <div class="btn-contatto">
-                        <button class="filter_button" type="submit" onclick=alert('Inviato!')>
-                            Comunicagli il tuo interesse!
-                        </button>
+                        {{ Form::open(array('route' => 'opzionamento')) }}
+                            {{ Form::hidden('contenuto', 'Ciao, ho visto la casa e sono interessato') }}
+                            {{ Form::hidden('mittente', auth()->user()->id) }}
+                            {{ Form::hidden('destinatario', $info_generali->first()->id) }}
+                            {{ Form::hidden('alloggio', $info_generali->first()->id_alloggio) }}
+                            {{ Form::button('Inizia una chat!', ['type' => 'submit', 'class' => 'filter_button']) }}
+                        {{ Form::close() }}
                     </div>
                 @endif
-                <div class="btn-contatto">
-                    <a href="#vista-messaggistica-di-locatore-corrispondente">
-                        <button class="filter_button" type="submit">
-                            Inizia una chat!
-                        </button>
-                    </a>
-                </div>
             </div>
             <div class="mappa-alloggio">
                 <iframe width="600" height="500" id="gmap_canvas" loading="lazy" allowfullscreen

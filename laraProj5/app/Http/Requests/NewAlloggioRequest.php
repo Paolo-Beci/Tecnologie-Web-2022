@@ -29,14 +29,14 @@ class NewAlloggioRequest extends FormRequest{
      */
     public function rules() {
         return [
-            'dimensione' => 'integer|numeric|max:99999',//
-            'citta' => ['required','string','max:255','|regex:/^[\pL\s\-]+$/u'],//che significa?
-            'via' => ['required','string,','max:255','regex:/^[\pL\s\-]+$/u'],
-            'numCivico' => 'required|string|max:10',
-            'cap' => 'required|string|min:5|max:5',
-            'canoneAffitto' => 'required|integer|numeric|min:0|max:99999',
-            'utenze' => 'integer|numeric|min:0|max:99999',
-            'descrizione' => 'string|max:255',
+            'dimensione' => 'numeric|max:99999',
+            'citta' => ['required','string','max:255','regex:/^[A-Za-z\-]/u'],
+            'via' => ['required','string','max:255'],
+            'numCivico' => ['required','string','max:4','regex:/^([1-9]{1})([0-9]{1})?([0-9]{1})?([a-z])?/u'],
+            'cap' => ['required','numeric','regex:/^([0-9]{5})/u'],
+            'canoneAffitto' => 'required|numeric|min:0|max:99999',
+            'utenze' => 'numeric|min:0|max:99999',
+            'descrizione' => 'max:255',
             'immagine' => 'image|max:1024'
         ];
     }

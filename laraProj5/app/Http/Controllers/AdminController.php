@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\NewProductRequest;
 use App\Models\Admin;
 use App\Models\Resources\Faq;
+
+use Illuminate\Http\Request;
 
 class AdminController extends Controller {
 
@@ -71,11 +72,15 @@ class AdminController extends Controller {
     }
 
     //questa funzione inserisce effettivamente la faq
-    public function storeFaq(NewProductRequest $request)
+    public function storeFaq(Request $request)
     {
-        $new_faq = new Faq;
-        $new_faq->fill($request->validated());
-        $new_faq->save();
+        $array = $request->all();
+
+        Faq::create([
+            'domanda' => $array['domanda'],
+            'risposta' => $array['risposta'],
+            'target' => $array['target']
+        ]);
 
         return redirect()->action('AdminController@confirm');
     }
@@ -128,7 +133,7 @@ class AdminController extends Controller {
     }
 
     //questa funzione aggiorna effettivamente la particolare faq
-    public function modifyFaqStore(NewProductRequest $request) {
+    public function modifyFaqStore(Request $request) {
 
         $faq = $this->_adminModel->getFaqById($request->id_faq);
 

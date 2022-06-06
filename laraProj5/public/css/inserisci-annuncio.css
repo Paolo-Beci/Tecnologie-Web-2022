@@ -48,7 +48,7 @@
     justify-content: space-around;
     align-items: start;
     text-align: start;
-    padding-top: 7%;
+    padding-top: 3%;
     border: 0;
     gap: 25px;
 }
@@ -96,3 +96,17 @@
     color:#ffd725;
 }
 
+.formerror {
+    background: none repeat scroll 0 0;
+    height: auto;
+    margin: 0 0 1px;
+    text-align: center;
+}
+
+.errors {
+    background: none repeat scroll 0 0;
+    color: #f93d00;
+    height: auto;
+    margin: 0 0 1px;
+    text-align: start;
+}
