@@ -86,12 +86,42 @@ class LocatoreController extends Controller {
     }
 
     public function showModificaAccount(UpdateProfileRequest $request){
+        //prendo l'id_foto_profilo più grande nel DB
+        $imageName = DatiPersonali::select('id_foto_profilo')->max('id_foto_profilo') + 1;
+        // rinomino l'immagine
 
-        DatiPersonali::where('id_dati_personali', auth()->user()->getAuthIdentifier())
-            ->update(['nome' => $request['name'], 'cognome' => $request['surname'], 'luogo_nascita' => $request['birthplace']
-                , 'sesso' => $request['gender'], 'citta' => $request['city'], 'num_civico' => $request['house-number']
-                , 'mail' => $request['email'], 'data_nascita' => $request['birthtime'], 'codice_fiscale' => $request['cf']
-                , 'via' => $request['street'], 'cap' => $request['cap'], 'cellulare' => $request['telephone']]);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $oldName = $image->getClientOriginalName();
+            $array = explode('.', $oldName);
+            $estensione = '.'.$array[1];
+            $fullImageName = $imageName.$estensione;
+
+            //update del DB con immagine
+            DatiPersonali::where('id_dati_personali', auth()->user()->getAuthIdentifier())
+                ->update(['nome' => $request['name'], 'cognome' => $request['surname'], 'luogo_nascita' => $request['birthplace']
+                    , 'sesso' => $request['gender'], 'citta' => $request['city'], 'num_civico' => $request['house-number']
+                    , 'mail' => $request['email'], 'data_nascita' => $request['birthtime'], 'codice_fiscale' => $request['cf']
+                    , 'via' => $request['street'], 'cap' => $request['cap'], 'cellulare' => $request['telephone']
+                    , 'id_foto_profilo' => $imageName, 'estensione_p' => $estensione]);
+
+            //spostiamo l'immagine
+            if(!is_null($imageName))
+            {
+                $destinationPath = public_path().'/images_profilo';
+                $image->move($destinationPath, $fullImageName);
+            }
+        }
+        else{
+            //update del DB senza immagine
+            DatiPersonali::where('id_dati_personali', auth()->user()->getAuthIdentifier())
+                ->update(['nome' => $request['name'], 'cognome' => $request['surname'], 'luogo_nascita' => $request['birthplace']
+                    , 'sesso' => $request['gender'], 'citta' => $request['city'], 'num_civico' => $request['house-number']
+                    , 'mail' => $request['email'], 'data_nascita' => $request['birthtime'], 'codice_fiscale' => $request['cf']
+                    , 'via' => $request['street'], 'cap' => $request['cap'], 'cellulare' => $request['telephone']]);
+        }
+
+
 
         if(is_null($request['username']))
             User::where('id', auth()->user()->getAuthIdentifier())
@@ -99,6 +129,7 @@ class LocatoreController extends Controller {
         else
             User::where('id', auth()->user()->getAuthIdentifier())
                 ->update(['username' => $request['username'], 'password' => $request['password']]);
+
 
         return redirect()->action('LocatoreController@showAccount');
     }
@@ -114,39 +145,51 @@ class LocatoreController extends Controller {
             ->with('periodoLocazione', $periodoLocazione);
     }
 
-    //metodo per inserire un annuncio
-    public function storeAnnuncio(NewAlloggioRequest $request) {
+    public function storeAnnuncio(NewAlloggioRequest $request)
+    {
+        $new_faq = new Alloggio();
+        $new_faq->fill($request->validated());
+        $new_faq->save();
 
-        //creo l'alloggio
-        $alloggio = new Alloggio;
-        $alloggio->fill($request->validated());
-        $alloggio->save();
-
-        //creo la foto legata all'alloggio
-        $foto = new Foto();
-
-        if ($request->hasFile('immagine')) {
-            $image = $request->file('immagine');
-            $imageName = $image->getClientOriginalName();
-            $array = explode('.', $imageName);
-            $foto->fill($request->validated());
-            $foto->estensione = '.'.$array(1);
-            //rinomino l'immagine
-            $imageName = $foto->id_foto.$foto->estensione;
-        } else {
-            $foto->fill($request->validated());
-            $foto->estensione = NULL;
-        }
-        $foto->save();
-
-        if (!is_null($foto->estensione)) {
-            $destinationPath = public_path() . '/images/images_case';
-            $image->move($destinationPath, $imageName);
-        }
-
-        return response()->json(['redirect' => route('locatore/gestione-alloggi')]);
+        return response()->json(['redirect' => route('gestione-alloggi')]);
     }
 
+    /*
+        //metodo per inserire un annuncio
+        public function storeAnnuncio(NewAlloggioRequest $request) {
+
+            //creo l'alloggio
+            $alloggio = new Alloggio;
+            $alloggio->fill($request->validated());
+            $alloggio->save();
+
+            //creo  foto legata all'alloggio
+            /*
+            $foto = new Foto();
+
+            if ($request->hasFile('immagine')) {
+                $image = $request->file('immagine');
+                $imageName = $image->getClientOriginalName();
+                $array = explode('.', $imageName);
+                $foto->fill($request->validated());
+                $foto->estensione = '.'.$array[1];
+                //rinomino l'immagine
+                $imageName = $foto->id_foto.$foto->estensione;
+            } else {
+                $foto->fill($request->validated());
+                $foto->estensione = NULL;
+            }
+            $foto->save();
+
+            if (!is_null($foto->estensione)) {
+                $destinationPath = public_path() . '/images/images_case';
+                $image->move($destinationPath, $imageName);
+            }
+
+
+            return response()->json(['redirect' => route('gestione-alloggi')]);
+        }
+    */
     // funzione che cancella l'alloggio selezionato
     public function deleteAlloggioById($id) {
 
@@ -158,5 +201,16 @@ class LocatoreController extends Controller {
 
     public function showImmagineProfilo(){
         return redirect()->action('LocatoreController@showAccount');
+    }
+
+    //questa funzione apre la sezione modifica
+    public function showModificaAlloggio($id, $tipologia) {
+
+        $alloggio1 = $this->_locatoreModel->getAlloggioByIdAndTip($id, $tipologia);
+        $servizi = $this->_locatoreModel->getServiziAlloggioById($id);
+
+        return view('alloggio/modifica-annuncio')
+            ->with('alloggio1', $alloggio1)
+            ->with('servizi', $servizi);
     }
 }

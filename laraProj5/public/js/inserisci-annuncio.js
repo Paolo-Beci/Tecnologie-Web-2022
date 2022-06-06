@@ -29,6 +29,7 @@ function doElemValidation(id, actionUrl, formId) {
             dataType: "json",
             //funzione da attivare nel caso in cui la risposta all'inoltro contiene un codice di errore
             error: function (data) {
+                console.log(data.status);
                 if (data.status === 422) {
                     //trasformazione in array associativo dei mex di errore
                     var errMsgs = JSON.parse(data.responseText);
@@ -76,7 +77,7 @@ function doFormValidation(actionUrl, formId) {
         data: form,
         dataType: "json",
         error: function (data) {
-            if (data.status === 422) {
+            if (data.status === 422 || data.status === 500) {
                 var errMsgs = JSON.parse(data.responseText);
                 $.each(errMsgs, function (id) {
                     $("#" + id).parent().find('.errors').html(' ');
@@ -92,7 +93,3 @@ function doFormValidation(actionUrl, formId) {
         processData: false
     });
 }
-
-
-
-

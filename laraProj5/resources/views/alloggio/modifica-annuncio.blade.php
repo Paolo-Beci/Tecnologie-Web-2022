@@ -6,36 +6,31 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/gestione-alloggi.css') }}">
 @endsection
 
-@section('scripts')
-@parent
-<script src="{{ asset('js/inserisci-annuncio.js') }}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    $(function () {
-        var actionUrl = "{{ route('new-annuncio.store') }}";
-        var formId = 'inserisci-annuncio';
-        $(":input").on('blur', function (event) {
-            var formElementId = $(this).attr('id');
-            doElemValidation(formElementId, actionUrl, formId);
-        });
-        $("#inserisci-annuncio").on('submit', function (event) {
-            event.preventDefault();
-            doFormValidation(actionUrl, formId);
-        });
-    });
-</script>
-@endsection
-
 @section('title', 'Inserisci annuncio')
 
 @section('content')
     <main class="main-container">
+
+        {{ Form::open(array('route' => 'modifica-annuncio', 'id' => 'inserisci-annuncio','files' => true, 'class' => 'inserisci-annuncio')) }}
+
         <section class="primo-box">
-            <h2>Utilizza questa form per inserire un nuovo annuncio nel Catalogo</h2>
+            <h2>Utilizza questa form per modificare l' annuncio selezionato</h2>
+            <div class="img-container">
+                @foreach($servizi as $servizio)
+                    <h1>{{$servizio->servizio}}</h1>
+                @endforeach
+
+                {{--Da modificare
+                @if(is_null($alloggio->id_foto))
+                    <img src="{{ asset('images_profilo/no_image.png') }}" alt="immagine profilo" class="img-profilo">
+                @else
+                    <img src="{{ asset('images_profilo/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="immagine profilo" class="img-profilo">
+                @endif
+                --}}
+            </div>
         </section>
 
-        {{ Form::open(array('route' => 'new-annuncio.store', 'id' => 'inserisci-annuncio','files' => true, 'class' => 'inserisci-annuncio')) }}
-
+{{--
         <section class="parent">
                 <div class="colonna">
                     <fieldset title="Inserisci le caratteristiche strutturali" class="fieldset">
@@ -43,17 +38,17 @@
                         <!-- Tipologia -->
                         <div>
                             {{Form::label('tipologia', 'Tipologia')}}
-                            {{Form::select('tipologia', $tipologie, '', ['id' => 'tipologia'])}}
+                            {{Form::select('tipologia', $alloggio->tipologia, ['id' => 'tipologia'])}}
                         </div>
                         <!-- Dimensione -->
                         <div class="item">
                             {{ Form::label('dimensione', 'Dimensione (mq)') }}
-                            {{ Form::text('dimensione', '', ['id' => 'dimensione']) }}
+                            {{ Form::text('dimensione', $alloggio->dimensione, ['id' => 'dimensione']) }}
                         </div>
                         <!-- Num posti letto totali -->
                         <div>
                             {{ Form::label('numPostiLettoTot', 'Num posti letto totali') }}
-                            {{ Form::selectRange('number', 1, 20, ['id' => 'numPostiLettoTot']) }}
+                            {{ Form::selectRange('number', 1, 20, $alloggio->num_posti_letto_tot, ['id' => 'numPostiLettoTot']) }}
                         </div>
                         <!-- Num camere (appartemento)-->
                         <div>
@@ -203,14 +198,14 @@
 
                         <!-- Immagine alloggio -->
                         <fieldset title="Inserisci una foto dell'alloggio" class="fieldset">
-                            <legend><h2>Inserisci una foto dell'alloggio</h2></legend>
+                            <legend><h2>Inserisci/Modifica la foto dell'alloggio</h2></legend>
                             {{ Form::file('immagine', ['id' => 'immagine']) }}
                         </fieldset>
 
                 </div>
 
         </section>
-
+    --}}
         <section class="ultimo-box">
             {{--Bottone per annullare l'inerimento--}}
             <a class="anchor" href="{{route('gestione-alloggi')}}">
@@ -227,6 +222,7 @@
 
         {{ Form::close() }}
     </main>
+
 @endsection
 
 

@@ -8,6 +8,7 @@ class Alloggio extends Model{
     protected $table = 'alloggio';
     protected $primaryKey = 'id_alloggio';
     public $timestamps = false;
+    protected $guarded = ['id_alloggio'];
 
     //relazione One-To-One
     public function alloggioFoto(){

@@ -33,7 +33,7 @@
 @if(Route::current()->getName() == 'gestione-alloggi')
 <div>
     <div class="icona">
-        <a href="#modifica"><img class="click" src="{{asset('images/icons_modificare.png')}}" alt="Modifica"/></a>
+        <a href="{{route('modifica-annuncio', [$alloggio->id_alloggio, $alloggio->tipologia])}}"><img class="click" src="{{asset('images/icons_modificare.png')}}" alt="Modifica"/></a>
     </div>
     <div class="icona">
         <a href="{{ route('cancella-alloggio.store', [$alloggio->id_alloggio]) }}" onclick="return confirm('Sei sicuro di voler proseguire?')"><img class="click"  src="{{asset('images/icons_cestino.png')}}" alt="Elimina"/></a>
