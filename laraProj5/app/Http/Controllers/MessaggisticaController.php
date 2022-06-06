@@ -85,7 +85,10 @@ class MessaggisticaController extends Controller {
         $message_created = $this->_messaggisticaModel->createMessage($message['contenuto'], $message['mittente'],
                                                 $message['destinatario'], $message['alloggio']);
 
-        return response()->json(['data_invio' => $message_created->data_invio]);
+        return response()->json([
+            'contenuto' => $message_created->contenuto,
+            'data_invio' => date("d F Y", strtotime($message_created->data_invio)),
+            'ora_invio' => date('H:i', strtotime($message_created->data_invio))]);
 
     }
 

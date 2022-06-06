@@ -1,4 +1,6 @@
-$('.contact').on('click', function(){
+$('.contacts').on('click', '.contact', function(){
+
+    console.log('cliccato');
 
     let contact = $(this).data('contact');
 
@@ -10,17 +12,141 @@ $('.contact').on('click', function(){
 
     let chat = $("[data-chat-contact='" + contact + "'][data-chat-alloggio='" + alloggio + "']");
 
-    let profile_img = chat.children('.chat-top-bar').children('div').children('img');
+    let profileImg = chat.children('.chat-top-bar').children('div').children('img');
 
-    profile_img.attr('src', $(this).children('img').attr('src'));
+    profileImg.attr('src', $(this).children('img').attr('src'));
 
     chat.css('display', 'block');
 
-    let chat_content = chat.children('.chat-content');
+    let chatContent = chat.children('.chat-content');
 
-    chat_content.scrollTop(chat_content[0].scrollHeight);
+    chatContent.scrollTop(chatContent[0].scrollHeight);
 
 })
+
+function getSentMessageHtml(contenuto, time) {
+
+    return `
+        <div class="sent">
+            <span class="chat-text">` + contenuto + `</span>
+            <div class="chat-extra">
+                <span class="time">` + time + `</span>
+            </div>
+        </div>`;
+
+}
+
+function createMessageView(form, formData, data) {
+
+    let date = data.data_invio;
+
+    let time = data.ora_invio;
+
+    let container = form.parent() //chat-bottom-bar
+        .prev() //chat-content
+        .children(':last-child') //day-chat
+        .children(':last-child'); //sent-container o received-container
+
+    let lastMessage = container.children(':last-child');
+
+    let sentMessage = getSentMessageHtml(formData.get('contenuto'), time);
+
+    let lastDayChat = lastMessage.parent() //sent-container o received-container
+                                 .parent(); //day-chat
+
+    let lastDate = lastDayChat.children('.date') //date
+                              .text();
+
+    if(lastDate == date) {
+
+        if(container.hasClass('sent-container')) {
+
+            lastMessage.after(sentMessage);
+    
+            lastMessage.next()[0].scrollIntoView(true);
+    
+        } else {
+    
+            let sentContainer = '<div class="sent-container">' + sentMessage + '</div>';
+    
+            container.after(sentContainer);
+    
+            container.next().children('.sent')[0].scrollIntoView(true);
+    
+        }
+
+    } else {
+
+        let dayChat = `
+            <div class="day-chat">
+                <div class="date">` + date + `</div>
+                <div class="sent-container">` +
+                sentMessage + `
+                </div>
+            </div>`;
+
+        lastDayChat.after(dayChat);
+
+        lastDayChat.next().children('.sent-container').children('.sent')[0].scrollIntoView(true);
+
+    }
+
+}
+
+function changeContactsDisposition(form, data) {
+
+    let chat = form.parent() //chat-bottom-bar
+                   .parent(); //chat
+
+    let chatContact = chat.data('chat-contact');
+    let chatAlloggio = chat.data('chat-alloggio');
+
+
+    let newContact;
+    let oldContactsHtml = '';
+    
+
+    let contacts = $('.contacts');
+
+    contacts.children('.contact').each(function() {
+        if($(this).data('contact') == chatContact && $(this).data('alloggio') == chatAlloggio)
+            newContact = $(this);
+        else {
+            oldContactsHtml += '<div class="contact" data-contact="'
+            + $(this).data('contact')
+            + '" data-alloggio="'
+            + $(this).data('alloggio')
+            + '">';
+
+            oldContactsHtml += $(this).html();
+
+            oldContactsHtml += '</div>';
+        }
+    });
+
+    //modificare contenuto ultimo messaggio e ora
+
+    newContact.find('.preview .preview-top .datetime').text(data.ora_invio);
+
+    newContact.find('.preview .last-message').text(data.contenuto);
+
+    // newContact.children('.preview')
+    //           .children('.preview-top')
+    //           .children('.datetime')
+    //           .text(data.ora_invio);
+
+    // newContact.children('.preview')
+    //           .children('.last-message')
+    //           .text(data.contenuto);
+
+    newContactHtml = '<div class="contact" data-contact="' + chatContact
+    + '" data-alloggio="' + chatAlloggio + '">'
+    + newContact.html()
+    + '</div>';
+
+    contacts.html(newContactHtml + oldContactsHtml);
+
+}
 
 function sendMessage(route, form) {
 
@@ -33,51 +159,14 @@ function sendMessage(route, form) {
         dataType: "json",
         success: function (data) {
 
-            let date = new Date( data.data_invio);
+            createMessageView(form, formData, data);
+            changeContactsDisposition(form, data);
 
-            let container = form.parent() //chat-bottom-bar
-                        .prev() //chat-content
-                        .children(':last-child') //day-chat
-                        .children(':last-child'); //sent-container o received-container
-
-            if(container.hasClass('sent-container')) {
-
-                let lastMessage = container.children(':last-child');
-
-                let sent = `
-                <div class="sent">
-                    <span class="chat-text">` + formData.get('contenuto') + `</span>
-                    <div class="chat-extra">
-                        <span class="time">` + date.getHours() + ':' + date.getMinutes() + `</span>
-                    </div>
-                </div>`;
-
-                lastMessage.after(sent);
-
-                lastMessage.next()[0].scrollIntoView(true);
-
-                form.children('[name=contenuto]').val('');
-
-            } else {
-
-                let sent = `
-                    <div class="sent-container">
-                        
-                            <div class="sent">
-                                <span class="chat-text">` + formData.get('contenuto') + `</span>
-                                <div class="chat-extra">
-                                    <span class="time">` + date.getHours() + ':' + date.getMinutes() + `</span>
-                                </div>
-                            </div>
-
-                        </div>`;
-
-                container.after(sent);
-
-
-            }
         },
         contentType: false,
         processData: false
     });
+
+    form.children('[name=contenuto]').val('');
+
 }

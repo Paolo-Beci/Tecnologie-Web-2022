@@ -18,7 +18,7 @@
 
                 let form = $(this).parent();
                 
-                sendMessage(route, form)
+                sendMessage(route, form);
 
             });
 
