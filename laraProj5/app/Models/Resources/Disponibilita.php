@@ -3,13 +3,11 @@
 namespace App\Models\Resources;
 
 use \Illuminate\Database\Eloquent\Model;
-use Thiagoprz\CompositeKey\HasCompositeKey;
 
 class Disponibilita extends Model{
-    use HasCompositeKey;
 
     protected $table = 'disponibilita';
-    protected $primaryKey = ['alloggio', 'servizio'];
+    protected $primaryKey = 'id_disponibilita';
     public $timestamps = false;
 }
 

@@ -114,7 +114,7 @@
                 @if($info_generali->first()->stato != 'locato')
                     <div class="btn-contatto">
                         {{ Form::open(array('route' => 'opzionamento')) }}
-                            {{ Form::hidden('contenuto', 'Salve. Sarei interessato a questo alloggio') }}
+                            {{ Form::hidden('contenuto', 'Ciao, ho visto la casa e sono interessato') }}
                             {{ Form::hidden('mittente', auth()->user()->id) }}
                             {{ Form::hidden('destinatario', $info_generali->first()->id) }}
                             {{ Form::hidden('alloggio', $info_generali->first()->id_alloggio) }}

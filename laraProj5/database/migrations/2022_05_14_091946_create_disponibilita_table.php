@@ -14,10 +14,10 @@ class CreateDisponibilitaTable extends Migration
     public function up()
     {
         Schema::create('disponibilita', function (Blueprint $table) {
+            $table->bigIncrements('id_disponibilita');
             $table->integer('alloggio')->unsigned();
             $table->string('servizio', 255);
             $table->tinyInteger('quantita')->unsigned();
-            $table->primary(array('alloggio', 'servizio'));
             $table->foreign('alloggio')->references('id_alloggio')->on('alloggio')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('servizio')->references('nome_servizio')->on('servizio')->onUpdate('cascade')->onDelete('cascade');
         });
