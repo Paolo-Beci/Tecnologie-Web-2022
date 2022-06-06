@@ -128,16 +128,12 @@ function changeContactsDisposition(form, data) {
 
     newContact.find('.preview .preview-top .datetime').text(data.ora_invio);
 
-    newContact.find('.preview .last-message').text(data.contenuto);
+    let contenuto = data.contenuto;
 
-    // newContact.children('.preview')
-    //           .children('.preview-top')
-    //           .children('.datetime')
-    //           .text(data.ora_invio);
+    if(contenuto.length > 40)
+        contenuto = contenuto.substring(0, 40) + '...';
 
-    // newContact.children('.preview')
-    //           .children('.last-message')
-    //           .text(data.contenuto);
+    newContact.find('.preview .last-message').text(contenuto);
 
     newContactHtml = '<div class="contact" data-contact="' + chatContact
     + '" data-alloggio="' + chatAlloggio + '">'

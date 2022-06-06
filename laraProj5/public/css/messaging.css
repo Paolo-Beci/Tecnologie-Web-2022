@@ -79,7 +79,11 @@ body {
 }
 
 .preview-top span {
-    color: #FFD625;    ;
+    color: #FFD625;
+}
+
+.alloggio-desc {
+    font-size: 16px;
 }
 
 .datetime {

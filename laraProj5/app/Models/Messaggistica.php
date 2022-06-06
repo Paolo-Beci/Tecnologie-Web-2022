@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Resources\Alloggio;
 use App\Models\Resources\Messaggio;
 use App\Models\Resources\User;
 
@@ -32,6 +33,10 @@ class Messaggistica {
             'alloggio' => $alloggio
         ]);
 
+    }
+
+    public function getAlloggi() {
+        return Alloggio::get();
     }
 
 }

@@ -16,7 +16,7 @@ class CreateMessaggioTable extends Migration
         Schema::create('messaggio', function (Blueprint $table) {
             $table->increments('id_messaggio');
             $table->dateTime('data_invio');
-            $table->string('contenuto', 255);
+            $table->mediumText('contenuto');
             $table->bigInteger('mittente')->unsigned();
             $table->bigInteger('destinatario')->unsigned();
             $table->integer('alloggio')->unsigned();

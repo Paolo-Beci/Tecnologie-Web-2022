@@ -87,12 +87,22 @@
                                 <div class="preview-top">
                                     {{-- username --}}
                                     <span>{{$contact_username}}</span>
-                                    <span>Alloggio: {{$last_message->alloggio}}</span>
+                                    @php
+                                        $alloggio = $alloggi->find(array_search($contacts_alloggio, $contacts));
+                                        $alloggio_desc = $alloggio->via . ' ' .  $alloggio->num_civico . ', '
+                                        . $alloggio->citta . ' ' . $alloggio->cap;
+                                        $alloggio_desc = substr($alloggio_desc, 0, 25) . '...';
+                                    @endphp
+
+                                    <span class="alloggio-desc">{{$alloggio_desc}}</span>
                                     <span class="datetime">
                                         {{ date('H:i', strtotime($last_message->data_invio)) }}
                                     </span>
                                 </div>
-                                <div class="last-message">{{$last_message->contenuto}}</div>
+                                <div class="last-message">{{
+                                    strlen($last_message->contenuto) > 40 ? 
+                                        substr($last_message->contenuto, 0, 40) . '...' : $last_message->contenuto
+                                }}</div>
                             </div>
                         </div>
                     @endforeach
@@ -131,7 +141,15 @@
                         <img src="" alt="User">
                         <span>{{array_search($contact, $contacts_alloggio)}}</span>
                     </div>
-                    <span>Alloggio: {{array_search($contacts_alloggio, $contacts)}}</span>
+
+                    @php
+                        $alloggio = $alloggi->find(array_search($contacts_alloggio, $contacts));
+                    @endphp
+
+                    <span>{{str_replace('_', ' ', $alloggio->tipologia)}} situato in {{
+                        $alloggio->via . ' ' .  $alloggio->num_civico . ', '
+                        . $alloggio->citta . ' ' . $alloggio->cap}}
+                    </span>
                 </div>               
 
                 <div class="chat-content">

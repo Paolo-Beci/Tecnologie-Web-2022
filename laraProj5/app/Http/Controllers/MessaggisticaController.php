@@ -74,7 +74,8 @@ class MessaggisticaController extends Controller {
         // echo "<pre>".print_r($contacts, true)."</pre>";
 
         return view('messaging')
-            ->with('contacts', $contacts);
+            ->with('contacts', $contacts)
+            ->with('alloggi', $this->_messaggisticaModel->getAlloggi());
 
     }
 
