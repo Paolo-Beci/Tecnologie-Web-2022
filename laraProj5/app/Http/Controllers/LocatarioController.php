@@ -32,7 +32,13 @@ class LocatarioController extends Controller {
         $alloggi = $this->_locatarioModel->getAlloggi();
 
         return view('layouts/content-catalogo')
-            ->with('alloggi', $alloggi); //la variabile alloggi (array) viene passata alla view
+            ->with('alloggi', $alloggi) //la variabile alloggi (array) viene passata alla view
+            ->with('citta', 'Ancona')
+            ->with('piano', 0)
+            ->with('minmq', 10)
+            ->with('maxmq', 1000)
+            ->with('minprezzo', 10)
+            ->with('maxprezzo', 1000);
 
     }
 
@@ -76,6 +82,25 @@ class LocatarioController extends Controller {
 
         return view('layouts/content-catalogo')
             ->with('alloggi', $alloggiByCity);
+    }
+
+    //metodo utilizzato per tornare gli alloggi in base a tutti i filtri
+    public function showAlloggiFiltered() {
+        $check = $_POST['check'] ?? [];
+
+        $alloggiFiltered = $this->_locatarioModel->getAlloggiFiltered(
+            $check, $_POST['periodo'], $_POST['gender'],
+            $_POST['number_piano'], $_POST['citta'], $_POST['min-mq'],
+            $_POST['max-mq'], $_POST['min-prezzo'], $_POST['max-prezzo']);
+
+        return view('layouts/content-catalogo')
+            ->with('alloggi', $alloggiFiltered)
+            ->with('citta', $_POST['citta'])
+            ->with('piano', $_POST['number_piano'])
+            ->with('minmq', $_POST['min-mq'])
+            ->with('maxmq', $_POST['max-mq'])
+            ->with('minprezzo', $_POST['min-prezzo'])
+            ->with('maxprezzo', $_POST['max-prezzo']);
     }
 
     // metodo utilizzato per tornare i dettagli dell'account attualmente loggato

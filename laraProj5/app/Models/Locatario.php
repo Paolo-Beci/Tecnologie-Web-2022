@@ -104,6 +104,13 @@ class Locatario {
             ->paginate(3);
     }
 
+    public function getAlloggiByStato($stato) {
+        return DB::table('foto')
+            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+            ->whereIn('stato', $stato)
+            ->paginate(3);
+    }
+
     public function getAlloggiByFasciaPrezzo($prezzo_min = 0, $prezzo_max = 999999) {
         return DB::table('foto')
             ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
@@ -171,6 +178,24 @@ class Locatario {
             ->join('posto_letto', 'foto.alloggio', '=', 'posto_letto.alloggio')
             ->where('tipologia_camera', $tipo)
             ->get();
+    }
+
+    public function getAlloggiFiltered($stato, $periodo,  $genere, $piano, $citta,
+                                       $sup_min = 0, $sup_max = 999999,
+                                       $prezzo_min = 0, $prezzo_max = 999999) {
+
+        return DB::table('foto')
+            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+            ->where('citta', $citta)
+            ->whereIn('stato', $stato)
+            ->where('periodo_locazione', $periodo)
+            ->where('genere', $genere)
+            ->where('piano', $piano)
+            ->where('dimensione', '<', $sup_max)
+            ->where('dimensione', '>', $sup_min)
+            ->where('canone_affitto', '<', $prezzo_max)
+            ->where('canone_affitto', '>', $prezzo_min)
+            ->paginate(3);
     }
 
 }

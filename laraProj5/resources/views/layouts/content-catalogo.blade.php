@@ -57,6 +57,23 @@
                 @include('helpers/alloggio')
                 @endforeach
             @endisset
+            {{--@isset($_POST['periodo'], $_POST['gender'],
+            $_POST['number_piano'], $_POST['citta'], $_POST['min-mq'],
+            $_POST['max-mq'], $_POST['min-prezzo'], $_POST['max-prezzo'])
+                @isset($_POST['check'])
+                @foreach($_POST['check'] as $a)
+                <p>Check {{ $a }}</p>
+                @endforeach
+                @endisset
+                <p>Periodo {{ $_POST['periodo']  }}</p>
+                <p>Gender {{ $_POST['gender'] }}</p>
+                <p>Piano {{ $_POST['number_piano'] }}</p>
+                <p> Città {{ $_POST['citta'] }}</p>
+                <p>Sup min{{ $_POST['min-mq'] }}</p>
+                <p>Sup max{{ $_POST['max-mq'] }}</p>
+                <p>Prezzo min{{ $_POST['min-prezzo'] }}</p>
+                <p>Prezzo max{{ $_POST['max-prezzo'] }}</p>
+            @endisset--}}
         </section>
     </main>
     <!--Paginazione-->

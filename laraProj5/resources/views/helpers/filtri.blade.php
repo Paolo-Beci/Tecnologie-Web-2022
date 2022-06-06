@@ -3,46 +3,46 @@
 {{ Form::open(array('route' => 'filtered', 'class' => 'filtri active-form')) }}
 
 <h2 class="subtitle-filtri">Città</h2>
-    {{ Form::text('citta', 'Ancona') }}<br>
+    {{ Form::text('citta', $citta) }}<br>
 <h2 class="subtitle-filtri">Stato attuale</h2>
-    {{ Form::checkbox('check7', 'Libero') }}
+    {{ Form::checkbox('check[]', 'Libero') }}
     {{ Form::label('Libero', 'Libero') }}<br>
-    {{ Form::checkbox('check8', 'Opzionato') }}
+    {{ Form::checkbox('check[]', 'Opzionato') }}
     {{ Form::label('Opzionato', 'Opzionato') }}<br>
-    {{ Form::checkbox('check9', 'Locato') }}
+    {{ Form::checkbox('check[]', 'Locato') }}
     {{ Form::label('Locato', 'Locato') }}<br>
 <h2 class="subtitle-filtri">Fascia di Prezzo</h2>
-    {{ Form::text('min-prezzo', '100') }}
+    {{ Form::text('min-prezzo', $minprezzo) }}
     {{ Form::label('min-prezzo', '&#8364; Minimi') }}
-    {{ Form::text('max-prezzo', '1000') }}
+    {{ Form::text('max-prezzo', $maxprezzo) }}
     {{ Form::label('max-prezzo', '&#8364; Massimi') }}
 <h2 class="subtitle-filtri">Periodo locazione</h2>
-    {{ Form::radio('gender', '12') }}
+    {{ Form::radio('periodo', '12', true) }}
     {{ Form::label('12', '12 mesi') }}
-    {{ Form::radio('gender', '9') }}
+    {{ Form::radio('periodo', '9') }}
     {{ Form::label('9', '9 mesi') }}
-    {{ Form::radio('gender', '6') }}
+    {{ Form::radio('periodo', '6') }}
     {{ Form::label('6', '6 mesi') }}
 <h2 class="subtitle-filtri">Superficie</h2>
-    {{ Form::text('min-mq', '10') }}
+    {{ Form::text('min-mq', $minmq) }}
     {{ Form::label('min-mq', 'Mq minimi') }}
-    {{ Form::text('max-mq', '1000') }}
+    {{ Form::text('max-mq', $maxmq) }}
     {{ Form::label('max-mq', 'Mq massimi') }}
 <h2 class="subtitle-filtri">Numero di camere</h2>
     {{ Form::text('num_camere', '1') }}
 <h2 class="subtitle-filtri">Genere ammesso</h2>
-    {{ Form::radio('female', 'Femmine') }}
-    {{ Form::label('female', 'Femmine') }}<br>
-    {{ Form::radio('male', 'Maschi') }}
-    {{ Form::label('male', 'Maschi') }}<br>
-    {{ Form::radio('all', 'Tutti', true) }}
-    {{ Form::label('all', 'Tutti') }}<br>
+    {{ Form::radio('gender', 'f') }}
+    {{ Form::label('f', 'Femmine') }}<br>
+    {{ Form::radio('gender', 'm') }}
+    {{ Form::label('m', 'Maschi') }}<br>
+    {{ Form::radio('gender', 'u', true) }}
+    {{ Form::label('u', 'Tutti') }}<br>
 <h2 class="subtitle-filtri">Piano</h2>
-    {{ Form::selectRange('number', 0, 127) }}
+    {{ Form::selectRange('number_piano', 0, 127, $piano) }}
 <h2 class="subtitle-filtri">Num. posti letto appartamento</h2>
-    {{ Form::selectRange('number', 1, 20) }}
+    {{ Form::selectRange('number_pl_app', 1, 20) }}
 <h2 class="subtitle-filtri">Num. posti letto camera</h2>
-    {{ Form::selectRange('number', 1, 20) }}
+    {{ Form::selectRange('number_pl_cam', 1, 20) }}
 <h2 class="subtitle-filtri">Servizi</h2>
     {{ Form::checkbox('check1', 'Bagno') }}
     {{ Form::label('Bagno', 'Bagno') }}<br>
