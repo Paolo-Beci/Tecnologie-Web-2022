@@ -5,9 +5,12 @@ use App\Http\Requests\NewAlloggioRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Locatore;
 use App\Models\Resources\Alloggio;
+use App\Models\Resources\Appartamento;
 use App\Models\Resources\DatiPersonali;
+use App\Models\Resources\Disponibilita;
 use App\Models\Resources\Foto;
 use App\Models\Resources\Interazione;
+use App\Models\Resources\PostoLetto;
 use App\Models\Resources\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -187,22 +190,38 @@ class LocatoreController extends Controller {
             $image = $request->file('immagine');
             $array = $this->imageCompose($image);
             $estensione = '.' . $array[1];
-        }
-        else {
-            $estensione = null;
+
+            $new_foto = Foto::create([
+                'estensione' => $estensione,
+                'alloggio' => $new_alloggio->id_alloggio
+            ]);
+
+            $fullImageName = $new_foto->id_foto.$estensione;
+
+            //sposta l'immagine
+            $destinationPath = public_path() . '/images_case';
+            $image->move($destinationPath, $fullImageName);
         }
 
-        $new_foto = Foto::create([
-            'estensione' => $estensione,
-            'alloggio' => $new_alloggio->id_alloggio
+
+        //crea l'appartamento
+        if($new_alloggio->tipologia == 'Appartamento'){
+            $new_appartamento = Appartamento::create([
+                'num_camere' => $array['numCamere'],
+                'alloggio' => $new_alloggio->id_alloggio
+            ]);
+        }
+        else{
+            $new_posto_letto = PostoLetto::create([
+                'tipologia_camera' => $array['tipologiaCamera'],
+                'alloggio' => $new_alloggio->id_alloggio
+            ]);
+        }
+
+        //crea disponibilità
+        $new_servizi = Disponibilita::create([
+
         ]);
-
-        $fullImageName = $new_foto->id_foto.$estensione;
-
-        //sposta l'immagine
-        $destinationPath = public_path() . '/images_case';
-        $image->move($destinationPath, $fullImageName);
-
 
         return response()->json(['redirect' => route('gestione-alloggi')]);
 

@@ -1,4 +1,9 @@
-<img class="item-immagine" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Immagine">
+@if(isset($alloggio->id_foto))
+    <img class="item-immagine" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Immagine">
+@else
+    <img class="item-immagine" src="{{ asset('images/icons_casa.png') }}" alt="Immagine">
+@endif
+
 <div>
     @if($alloggio->tipologia == 'Posto_letto')
         <h1>Posto letto</h1>

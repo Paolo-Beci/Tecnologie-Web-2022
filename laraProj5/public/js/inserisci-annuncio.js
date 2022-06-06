@@ -29,7 +29,6 @@ function doElemValidation(id, actionUrl, formId) {
             dataType: "json",
             //funzione da attivare nel caso in cui la risposta all'inoltro contiene un codice di errore
             error: function (data) {
-                console.log(data.status);
                 if (data.status === 422) {
                     //trasformazione in array associativo dei mex di errore
                     var errMsgs = JSON.parse(data.responseText);
