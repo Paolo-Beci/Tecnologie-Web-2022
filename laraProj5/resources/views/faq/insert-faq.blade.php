@@ -55,7 +55,7 @@
             @endisset
 
             {{--div per la domanda--}}
-            <div  class="wrap-input  {{--rs1-wrap-input--}}">
+            <div  class="wrap-input{{--rs1-wrap-input--}}">
                 {{ Form::label('domanda', 'Domanda') }}
                 {{ Form::textarea('domanda', $domanda, ['class' => 'input', 'id' => 'domanda', 'rows' => 3]) }}
                 @if ($errors->first('domanda'))
@@ -68,7 +68,7 @@
             </div>
 
             {{--div per la risposta--}}
-            <div  class="wrap-input  {{--rs1-wrap-input--}}">
+            <div  class="wrap-input{{--rs1-wrap-input--}}">
                 {{ Form::label('risposta', 'Risposta') }}
                 {{ Form::textarea('risposta', $risposta, ['class' => 'input', 'id' => 'risposta', 'rows' => 3]) }}
                 @if ($errors->first('risposta'))
@@ -81,7 +81,7 @@
             </div>
 
             {{--div per la categoria--}}
-            <div  class="wrap-input  {{--rs1-wrap-input--}}">
+            <div  class="wrap-input{{--rs1-wrap-input--}}">
                 {{ Form::label('target', 'Target') }}
                 {{ Form::select('target', $tg, $target, ['class' => 'input','id' => 'target']) }}
             </div>

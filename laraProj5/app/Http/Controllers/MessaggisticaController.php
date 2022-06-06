@@ -19,7 +19,7 @@ class MessaggisticaController extends Controller {
         $authUsername = auth()->user()->username;
 
         $messages = $this->_messaggisticaModel->getUserMessages();
-        
+
         $contacts = array();
 
         // Generazione primo livello array contact. Alloggi
@@ -31,6 +31,8 @@ class MessaggisticaController extends Controller {
                 $contacts[$alloggio] = array();
 
         }
+
+        
 
         // Generazione secondo livello array contact. Username
         foreach($messages as $message) {
