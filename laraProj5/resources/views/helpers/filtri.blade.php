@@ -7,8 +7,8 @@
 <h2 class="subtitle-filtri">Stato attuale</h2>
     {{ Form::checkbox('check7', 'Libero') }}
     {{ Form::label('Libero', 'Libero') }}<br>
-    {{ Form::checkbox('check8', 'Opzionato') }}
-    {{ Form::label('Opzionato', 'Opzionato') }}<br>
+    {{-- {{ Form::checkbox('check8', 'Opzionato') }}
+    {{ Form::label('Opzionato', 'Opzionato') }}<br> --}}
     {{ Form::checkbox('check9', 'Locato') }}
     {{ Form::label('Locato', 'Locato') }}<br>
 <h2 class="subtitle-filtri">Fascia di Prezzo</h2>

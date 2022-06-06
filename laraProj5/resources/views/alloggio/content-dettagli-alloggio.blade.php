@@ -28,8 +28,6 @@
 
                     @if($info_generali->first()->stato == 'libero')
                         <h2 style="color: green"> Libero -> pubblicato il: {{$info_generali->first()->data_interazione}}</h2>
-                    @elseif($info_generali->first()->stato == 'opzionato')
-                        <h2 style="color: coral"> Opzionato </h2>
                     @else
                         <h2 style="color: red"> Locato </h2>
                     @endif
@@ -128,13 +126,7 @@
                         {{ Form::hidden('destinatario', $info_generali->first()->id) }}
                         {{ Form::hidden('alloggio', $info_generali->first()->id_alloggio) }}
                         {{ Form::button('Inizia una chat!', ['type' => 'submit', 'class' => 'filter_button']) }}
-                        {{-- <input type="button" alt="Invia messaggio"> --}}
                     {{ Form::close() }}
-                    {{-- <a href="#vista-messaggistica-di-locatore-corrispondente">
-                        <button class="filter_button" type="submit">
-                            Inizia una chat!
-                        </button>
-                    </a> --}}
                 </div>
             </div>
             <div class="mappa-alloggio">

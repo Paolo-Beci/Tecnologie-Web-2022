@@ -22,8 +22,6 @@
     <div class="info-alloggio">
         @if($alloggio->stato == 'libero')
             <h2 style="color: green"> Libero </h2>
-        @elseif($alloggio->stato == 'opzionato')
-            <h2 style="color: coral"> Opzionato </h2>
         @else
             <h2 style="color: red"> Locato </h2>
         @endif
