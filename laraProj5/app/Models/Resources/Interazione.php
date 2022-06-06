@@ -11,4 +11,5 @@ class Interazione extends Model{
     protected $table = 'interazione';
     protected $primaryKey = ['utente', 'alloggio'];
     public $timestamps = false;
+    protected $fillable = ['utente', 'alloggio', 'data_interazione'];
 }

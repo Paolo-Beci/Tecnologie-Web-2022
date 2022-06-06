@@ -31,12 +31,12 @@ class NewAlloggioRequest extends FormRequest{
         return [
             'dimensione' => 'numeric|max:99999',
             'citta' => ['required','string','max:255','regex:/^[A-Za-z\-]/u'],
-            'via' => ['required','string,','max:255'],
+            'via' => ['required','string','max:255'],
             'numCivico' => ['required','string','max:4','regex:/^([1-9]{1})([0-9]{1})?([0-9]{1})?([a-z])?/u'],
             'cap' => ['required','numeric','regex:/^([0-9]{5})/u'],
             'canoneAffitto' => 'required|numeric|min:0|max:99999',
             'utenze' => 'numeric|min:0|max:99999',
-            'descrizione' => 'string|max:255',
+            'descrizione' => 'max:255',
             'immagine' => 'image|max:1024'
         ];
     }

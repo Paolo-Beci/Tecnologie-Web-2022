@@ -77,7 +77,7 @@ function doFormValidation(actionUrl, formId) {
         data: form,
         dataType: "json",
         error: function (data) {
-            if (data.status === 422 || data.status === 500) {
+            if (data.status === 422) {
                 var errMsgs = JSON.parse(data.responseText);
                 $.each(errMsgs, function (id) {
                     $("#" + id).parent().find('.errors').html(' ');

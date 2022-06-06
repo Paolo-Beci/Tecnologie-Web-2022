@@ -53,12 +53,12 @@
                         <!-- Num posti letto totali -->
                         <div>
                             {{ Form::label('numPostiLettoTot', 'Num posti letto totali') }}
-                            {{ Form::selectRange('number', 1, 20, ['id' => 'numPostiLettoTot']) }}
+                            {{ Form::selectRange('numPostiLettoTot', 1, 20, ['id' => 'numPostiLettoTot']) }}
                         </div>
                         <!-- Num camere (appartemento)-->
                         <div>
                             {{ Form::label('numCamere', 'Num camere') }}
-                            {{ Form::selectRange('number', 1, 20, ['id' => 'numCamere']) }}
+                            {{ Form::selectRange('numCamere', 1, 20, ['id' => 'numCamere']) }}
                         </div>
                         <!-- Tipologia camera (posto letto) -->
                         <div>
@@ -78,9 +78,9 @@
                         <div>
                             <p class="item">Fascia di età:</p>
                             {{ Form::label('etaMin', 'Min') }}
-                            {{ Form::selectRange('number', 18, 100, ['id' => 'etaMin']) }}
+                            {{ Form::selectRange('etaMin', 18, 100, ['id' => 'etaMin']) }}
                             {{ Form::label('etaMax', 'Max') }}
-                            {{ Form::selectRange('number', 18, 100, ['id' => 'etaMax']) }}
+                            {{ Form::selectRange('etaMax', 18, 100, ['id' => 'etaMax']) }}
                         </div>
                         <!-- Periodo locazione -->
                         <div>
@@ -93,12 +93,12 @@
                         <legend><h2>Servizi</h2></legend>
                             <!-- Bagni -->
                             <div>
-                                {{ Form::selectRange('number', 1, 9, ['id' => 'bagno']) }}
+                                {{ Form::selectRange('bagno', 1, 9, ['id' => 'bagno']) }}
                                 {{ Form::label('bagno', 'Bagno/i') }}
                             </div>
                             <!-- Cucine -->
                             <div>
-                                {{ Form::selectRange('number', 1, 9, ['id' => 'cucina']) }}
+                                {{ Form::selectRange('cucina', 1, 9, ['id' => 'cucina']) }}
                                 {{ Form::label('cucina', 'Cucina/e') }}
                             </div>
                             <!-- Locale ricreativo -->
@@ -172,12 +172,12 @@
                         <!-- Interno -->
                         <div>
                             {{ Form::label('interno', 'Interno') }}
-                            {{ Form::selectRange('number', 1, 508, ['id' => 'interno']) }}
+                            {{ Form::selectRange('interno', 1, 508, ['id' => 'interno']) }}
                         </div>
                         <!-- Piano -->
                         <div>
                             {{ Form::label('piano', 'Piano') }}
-                            {{ Form::selectRange('number', 0, 127, ['id' => 'piano']) }}
+                            {{ Form::selectRange('piano', 0, 127, ['id' => 'piano']) }}
                         </div>
                     </fieldset>
 
@@ -198,7 +198,7 @@
                         <!-- Descrizione -->
                         <fieldset title="Inserisci una desrizione" class="fieldset">
                             <legend><h2>Descrizione</h2></legend>
-                            {{ Form::textarea('descrizione', 'Inserisci una descrizione...' , ['id' => 'descrizione', 'rows' => 3]) }}
+                            {{ Form::textarea('descrizione', '' , ['id' => 'descrizione', 'rows' => 3, 'placeholder' => 'Inserisci una descrizione...']) }}
                         </fieldset>
 
                         <!-- Immagine alloggio -->
@@ -213,7 +213,7 @@
 
         <section class="ultimo-box">
             {{--Bottone per annullare l'inerimento--}}
-            <a class="anchor" href="{{route('gestione-alloggi')}}">
+            <a href="{{route('gestione-alloggi')}}">
                 <button class="bottone">Annulla inserimento</button>
             </a>
             {{--bottone di conferma--}}

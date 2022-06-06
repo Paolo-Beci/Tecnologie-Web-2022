@@ -7,6 +7,7 @@ use App\Models\Locatore;
 use App\Models\Resources\Alloggio;
 use App\Models\Resources\DatiPersonali;
 use App\Models\Resources\Foto;
+use App\Models\Resources\Interazione;
 use App\Models\Resources\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -85,6 +86,7 @@ class LocatoreController extends Controller {
             ->with('dati_personali', $dati_personali);
     }
 
+    //riscrivere con codice più pulito
     public function showModificaAccount(UpdateProfileRequest $request){
         //prendo l'id_foto_profilo più grande nel DB
         $imageName = DatiPersonali::select('id_foto_profilo')->max('id_foto_profilo') + 1;
@@ -136,6 +138,7 @@ class LocatoreController extends Controller {
 
     //metodo che apre la sezione di inserimento annuncio
     public function insertAnnuncio(){
+        //togliere
         $tipologie = ["Appartamento" => 'Appartamento', "Posto letto" => 'Posto letto'];
         $genere = $this->_locatoreModel->getGenereAlloggio()->pluck('genere');
         $periodoLocazione = $this->_locatoreModel->getPeriodoLocazioneAlloggio()->pluck('periodo_locazione');
@@ -147,11 +150,72 @@ class LocatoreController extends Controller {
 
     public function storeAnnuncio(NewAlloggioRequest $request)
     {
-        $new_faq = new Alloggio();
-        $new_faq->fill($request->validated());
-        $new_faq->save();
+        $array = $request->all();
+        $time = now();
+
+        //crea l'alloggio
+        $new_alloggio = Alloggio::create([
+            'descrizione' => $array['descrizione'],
+            'utenze' => $array['utenze'],
+            'canone_affitto' => $array['canoneAffitto'],
+            'periodo_locazione' => $array['periodoLocazione'],
+            'genere' => $array['genere'],
+            'eta_minima' => $array['genere'],
+            'eta_massima' => $array['genere'],
+            'dimensione' => $array['dimensione'],
+            'num_posti_letto_tot' => $array['numPostiLettoTot'],
+            'via' => $array['via'],
+            'citta' => $array['citta'],
+            'num_civico' => $array['numCivico'],
+            'cap' => $array['cap'],
+            'interno' => $array['interno'],
+            'piano' => $array['piano'],
+            'data_inserimento_offerta' => $time,
+            'tipologia' => $array['tipologia'],
+            'stato' => 'libero'
+        ]);
+
+        //crea l'interazione
+        $new_interazione = Interazione::create([
+            'utente' => auth()->user()->getAuthIdentifier(),
+            'alloggio' => $new_alloggio->id_alloggio,
+            'data_interazione' => $time
+        ]);
+
+        //crea la foto
+        if ($request->hasFile('immagine')) {
+            $image = $request->file('immagine');
+            $array = $this->imageCompose($image);
+            $estensione = '.' . $array[1];
+        }
+        else {
+            $estensione = null;
+        }
+
+        $new_foto = Foto::create([
+            'estensione' => $estensione,
+            'alloggio' => $new_alloggio->id_alloggio
+        ]);
+
+        $fullImageName = $new_foto->id_foto.$estensione;
+
+        //sposta l'immagine
+        $destinationPath = public_path() . '/images_case';
+        $image->move($destinationPath, $fullImageName);
+
 
         return response()->json(['redirect' => route('gestione-alloggi')]);
+
+    }
+
+    //funzione che torna l'array relativo all'immagine
+    public function imageCompose($image){
+        $imageId = Foto::select('id_foto')->max('id_foto') + 1;
+
+        $imageName = $image->getClientOriginalName();
+        $array = explode('.', $imageName);
+        $array[0] = $imageId;
+        return $array;
     }
 
     /*
