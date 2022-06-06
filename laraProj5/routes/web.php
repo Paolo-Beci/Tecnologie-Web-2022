@@ -146,3 +146,5 @@ Route::prefix('catalogo')->group(function () {
 Route::get('/messaggistica', 'MessaggisticaController@showMessaggistica')->name('messaggistica');
 
 Route::post('/messaggistica', 'MessaggisticaController@sendMessage')->name('send-message');
+
+Route::post('/opzionamento', 'MessaggisticaController@opzionamento')->name('opzionamento');

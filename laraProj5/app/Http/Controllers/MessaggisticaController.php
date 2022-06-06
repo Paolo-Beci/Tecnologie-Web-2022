@@ -16,7 +16,7 @@ class MessaggisticaController extends Controller {
 
     public function showMessaggistica() {
         
-        $auth_username = auth()->user()->username;
+        $authUsername = auth()->user()->username;
 
         $messages = $this->_messaggisticaModel->getUserMessages();
         
@@ -39,10 +39,10 @@ class MessaggisticaController extends Controller {
             $mittente = $message->mittente;
             $destinatario = $message->destinatario;
 
-            if($mittente != $auth_username && !array_key_exists($mittente, $contacts[$alloggio]))
+            if($mittente != $authUsername && !array_key_exists($mittente, $contacts[$alloggio]))
                 $contacts[$alloggio][$mittente] = array();
 
-            if($destinatario != $auth_username && !array_key_exists($destinatario, $contacts[$alloggio]))
+            if($destinatario != $authUsername && !array_key_exists($destinatario, $contacts[$alloggio]))
                 $contacts[$alloggio][$destinatario] = array();
 
         }
@@ -53,20 +53,20 @@ class MessaggisticaController extends Controller {
             $alloggio = $message->alloggio;
             $mittente = $message->mittente;
             $destinatario = $message->destinatario;
-            $message_date = date("d F Y", strtotime($message->data_invio));
+            $messageDate = date("d F Y", strtotime($message->data_invio));
 
             if(array_key_exists($mittente, $contacts[$alloggio])) {
-                if(!array_key_exists($message_date, $contacts[$alloggio][$mittente]))
-                    $contacts[$alloggio][$mittente][$message_date] = array($message);
+                if(!array_key_exists($messageDate, $contacts[$alloggio][$mittente]))
+                    $contacts[$alloggio][$mittente][$messageDate] = array($message);
                 else
-                    array_push($contacts[$alloggio][$mittente][$message_date], $message);
+                    array_push($contacts[$alloggio][$mittente][$messageDate], $message);
             }
             
             if(array_key_exists($destinatario, $contacts[$alloggio])) {
-                if(!array_key_exists($message_date, $contacts[$alloggio][$destinatario]))
-                    $contacts[$alloggio][$destinatario][$message_date] = array($message);
+                if(!array_key_exists($messageDate, $contacts[$alloggio][$destinatario]))
+                    $contacts[$alloggio][$destinatario][$messageDate] = array($message);
                 else
-                    array_push($contacts[$alloggio][$destinatario][$message_date], $message);
+                    array_push($contacts[$alloggio][$destinatario][$messageDate], $message);
             }
             
         }
@@ -83,13 +83,24 @@ class MessaggisticaController extends Controller {
         
         $message = $request->all();
 
-        $message_created = $this->_messaggisticaModel->createMessage($message['contenuto'], $message['mittente'],
+        $messageCreated = $this->_messaggisticaModel->createMessage($message['contenuto'], $message['mittente'],
                                                 $message['destinatario'], $message['alloggio']);
 
         return response()->json([
-            'contenuto' => $message_created->contenuto,
-            'data_invio' => date("d F Y", strtotime($message_created->data_invio)),
-            'ora_invio' => date('H:i', strtotime($message_created->data_invio))]);
+            'contenuto' => $messageCreated->contenuto,
+            'data_invio' => date("d F Y", strtotime($messageCreated->data_invio)),
+            'ora_invio' => date('H:i', strtotime($messageCreated->data_invio))]);
+
+    }
+
+    public function opzionamento(Request $request) {
+
+        $message = $request->all();
+
+        $this->_messaggisticaModel->createMessage($message['contenuto'], $message['mittente'],
+                                                  $message['destinatario'], $message['alloggio']);
+
+        return redirect()->route('messaggistica');
 
     }
 

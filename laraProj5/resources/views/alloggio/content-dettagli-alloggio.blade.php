@@ -122,11 +122,19 @@
                     </div>
                 @endif
                 <div class="btn-contatto">
-                    <a href="#vista-messaggistica-di-locatore-corrispondente">
+                    {{ Form::open(array('route' => 'opzionamento')) }}
+                        {{ Form::hidden('contenuto', 'Salve. Sarei interessato a questo alloggio') }}
+                        {{ Form::hidden('mittente', auth()->user()->id) }}
+                        {{ Form::hidden('destinatario', $info_generali->first()->id) }}
+                        {{ Form::hidden('alloggio', $info_generali->first()->id_alloggio) }}
+                        {{ Form::button('Inizia una chat!', ['type' => 'submit', 'class' => 'filter_button']) }}
+                        {{-- <input type="button" alt="Invia messaggio"> --}}
+                    {{ Form::close() }}
+                    {{-- <a href="#vista-messaggistica-di-locatore-corrispondente">
                         <button class="filter_button" type="submit">
                             Inizia una chat!
                         </button>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
             <div class="mappa-alloggio">

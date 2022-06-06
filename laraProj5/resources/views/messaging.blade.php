@@ -89,8 +89,7 @@
                                     <span>{{$contact_username}}</span>
                                     @php
                                         $alloggio = $alloggi->find(array_search($contacts_alloggio, $contacts));
-                                        $alloggio_desc = $alloggio->via . ' ' .  $alloggio->num_civico . ', '
-                                        . $alloggio->citta . ' ' . $alloggio->cap;
+                                        $alloggio_desc = $alloggio->citta . ', ' . $alloggio->via . ' ' .  $alloggio->num_civico;
                                         $alloggio_desc = substr($alloggio_desc, 0, 25) . '...';
                                     @endphp
 
@@ -227,7 +226,6 @@
                 <div class="chat-bottom-bar">
 
                     {{ Form::open(array('route' => 'send-message', 'class' => 'send-message', 'data-form' => $contact_username)) }}
-
                         {{ Form::text('contenuto', '', ['placeholder' => 'Scrivi un messaggio']) }}
                         {{ Form::hidden('mittente', $auth_id) }}
                         {{ Form::hidden('destinatario', App\Models\Resources\User::where('username', $contact_username)->first()->id) }}
