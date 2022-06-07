@@ -97,7 +97,7 @@ class Locatario {
     }
 
     //funzioni di filtro (una funzione per ogni parametro)
-    public function getAlloggiByCity($citta) {
+    /*public function getAlloggiByCity($citta) {
         return DB::table('alloggio')
             ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('citta', $citta)
@@ -178,12 +178,13 @@ class Locatario {
             ->leftJoin('posto_letto', 'foto.alloggio', '=', 'posto_letto.alloggio')
             ->where('tipologia_camera', $tipo)
             ->get();
-    }
+    }*/
 
-    public function getAlloggiFiltered($stato, $periodo,  $genere, $piano, $citta,
-                                       $sup_min, $sup_max, $prezzo_min, $prezzo_max) {
+    public function getAlloggiFiltered($stato, $periodo, $genere, $piano, $citta,
+                                       $sup_min, $sup_max, $prezzo_min, $prezzo_max, $servizi)
+    {
 
-        return DB::table('alloggio')
+        $risultato = DB::table('alloggio')
             ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('citta', $citta)
             ->whereIn('stato', $stato)
@@ -193,8 +194,26 @@ class Locatario {
             ->where('dimensione', '<', $sup_max)
             ->where('dimensione', '>', $sup_min)
             ->where('canone_affitto', '<', $prezzo_max)
-            ->where('canone_affitto', '>', $prezzo_min)
+            ->where('canone_affitto', '>', $prezzo_min);
+
+        if ($servizi == []) {
+            return $risultato
+                ->paginate(3);
+        }
+        return $risultato
+            ->leftJoin('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
+            ->whereIn('servizio', $servizi)
+            ->select('alloggio.id_alloggio', 'alloggio.descrizione', 'alloggio.utenze',
+                'alloggio.canone_affitto', 'alloggio.periodo_locazione', 'alloggio.genere',
+                'alloggio.eta_minima', 'alloggio.eta_massima', 'alloggio.dimensione',
+                'alloggio.num_posti_letto_tot', 'alloggio.via', 'alloggio.citta',
+                'alloggio.num_civico', 'alloggio.cap', 'alloggio.interno',
+                'alloggio.piano', 'alloggio.data_inserimento_offerta',
+                'alloggio.tipologia', 'alloggio.stato', 'foto.id_foto',
+                'foto.estensione')
+            ->distinct()
             ->paginate(3);
+
     }
 
 }

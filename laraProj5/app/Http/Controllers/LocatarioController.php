@@ -86,7 +86,9 @@ class LocatarioController extends Controller {
 
     //metodo utilizzato per tornare gli alloggi in base a tutti i filtri
     public function showAlloggiFiltered() {
-        $check = $_POST['check'] ?? ['Libero', 'Locato', 'Opzionato'];
+        $check = $_POST['check'] ?? ['Libero', 'Locato'];
+
+        $servizi = $_POST['check2'] ?? [];
 
         if (isset($_POST['periodo'])) {
             $periodo = array($_POST['periodo']);
@@ -119,7 +121,7 @@ class LocatarioController extends Controller {
         $alloggiFiltered = $this->_locatarioModel->getAlloggiFiltered(
             $check, $periodo, $gender,
             $number_piano, $_POST['citta'],
-            $min_mq, $max_mq, $min_prezzo, $max_prezzo);
+            $min_mq, $max_mq, $min_prezzo, $max_prezzo, $servizi);
 
         return view('layouts/content-catalogo')
             ->with('alloggi', $alloggiFiltered)
