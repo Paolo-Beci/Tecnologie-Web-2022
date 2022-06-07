@@ -55,10 +55,10 @@ label {
 /* Regole sezione centrale inserzioni */
 .catalogo {
     width: 75%;
-    margin: auto;
+    /*margin: auto;*/
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /*justify-content: center;*/
     align-items: center;
     padding-top: 20px;
 }
