@@ -1,7 +1,5 @@
 $('.contacts').on('click', '.contact', function(){
 
-    console.log('cliccato');
-
     let contact = $(this).data('contact');
 
     let alloggio = $(this).data('alloggio');

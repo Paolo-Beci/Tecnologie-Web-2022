@@ -34,11 +34,11 @@ class LocatarioController extends Controller {
         return view('layouts/content-catalogo')
             ->with('alloggi', $alloggi) //la variabile alloggi (array) viene passata alla view
             ->with('citta', 'Ancona')
-            ->with('piano', 0)
-            ->with('minmq', 10)
-            ->with('maxmq', 1000)
-            ->with('minprezzo', 10)
-            ->with('maxprezzo', 1000);
+            ->with('piano', '--')
+            ->with('minmq', '')
+            ->with('maxmq', '')
+            ->with('minprezzo', '')
+            ->with('maxprezzo', '');
 
     }
 
@@ -86,12 +86,40 @@ class LocatarioController extends Controller {
 
     //metodo utilizzato per tornare gli alloggi in base a tutti i filtri
     public function showAlloggiFiltered() {
-        $check = $_POST['check'] ?? [];
+        $check = $_POST['check'] ?? ['Libero', 'Locato', 'Opzionato'];
+
+        if (isset($_POST['periodo'])) {
+            $periodo = array($_POST['periodo']);
+        } else $periodo = [12, 9, 6];
+
+        if (isset($_POST['gender'])) {
+            $gender = array($_POST['gender']);
+        } else $gender = ['m', 'f', 'u'];
+
+        if ($_POST['number_piano'] == '') {
+            $number_piano = range(0,127);
+        } else $number_piano = array($_POST['number_piano']);
+
+        if ($_POST['min-mq'] == '') {
+            $min_mq = 0;
+        } else $min_mq = $_POST['min-mq'];
+
+        if ($_POST['max-mq'] == '') {
+            $max_mq = 999999;
+        } else $max_mq = $_POST['max-mq'];
+
+        if ($_POST['min-mq'] == '') {
+            $min_prezzo = 0;
+        } else $min_prezzo = $_POST['min-prezzo'];
+
+        if ($_POST['max-prezzo'] == '') {
+            $max_prezzo = 999999;
+        } else $max_prezzo = $_POST['max-prezzo'];
 
         $alloggiFiltered = $this->_locatarioModel->getAlloggiFiltered(
-            $check, $_POST['periodo'], $_POST['gender'],
-            $_POST['number_piano'], $_POST['citta'], $_POST['min-mq'],
-            $_POST['max-mq'], $_POST['min-prezzo'], $_POST['max-prezzo']);
+            $check, $periodo, $gender,
+            $number_piano, $_POST['citta'],
+            $min_mq, $max_mq, $min_prezzo, $max_prezzo);
 
         return view('layouts/content-catalogo')
             ->with('alloggi', $alloggiFiltered)

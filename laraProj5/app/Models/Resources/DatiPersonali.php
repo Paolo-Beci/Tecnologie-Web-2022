@@ -8,6 +8,7 @@ class DatiPersonali extends Model{
     protected $table = 'dati_personali';
     protected $primaryKey = 'id_dati_personali';
     public $timestamps = false;
+    protected $guarded = ['id_dati_personali'];
 
     protected $fillable = [
         'id_foto_profilo', 'cellulare', 'via', 'citta', 'num_civico', 'cap', 'nome', 'cognome',
