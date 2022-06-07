@@ -55,10 +55,8 @@ label {
 /* Regole sezione centrale inserzioni */
 .catalogo {
     width: 75%;
-    /*margin: auto;*/
     display: flex;
     flex-direction: column;
-    /*justify-content: center;*/
     align-items: center;
     padding-top: 20px;
 }
@@ -209,4 +207,9 @@ label {
     margin: 30px;
     display: flex;
     justify-content: center;
+}
+
+/*regola per le select nei filtri degli alloggi*/
+select {
+    margin-left: 50px;
 }
