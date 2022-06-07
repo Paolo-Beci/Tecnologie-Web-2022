@@ -32,8 +32,6 @@ class MessaggisticaController extends Controller {
 
         }
 
-        
-
         // Generazione secondo livello array contact. Username
         foreach($messages as $message) {
 

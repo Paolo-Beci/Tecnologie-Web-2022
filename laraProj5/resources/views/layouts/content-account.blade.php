@@ -28,7 +28,7 @@
                 {{ Form::open(array('route' => 'modifica-dati-locatario', 'files' => true, 'class' => 'modifica-dati')) }}
             @endcan
 
-            <div class="item">
+            <div class="profile-input">
                 <h1>Inserisci o modifica l'immagine di profilo!</h1>
                 {{ Form::file('image', ['id' => 'image']) }}
             </div>
@@ -250,7 +250,7 @@
         </section>
         <section class="terzo-box">
             @cannot('isAdmin')
-                {{ Form::submit('Modifica', ['class' => 'filter_button', 'onclick' => "return confirm('Dati inviati!    Controlla siano corretti!')"]) }}
+                {{ Form::submit('Modifica', ['class' => 'filter_button']) }}
             @endcannot
         </section>
         {!! Form::close() !!}

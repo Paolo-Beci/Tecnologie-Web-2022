@@ -51,6 +51,14 @@ li {
     gap: 25px;
 }
 
+.profile-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
 .item {
     display: flex;
     flex-direction: column;

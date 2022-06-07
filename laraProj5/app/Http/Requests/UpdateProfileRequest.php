@@ -37,8 +37,8 @@ class UpdateProfileRequest extends FormRequest {
             'street' => ['required', 'string', 'max:255'],
             'house-number' => ['required', 'numeric', 'max:1000000'],
             'cap' => ['required', 'string', 'max:5'],
-            'email' => ['email:filter,dns'],
-            // controllo telefono ?
+            'email' => ['nullable', 'email:filter,dns'],
+            'telephone' => ['nullable', 'regex:/^(\+[0-9]{2}\s?)?[0-9]{3}\s?[0-9]{3}\s?[0-9]{4}$/u']
         ];
     }
 }

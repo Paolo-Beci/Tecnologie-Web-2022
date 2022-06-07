@@ -25,7 +25,7 @@ class NewUserRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'sign-up-username' => ['required', 'string', 'min:8', 'max:255'],
+            'sign-up-username' => ['required', 'string', 'unique:utente,username', 'min:8', 'max:255'],
             'sign-up-password' => ['required', 'string', 'max:255', 'confirmed'],
         ];
     }
