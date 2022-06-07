@@ -3,12 +3,10 @@
 {{ Form::open(array('route' => 'filtered', 'class' => 'filtri active-form')) }}
 
 <h2 class="subtitle-filtri">Città</h2>
-    {{ Form::text('citta', $citta) }}<br>
+    {{ Form::text('citta', '', ['placeholder' => 'Es: Ancona...']) }}<br>
 <h2 class="subtitle-filtri">Stato attuale</h2>
     {{ Form::checkbox('check[]', 'Libero') }}
     {{ Form::label('Libero', 'Libero') }}<br>
-    {{ Form::checkbox('check[]', 'Opzionato') }}
-    {{ Form::label('Opzionato', 'Opzionato') }}<br>
     {{ Form::checkbox('check[]', 'Locato') }}
     {{ Form::label('Locato', 'Locato') }}<br>
 <h2 class="subtitle-filtri">Fascia di Prezzo</h2>
@@ -29,7 +27,7 @@
     {{ Form::text('max-mq', $maxmq, array('placeholder' => 'superficie massima...')) }}
     {{ Form::label('max-mq', 'Mq massimi') }}
 <h2 class="subtitle-filtri">Numero di camere</h2>
-    {{ Form::text('num_camere', '1') }}
+    {{ Form::text('num_camere', '', ['placeholder' => 'Es: 1, 2, ...']) }},
 <h2 class="subtitle-filtri">Genere ammesso</h2>
     {{ Form::radio('gender', 'f', false) }}
     {{ Form::label('f', 'Femmine') }}<br>
@@ -44,17 +42,17 @@
 <h2 class="subtitle-filtri">Num. posti letto camera</h2>
     {{ Form::select('number_pl_cam', array('' => '--') + range(1,20)), array('class' => 'select_range_catalogo') }}
 <h2 class="subtitle-filtri">Servizi</h2>
-    {{ Form::checkbox('check1', 'Bagno') }}
+    {{ Form::checkbox('check2[]', 'Bagno') }}
     {{ Form::label('Bagno', 'Bagno') }}<br>
-    {{ Form::checkbox('check2', 'Cucina') }}
+    {{ Form::checkbox('check2[]', 'Cucina') }}
     {{ Form::label('Cucina', 'Cucina') }}<br>
-    {{ Form::checkbox('check3', 'Lavanderia') }}
+    {{ Form::checkbox('check2[]', 'Lavanderia') }}
     {{ Form::label('Lavanderia', 'Lavanderia') }}<br>
-    {{ Form::checkbox('check4', 'Ripostiglio') }}
+    {{ Form::checkbox('check2[]', 'Ripostiglio') }}
     {{ Form::label('Ripostiglio', 'Ripostiglio') }}<br>
-    {{ Form::checkbox('check5', 'Garage') }}
+    {{ Form::checkbox('check2[]', 'Garage') }}
     {{ Form::label('Garage', 'Garage') }}<br>
-    {{ Form::checkbox('check6', 'Giardino') }}
+    {{ Form::checkbox('check2[]', 'Giardino') }}
     {{ Form::label('Giardino', 'Giardino') }}<br>
 <h2 class="subtitle-filtri">Tipo posto letto</h2>
     {{ Form::select('tipo', ['S' => 'Singola', 'D' => 'Doppia', 'NULL' => 'Indifferente'], 'NULL') }}
