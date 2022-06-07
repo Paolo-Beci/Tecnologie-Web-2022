@@ -23,8 +23,11 @@
             doFormValidation(actionUrl, formId);
         });
 
+        //seleziono l'elemento della form sul quale avviene l'evento ("#idElementoNellaForm")
         $('#tipologia').on('change', function (event) {
+            //Se l'opzione selezionata assume un determinato valore
             if($(this).val() === 'Posto letto'){
+                //seleziono l'elemento della form specidicando il suo id ed applica il metodo per nasconderlo/meno
                 $("#AngoloStudio").hide();
                 $("#angoloStudio").hide();
             }
@@ -112,11 +115,6 @@
                             <div>
                                 {{ Form::selectRange('Cucina', 1, 9, ['id' => 'Cucina']) }}
                                 {{ Form::label('Cucina', 'Cucina/e') }}
-                            </div>
-                            <!-- Locale ricreativo -->
-                            <div>
-                                {{ Form::checkbox('Locale Ricreativo', 'Locale ricreativo', false, ['id' => 'LocaleRicreativo']) }}
-                                {{ Form::label('Locale Ricreativo', 'Locale ricreativo') }}
                             </div>
                             <!-- Lavanderia -->
                             <div>
@@ -224,17 +222,11 @@
         </section>
 
         <section class="ultimo-box">
-            {{--Bottone per annullare l'inerimento--}}
-            <a href="{{route('gestione-alloggi')}}">
-                <button class="bottone">Annulla inserimento</button>
-            </a>
             {{--bottone di conferma--}}
             {{ Form::submit('Conferma inserimento', ['class' => 'bottone', 'id' => 'sub_btn','onclick' => "return confirm('Sei sicuro di voler proseguire?')"]) }}
 
             {{--Bottone per svotare i campi--}}
-            <a href="{{route('gestione-alloggi')}}">
-                <button class="bottone" onclick="document.getElementById('inserisci-annuncio').reset()">Svuota campi</button>
-            </a>
+            <button class="bottone" onclick="document.getElementById('inserisci-annuncio').reset()">Svuota campi</button>
         </section>
 
         {{ Form::close() }}
