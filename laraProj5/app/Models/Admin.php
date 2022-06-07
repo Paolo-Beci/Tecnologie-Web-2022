@@ -51,14 +51,14 @@ class Admin {
             ->join('alloggio', 'messaggio.alloggio', '=', 'alloggio.id_alloggio')
             ->join('utente', 'messaggio.mittente', '=', 'utente.id')
             ->join('foto', 'messaggio.alloggio', '=', 'foto.alloggio')
-            ->where('messaggio.contenuto', '=', 'Ciao, ho visto la casa e sono interessato')
+            ->where('messaggio.contenuto', '=', 'Ciao, ho visto la casa e sono interessato!')
             ->get();
     }
 
     //metodo per ritornare il numero di offerte di locazione
     public function getNumOfferteLocazione(){
         return DB::table('messaggio')
-            ->where('messaggio.contenuto', '=', 'Ciao, ho visto la casa e sono interessato')
+            ->where('messaggio.contenuto', '=', 'Ciao, ho visto la casa e sono interessato!')
             ->count();
     }
 
@@ -68,7 +68,7 @@ class Admin {
             ->leftJoin('alloggio', 'messaggio.alloggio', '=', 'alloggio.id_alloggio')
             ->leftJoin('utente', 'messaggio.mittente', '=', 'utente.id')
             ->leftJoin('foto', 'messaggio.alloggio', '=', 'foto.alloggio')
-            ->where('messaggio.contenuto', '=', 'Ciao, ho visto la casa e sono interessato')
+            ->where('messaggio.contenuto', '=', 'Ciao, ho visto la casa e sono interessato!')
             ->where('tipologia', $tipologia)
             ->where('data_invio', '<', $data_fin)
             ->where('data_invio', '>', $data_init)

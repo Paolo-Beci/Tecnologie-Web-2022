@@ -107,4 +107,21 @@ class MessaggisticaController extends Controller {
 
     }
 
+    public function assegnamento(Request $request) {
+
+        $message = $request->all();
+
+        $messageCreated = $this->_messaggisticaModel->createMessage($message['contenuto'], $message['mittente'],
+                                                $message['destinatario'], $message['alloggio']);
+        
+        $this->_messaggisticaModel->setAssegnamento($message['alloggio'], $message['destinatario']);
+
+        return response()->json([
+            'contenuto' => $messageCreated->contenuto,
+            'data_invio' => date("d F Y", strtotime($messageCreated->data_invio)),
+            'ora_invio' => date('H:i', strtotime($messageCreated->data_invio)),
+            'stato' => 'locato']);                                          
+
+    }
+
 }

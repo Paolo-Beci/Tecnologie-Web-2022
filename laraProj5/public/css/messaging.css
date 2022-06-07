@@ -93,11 +93,15 @@ body {
 
 .last-message {
     height: 40%;
-    /* background-color: aliceblue; */
     color: white;
     font-size: 18px;
     display: flex;
     align-items: center;
+}
+
+.last-message * {
+    color: white;
+    font-size: 18px;
 }
 
 .right-content {
@@ -168,6 +172,10 @@ body {
     color: #FFD625;
 }
 
+.chat-top-bar a {
+    font-weight: normal;
+}
+
 .chat-content {
     height: 540px;
     overflow: auto;
@@ -222,6 +230,30 @@ body {
 .chat-text {
     color: white;
     font-size: 17px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.chat-text * {
+    color: #FFD625;
+    font-size: 17px;
+}
+
+.contract-button {
+    width: 120px;
+    background-color: #FFD625;
+    color: rgb(65, 65, 65);
+    font-weight: 600;
+    border: 2px solid rgb(65, 65, 65);
+    border-radius: 10px;
+    cursor: pointer
+}
+
+.contract-button:hover {
+    background-color: rgb(65, 65, 65);
+    color: #FFD625;
+    border-color: #FFD625;
 }
 
 .chat-extra {
@@ -249,7 +281,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 100px;
+    gap: 60px;
 }
 
 input[type="text"] {
@@ -264,4 +296,24 @@ input[type="text"] {
 
 input[type="image"] {
     height: 35px;
+}
+
+.assign-form {
+    padding-left: 20px;
+}
+
+#assign-submit {
+    width: 120px;
+    background-color: #FFD625;
+    color: rgb(65, 65, 65);
+    border: 2px solid rgb(65, 65, 65);
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer
+}
+
+#assign-submit:hover {
+    background-color: rgb(65, 65, 65);
+    color: #FFD625;
+    border-color: #FFD625;
 }

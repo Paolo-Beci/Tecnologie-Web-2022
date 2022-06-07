@@ -120,7 +120,7 @@ class DatabaseSeeder extends Seeder {
             ['data_invio' => now(), 'contenuto' => 'Grazie mille, aspetto riscontri', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 2],
             ['data_invio' => now(), 'contenuto' => 'Ottimo, buona giornata', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 1],
             ['data_invio' => now(), 'contenuto' => 'Va bene, le auguro una buona giornata', 'mittente' => 1, 'destinatario' => 2, 'alloggio' => 2],
-            ['data_invio' => now(), 'contenuto' => 'Ciao, ho visto la casa e sono interessato', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 3],
+            ['data_invio' => now(), 'contenuto' => '<span>Ciao, ho visto la casa e sono interessato!</span>', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 3],
         ]);
     }
 

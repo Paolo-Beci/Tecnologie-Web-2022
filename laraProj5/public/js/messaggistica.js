@@ -131,7 +131,7 @@ function changeContactsDisposition(form, data) {
     if(contenuto.length > 40)
         contenuto = contenuto.substring(0, 40) + '...';
 
-    newContact.find('.preview .last-message').text(contenuto);
+    newContact.find('.preview .last-message').html(contenuto);
 
     newContactHtml = '<div class="contact" data-contact="' + chatContact
     + '" data-alloggio="' + chatAlloggio + '">'
@@ -155,6 +155,9 @@ function sendMessage(route, form) {
 
             createMessageView(form, formData, data);
             changeContactsDisposition(form, data);
+
+            if(data.stato == 'locato')
+                $('.assign-form').hide();
 
         },
         contentType: false,

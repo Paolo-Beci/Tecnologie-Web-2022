@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Resources\Alloggio;
+use App\Models\Resources\Interazione;
 use App\Models\Resources\Messaggio;
 use App\Models\Resources\User;
 
@@ -65,6 +66,22 @@ class Messaggistica {
         }
         
         return $usernameIdUsers;
+    }
+
+    public function setAssegnamento($idAlloggio, $locatario) {
+
+        $alloggio = Alloggio::find($idAlloggio);
+
+        $alloggio->stato = 'locato';
+
+        $alloggio->save();
+
+        Interazione::create([
+            'utente' => $locatario,
+            'alloggio' => $idAlloggio,
+            'data_interazione' => now()
+        ]);
+
     }
 
 }

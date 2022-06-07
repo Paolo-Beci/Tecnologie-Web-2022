@@ -10,14 +10,26 @@
     <script>
         $(function(){
 
-            var route = "{{ route('send-message') }}";
-
             $("input[type=image]").on('click', function (event) {
+
+                let route = "{{ route('send-message') }}";
 
                 event.preventDefault();
 
                 let form = $(this).parent();
                 
+                sendMessage(route, form);
+
+            });
+
+            $(".assign-form input[type=submit]").on('click', function (event) {
+
+                let route = "{{ route('assegnamento') }}";
+
+                event.preventDefault();
+
+                let form = $(this).parent();
+
                 sendMessage(route, form);
 
             });
@@ -78,10 +90,10 @@
                                         {{ date('H:i', strtotime($last_message->data_invio)) }}
                                     </span>
                                 </div>
-                                <div class="last-message">{{
+                                <div class="last-message">{!!
                                     strlen($last_message->contenuto) > 40 ? 
                                         substr($last_message->contenuto, 0, 40) . '...' : $last_message->contenuto
-                                }}</div>
+                                !!}</div>
                             </div>
                         </div>
                     @endforeach
@@ -115,107 +127,128 @@
                 <div class="chat" data-chat-contact="{{$contact_username}}"
                                 data-chat-alloggio="{{$contact_alloggio}}">
 
-                <div class="chat-top-bar">
-                    <div>
-                        <img src="" alt="User">
-                        <span>{{array_search($contact, $contacts_alloggio)}}</span>
+                    <div class="chat-top-bar">
+                        <div>
+                            <img src="" alt="User">
+                            <span>{{array_search($contact, $contacts_alloggio)}}</span>
+                        </div>
+
+                        @php
+                            $alloggio = $alloggi->find(array_search($contacts_alloggio, $contacts));
+                        @endphp
+
+                        @if ($authUser->ruolo == 'locatario')
+                            <a href="{{route('dettagli-alloggio-locatario', [$alloggio->id_alloggio, $alloggio->tipologia])}}">
+                        @else
+                            <a href="{{route('gestione-alloggi')}}">
+                        @endif
+                            <span>{{str_replace('_', ' ', $alloggio->tipologia)}} situato in {{
+                                $alloggio->via . ' ' .  $alloggio->num_civico . ', '
+                                . $alloggio->citta . ' ' . $alloggio->cap}}
+                            </span>
+                        </a>
+                    </div>               
+
+                    <div class="chat-content">
+
+                        @foreach (array_reverse($contact) as $day_contact)
+
+                            <div class="day-chat">
+
+                                <div class="date">{{array_search($day_contact, $contact)}}</div>
+
+                                @php
+                                    $day_contact = array_reverse($day_contact);
+                                @endphp
+
+                                @while (!empty($day_contact))
+
+                                    @if (current($day_contact)->mittente == $authUser->username)
+
+                                        <div class="sent-container">                                           
+
+                                            @foreach ($day_contact as $message)
+
+                                                @if ($message->mittente == $authUser->username)
+                                                    <div class="sent">
+                                                        <span class="chat-text">{!! $message->contenuto !!}</span>
+                                                        <div class="chat-extra">
+                                                            <span class="time">{{ date('H:i', strtotime($message->data_invio)) }}</span>
+                                                        </div>
+                                                    </div>
+                                                    @php
+                                                        $key = array_search($message, $day_contact);
+                                                        unset($day_contact[$key]);
+                                                    @endphp
+                                                @else
+                                                    @break
+                                                @endif
+
+                                            @endforeach
+
+                                        </div>
+                                    @else
+
+                                        <div class="received-container">
+
+                                            @foreach ($day_contact as $message)
+
+                                                @if ($message->mittente != $authUser->username)
+                                                    
+                                                    <div class="received">
+                                                        <span class="chat-text">
+                                                            {!! $message->contenuto !!}
+                                                            @if ($message->contenuto == '<span>Ti è stato assegnato questo alloggio!</span>')
+                                                                <button class="contract-button">Visualizza Contratto</button>
+                                                            @endif
+                                                        </span>
+                                                        <div class="chat-extra">
+                                                            <span class="time">{{ date('H:i', strtotime($message->data_invio)) }}</span>
+                                                        </div>
+                                                    </div>
+                                                    @php
+                                                        $key = array_search($message, $day_contact);
+                                                        unset($day_contact[$key]);
+                                                    @endphp
+                                                    
+                                                @else
+                                                    @break
+                                                @endif
+
+                                            @endforeach
+                                        </div>
+                                    @endif
+
+                                @endwhile
+
+                            </div>
+                        @endforeach
+
                     </div>
 
-                    @php
-                        $alloggio = $alloggi->find(array_search($contacts_alloggio, $contacts));
-                    @endphp
+                    <div class="chat-bottom-bar">
 
-                    <span>{{str_replace('_', ' ', $alloggio->tipologia)}} situato in {{
-                        $alloggio->via . ' ' .  $alloggio->num_civico . ', '
-                        . $alloggio->citta . ' ' . $alloggio->cap}}
-                    </span>
-                </div>               
+                        @if ($authUser->ruolo == 'locatore' && $alloggio->stato == 'libero')
+                            {{ Form::open(array('route' => 'assegnamento', 'class' => 'assign-form')) }}
+                                {{ Form::hidden('contenuto', '<span>Ti è stato assegnato questo alloggio!</span>') }}
+                                {{ Form::hidden('mittente', $authUser->id) }}
+                                {{ Form::hidden('destinatario', $usernameIdUsers[$contact_username]) }}
+                                {{ Form::hidden('alloggio', $contact_alloggio) }}
+                                {{ Form::submit('Assegna', ['id' => 'assign-submit']) }}
+                            {{ Form::close() }}
+                        @endif
 
-                <div class="chat-content">
+                        {{ Form::open(array('route' => 'send-message', 'class' => 'send-message')) }}
+                            {{ Form::text('contenuto', '', ['placeholder' => 'Scrivi un messaggio']) }}
+                            {{ Form::hidden('mittente', $authUser->id) }}
+                            {{ Form::hidden('destinatario', $usernameIdUsers[$contact_username]) }}
+                            {{ Form::hidden('alloggio', $contact_alloggio) }}
+                            <input type="image" src="{{asset('images/send-button.png')}}" alt="Invia messaggio">
+                        {{ Form::close() }}
 
-                    @foreach (array_reverse($contact) as $day_contact)
-
-                        <div class="day-chat">
-
-                            <div class="date">{{array_search($day_contact, $contact)}}</div>
-
-                            @php
-                                $day_contact = array_reverse($day_contact);
-                            @endphp
-
-                            @while (!empty($day_contact))
-
-                                @if (current($day_contact)->mittente == $authUser->username)
-
-                                    <div class="sent-container">                                           
-
-                                        @foreach ($day_contact as $message)
-
-                                            @if ($message->mittente == $authUser->username)
-                                                <div class="sent">
-                                                    <span class="chat-text">{{$message->contenuto}}</span>
-                                                    <div class="chat-extra">
-                                                        <span class="time">{{ date('H:i', strtotime($message->data_invio)) }}</span>
-                                                    </div>
-                                                </div>
-                                                @php
-                                                    $key = array_search($message, $day_contact);
-                                                    unset($day_contact[$key]);
-                                                @endphp
-                                            @else
-                                                @break
-                                            @endif
-
-                                        @endforeach
-
-                                    </div>
-                                @else
-
-                                    <div class="received-container">
-
-                                        @foreach ($day_contact as $message)
-
-                                            @if ($message->mittente != $authUser->username)
-                                                
-                                                <div class="received">
-                                                    <span class="chat-text">{{$message->contenuto}}</span>
-                                                    <div class="chat-extra">
-                                                        <span class="time">{{ date('H:i', strtotime($message->data_invio)) }}</span>
-                                                    </div>
-                                                </div>
-                                                @php
-                                                    $key = array_search($message, $day_contact);
-                                                    unset($day_contact[$key]);
-                                                @endphp
-                                                
-                                            @else
-                                                @break
-                                            @endif
-
-                                        @endforeach
-                                    </div>
-                                @endif
-
-                            @endwhile
-
-                        </div>
-                    @endforeach
+                    </div>
 
                 </div>
-
-                <div class="chat-bottom-bar">
-
-                    {{ Form::open(array('route' => 'send-message', 'class' => 'send-message', 'data-form' => $contact_username)) }}
-                        {{ Form::text('contenuto', '', ['placeholder' => 'Scrivi un messaggio']) }}
-                        {{ Form::hidden('mittente', $authUser->id) }}
-                        {{ Form::hidden('destinatario', App\Models\Resources\User::where('username', $contact_username)->first()->id) }}
-                        {{ Form::hidden('alloggio', $contact_alloggio) }}
-                        <input type="image" src="{{asset('images/send-button.png')}}" alt="Invia messaggio">
-                    {{ Form::close() }}
-
-                </div>
-
-            </div>
 
             @endforeach
 
