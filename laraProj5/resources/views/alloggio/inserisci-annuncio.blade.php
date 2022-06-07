@@ -28,12 +28,10 @@
             //Se l'opzione selezionata assume un determinato valore
             if($(this).val() === 'Posto letto'){
                 //seleziono l'elemento della form specidicando il suo id ed applica il metodo per nasconderlo/meno
-                $("#AngoloStudio").hide();
-                $("#angoloStudio").hide();
+                $("div#angoloStudio").show();
             }
             else{
-                $("#AngoloStudio").show();
-                $("#angoloStudio").show();
+                $("div#angoloStudio").hide();
             }
         });
     });
@@ -148,7 +146,7 @@
                                 {{ Form::label('Ripostiglio', 'Ripostiglio') }}
                             </div>
                             <!-- Angolo studio -->
-                            <div>
+                            <div class="angoloStudio" id="angoloStudio">
                                 {{ Form::checkbox('Angolo studio', 'Angolo Studio', false, ['id' => 'AngoloStudio']) }}
                                 {{ Form::label('Angolo studio', 'Angolo Studio', ['id' => 'angoloStudio']) }}
                             </div>
