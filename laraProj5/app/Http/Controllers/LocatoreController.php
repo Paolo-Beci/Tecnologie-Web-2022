@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\NewAlloggioRequest;
+use App\Http\Requests\AlloggioRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Locatore;
 use App\Models\Resources\Alloggio;
@@ -143,17 +143,10 @@ class LocatoreController extends Controller {
 
     //metodo che apre la sezione di inserimento annuncio
     public function insertAnnuncio(){
-        //togliere
-        $tipologie = ["Appartamento" => 'Appartamento', "Posto letto" => 'Posto letto'];
-        $genere = $this->_locatoreModel->getGenereAlloggio()->pluck('genere');
-        $periodoLocazione = $this->_locatoreModel->getPeriodoLocazioneAlloggio()->pluck('periodo_locazione');
-        return view('alloggio.inserisci-annuncio')
-            ->with('tipologie', $tipologie)
-            ->with('genere', $genere)
-            ->with('periodoLocazione', $periodoLocazione);
+        return view('alloggio.inserisci-annuncio');
     }
 
-    public function storeAnnuncio(NewAlloggioRequest $request)
+    public function storeAnnuncio(AlloggioRequest $request)
     {
         $array = $request->all();
         $time = now();
@@ -165,8 +158,8 @@ class LocatoreController extends Controller {
             'canone_affitto' => $array['canoneAffitto'],
             'periodo_locazione' => $array['periodoLocazione'],
             'genere' => $array['genere'],
-            'eta_minima' => $array['genere'],
-            'eta_massima' => $array['genere'],
+            'eta_minima' => $array['etaMin'],
+            'eta_massima' => $array['etaMax'],
             'dimensione' => $array['dimensione'],
             'num_posti_letto_tot' => $array['numPostiLettoTot'],
             'via' => $array['via'],
@@ -220,7 +213,7 @@ class LocatoreController extends Controller {
             ]);
         }
 
-        //popolamento array
+        //creazione dei servizi
         $servizi = Servizio::all();
 
         foreach ($servizi as $servizio){
@@ -246,42 +239,6 @@ class LocatoreController extends Controller {
         return $array;
     }
 
-    /*
-        //metodo per inserire un annuncio
-        public function storeAnnuncio(NewAlloggioRequest $request) {
-
-            //creo l'alloggio
-            $alloggio = new Alloggio;
-            $alloggio->fill($request->validated());
-            $alloggio->save();
-
-            //creo  foto legata all'alloggio
-            /*
-            $foto = new Foto();
-
-            if ($request->hasFile('immagine')) {
-                $image = $request->file('immagine');
-                $imageName = $image->getClientOriginalName();
-                $array = explode('.', $imageName);
-                $foto->fill($request->validated());
-                $foto->estensione = '.'.$array[1];
-                //rinomino l'immagine
-                $imageName = $foto->id_foto.$foto->estensione;
-            } else {
-                $foto->fill($request->validated());
-                $foto->estensione = NULL;
-            }
-            $foto->save();
-
-            if (!is_null($foto->estensione)) {
-                $destinationPath = public_path() . '/images/images_case';
-                $image->move($destinationPath, $imageName);
-            }
-
-
-            return response()->json(['redirect' => route('gestione-alloggi')]);
-        }
-    */
     // funzione che cancella l'alloggio selezionato
     public function deleteAlloggioById($id) {
 
@@ -296,13 +253,89 @@ class LocatoreController extends Controller {
     }
 
     //questa funzione apre la sezione modifica
-    public function showModificaAlloggio($id, $tipologia) {
-
-        $alloggio1 = $this->_locatoreModel->getAlloggioByIdAndTip($id, $tipologia);
+    public function showAlloggio($id, $tipologia) {
+        $alloggi = $this->_locatoreModel->getAlloggioByIdAndTip($id, $tipologia);
         $servizi = $this->_locatoreModel->getServiziAlloggioById($id);
 
         return view('alloggio/modifica-annuncio')
-            ->with('alloggio1', $alloggio1)
+            ->with('alloggi', $alloggi)
             ->with('servizi', $servizi);
+    }
+
+    public function showModificaAlloggio(AlloggioRequest $request){
+        $array = $request->all();
+        $time = now();
+
+        //modifico i dati relativi all'alloggio
+        Alloggio::where('id_alloggio', $array['id_alloggio'])
+            ->update([
+                'descrizione' => $array['descrizione'],
+                'utenze' => $array['utenze'],
+                'canone_affitto' => $array['canoneAffitto'],
+                'periodo_locazione' => $array['periodoLocazione'],
+                'genere' => $array['genere'],
+                'eta_minima' => $array['etaMin'],
+                'eta_massima' => $array['etaMax'],
+                'dimensione' => $array['dimensione'],
+                'num_posti_letto_tot' => $array['numPostiLettoTot'],
+                'via' => $array['via'],
+                'citta' => $array['citta'],
+                'num_civico' => $array['numCivico'],
+                'cap' => $array['cap'],
+                'interno' => $array['interno'],
+                'piano' => $array['piano'],
+                'data_inserimento_offerta' => $time,
+                'tipologia' => $array['tipologia'],
+                'stato' => 'libero'
+            ]);
+
+        //prendo la foto
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $oldName = $image->getClientOriginalName();
+            $array = explode('.', $oldName);
+            $estensione = '.'.$array[1];
+            $fullImageName = $array['id_foto'].$estensione;
+
+            //Modifico la foto
+            Foto::where('id_foto', $array['id_foto'])
+                ->update([
+                    'estensione' => $array['estensione']
+                ]);
+
+            //spostiamo l'immagine
+            if(!is_null($array['id_foto']))
+            {
+                $destinationPath = public_path().'/images_profilo';
+                $image->move($destinationPath, $fullImageName);
+            }
+        }
+
+        //Modifico l'appartamento
+        if($array['tipologia'] == 'Appartamento'){
+            Appartamento::where('alloggio', $array['id_alloggio'])
+            ->update([
+                'num_camere' => $array['numCamere'],
+            ]);
+        }
+        else{
+            PostoLetto::where('id_posto_letto', $array['id_posto_letto'])
+            ->update([
+                'tipologia_camera' => $array['tipologiaCamera'],
+            ]);
+        }
+
+        //Modifico i servizi (deve contenere anche la creazione di nuovi servizi e l'eliminazione di quelli che sono stati rimossi
+        $servizi = Servizio::all();
+
+        foreach ($servizi as $servizio){
+            if(array_key_exists($servizio->nome_servizio, $array)){
+                Disponibilita::where('alloggio', $array['id_alloggio'])
+                ->update([
+                    'quantita' => $array[$servizio->nome_servizio]
+                ]);
+            }
+        }
+
     }
 }

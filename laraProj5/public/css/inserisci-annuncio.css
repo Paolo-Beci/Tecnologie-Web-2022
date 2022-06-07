@@ -110,3 +110,7 @@
     margin: 0 0 1px;
     text-align: start;
 }
+
+.appartamento {
+    display: none;
+}

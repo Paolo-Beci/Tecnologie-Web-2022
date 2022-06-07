@@ -10,7 +10,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
-class NewAlloggioRequest extends FormRequest{
+class AlloggioRequest extends FormRequest{
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -29,9 +29,9 @@ class NewAlloggioRequest extends FormRequest{
      */
     public function rules() {
         return [
-            'dimensione' => 'numeric|max:99999',
+            'dimensione' => 'min:0|max:99999',
             'citta' => ['required','string','max:255','regex:/^[A-Za-z\-]/u'],
-            'via' => ['required','string','max:255'],
+            'via' => ['required','string','max:255','regex:/^[A-Za-z\-]/u'],
             'numCivico' => ['required','string','max:4','regex:/^([1-9]{1})([0-9]{1})?([0-9]{1})?([a-z])?/u'],
             'cap' => ['required','numeric','regex:/^([0-9]{5})/u'],
             'canoneAffitto' => 'required|numeric|min:0|max:99999',

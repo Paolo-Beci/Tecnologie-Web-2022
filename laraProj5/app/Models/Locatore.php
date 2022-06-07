@@ -25,30 +25,30 @@ class Locatore {
     //metodo che torna gli alloggi in base all'id
     public function getAlloggioByIdAndTip($idAlloggio, $tipAlloggio){
         if($tipAlloggio == 'Appartamento'){
-           return DB::table('alloggio')
-                ->find($idAlloggio)
+           return Alloggio::where('id_alloggio', $idAlloggio)
                 ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
                 ->leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
                 ->leftJoin('utente', 'interazione.utente', '=', 'utente.id')
                 ->where('ruolo','=', 'locatore')
                 ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
-                ->leftJoin('appartamento', 'alloggio.id_alloggio', '=', 'appartamento.alloggio');
+                ->leftJoin('appartamento', 'alloggio.id_alloggio', '=', 'appartamento.alloggio')
+                ->get();
         }
         else{
-            return DB::table('alloggio')
-                ->where('id_alloggio', $idAlloggio)
+            return Alloggio::where('id_alloggio', $idAlloggio)
                 ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
                 ->leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
                 ->leftJoin('utente', 'interazione.utente', '=', 'utente.id')
                 ->where('ruolo','=', 'locatore')
                 ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
-                ->leftJoin('posto_letto', 'alloggio.id_alloggio', '=', 'posto_letto.alloggio');
+                ->leftJoin('posto_letto', 'alloggio.id_alloggio', '=', 'posto_letto.alloggio')
+                ->get();
         }
     }
 
     //metodo che torna i servizi di un alloggio in base all'id
     public function getServiziAlloggioById($idAlloggio){
-        return Disponibilita::where('alloggio', $idAlloggio);
+        return Disponibilita::where('alloggio', $idAlloggio)->get();
     }
 
     //metodo che torna gli alloggi insieme alle info sulle foto

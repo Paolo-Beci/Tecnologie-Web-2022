@@ -24,14 +24,18 @@
         });
 
         //seleziono l'elemento della form sul quale avviene l'evento ("#idElementoNellaForm")
-        $('#tipologia').on('change', function (event) {
+        $("#tipologia").on('change', function (event) {
             //Se l'opzione selezionata assume un determinato valore
             if($(this).val() === 'Posto letto'){
+                console.log()
                 //seleziono l'elemento della form specidicando il suo id ed applica il metodo per nasconderlo/meno
-                $("div#angoloStudio").show();
+                $("div.appartamento").show();
+                $("div#numCamere").hide();
+
             }
             else{
-                $("div#angoloStudio").hide();
+                $("div.appartamento").hide();
+                $("div#numCamere").show();
             }
         });
     });
@@ -56,10 +60,10 @@
                         <!-- Tipologia -->
                         <div>
                             {{Form::label('tipologia', 'Tipologia')}}
-                            {{Form::select('tipologia', $tipologie, '', ['id' => 'tipologia'])}}
+                            {{Form::select('tipologia', ['Appartamento' => 'Appartamento', 'Posto letto' => 'Posto letto'], '', ['id' => 'tipologia'])}}
                         </div>
                         <!-- Dimensione -->
-                        <div class="item">
+                        <div class="item" id="dimensione">
                             {{ Form::label('dimensione', 'Dimensione (mq)') }}
                             {{ Form::text('dimensione', '', ['id' => 'dimensione']) }}
                         </div>
@@ -69,14 +73,14 @@
                             {{ Form::selectRange('numPostiLettoTot', 1, 20, ['id' => 'numPostiLettoTot']) }}
                         </div>
                         <!-- Num camere (appartemento)-->
-                        <div>
+                        <div id="numCamere">
                             {{ Form::label('numCamere', 'Num camere') }}
                             {{ Form::selectRange('numCamere', 1, 20, ['id' => 'numCamere']) }}
                         </div>
                         <!-- Tipologia camera (posto letto) -->
-                        <div>
+                        <div class="appartamento">
                             {{ Form::label('tipologiaCamera', 'Tipologia camera') }}
-                            {{ Form::select('tipologiaCamera', ['S' => 'Singola', 'D' => 'Doppia'], ['id' => 'tipologiaCamera']) }}
+                            {{ Form::select('tipologiaCamera', ['Singola' => 'Singola', 'Doppia' => 'Doppia'], ['id' => 'tipologiaCamera']) }}
                         </div>
                     </fieldset>
 
@@ -85,7 +89,7 @@
                         <!-- Genere -->
                         <div>
                             {{ Form::label('genere', 'Genere') }}
-                            {{Form::select('genere', $genere, '', ['id' => 'genere'])}}
+                            {{Form::select('genere', ['m' => 'm', 'f' => 'f', 'u' => 'u'], '', ['id' => 'genere'])}}
                         </div>
                         <!-- Età minima - Età massima -->
                         <div>
@@ -98,7 +102,7 @@
                         <!-- Periodo locazione -->
                         <div>
                             {{ Form::label('periodoLocazione', 'Periodo locazione (mesi):') }}
-                            {{Form::select('periodoLocazione', $periodoLocazione, '', ['id' => 'periodoLocazione'])}}
+                            {{Form::select('periodoLocazione', ['6' => 6, '9' => 9, '12' => 12], '', ['id' => 'periodoLocazione'])}}
                         </div>
                     </fieldset>
 
@@ -116,38 +120,38 @@
                             </div>
                             <!-- Lavanderia -->
                             <div>
-                                {{ Form::checkbox('Lavanderia', 'Lavanderia', false, ['id' => 'Lavanderia']) }}
+                                {{ Form::checkbox('Lavanderia', 1, false, ['id' => 'Lavanderia']) }}
                                 {{ Form::label('Lavanderia', 'Lavanderia') }}
                             </div>
                             <!-- Garage -->
                             <div>
-                                {{ Form::checkbox('Garage', 'Garage', false, ['id' => 'Garage']) }}
+                                {{ Form::checkbox('Garage', 1, false, ['id' => 'Garage']) }}
                                 {{ Form::label('Garage', 'Garage') }}
                             </div>
 
                             <!-- Giardino -->
                             <div>
-                                {{ Form::checkbox('Giardino', 'Giardino', false, ['id' => 'Giardino']) }}
+                                {{ Form::checkbox('Giardino', 1, false, ['id' => 'Giardino']) }}
                                 {{ Form::label('Giardino', 'Giardino') }}
                             </div>
                             <!-- Aria condizionata -->
                             <div>
-                                {{ Form::checkbox('Aria condizionata', 'Aria condizionata', false, ['id' => 'AriaCondizionata']) }}
+                                {{ Form::checkbox('Aria condizionata', 1, false, ['id' => 'AriaCondizionata']) }}
                                 {{ Form::label('Aria condizionata', 'Aria condizionata') }}
                             </div>
                             <!-- Wi-fi -->
                             <div>
-                                {{ Form::checkbox('Wi-fi', 'Wi-fi', false, ['id' => 'Wi-fi']) }}
+                                {{ Form::checkbox('Wi-fi', 1, false, ['id' => 'Wi-fi']) }}
                                 {{ Form::label('Wi-fi', 'Wi-fi') }}
                             </div>
                             <!-- Ripostiglio -->
                             <div>
-                                {{ Form::checkbox('Ripostiglio', 'Ripostiglio', false, ['id' => 'Ripostiglio']) }}
+                                {{ Form::checkbox('Ripostiglio', 1, false, ['id' => 'Ripostiglio']) }}
                                 {{ Form::label('Ripostiglio', 'Ripostiglio') }}
                             </div>
                             <!-- Angolo studio -->
-                            <div class="angoloStudio" id="angoloStudio">
-                                {{ Form::checkbox('Angolo studio', 'Angolo Studio', false, ['id' => 'AngoloStudio']) }}
+                            <div class="appartamento">
+                                {{ Form::checkbox('Angolo studio', 1, false, ['id' => 'AngoloStudio']) }}
                                 {{ Form::label('Angolo studio', 'Angolo Studio', ['id' => 'angoloStudio']) }}
                             </div>
                     </fieldset>
@@ -203,17 +207,17 @@
                         </div>
                     </fieldset>
 
-                        <!-- Descrizione -->
-                        <fieldset title="Inserisci una desrizione" class="fieldset">
-                            <legend><h2>Descrizione</h2></legend>
-                            {{ Form::textarea('descrizione', '' , ['id' => 'descrizione', 'rows' => 3, 'placeholder' => 'Inserisci una descrizione...']) }}
-                        </fieldset>
+                    <!-- Descrizione -->
+                    <fieldset title="Inserisci una desrizione" class="fieldset">
+                        <legend><h2>Descrizione</h2></legend>
+                        {{ Form::textarea('descrizione', '' , ['id' => 'descrizione', 'rows' => 3, 'placeholder' => 'Inserisci una descrizione...']) }}
+                    </fieldset>
 
-                        <!-- Immagine alloggio -->
-                        <fieldset title="Inserisci una foto dell'alloggio" class="fieldset">
-                            <legend><h2>Inserisci una foto dell'alloggio</h2></legend>
-                            {{ Form::file('immagine', ['id' => 'immagine']) }}
-                        </fieldset>
+                    <!-- Immagine alloggio -->
+                    <fieldset title="Inserisci una foto dell'alloggio" class="fieldset">
+                        <legend><h2>Inserisci una foto dell'alloggio</h2></legend>
+                        {{ Form::file('immagine', ['id' => 'immagine']) }}
+                    </fieldset>
 
                 </div>
 
