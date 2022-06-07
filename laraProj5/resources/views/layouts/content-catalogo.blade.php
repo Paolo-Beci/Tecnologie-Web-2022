@@ -51,12 +51,19 @@
                 </a></a></a></a></a></a></a>
             </article>
             <!-- ALLOGGI -->
-            @isset($alloggi)   <!-- esiste o non è null -->
-                @foreach ($alloggi as $alloggio)
-                <!-- Alloggio -->
-                @include('helpers/alloggio')
-                @endforeach
-            @endisset
+            @if($alloggi->isEmpty())
+                <div class="alloggio">
+                    <i class="fa-solid fa-house-circle-xmark fa-2xl" style="margin: 50px"></i>
+                    <h1>Nessun alloggio corrisponde ai criteri di ricerca!</h1>
+                </div>
+            @else
+                @isset($alloggi)   <!-- esiste o non è null -->
+                    @foreach ($alloggi as $alloggio)
+                    <!-- Alloggio -->
+                    @include('helpers/alloggio')
+                    @endforeach
+                @endisset
+            @endif
             {{--@isset($_POST['periodo'], $_POST['gender'],
             $_POST['number_piano'], $_POST['citta'], $_POST['min-mq'],
             $_POST['max-mq'], $_POST['min-prezzo'], $_POST['max-prezzo'])
