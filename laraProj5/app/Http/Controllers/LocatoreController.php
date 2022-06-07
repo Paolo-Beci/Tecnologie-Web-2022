@@ -10,7 +10,9 @@ use App\Models\Resources\DatiPersonali;
 use App\Models\Resources\Disponibilita;
 use App\Models\Resources\Foto;
 use App\Models\Resources\Interazione;
+use App\Models\Resources\Messaggio;
 use App\Models\Resources\PostoLetto;
+use App\Models\Resources\Servizio;
 use App\Models\Resources\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -218,13 +220,20 @@ class LocatoreController extends Controller {
             ]);
         }
 
-        //crea disponibilità
-        $new_servizi = Disponibilita::create([
+        //popolamento array
+        $servizi = Servizio::all();
 
-        ]);
+        foreach ($servizi as $servizio){
+            if(array_key_exists($servizio->nome_servizio, $array)){
+                $new_servizio = Disponibilita::create([
+                    'alloggio' => $new_alloggio->id_alloggio,
+                    'servizio' => $servizio->nome_servizio,
+                    'quantita' => $array[$servizio->nome_servizio]
+                ]);
+            }
+        }
 
         return response()->json(['redirect' => route('gestione-alloggi')]);
-
     }
 
     //funzione che torna l'array relativo all'immagine

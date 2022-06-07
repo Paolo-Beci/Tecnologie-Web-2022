@@ -8,4 +8,5 @@ class Appartamento extends Model{
     protected $table = 'appartamento';
     protected $primaryKey = 'id_appartamento';
     public $timestamps = false;
+    protected $fillable = ['num_camere', 'alloggio'];
 }

@@ -93,54 +93,54 @@
                         <legend><h2>Servizi</h2></legend>
                             <!-- Bagni -->
                             <div>
-                                {{ Form::selectRange('bagno', 1, 9, ['id' => 'bagno']) }}
-                                {{ Form::label('bagno', 'Bagno/i') }}
+                                {{ Form::selectRange('Bagno', 1, 9, ['id' => 'Bagno']) }}
+                                {{ Form::label('Bagno', 'Bagno/i') }}
                             </div>
                             <!-- Cucine -->
                             <div>
-                                {{ Form::selectRange('cucina', 1, 9, ['id' => 'cucina']) }}
-                                {{ Form::label('cucina', 'Cucina/e') }}
+                                {{ Form::selectRange('Cucina', 1, 9, ['id' => 'Cucina']) }}
+                                {{ Form::label('Cucina', 'Cucina/e') }}
                             </div>
                             <!-- Locale ricreativo -->
                             <div>
-                                {{ Form::checkbox('localeRicreativo', 'Locale ricreativo', false, ['id' => 'localeRicreativo']) }}
-                                {{ Form::label('localeRicreativo', 'Locale ricreativo') }}
+                                {{ Form::checkbox('Locale Ricreativo', 'Locale ricreativo', false, ['id' => 'Locale ricreativo']) }}
+                                {{ Form::label('Locale Ricreativo', 'Locale ricreativo') }}
                             </div>
                             <!-- Lavanderia -->
                             <div>
-                                {{ Form::checkbox('lavanderia', 'Lavanderia', false, ['id' => 'lavanderia']) }}
-                                {{ Form::label('lavanderia', 'Lavanderia') }}
+                                {{ Form::checkbox('Lavanderia', 'Lavanderia', false, ['id' => 'Lavanderia']) }}
+                                {{ Form::label('Lavanderia', 'Lavanderia') }}
                             </div>
                             <!-- Garage -->
                             <div>
-                                {{ Form::checkbox('garage', 'Garage', false, ['id' => 'garage']) }}
-                                {{ Form::label('garage', 'Garage') }}
+                                {{ Form::checkbox('Garage', 'Garage', false, ['id' => 'Garage']) }}
+                                {{ Form::label('Garage', 'Garage') }}
                             </div>
 
                             <!-- Giardino -->
                             <div>
-                                {{ Form::checkbox('giardino', 'Giardino', false, ['id' => 'giardino']) }}
-                                {{ Form::label('giardino', 'Giardino') }}
+                                {{ Form::checkbox('Giardino', 'Giardino', false, ['id' => 'Giardino']) }}
+                                {{ Form::label('Giardino', 'Giardino') }}
                             </div>
                             <!-- Aria condizionata -->
                             <div>
-                                {{ Form::checkbox('ariaCondizionata', 'Aria condizionata', false, ['id' => 'ariaCondizionata']) }}
-                                {{ Form::label('ariaCondizionata', 'Aria condizionata') }}
+                                {{ Form::checkbox('Aria condizionata', 'Aria condizionata', false, ['id' => 'Aria condizionata']) }}
+                                {{ Form::label('Aria condizionata', 'Aria condizionata') }}
                             </div>
                             <!-- Wi-fi -->
                             <div>
-                                {{ Form::checkbox('wi-fi', 'Wi-fi', false, ['id' => 'wi-fi']) }}
-                                {{ Form::label('wi-fi', 'Wi-fi') }}
+                                {{ Form::checkbox('Wi-fi', 'Wi-fi', false, ['id' => 'Wi-fi']) }}
+                                {{ Form::label('Wi-fi', 'Wi-fi') }}
                             </div>
                             <!-- Ripostiglio -->
                             <div>
-                                {{ Form::checkbox('ripostiglio', 'Ripostiglio', false, ['id' => 'ripostiglio']) }}
-                                {{ Form::label('ripostiglio', 'Ripostiglio') }}
+                                {{ Form::checkbox('Ripostiglio', 'Ripostiglio', false, ['id' => 'Ripostiglio']) }}
+                                {{ Form::label('Ripostiglio', 'Ripostiglio') }}
                             </div>
                             <!-- Angolo studio -->
                             <div>
-                                {{ Form::checkbox('angoloStudio', 'Angolo Studio', false, ['id' => 'angoloStudio']) }}
-                                {{ Form::label('angoloStudio', 'Angolo Studio') }}
+                                {{ Form::checkbox('Angolo studio', 'Angolo Studio', false, ['id' => 'Angolo studio']) }}
+                                {{ Form::label('Angolo studio', 'Angolo Studio') }}
                             </div>
                     </fieldset>
 
@@ -221,7 +221,7 @@
 
             {{--Bottone per svotare i campi--}}
             <a href="{{route('gestione-alloggi')}}">
-                <button class="bottone">Svuota campi</button>
+                <button class="bottone" onclick="document.getElementById('inserisci-annuncio').reset()">Svuota campi</button>
             </a>
         </section>
 

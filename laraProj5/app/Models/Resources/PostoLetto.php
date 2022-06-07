@@ -8,4 +8,5 @@ class PostoLetto extends Model{
     protected $table = 'posto_letto';
     protected $primaryKey = 'id_posto_letto';
     public $timestamps = false;
+    protected $fillable = ['tipologia_camera', 'alloggio'];
 }
