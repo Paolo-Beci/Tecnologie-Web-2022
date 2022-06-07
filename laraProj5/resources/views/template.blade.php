@@ -28,7 +28,11 @@
 </head>
 <body>
     <header class="header-anim">
-        <a class="logo" href="#">
+        @if (isset(auth()->user()->ruolo))
+            <a class="logo" href="{{route('home-' . auth()->user()->ruolo)}}">
+        @else
+            <a class="logo" href="{{route('home-guest')}}">
+        @endif
             <img src="{{asset('images/FlatMate_Logo_mini.png')}}" alt="FlatMate Logo">
         </a>
         <nav>

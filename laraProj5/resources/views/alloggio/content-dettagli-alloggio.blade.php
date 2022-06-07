@@ -118,7 +118,7 @@
                             {{ Form::hidden('mittente', auth()->user()->id) }}
                             {{ Form::hidden('destinatario', $info_generali->first()->id) }}
                             {{ Form::hidden('alloggio', $info_generali->first()->id_alloggio) }}
-                            {{ Form::button('Inizia una chat!', ['type' => 'submit', 'class' => 'filter_button']) }}
+                            {{ Form::button('Opziona!', ['type' => 'submit', 'class' => 'filter_button']) }}
                         {{ Form::close() }}
                     </div>
                 @endif

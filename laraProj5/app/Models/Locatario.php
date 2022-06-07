@@ -183,8 +183,8 @@ class Locatario {
     public function getAlloggiFiltered($stato, $periodo,  $genere, $piano, $citta,
                                        $sup_min, $sup_max, $prezzo_min, $prezzo_max) {
 
-        return DB::table('foto')
-            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
+        return DB::table('alloggio')
+            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('citta', $citta)
             ->whereIn('stato', $stato)
             ->whereIn('periodo_locazione', $periodo)
