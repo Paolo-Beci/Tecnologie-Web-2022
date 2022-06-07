@@ -27,33 +27,20 @@
 </head>
 <body>
 
-    @php
-        $auth_id = auth()->user()->id;
-        $auth_username = auth()->user()->username;
-    @endphp
-
     <section class="body-content">
         
         <article class="left-content">
 
             @php
 
-                $auth_user_profile_photo = App\Models\Resources\User::select('id_foto_profilo', 'estensione_p')
-                    ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
-                    ->where('utente.id', auth()->user()->id)
-                    ->get()[0];
-
-                if($auth_user_profile_photo->id_foto_profilo != '')
-                    $auth_profile_photo = $auth_user_profile_photo->id_foto_profilo . $auth_user_profile_photo->estensione_p;
-                else {
-                    $auth_profile_photo = 'no_image.png';
-                }
+                if($usersPhoto[$authUser->id] == '')
+                    $usersPhoto[$authUser->id] = 'no_image.png';
 
             @endphp
 
             <div class="messaging-menu">
-                <a href=""><img src="{{asset('images_profilo/' . $auth_profile_photo)}}" alt="User"></a>
-                <a href="{{route('home-' . auth()->user()->ruolo)}}"><img src="{{asset('images/icons_casa.png')}}" alt="Home"></a>
+                <a href=""><img src="{{asset('images_profilo/' . $usersPhoto[$authUser->id])}}" alt="User"></a>
+                <a href="{{route('home-' . $authUser->ruolo)}}"><img src="{{asset('images/icons_casa.png')}}" alt="Home"></a>
             </div>
 
             <div class="contacts">
@@ -64,17 +51,10 @@
 
                         @php
                             $contact_username = array_search($contact, $contacts_alloggio);
+                            $contact_id = $usernameIdUsers[$contact_username];
 
-                            $user_profile_photo = App\Models\Resources\User::select('id_foto_profilo', 'estensione_p')
-                                ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
-                                ->where('utente.username', $contact_username)
-                                ->get()[0];
-
-                            if($user_profile_photo->id_foto_profilo != '')
-                                $profile_photo = $user_profile_photo->id_foto_profilo . $user_profile_photo->estensione_p;
-                            else {
-                                $profile_photo = 'no_image.png';
-                            }
+                            if($usersPhoto[$contact_id] == '')
+                                $usersPhoto[$contact_id] = 'no_image.png';
 
                             $last_day_contact = $contact[array_key_first($contact)];
                             $last_message = $last_day_contact[array_key_first($last_day_contact)];
@@ -82,7 +62,7 @@
 
                         <div class="contact" data-contact="{{array_search($contact, $contacts_alloggio)}}"
                                             data-alloggio="{{array_search($contacts_alloggio, $contacts)}}">
-                            <img src="{{asset('images_profilo/' . $profile_photo)}}" alt="Immagine di profilo">
+                            <img src="{{asset('images_profilo/' . $usersPhoto[$contact_id])}}" alt="Immagine di profilo">
                             <div class="preview">
                                 <div class="preview-top">
                                     {{-- username --}}
@@ -165,13 +145,13 @@
 
                             @while (!empty($day_contact))
 
-                                @if (current($day_contact)->mittente == $auth_username)
+                                @if (current($day_contact)->mittente == $authUser->username)
 
                                     <div class="sent-container">                                           
 
                                         @foreach ($day_contact as $message)
 
-                                            @if ($message->mittente == $auth_username)
+                                            @if ($message->mittente == $authUser->username)
                                                 <div class="sent">
                                                     <span class="chat-text">{{$message->contenuto}}</span>
                                                     <div class="chat-extra">
@@ -195,7 +175,7 @@
 
                                         @foreach ($day_contact as $message)
 
-                                            @if ($message->mittente != $auth_username)
+                                            @if ($message->mittente != $authUser->username)
                                                 
                                                 <div class="received">
                                                     <span class="chat-text">{{$message->contenuto}}</span>
@@ -227,7 +207,7 @@
 
                     {{ Form::open(array('route' => 'send-message', 'class' => 'send-message', 'data-form' => $contact_username)) }}
                         {{ Form::text('contenuto', '', ['placeholder' => 'Scrivi un messaggio']) }}
-                        {{ Form::hidden('mittente', $auth_id) }}
+                        {{ Form::hidden('mittente', $authUser->id) }}
                         {{ Form::hidden('destinatario', App\Models\Resources\User::where('username', $contact_username)->first()->id) }}
                         {{ Form::hidden('alloggio', $contact_alloggio) }}
                         <input type="image" src="{{asset('images/send-button.png')}}" alt="Invia messaggio">

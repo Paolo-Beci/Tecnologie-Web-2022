@@ -39,4 +39,32 @@ class Messaggistica {
         return Alloggio::get();
     }
 
+    public function getUsersPhoto() {
+        $utenti = User::select('utente.id', 'id_foto_profilo', 'estensione_p')
+            ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
+            ->get();
+
+        $usersPhoto = array();
+
+        foreach($utenti as $utente) {
+            $profilePhoto = $utente->id_foto_profilo . $utente->estensione_p;
+            $usersPhoto[$utente->id] = $profilePhoto;
+        }
+        
+        return $usersPhoto;
+
+    }
+
+    public function getUsernameIdUsers() {
+        $utenti = User::select('id', 'username')->get();
+
+        $usernameIdUsers = array();
+
+        foreach($utenti as $utente) {
+            $usernameIdUsers[$utente->username] = $utente->id;
+        }
+        
+        return $usernameIdUsers;
+    }
+
 }

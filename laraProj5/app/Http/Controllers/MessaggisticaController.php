@@ -76,6 +76,9 @@ class MessaggisticaController extends Controller {
         // echo "<pre>".print_r($contacts, true)."</pre>";
 
         return view('messaging')
+            ->with('authUser', auth()->user())
+            ->with('usernameIdUsers', $this->_messaggisticaModel->getusernameIdUsers())
+            ->with('usersPhoto', $this->_messaggisticaModel->getUsersPhoto())
             ->with('contacts', $contacts)
             ->with('alloggi', $this->_messaggisticaModel->getAlloggi());
 
