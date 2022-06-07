@@ -70,7 +70,7 @@
                                     @php
                                         $alloggio = $alloggi->find(array_search($contacts_alloggio, $contacts));
                                         $alloggio_desc = $alloggio->citta . ', ' . $alloggio->via . ' ' .  $alloggio->num_civico;
-                                        $alloggio_desc = substr($alloggio_desc, 0, 25) . '...';
+                                        $alloggio_desc = substr($alloggio_desc, 0, 20) . '...';
                                     @endphp
 
                                     <span class="alloggio-desc">{{$alloggio_desc}}</span>
