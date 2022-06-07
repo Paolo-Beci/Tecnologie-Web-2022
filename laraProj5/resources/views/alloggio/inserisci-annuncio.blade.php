@@ -22,7 +22,19 @@
             event.preventDefault();
             doFormValidation(actionUrl, formId);
         });
+
+        $('#tipologia').on('change', function (event) {
+            if($(this).val() === 'Posto letto'){
+                $("#AngoloStudio").hide();
+                $("#angoloStudio").hide();
+            }
+            else{
+                $("#AngoloStudio").show();
+                $("#angoloStudio").show();
+            }
+        });
     });
+
 </script>
 @endsection
 
@@ -103,7 +115,7 @@
                             </div>
                             <!-- Locale ricreativo -->
                             <div>
-                                {{ Form::checkbox('Locale Ricreativo', 'Locale ricreativo', false, ['id' => 'Locale ricreativo']) }}
+                                {{ Form::checkbox('Locale Ricreativo', 'Locale ricreativo', false, ['id' => 'LocaleRicreativo']) }}
                                 {{ Form::label('Locale Ricreativo', 'Locale ricreativo') }}
                             </div>
                             <!-- Lavanderia -->
@@ -124,7 +136,7 @@
                             </div>
                             <!-- Aria condizionata -->
                             <div>
-                                {{ Form::checkbox('Aria condizionata', 'Aria condizionata', false, ['id' => 'Aria condizionata']) }}
+                                {{ Form::checkbox('Aria condizionata', 'Aria condizionata', false, ['id' => 'AriaCondizionata']) }}
                                 {{ Form::label('Aria condizionata', 'Aria condizionata') }}
                             </div>
                             <!-- Wi-fi -->
@@ -139,8 +151,8 @@
                             </div>
                             <!-- Angolo studio -->
                             <div>
-                                {{ Form::checkbox('Angolo studio', 'Angolo Studio', false, ['id' => 'Angolo studio']) }}
-                                {{ Form::label('Angolo studio', 'Angolo Studio') }}
+                                {{ Form::checkbox('Angolo studio', 'Angolo Studio', false, ['id' => 'AngoloStudio']) }}
+                                {{ Form::label('Angolo studio', 'Angolo Studio', ['id' => 'angoloStudio']) }}
                             </div>
                     </fieldset>
 
