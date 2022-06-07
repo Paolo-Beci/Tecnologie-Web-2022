@@ -23,14 +23,15 @@
             doFormValidation(actionUrl, formId);
         });
 
+        //seleziono l'elemento della form sul quale avviene l'evento ("#idElementoNellaForm")
         $('#tipologia').on('change', function (event) {
+            //Se l'opzione selezionata assume un determinato valore
             if($(this).val() === 'Posto letto'){
-                $("#AngoloStudio").hide();
-                $("#angoloStudio").hide();
+                //seleziono l'elemento della form specidicando il suo id ed applica il metodo per nasconderlo/meno
+                $("div#angoloStudio").show();
             }
             else{
-                $("#AngoloStudio").show();
-                $("#angoloStudio").show();
+                $("div#angoloStudio").hide();
             }
         });
     });
@@ -113,11 +114,6 @@
                                 {{ Form::selectRange('Cucina', 1, 9, ['id' => 'Cucina']) }}
                                 {{ Form::label('Cucina', 'Cucina/e') }}
                             </div>
-                            <!-- Locale ricreativo -->
-                            <div>
-                                {{ Form::checkbox('Locale Ricreativo', 'Locale ricreativo', false, ['id' => 'LocaleRicreativo']) }}
-                                {{ Form::label('Locale Ricreativo', 'Locale ricreativo') }}
-                            </div>
                             <!-- Lavanderia -->
                             <div>
                                 {{ Form::checkbox('Lavanderia', 'Lavanderia', false, ['id' => 'Lavanderia']) }}
@@ -150,7 +146,7 @@
                                 {{ Form::label('Ripostiglio', 'Ripostiglio') }}
                             </div>
                             <!-- Angolo studio -->
-                            <div>
+                            <div class="angoloStudio" id="angoloStudio">
                                 {{ Form::checkbox('Angolo studio', 'Angolo Studio', false, ['id' => 'AngoloStudio']) }}
                                 {{ Form::label('Angolo studio', 'Angolo Studio', ['id' => 'angoloStudio']) }}
                             </div>
@@ -224,17 +220,11 @@
         </section>
 
         <section class="ultimo-box">
-            {{--Bottone per annullare l'inerimento--}}
-            <a href="{{route('gestione-alloggi')}}">
-                <button class="bottone">Annulla inserimento</button>
-            </a>
             {{--bottone di conferma--}}
             {{ Form::submit('Conferma inserimento', ['class' => 'bottone', 'id' => 'sub_btn','onclick' => "return confirm('Sei sicuro di voler proseguire?')"]) }}
 
             {{--Bottone per svotare i campi--}}
-            <a href="{{route('gestione-alloggi')}}">
-                <button class="bottone" onclick="document.getElementById('inserisci-annuncio').reset()">Svuota campi</button>
-            </a>
+            <button class="bottone" onclick="document.getElementById('inserisci-annuncio').reset()">Svuota campi</button>
         </section>
 
         {{ Form::close() }}

@@ -31,6 +31,15 @@ Route::prefix('locatore')->group(function () {
         Route::get('/dettagli-alloggio/{id_alloggio?}/{tipologia_alloggio?}', 'LocatoreController@showDettaglioAlloggio')->name('dettagli-alloggio-locatore');
 
         Route::get('/delete/{id}', 'LocatoreController@deleteAlloggioById')->name('cancella-alloggio.store');
+   
+        Route::prefix('modify')->group(function () {
+
+            Route::get('/{id_alloggio?}/{tipologia_alloggio?}', 'LocatoreController@showModificaAlloggio')->name('modifica-annuncio');
+                
+            Route::post('/', 'LocatoreController@modifyAlloggio')->name('modifica-annuncio.store');
+        
+        });
+        
     });
 
 
@@ -139,3 +148,5 @@ Route::prefix('catalogo')->group(function () {
 Route::get('/messaggistica', 'MessaggisticaController@showMessaggistica')->name('messaggistica');
 
 Route::post('/messaggistica', 'MessaggisticaController@sendMessage')->name('send-message');
+
+Route::post('/opzionamento', 'MessaggisticaController@opzionamento')->name('opzionamento');
