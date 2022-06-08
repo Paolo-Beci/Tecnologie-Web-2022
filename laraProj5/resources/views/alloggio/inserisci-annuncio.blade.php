@@ -1,46 +1,46 @@
 @extends('template')
 
-@section('link')
+@section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/inserisci-annuncio.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/content-home-loggato.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/gestione-alloggi.css') }}">
 @endsection
 
-@section('scripts')
-@parent
-<script src="{{ asset('js/inserisci-annuncio.js') }}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    $(function () {
-        var actionUrl = "{{ route('new-annuncio.store') }}";
-        var formId = 'inserisci-annuncio';
-        $(":input").on('blur', function (event) {
-            var formElementId = $(this).attr('id');
-            doElemValidation(formElementId, actionUrl, formId);
-        });
-        $("#inserisci-annuncio").on('submit', function (event) {
-            event.preventDefault();
-            doFormValidation(actionUrl, formId);
+@section('js')
+
+    <script src="{{ asset('js/inserisci-annuncio.js') }}"></script>
+
+    <script>
+        $(function () {
+            var actionUrl = "{{ route('new-annuncio.store') }}";
+            var formId = 'inserisci-annuncio';
+            $(":input").on('blur', function (event) {
+                var formElementId = $(this).attr('id');
+                doElemValidation(formElementId, actionUrl, formId);
+            });
+            $("#inserisci-annuncio").on('submit', function (event) {
+                event.preventDefault();
+                doFormValidation(actionUrl, formId);
+            });
+
+            //seleziono l'elemento della form sul quale avviene l'evento ("#idElementoNellaForm")
+            $("#tipologia").on('change', function (event) {
+                //Se l'opzione selezionata assume un determinato valore
+                if($(this).val() === 'Posto letto'){
+                    console.log()
+                    //seleziono l'elemento della form specidicando il suo id ed applica il metodo per nasconderlo/meno
+                    $("div.appartamento").show();
+                    $("div#numCamere").hide();
+
+                }
+                else{
+                    $("div.appartamento").hide();
+                    $("div#numCamere").show();
+                }
+            });
         });
 
-        //seleziono l'elemento della form sul quale avviene l'evento ("#idElementoNellaForm")
-        $("#tipologia").on('change', function (event) {
-            //Se l'opzione selezionata assume un determinato valore
-            if($(this).val() === 'Posto letto'){
-                console.log()
-                //seleziono l'elemento della form specidicando il suo id ed applica il metodo per nasconderlo/meno
-                $("div.appartamento").show();
-                $("div#numCamere").hide();
-
-            }
-            else{
-                $("div.appartamento").hide();
-                $("div#numCamere").show();
-            }
-        });
-    });
-
-</script>
+    </script>
 @endsection
 
 @section('title', 'Inserisci annuncio')

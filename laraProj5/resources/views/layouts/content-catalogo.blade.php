@@ -1,7 +1,15 @@
 @extends('template')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/catalogo.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/content-home-loggato.css') }}">
-<script src="{{asset('js/catalogo.js')}}" defer></script>
+
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/catalogo.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/content-home-loggato.css') }}">
+    <link rel="stylesheet" href="{{asset('css/gestione-alloggi.css')}}">
+@endsection
+
+@section('js')
+    <script src="{{asset('js/catalogo.js')}}" defer></script>
+@endsection
+
 @section('title', 'Catalogo')
 
 

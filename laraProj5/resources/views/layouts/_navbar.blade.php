@@ -1,5 +1,3 @@
-<script src="{{asset('js/redirect.js')}}" defer></script>
-
 <ul class="menu">
 
     {{-- Tutti gli utenti --}}
