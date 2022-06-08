@@ -216,4 +216,24 @@ class Locatario {
 
     }
 
+    public function getDatiContratto($locatore, $locatario, $alloggio) {
+
+        $dati = array();
+
+        $dati['locatore'] = User::leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
+            ->where('utente.id', $locatore)
+            ->get()[0];
+
+        $dati['locatario'] = User::leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
+            ->where('utente.id', $locatario)
+            ->get()[0];
+
+        $dati['alloggio'] = Alloggio::find($alloggio);
+
+        // echo "<pre>" . print_r($dati, true) . "</pre>"; 
+
+        return $dati;
+
+    }
+
 }

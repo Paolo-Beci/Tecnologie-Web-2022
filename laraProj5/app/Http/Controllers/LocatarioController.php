@@ -8,6 +8,7 @@ use App\Models\Resources\DatiPersonali;
 use App\Models\Resources\Foto;
 use App\Models\Resources\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class LocatarioController extends Controller {
 
@@ -193,4 +194,16 @@ class LocatarioController extends Controller {
     public function showImmagineProfilo(){
         return redirect()->action('LocatarioController@showAccount');
     }
+
+    public function showContratto(Request $request) {
+
+        $array = $request->all();
+
+        $dati = $this->_locatarioModel->getDatiContratto($array['locatore'], $array['locatario'], $array['alloggio']);
+
+        return view('layouts/contratto')
+            ->with('dati', $dati);
+
+    }
+
 }

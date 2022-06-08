@@ -199,7 +199,14 @@
                                                         <span class="chat-text">
                                                             {!! $message->contenuto !!}
                                                             @if ($message->contenuto == '<span>Ti è stato assegnato questo alloggio!</span>')
-                                                                <button class="contract-button">Visualizza Contratto</button>
+                                                            
+                                                            {{ Form::open(array('route' => 'contratto')) }}
+                                                                {{ Form::hidden('locatore', $usernameIdUsers[$contact_username]) }}
+                                                                {{ Form::hidden('locatario', $authUser->id) }}
+                                                                {{ Form::hidden('alloggio', $contact_alloggio) }}
+                                                                <button type="submit" class="contract-button">Visualizza Contratto</button>
+                                                            {{ Form::close() }}
+
                                                             @endif
                                                         </span>
                                                         <div class="chat-extra">

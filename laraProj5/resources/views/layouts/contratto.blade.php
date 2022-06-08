@@ -1,24 +1,36 @@
+@extends('template')
+
+@section('title', 'Contratto')
+
+@section('content')
 @isset($dati)
+
+@php
+    $locatore = $dati['locatore'];
+    $locatario = $dati['locatario'];
+    $alloggio = $dati['alloggio'];
+@endphp
+
 <div class="main-container">
     <div class="titolo">
         <h1>CONTRATTO DI LOCAZIONE AD USO ABITATIVO</h1>
     </div>
     <div class="testo">
         <p>TRA</p> <br>
-        <p>Il Sig./La Sig.ra $dati->nomeLocatore nato/a a $dati->luogoNascitaLocatore il $dati->dataNascitaLocatore .
-        C.F. $dati->CFLocatore , residente a $dati->cittaLocatore di seguito denominato/a, per brevità "Locatore"</p><br>
+        <p>Il Sig./La Sig.ra {{$locatore->nome}} nato/a a {{$locatore->luogo_nascita}} il {{$locatore->data_nascita}}
+         'C.F. {{$locatore->codice_fiscale}} , residente a {{$locatore->citta}} di seguito denominato/a, per brevità "Locatore"</p><br>
 
         <p>E</p> <br>
-        <p>Il Sig./La Sig.ra $dati->nomeLocatario nato/a a $dati->luogoNascitaLocatario il $dati->dataNascitaLocatario .
-            C.F. $dati->CFLocatario , residente a $dati->cittaLocatario di seguito denominato/a, per brevità "Locatario"</p>
+        <p>Il Sig./La Sig.ra {{$locatario->nome}} nato/a a {{$locatario->luogo_nascita}} il {{$locatario->data_nascita}}
+            C.F. {{$locatario->codice_fiscale}} , residente a {{$locatario->citta}} di seguito denominato/a, per brevità "Locatario"</p>
     </div>
     <div class="titolo">
         <h1>SI CONVIENE E STIPULA QUANTO SEGUE</h1>
     </div>
     <div class="testo">
         <p>Il Locatore concede in locazione al Conduttore l’immobile ad uso abitativo di sua esclusiva proprietà sito in
-        $dati->cittaAlloggio in Via $dati->viaAlloggio , piano  $dati->pianoAlloggio , numero $dati->numeroAlloggio ,
-        censito al NCEU del Comune di $dati->cittaAlloggio al foglio 4, categoria 10, classe 3. <br>
+        {{$alloggio->citta}} in Via {{$alloggio->via}} , piano {{$alloggio->piano}} , numero {{$alloggio->num_civico}} ,
+        censito al NCEU del Comune di {{$alloggio->citta}} al foglio 4, categoria 10, classe 3. <br>
         L’immobile viene consegnato come visto e piaciuto tra le parti all’atto della consegna del bene. (inserire
         riferimento a inventario da allegare se l’immobile è arredato) <br>
         L’immobile sarà adibito ad uso esclusivo del Conduttore. <br>
@@ -28,7 +40,7 @@
         <h2>1. DURATA</h2>
     </div>
     <div class="testo">
-        <p>La durata della locazione è stabilita in $dati->periodoLocazioneAlloggio mesi. </p>
+        <p>La durata della locazione è stabilita in {{$alloggio->periodo_locazione}} mesi. </p>
     </div>
     <div class="sottotitolo">
         <h2>2. RECESSO DEL CONDUTTORE</h2>
@@ -44,7 +56,7 @@
     </div>
     <div class="testo">
         <p> Il canone mensile di locazione, escluse le spese di condominio ordinarie e di riscaldamento, viene
-            consensualmente determinato tra le parti in € $dati->canoneAlloggio (xxx/00) mensili che il Conduttore si obbliga a
+            consensualmente determinato tra le parti in € {{$alloggio->canone_affitto}} (xxx/00) mensili che il Conduttore si obbliga a
             corrispondere entro il giorno 5 di ogni mese, mediante bonifico bancario da effettuarsi sul conto corrente con
             codice IBAN ....., in essere presso la Banca ........ intestato al Locatore.
             Sono a carico del Conduttore la tassa comunale di smaltimento rifiuti nonché le utenze di luce, gas, acqua e
@@ -153,3 +165,4 @@
     </div>
 </div>
 @endisset
+@endsection

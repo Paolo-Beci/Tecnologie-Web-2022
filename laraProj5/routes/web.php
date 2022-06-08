@@ -152,3 +152,5 @@ Route::post('/messaggistica', 'MessaggisticaController@sendMessage')->name('send
 Route::post('/opzionamento', 'MessaggisticaController@opzionamento')->name('opzionamento');
 
 Route::post('/assegnamento', 'MessaggisticaController@assegnamento')->name('assegnamento');
+
+Route::post('/contratto', 'LocatarioController@showContratto')->name('contratto');
