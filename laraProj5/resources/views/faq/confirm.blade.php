@@ -1,43 +1,21 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="UTF-8" http-equiv="refresh" content="5;URL={{ route('gestione-faq') }}">
-    <title>FlatMate | Gestione Faq</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/header.css')}}">
-    <link rel="stylesheet" href="{{asset('css/footer.css')}}">
+@extends('template')
+
+@section('css')
+    <meta charset="UTF-8" http-equiv="refresh" content="3;URL={{ route('gestione-faq') }}">
     <link rel="stylesheet" href="{{asset('css/gestione-faq.css')}}">
-</head>
-<body>
-<header class="header-anim">
-    <a class="logo" href={{ route('gestione-faq') }}>
-        <img src="{{asset('images/FlatMate_Logo_mini.png')}}" alt="FlatMate Logo">
-    </a>
-    <nav>
-        <ul class="menu">
-            <li>
-                <!-- TO DO -->
-                <button class="bottone_profilo" href="#profilo">
-                    <img src="{{asset('images/user_icon.png')}}" alt="User Logo" width="10%" style="vertical-align:middle;horiz-align:left">
-                    {{Auth::user()->username}}
-                </button>
-            </li>
-        </ul>
-    </nav>
-</header>
+@endsection
+
+@section('title', 'Gestione Faq')
+
+@section('content')
 <div class="div_faq">
     <section id="faq" class="faq">
         <h2>
             Operazione andata a buon fine!
         </h2>
-        <p>Attendi cinque secondi per tornare alla schermata di gestione delle faq!
+        <p>Attendi pochi secondi per tornare alla schermata di gestione delle faq!
         </p>
     </section>
 </div>
 <div class="loader"></div>
-<footer>
-    @include('layouts.footer')
-</footer>
-</body>
-</html>
+@endsection

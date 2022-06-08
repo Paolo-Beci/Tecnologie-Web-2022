@@ -1,7 +1,9 @@
 @extends('template')
 
-<link rel="stylesheet" type="text/css" href="{{ asset('css/content-home-loggato.css') }}">
-<link rel="stylesheet" href="{{asset('css/contratto.css')}}">
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/content-home-loggato.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/contratto.css')}}">
+@endsection
 
 @section('title', 'Contratto')
 
