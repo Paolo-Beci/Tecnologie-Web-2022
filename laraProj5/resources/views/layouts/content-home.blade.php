@@ -1,14 +1,13 @@
 @extends('template')
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('css/content-home-guest.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/content-home-admin.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/content-home-loggato.css') }}">
     <link rel="stylesheet" href="{{asset('css/animations.css')}}">
 @endsection
 
 @section('js')
-    <script src="{{asset('js/forms-script.js')}}" defer></script>
+    <script src="{{asset('js/forms-script.js')}}"></script>
 @endsection
 
 @section('title', 'Home')

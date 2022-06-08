@@ -1,15 +1,17 @@
-$('.review').on('click', function(){
+$(function () {
+    $('.review').on('click', function(){
 
-    let step = $(this).data('review')
+        let step = $(this).data('review')
 
-    $('.right-review').each(function(){
+        $('.right-review').each(function(){
 
-        let reviewStep = $(this).data('review');
+            let reviewStep = $(this).data('review');
 
-        if(reviewStep == step)
-            $(this).addClass('active-review');
-        else
-            $(this).removeClass('active-review');
+            if(reviewStep == step)
+                $(this).addClass('active-review');
+            else
+                $(this).removeClass('active-review');
+        });
+            
     });
-        
 });

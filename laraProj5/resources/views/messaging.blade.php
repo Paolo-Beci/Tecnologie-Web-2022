@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/messaging.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="{{asset('js/messaggistica.js')}}" defer></script>
+    <script src="{{asset('js/messaggistica.js')}}"></script>
     <script>
         $(function(){
 
@@ -53,7 +53,7 @@
             @endphp
 
             <div class="messaging-menu">
-                <a href=""><img src="{{asset('images_profilo/' . $usersPhoto[$authUser->id])}}" alt="User"></a>
+                <a href="{{route('account-' . auth()->user()->ruolo)}}"><img src="{{asset('images_profilo/' . $usersPhoto[$authUser->id])}}" alt="User"></a>
                 <a href="{{route('home-' . $authUser->ruolo)}}"><img src="{{asset('images/icons_casa.png')}}" alt="Home"></a>
             </div>
 

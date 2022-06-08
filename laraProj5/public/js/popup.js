@@ -1,17 +1,19 @@
-$('[data-popup-caller]').on('click', function(){
+$(function () {
+    $('[data-popup-caller]').on('click', function(){
 
-    $('.popup').css('display', 'flex');
+        $('.popup').css('display', 'flex');
 
-    let id = $(this).attr('id');
+        let id = $(this).attr('id');
 
-    $("[data-popup-content='" + id + "']").css('display', 'block');
+        $("[data-popup-content='" + id + "']").css('display', 'block');
 
-})
+    })
 
-$('.close').on('click', function(){
+    $('.close').on('click', function(){
 
-    $('[data-popup-content]').css('display', 'none');
+        $('[data-popup-content]').css('display', 'none');
 
-    $('.popup').css('display', 'none');
+        $('.popup').css('display', 'none');
 
-})
+    })
+});
