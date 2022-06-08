@@ -255,13 +255,19 @@ class LocatoreController extends Controller {
     //questa funzione apre la sezione modifica
     public function showAlloggio($id, $tipologia) {
         $alloggi = $this->_locatoreModel->getAlloggioByIdAndTip($id, $tipologia);
-        $servizi_disponibili = $this->_locatoreModel->getServiziAlloggioById($id);
         $servizi = $this->_locatoreModel->getAllServizi();
+        $servizi_disponibili = array();
+
+        foreach($this->_locatoreModel->getServiziAlloggioById($id) as $servizio_disponibile) {
+            $servizi_disponibili[$servizio_disponibile->servizio] = $servizio_disponibile->quantita;
+        }
 
         return view('alloggio/modifica-annuncio')
             ->with('alloggi', $alloggi)
             ->with('servizi_disponibili', $servizi_disponibili)
             ->with('servizi', $servizi);
+
+        // echo "<pre>" . print_r($servizi_disponibili, true) . "</pre>";
     }
 
     public function showModificaAlloggio(AlloggioRequest $request){

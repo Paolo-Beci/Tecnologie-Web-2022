@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('link')
+@section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/inserisci-annuncio.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/content-home-loggato.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/gestione-alloggi.css') }}">
@@ -117,7 +117,7 @@
                                 <legend><h2>Servizi</h2></legend>
 
 
-                                @foreach($servizi as $servizio)
+                                {{-- @foreach($servizi as $servizio)
                                     @foreach($servizi_disponibili as $servizio_disponibile)
                                         @if($servizio->nome_servizio == $servizio_disponibile->servizio)
                                             @if($servizio->nome_servizio == 'Bagno' || $servizio->nome_servizio == 'Cucina')
@@ -138,7 +138,25 @@
                                             </div>
                                         @endif
                                     @endforeach
+                                @endforeach --}}
+
+                                @foreach ($servizi as $servizio)
+                                    <div>
+                                        @if ($servizio->nome_servizio == 'Bagno' || $servizio->nome_servizio == 'Cucina')
+                                            {{ Form::selectRange($servizio->nome_servizio, 1, 9, $servizi_disponibili[$servizio->nome_servizio], ['id' => $servizio->nome_servizio, ]) }}
+                                            {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio) }}
+                                        @else
+                                            @if (array_key_exists($servizio->nome_servizio, $servizi_disponibili))
+                                                {{ Form::checkbox($servizio->nome_servizio, 1, true, ['id' => $servizio->nome_servizio]) }}
+                                                {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio) }}
+                                            @else
+                                                {{ Form::checkbox($servizio->nome_servizio, 1, false, ['id' => $servizio->nome_servizio]) }}
+                                                {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio) }}
+                                            @endif
+                                        @endif
+                                    </div>
                                 @endforeach
+
                             </fieldset>
                         </div>
 
