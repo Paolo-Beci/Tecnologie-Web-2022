@@ -28,10 +28,19 @@
 
                         {{ Form::open(array('route' => 'modifica-dati-locatore', 'files' => true, 'class' => 'modifica-dati')) }}
 
+                        {{ Form::hidden('id_alloggio', $alloggio->id_alloggio) }}
+
                         <div class="profile-input">
                             <h1>Inserisci o modifica l'immagine dell'alloggio!</h1>
-                            {{ Form::file('image', ['id' => 'image']) }}
+                            {{ Form::file('immagine', ['id' => 'image']) }}
                         </div>
+                        @if ($errors->first('immagine'))
+                            <ul class="errors">
+                                @foreach ($errors->get('immagine') as $message)
+                                    <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </section>
 
                     <hr style="margin-right: 50px; margin-left: 50px">
@@ -45,13 +54,6 @@
                                     {{Form::select('tipologia', ['A' => 'Appartamento', 'P' => 'Posto letto'], $alloggio->tipologia, ['id' => 'tipologia'])}}
                                     <span class="underline"></span>
                                 </div>
-                                @if ($errors->first('tipologia'))
-                                    <ul class="errors">
-                                        @foreach ($errors->get('tipologia') as $message)
-                                            <li>{{ $message }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
 
                                 <!-- Dimensione -->
                                 <div class="item">
@@ -116,34 +118,10 @@
                             <fieldset title="Modifica i servizi presenti nell'alloggio" class="fieldset">
                                 <legend><h2>Servizi</h2></legend>
 
-
-                                {{-- @foreach($servizi as $servizio)
-                                    @foreach($servizi_disponibili as $servizio_disponibile)
-                                        @if($servizio->nome_servizio == $servizio_disponibile->servizio)
-                                            @if($servizio->nome_servizio == 'Bagno' || $servizio->nome_servizio == 'Cucina')
-                                            <div>
-                                                {{ Form::selectRange($servizio->nome_servizio, 1, 9, $servizio_disponibile->quantita, ['id' => $servizio->nome_servizio, ]) }}
-                                                {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio) }}
-                                            </div>
-                                            @else
-                                                <div>
-                                                    {{ Form::checkbox($servizio->nome_servizio, 1, true, ['id' => $servizio->nome_servizio]) }}
-                                                    {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio) }}
-                                                </div>
-                                            @endif
-                                        @elseif
-                                            <div>
-                                                {{ Form::checkbox($servizio->nome_servizio, 1, false, ['id' => $servizio->nome_servizio]) }}
-                                                {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio) }}
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                @endforeach --}}
-
                                 @foreach ($servizi as $servizio)
                                     <div>
                                         @if ($servizio->nome_servizio == 'Bagno' || $servizio->nome_servizio == 'Cucina')
-                                            {{ Form::selectRange($servizio->nome_servizio, 1, 9, $servizi_disponibili[$servizio->nome_servizio], ['id' => $servizio->nome_servizio, ]) }}
+                                            {{ Form::selectRange($servizio->nome_servizio, 1, 9, $servizi_disponibili[$servizio->nome_servizio], ['id' => $servizio->nome_servizio]) }}
                                             {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio) }}
                                         @else
                                             @if (array_key_exists($servizio->nome_servizio, $servizi_disponibili))
@@ -156,7 +134,6 @@
                                         @endif
                                     </div>
                                 @endforeach
-
                             </fieldset>
                         </div>
 
@@ -220,26 +197,12 @@
                                     {{ Form::label('interno', 'Interno', ['class' => 'label-form']) }}
                                     {{ Form::selectRange('interno', 1, 508, $alloggio->interno, ['id' => 'interno']) }}
                                 </div>
-                                @if ($errors->first('interno'))
-                                    <ul class="errors">
-                                        @foreach ($errors->get('interno') as $message)
-                                            <li>{{ $message }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
 
                                 <!-- Piano -->
                                 <div>
                                     {{ Form::label('piano', 'Piano', ['class' => 'label-form']) }}
                                     {{ Form::selectRange('piano', 0, 127, $alloggio->piano, ['id' => 'piano']) }}
                                 </div>
-                                @if ($errors->first('piano'))
-                                    <ul class="errors">
-                                        @foreach ($errors->get('piano') as $message)
-                                            <li>{{ $message }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
                             </fieldset>
 
                             <fieldset title="Modifica i costi"  class="fieldset">
