@@ -1,0 +1,97 @@
+/* CLASSE DI STILE MODIFICA ANNUNCIO */
+/* Proprietà principali */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+.primo-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.parent {
+    display: flex;
+    align-items: center;
+}
+
+.colonna {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+    text-align: start;
+    padding-top: 50px;
+    padding-left: 200px;
+    border: 0;
+    gap: 25px;
+}
+
+.colonna2 {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+    text-align: start;
+    padding: 50px;
+    border: 0;
+    gap: 35px;
+}
+
+.profile-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.fieldset {
+    border-color: transparent;
+    text-align: start;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-form {
+    font-weight: bold;
+    gap: 10px;
+}
+
+.ultimo-box {
+    display: flex;
+    justify-content: center;
+}
+
+/* Immagine annuncio */
+.img-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.img-annuncio {
+    width: 50%;
+    height: 50%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

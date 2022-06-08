@@ -97,123 +97,135 @@ class Locatario {
             ->get();
     }
 
-    //funzioni di filtro (una funzione per ogni parametro)
-    /*public function getAlloggiByCity($citta) {
-        return DB::table('alloggio')
-            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-            ->where('citta', $citta)
-            ->paginate(3);
+    //metodo per ritornare un array contenente le città nelle quali si trovano tutti gli alloggi (senza doppioni)
+    public function getCity() {
+        $citta = Alloggio::select('citta')->distinct()->get();
+        $lista_citta = array();
+        $n = 0;
+        foreach ($citta as $city) {
+            $lista_citta[$n] = $city->citta;
+            $n++;
+        }
+        return $lista_citta;
     }
 
-    public function getAlloggiByStato($stato) {
-        return DB::table('foto')
-            ->join('alloggio', 'foto.alloggio', '=', 'alloggio.id_alloggio')
-            ->whereIn('stato', $stato)
-            ->paginate(3);
-    }
-
-    public function getAlloggiByFasciaPrezzo($prezzo_min = 0, $prezzo_max = 999999) {
-        return DB::table('alloggio')
-            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-            ->where('canone_affitto', '<', $prezzo_max)
-            ->where('canone_affitto', '>', $prezzo_min)
-            ->get();
-    }
-
-    public function getAlloggiByPeriodoLocazione($periodo) {
-        return DB::table('alloggio')
-            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-            ->where('periodo_locazione', $periodo)
-            ->get();
-    }
-
-    public function getAlloggiByFasciaSup($sup_min = 0, $sup_max = 999999) {
-        return DB::table('alloggio')
-            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-            ->where('dimensione', '<', $sup_max)
-            ->where('dimensione', '>', $sup_min)
-            ->get();
-    }
-
-    public function getAlloggiByNumCamere($num_camere) {
-        return DB::table('alloggio')
-            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-            ->leftJoin('appartamento', 'foto.alloggio', '=', 'appartamento.alloggio')
-            ->where('num_camere', $num_camere)
-            ->get();
-    }
-
-    public function getAlloggiByGenere($genere) {
-        return DB::table('alloggio')
-            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-            ->where('genere', $genere)
-            ->get();
-    }
-
-    public function getAlloggiByPiano($piano) {
-        return DB::table('alloggio')
-            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-            ->where('piano', $piano)
-            ->get();
-    }
-
-    public function getAlloggiByNumPostiLettoApp($num_posti_letto_app) {
-        return DB::table('alloggio')
-            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-            ->where('num_posti_letto_tot', $num_posti_letto_app)
-            ->where('tipologia', 'Appartamento')
-            ->get();
-    }
-
-    public function getAlloggiByNumPostiLettoCamere($num_posti_letto_camere) {
-        return DB::table('alloggio')
-            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-            ->where('num_posti_letto_tot', $num_posti_letto_camere)
-            ->where('tipologia', 'Posto_letto')
-            ->get();
-    }
-
-    public function getAlloggiByTipoPostoLetto($tipo) {
-        return DB::table('alloggio')
-            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-            ->leftJoin('posto_letto', 'foto.alloggio', '=', 'posto_letto.alloggio')
-            ->where('tipologia_camera', $tipo)
-            ->get();
-    }*/
-
-    public function getAlloggiFiltered($stato, $periodo, $genere, $piano, $citta,
-                                       $sup_min, $sup_max, $prezzo_min, $prezzo_max, $servizi)
+    //metodo per il filtraggio
+    public function getAlloggiFiltered($tipologia, $stato, $periodo, $genere, $piano, $num_posti_letto, $citta,
+                                       $sup_min, $sup_max, $prezzo_min, $prezzo_max, $servizi, $num_camere_app, $tip_camera)
     {
 
-        $risultato = DB::table('alloggio')
-            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-            ->where('citta', $citta)
-            ->whereIn('stato', $stato)
-            ->whereIn('periodo_locazione', $periodo)
-            ->whereIn('genere', $genere)
-            ->whereIn('piano', $piano)
-            ->where('dimensione', '<', $sup_max)
-            ->where('dimensione', '>', $sup_min)
-            ->where('canone_affitto', '<', $prezzo_max)
-            ->where('canone_affitto', '>', $prezzo_min);
+        //caso indifferente
+        if ($tipologia == 'NULL') {
+            //prima effettua un filtraggio sulla tabella alloggi (senza join con disponibilità)
+            $risultato = DB::table('alloggio')
+                ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+                ->whereIn('citta', $citta)
+                ->whereIn('stato', $stato)
+                ->whereIn('periodo_locazione', $periodo)
+                ->whereIn('genere', $genere)
+                ->whereIn('piano', $piano)
+                ->whereIn('num_posti_letto_tot', $num_posti_letto)
+                ->where('dimensione', '<', $sup_max)
+                ->where('dimensione', '>', $sup_min)
+                ->where('canone_affitto', '<', $prezzo_max)
+                ->where('canone_affitto', '>', $prezzo_min);
 
-        if ($servizi == []) {
+            //se non sono stati spuntati servizi, ritorna gli alloggi precedentemente filtrati
+            if ($servizi == []) {
+                return $risultato
+                    ->paginate(3);
+            }
+            //altrimenti fa un join con disponibilità e va a vedere quali alloggi hanno i servizi selezionati
             return $risultato
+                ->leftJoin('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
+                ->whereIn('servizio', $servizi)
+                /*select e distinct servono per avere in maniera univoca gli alloggi
+                con tutti gli attributi che servono nelle viste*/
+                ->select('alloggio.id_alloggio', 'alloggio.descrizione', 'alloggio.utenze',
+                    'alloggio.canone_affitto', 'alloggio.periodo_locazione', 'alloggio.genere',
+                    'alloggio.eta_minima', 'alloggio.eta_massima', 'alloggio.dimensione',
+                    'alloggio.num_posti_letto_tot', 'alloggio.via', 'alloggio.citta',
+                    'alloggio.num_civico', 'alloggio.cap', 'alloggio.interno',
+                    'alloggio.piano', 'alloggio.data_inserimento_offerta',
+                    'alloggio.tipologia', 'alloggio.stato', 'foto.id_foto',
+                    'foto.estensione')
+                ->distinct()
                 ->paginate(3);
         }
-        return $risultato
-            ->leftJoin('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
-            ->whereIn('servizio', $servizi)
-            ->select('alloggio.id_alloggio', 'alloggio.descrizione', 'alloggio.utenze',
-                'alloggio.canone_affitto', 'alloggio.periodo_locazione', 'alloggio.genere',
-                'alloggio.eta_minima', 'alloggio.eta_massima', 'alloggio.dimensione',
-                'alloggio.num_posti_letto_tot', 'alloggio.via', 'alloggio.citta',
-                'alloggio.num_civico', 'alloggio.cap', 'alloggio.interno',
-                'alloggio.piano', 'alloggio.data_inserimento_offerta',
-                'alloggio.tipologia', 'alloggio.stato', 'foto.id_foto',
-                'foto.estensione')
-            ->distinct()
-            ->paginate(3);
+
+        //caso appartamento (analogo al precedente)
+        elseif ($tipologia == 'Appartamento') {
+            $risultato = DB::table('alloggio')
+                ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+                ->leftJoin('appartamento', 'alloggio.id_alloggio', '=', 'appartamento.alloggio')
+                ->where('tipologia', $tipologia)
+                ->whereIn('citta', $citta)
+                ->whereIn('stato', $stato)
+                ->whereIn('periodo_locazione', $periodo)
+                ->whereIn('genere', $genere)
+                ->whereIn('piano', $piano)
+                ->whereIn('num_posti_letto_tot', $num_posti_letto)
+                ->where('dimensione', '<', $sup_max)
+                ->where('dimensione', '>', $sup_min)
+                ->where('canone_affitto', '<', $prezzo_max)
+                ->where('canone_affitto', '>', $prezzo_min)
+                ->whereIn('num_camere', $num_camere_app);
+
+            if ($servizi == []) {
+                return $risultato
+                    ->paginate(3);
+            }
+            return $risultato
+                ->leftJoin('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
+                ->whereIn('servizio', $servizi)
+                ->select('alloggio.id_alloggio', 'alloggio.descrizione', 'alloggio.utenze',
+                    'alloggio.canone_affitto', 'alloggio.periodo_locazione', 'alloggio.genere',
+                    'alloggio.eta_minima', 'alloggio.eta_massima', 'alloggio.dimensione',
+                    'alloggio.num_posti_letto_tot', 'alloggio.via', 'alloggio.citta',
+                    'alloggio.num_civico', 'alloggio.cap', 'alloggio.interno',
+                    'alloggio.piano', 'alloggio.data_inserimento_offerta',
+                    'alloggio.tipologia', 'alloggio.stato', 'foto.id_foto',
+                    'foto.estensione', 'appartamento.num_camere')
+                ->distinct()
+                ->paginate(3);
+        }
+
+        //caso posto letto (analogo al precedente)
+        elseif ($tipologia == 'Posto_letto') {
+            $risultato = DB::table('alloggio')
+                ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+                ->leftJoin('posto_letto', 'alloggio.id_alloggio', '=', 'posto_letto.alloggio')
+                ->where('tipologia', $tipologia)
+                ->whereIn('citta', $citta)
+                ->whereIn('stato', $stato)
+                ->whereIn('periodo_locazione', $periodo)
+                ->whereIn('genere', $genere)
+                ->whereIn('piano', $piano)
+                ->whereIn('num_posti_letto_tot', $num_posti_letto)
+                ->where('dimensione', '<', $sup_max)
+                ->where('dimensione', '>', $sup_min)
+                ->where('canone_affitto', '<', $prezzo_max)
+                ->where('canone_affitto', '>', $prezzo_min)
+                ->whereIn('tipologia_camera', $tip_camera);
+
+            if ($servizi == []) {
+                return $risultato
+                    ->paginate(3);
+            }
+            return $risultato
+                ->leftJoin('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
+                ->whereIn('servizio', $servizi)
+                ->select('alloggio.id_alloggio', 'alloggio.descrizione', 'alloggio.utenze',
+                    'alloggio.canone_affitto', 'alloggio.periodo_locazione', 'alloggio.genere',
+                    'alloggio.eta_minima', 'alloggio.eta_massima', 'alloggio.dimensione',
+                    'alloggio.num_posti_letto_tot', 'alloggio.via', 'alloggio.citta',
+                    'alloggio.num_civico', 'alloggio.cap', 'alloggio.interno',
+                    'alloggio.piano', 'alloggio.data_inserimento_offerta',
+                    'alloggio.tipologia', 'alloggio.stato', 'foto.id_foto',
+                    'foto.estensione', 'posto_letto.tipologia_camera')
+                ->distinct()
+                ->paginate(3);
+        }
 
     }
 

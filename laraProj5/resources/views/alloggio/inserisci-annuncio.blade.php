@@ -27,11 +27,9 @@
             $("#tipologia").on('change', function (event) {
                 //Se l'opzione selezionata assume un determinato valore
                 if($(this).val() === 'Posto letto'){
-                    console.log()
-                    //seleziono l'elemento della form specidicando il suo id ed applica il metodo per nasconderlo/meno
+                    //seleziono l'elemento della form specificando il suo id ed applica il metodo per nasconderlo/meno
                     $("div.appartamento").show();
                     $("div#numCamere").hide();
-
                 }
                 else{
                     $("div.appartamento").hide();

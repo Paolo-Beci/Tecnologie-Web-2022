@@ -270,10 +270,9 @@ class LocatoreController extends Controller {
         // echo "<pre>" . print_r($servizi_disponibili, true) . "</pre>";
     }
 
-    public function showModificaAlloggio(AlloggioRequest $request){
+    public function modifyAlloggio(AlloggioRequest $request){
         $array = $request->all();
         $time = now();
-
         //modifico i dati relativi all'alloggio
         Alloggio::where('id_alloggio', $array['id_alloggio'])
             ->update([
@@ -296,7 +295,7 @@ class LocatoreController extends Controller {
                 'tipologia' => $array['tipologia'],
                 'stato' => 'libero'
             ]);
-
+/*
         //prendo la foto
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -344,6 +343,49 @@ class LocatoreController extends Controller {
                 ]);
             }
         }
+*/
+        return redirect()->action('LocatoreController@showLocatoreAlloggi');
 
     }
+
+    /*
+     * //riscrivere con codice più pulito
+    public function showModificaAccount(UpdateProfileRequest $request){
+
+            //update del DB con immagine
+            DatiPersonali::where('id_dati_personali', auth()->user()->getAuthIdentifier())
+                ->update(['nome' => $request['name'], 'cognome' => $request['surname'], 'luogo_nascita' => $request['birthplace']
+                    , 'sesso' => $request['gender'], 'citta' => $request['city'], 'num_civico' => $request['house-number']
+                    , 'mail' => $request['email'], 'data_nascita' => $request['birthtime'], 'codice_fiscale' => $request['cf']
+                    , 'via' => $request['street'], 'cap' => $request['cap'], 'cellulare' => $request['telephone']
+                    , 'id_foto_profilo' => $imageName, 'estensione_p' => $estensione]);
+
+            //spostiamo l'immagine
+            if(!is_null($imageName))
+            {
+                $destinationPath = public_path().'/images_profilo';
+                $image->move($destinationPath, $fullImageName);
+            }
+        }
+        else{
+            //update del DB senza immagine
+            DatiPersonali::where('id_dati_personali', auth()->user()->getAuthIdentifier())
+                ->update(['nome' => $request['name'], 'cognome' => $request['surname'], 'luogo_nascita' => $request['birthplace']
+                    , 'sesso' => $request['gender'], 'citta' => $request['city'], 'num_civico' => $request['house-number']
+                    , 'mail' => $request['email'], 'data_nascita' => $request['birthtime'], 'codice_fiscale' => $request['cf']
+                    , 'via' => $request['street'], 'cap' => $request['cap'], 'cellulare' => $request['telephone']]);
+        }
+
+
+
+        if(is_null($request['username']))
+            User::where('id', auth()->user()->getAuthIdentifier())
+                ->update(['password' => $request['password']]);
+        else
+            User::where('id', auth()->user()->getAuthIdentifier())
+                ->update(['username' => $request['username'], 'password' => $request['password']]);
+
+
+        return redirect()->action('LocatoreController@showAccount');
+    }*/
 }

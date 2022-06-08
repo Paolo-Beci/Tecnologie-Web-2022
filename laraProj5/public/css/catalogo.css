@@ -213,3 +213,20 @@ label {
 select {
     margin-left: 50px;
 }
+
+/*regole css per visualizzazione/scomparsa particolari elementi*/
+.postoletto {
+
+}
+
+.numcamere {
+
+}
+
+.icona-catalogo{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}

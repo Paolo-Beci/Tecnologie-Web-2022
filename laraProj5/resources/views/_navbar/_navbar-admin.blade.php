@@ -28,7 +28,7 @@
 <li>
     <a href="{{route('account-admin')}}">
         <button class="bottone_profilo">
-            <img src="{{asset('images/user_icon.png')}}" alt="User Logo" width="10%" style="vertical-align:middle;horiz-align:left">
+            <img src="{{asset('images/user_icon.png')}}" alt="User Logo" width="10%" style="vertical-align:middle;padding-right: 10px">
             {{Auth::user()->username}}
         </button>
     </a>

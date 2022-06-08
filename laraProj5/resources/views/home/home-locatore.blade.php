@@ -2,11 +2,6 @@
     <article>
         <p class="titolo">Dai un'occhiata agli ultimi annunci!</p>
     </article>
-    <section class="immagini-alloggi">
-        <div class="slideshow">
-
-        </div>
-    </section>
     <section class="gestisci-alloggi">
         <div>
             <div>
