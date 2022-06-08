@@ -3,8 +3,7 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/inserisci-annuncio.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/content-home-loggato.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/gestione-alloggi.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/content-account.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/modifica-annuncio.css') }}">
 @endsection
 
 @section('title', 'Inserisci annuncio')
@@ -20,9 +19,9 @@
                     <section class="primo-box">
                         <div class="img-container">
                             @if(is_null($alloggio->id_foto))
-                                <img src="{{ asset('images_case/no_image.png') }}" alt="immagine profilo" class="img-profilo">
+                                <img src="{{ asset('images_case/no_image.png') }}" alt="immagine profilo" class="img-annuncio">
                             @else
-                                <img src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="immagine profilo" class="img-profilo">
+                                <img src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="immagine profilo" class="img-annuncio">
                             @endif
                         </div>
 
