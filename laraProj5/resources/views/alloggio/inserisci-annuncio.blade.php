@@ -26,7 +26,7 @@
             //seleziono l'elemento della form sul quale avviene l'evento ("#idElementoNellaForm")
             $("#tipologia").on('change', function (event) {
                 //Se l'opzione selezionata assume un determinato valore
-                if($(this).val() === 'Posto letto'){
+                if($(this).val() === 'Posto_letto'){
                     //seleziono l'elemento della form specificando il suo id ed applica il metodo per nasconderlo/meno
                     $("div.appartamento").show();
                     $("div#numCamere").hide();
@@ -58,7 +58,7 @@
                         <!-- Tipologia -->
                         <div>
                             {{Form::label('tipologia', 'Tipologia')}}
-                            {{Form::select('tipologia', ['Appartamento' => 'Appartamento', 'Posto letto' => 'Posto letto'], '', ['id' => 'tipologia'])}}
+                            {{Form::select('tipologia', ['Appartamento' => 'Appartamento', 'Posto_letto' => 'Posto letto'], '', ['id' => 'tipologia'])}}
                         </div>
                         <!-- Dimensione -->
                         <div class="item" id="dimensione">

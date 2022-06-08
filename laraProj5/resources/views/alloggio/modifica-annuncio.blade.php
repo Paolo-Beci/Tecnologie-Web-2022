@@ -6,6 +6,30 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/modifica-annuncio.css') }}">
 @endsection
 
+@section('js')
+    <script>
+        $(function () {
+            $("#tipologia").on('change', function (event) {
+            //Se l'opzione selezionata assume un determinato valore
+            console.log($(this).val())
+            if($(this).val() === 'Posto_letto'){
+                //seleziono l'elemento della form specificando il suo id ed applica il metodo per nasconderlo/meno
+                $("input.appartamento").show();
+                $("label.appartamento").show();
+                $("div#tipologiaCamera").show();
+                $("div#numCamere").hide();
+            }
+            else{
+                $("input.appartamento").hide();
+                $("label.appartamento").hide();
+                $("div#tipologiaCamera").hide();
+                $("div#numCamere").show();
+            }
+            });
+        });
+    </script>
+@endsection
+
 @section('title', 'Inserisci annuncio')
 
 @section('content')
@@ -28,6 +52,7 @@
                         {{ Form::open(array('route' => 'modifica-annuncio.store', 'files' => true, 'class' => 'modifica-dati')) }}
 
                         {{ Form::hidden('id_alloggio', $alloggio->id_alloggio) }}
+                        {{ Form::hidden('id_foto', $alloggio->id_foto) }}
 
                         <div class="profile-input">
                             <h1>Inserisci o modifica l'immagine dell'alloggio!</h1>
@@ -73,21 +98,17 @@
                                     {{ Form::selectRange('numPostiLettoTot', 1, 20, $alloggio->num_posti_letto_tot, ['id' => 'numPostiLettoTot']) }}
                                 </div>
 
-                                @if($alloggio->tipologia == 'Appartamento')
                                 <!-- Num camere (appartemento)-->
-                                    <div class="item">
+                                    <div class="item" id="numCamere">
                                         {{ Form::label('numCamere', 'Num camere', ['class' => 'label-form']) }}
-                                        {{ Form::selectRange('numCamere', 1, 20, $alloggio->numCamere, ['id' => 'numCamere']) }}
+                                        {{ Form::selectRange('numCamere', 1, 20, $alloggio->num_camere, ['id' => 'numCamere']) }}
                                     </div>
-                                @endif
 
-                                @if($alloggio->tipologia == 'Posto_letto')
                                 <!-- Tipologia camera (posto letto) -->
-                                    <div class=item">
+                                    <div class="appartamento" id="tipologiaCamera">
                                         {{ Form::label('tipologiaCamera', 'Tipologia camera', ['class' => 'label-form']) }}
                                         {{ Form::select('tipologiaCamera', ['S' => 'Singola', 'D' => 'Doppia'], $alloggio->tipologia_camera, ['id' => 'tipologiaCamera']) }}
                                     </div>
-                                @endif
                             </fieldset>
 
                             <fieldset title="Modifica i vicoli di locazione sul locatario" class="fieldset">
@@ -120,15 +141,25 @@
                                 @foreach ($servizi as $servizio)
                                     <div>
                                         @if ($servizio->nome_servizio == 'Bagno' || $servizio->nome_servizio == 'Cucina')
-                                            {{ Form::selectRange($servizio->nome_servizio, 1, 9, $servizi_disponibili[$servizio->nome_servizio], ['id' => $servizio->nome_servizio]) }}
+                                            {{ Form::selectRange($servizio->nome_servizio, 1, 9, $servizi_disponibili[$servizio->nome_servizio]) }}
                                             {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio) }}
                                         @else
                                             @if (array_key_exists($servizio->nome_servizio, $servizi_disponibili))
-                                                {{ Form::checkbox($servizio->nome_servizio, 1, true, ['id' => $servizio->nome_servizio]) }}
-                                                {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio) }}
+                                                @if($servizio->nome_servizio == 'Angolo studio')
+                                                    {{ Form::checkbox($servizio->nome_servizio, 1, true, [ 'class'=>'appartamento']) }}
+                                                    {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio, [ 'class'=>'appartamento'])}}
+                                                @else
+                                                    {{ Form::checkbox($servizio->nome_servizio, 1, true, ['id' => $servizio->nome_servizio]) }}
+                                                    {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio)}}
+                                                @endif
                                             @else
-                                                {{ Form::checkbox($servizio->nome_servizio, 1, false, ['id' => $servizio->nome_servizio]) }}
-                                                {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio) }}
+                                                @if($servizio->nome_servizio == 'Angolo studio')
+                                                    {{ Form::checkbox($servizio->nome_servizio, 1, false, ['class'=>'appartamento']) }}
+                                                    {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio, ['class'=>'appartamento'])}}
+                                                @else
+                                                    {{ Form::checkbox($servizio->nome_servizio, 1, false, ['id' => $servizio->nome_servizio]) }}
+                                                    {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio)}}
+                                                @endif
                                             @endif
                                         @endif
                                     </div>

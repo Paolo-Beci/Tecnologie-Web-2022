@@ -10,7 +10,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
-class AlloggioRequest extends FormRequest{
+class UpdateAlloggioRequest extends FormRequest{
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -39,14 +39,5 @@ class AlloggioRequest extends FormRequest{
             'descrizione' => 'max:255',
             'immagine' => 'image|max:1024'
         ];
-    }
-
-    /**
-     * Override: response in formato JSON
-     */
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response($validator->errors(),
-            Response::HTTP_UNPROCESSABLE_ENTITY));
     }
 }

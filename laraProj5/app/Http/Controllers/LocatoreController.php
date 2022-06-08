@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\AlloggioRequest;
+use App\Http\Requests\NewAlloggioRequest;
+use App\Http\Requests\UpdateAlloggioRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Locatore;
 use App\Models\Resources\Alloggio;
@@ -146,7 +147,7 @@ class LocatoreController extends Controller {
         return view('alloggio.inserisci-annuncio');
     }
 
-    public function storeAnnuncio(AlloggioRequest $request)
+    public function storeAnnuncio(NewAlloggioRequest $request)
     {
         $array = $request->all();
         $time = now();
@@ -270,9 +271,10 @@ class LocatoreController extends Controller {
         // echo "<pre>" . print_r($servizi_disponibili, true) . "</pre>";
     }
 
-    public function modifyAlloggio(AlloggioRequest $request){
+    public function modifyAlloggio(UpdateAlloggioRequest $request){
         $array = $request->all();
         $time = now();
+
         //modifico i dati relativi all'alloggio
         Alloggio::where('id_alloggio', $array['id_alloggio'])
             ->update([
@@ -295,25 +297,25 @@ class LocatoreController extends Controller {
                 'tipologia' => $array['tipologia'],
                 'stato' => 'libero'
             ]);
-/*
+
         //prendo la foto
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
+        if ($request->hasFile('immagine')) {
+            $image = $request->file('immagine');
             $oldName = $image->getClientOriginalName();
-            $array = explode('.', $oldName);
-            $estensione = '.'.$array[1];
+            $arrayNomeImage = explode('.', $oldName);
+            $estensione = '.'.$arrayNomeImage[1];
             $fullImageName = $array['id_foto'].$estensione;
 
             //Modifico la foto
             Foto::where('id_foto', $array['id_foto'])
                 ->update([
-                    'estensione' => $array['estensione']
+                    'estensione' => $estensione
                 ]);
 
             //spostiamo l'immagine
             if(!is_null($array['id_foto']))
             {
-                $destinationPath = public_path().'/images_profilo';
+                $destinationPath = public_path().'/images_case';
                 $image->move($destinationPath, $fullImageName);
             }
         }
@@ -333,59 +335,24 @@ class LocatoreController extends Controller {
         }
 
         //Modifico i servizi (deve contenere anche la creazione di nuovi servizi e l'eliminazione di quelli che sono stati rimossi
+
         $servizi = Servizio::all();
 
+        //cancello dal DB tutti i campi relativi un determinato alloggio
+        Disponibilita::where('alloggio', $array['id_alloggio'])->delete();
+
+        //ripopolo il DB con i servizi inseriti dall'utente
         foreach ($servizi as $servizio){
             if(array_key_exists($servizio->nome_servizio, $array)){
-                Disponibilita::where('alloggio', $array['id_alloggio'])
-                ->update([
+                Disponibilita::create([
+                    'alloggio' => $array['id_alloggio'],
+                    'servizio' => $servizio->nome_servizio,
                     'quantita' => $array[$servizio->nome_servizio]
                 ]);
             }
         }
-*/
+
         return redirect()->action('LocatoreController@showLocatoreAlloggi');
 
     }
-
-    /*
-     * //riscrivere con codice più pulito
-    public function showModificaAccount(UpdateProfileRequest $request){
-
-            //update del DB con immagine
-            DatiPersonali::where('id_dati_personali', auth()->user()->getAuthIdentifier())
-                ->update(['nome' => $request['name'], 'cognome' => $request['surname'], 'luogo_nascita' => $request['birthplace']
-                    , 'sesso' => $request['gender'], 'citta' => $request['city'], 'num_civico' => $request['house-number']
-                    , 'mail' => $request['email'], 'data_nascita' => $request['birthtime'], 'codice_fiscale' => $request['cf']
-                    , 'via' => $request['street'], 'cap' => $request['cap'], 'cellulare' => $request['telephone']
-                    , 'id_foto_profilo' => $imageName, 'estensione_p' => $estensione]);
-
-            //spostiamo l'immagine
-            if(!is_null($imageName))
-            {
-                $destinationPath = public_path().'/images_profilo';
-                $image->move($destinationPath, $fullImageName);
-            }
-        }
-        else{
-            //update del DB senza immagine
-            DatiPersonali::where('id_dati_personali', auth()->user()->getAuthIdentifier())
-                ->update(['nome' => $request['name'], 'cognome' => $request['surname'], 'luogo_nascita' => $request['birthplace']
-                    , 'sesso' => $request['gender'], 'citta' => $request['city'], 'num_civico' => $request['house-number']
-                    , 'mail' => $request['email'], 'data_nascita' => $request['birthtime'], 'codice_fiscale' => $request['cf']
-                    , 'via' => $request['street'], 'cap' => $request['cap'], 'cellulare' => $request['telephone']]);
-        }
-
-
-
-        if(is_null($request['username']))
-            User::where('id', auth()->user()->getAuthIdentifier())
-                ->update(['password' => $request['password']]);
-        else
-            User::where('id', auth()->user()->getAuthIdentifier())
-                ->update(['username' => $request['username'], 'password' => $request['password']]);
-
-
-        return redirect()->action('LocatoreController@showAccount');
-    }*/
 }
