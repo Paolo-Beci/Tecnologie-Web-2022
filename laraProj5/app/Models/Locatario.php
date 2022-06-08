@@ -125,10 +125,10 @@ class Locatario {
                 ->whereIn('genere', $genere)
                 ->whereIn('piano', $piano)
                 ->whereIn('num_posti_letto_tot', $num_posti_letto)
-                ->where('dimensione', '<', $sup_max)
-                ->where('dimensione', '>', $sup_min)
-                ->where('canone_affitto', '<', $prezzo_max)
-                ->where('canone_affitto', '>', $prezzo_min);
+                ->where('dimensione', '<=', $sup_max)
+                ->where('dimensione', '>=', $sup_min)
+                ->where('canone_affitto', '<=', $prezzo_max)
+                ->where('canone_affitto', '>=', $prezzo_min);
 
             //se non sono stati spuntati servizi, ritorna gli alloggi precedentemente filtrati
             if ($servizi == []) {
@@ -165,10 +165,10 @@ class Locatario {
                 ->whereIn('genere', $genere)
                 ->whereIn('piano', $piano)
                 ->whereIn('num_posti_letto_tot', $num_posti_letto)
-                ->where('dimensione', '<', $sup_max)
-                ->where('dimensione', '>', $sup_min)
-                ->where('canone_affitto', '<', $prezzo_max)
-                ->where('canone_affitto', '>', $prezzo_min)
+                ->where('dimensione', '<=', $sup_max)
+                ->where('dimensione', '>=', $sup_min)
+                ->where('canone_affitto', '<=', $prezzo_max)
+                ->where('canone_affitto', '>=', $prezzo_min)
                 ->whereIn('num_camere', $num_camere_app);
 
             if ($servizi == []) {
@@ -202,10 +202,10 @@ class Locatario {
                 ->whereIn('genere', $genere)
                 ->whereIn('piano', $piano)
                 ->whereIn('num_posti_letto_tot', $num_posti_letto)
-                ->where('dimensione', '<', $sup_max)
-                ->where('dimensione', '>', $sup_min)
-                ->where('canone_affitto', '<', $prezzo_max)
-                ->where('canone_affitto', '>', $prezzo_min)
+                ->where('dimensione', '<=', $sup_max)
+                ->where('dimensione', '>=', $sup_min)
+                ->where('canone_affitto', '<=', $prezzo_max)
+                ->where('canone_affitto', '>=', $prezzo_min)
                 ->whereIn('tipologia_camera', $tip_camera);
 
             if ($servizi == []) {

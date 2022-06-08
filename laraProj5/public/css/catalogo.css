@@ -216,11 +216,11 @@ select {
 
 /*regole css per visualizzazione/scomparsa particolari elementi*/
 .postoletto {
-
+    display: none;
 }
 
 .numcamere {
-
+    display: none;
 }
 
 .icona-catalogo{
