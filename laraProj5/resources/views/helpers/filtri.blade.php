@@ -63,16 +63,30 @@
 <h2 class="subtitle-filtri">Servizi</h2>
     {{ Form::checkbox('check2[]', 'Bagno') }}
     {{ Form::label('Bagno', 'Bagno') }}<br>
+
     {{ Form::checkbox('check2[]', 'Cucina') }}
     {{ Form::label('Cucina', 'Cucina') }}<br>
+
     {{ Form::checkbox('check2[]', 'Lavanderia') }}
     {{ Form::label('Lavanderia', 'Lavanderia') }}<br>
+
     {{ Form::checkbox('check2[]', 'Ripostiglio') }}
     {{ Form::label('Ripostiglio', 'Ripostiglio') }}<br>
+
     {{ Form::checkbox('check2[]', 'Garage') }}
     {{ Form::label('Garage', 'Garage') }}<br>
+
     {{ Form::checkbox('check2[]', 'Giardino') }}
     {{ Form::label('Giardino', 'Giardino') }}<br>
+
+    {{ Form::checkbox('check2[]', 'Angolo studio') }}
+    {{ Form::label('Angolo studio', 'Angolo studio') }}<br>
+
+    {{ Form::checkbox('check2[]', 'Aria condizionata') }}
+    {{ Form::label('Aria condizionata', 'Aria condizionata') }}<br>
+
+    {{ Form::checkbox('check2[]', 'Wi-fi') }}
+    {{ Form::label('Wi-fi', 'Wi-fi') }}<br>
 
 <div class="numcamere">
     <h2 class="subtitle-filtri">Numero di camere</h2>
