@@ -8,8 +8,14 @@
     <script src="{{asset('js/sign-up-continue.js')}}" defer></script>
 </head>
 <body>
+<div class="container">
+    <div class="bottone-home">
+        <a href="{{route('home-guest')}}">
+            <img src="{{asset('images/icons_casa.png')}}" alt="logo">
+        </a>
+    </div>
     {{ Form::open(array('route' => 'registrazione', 'class' => 'sign-up')) }}
-        <div class="sign-up-step active active-anim" data-step="0">
+        <div class="sign-up-step active active-anim form" data-step="0">
             <h1>Dati personali</h1>
             <fieldset class="form-group">
 
@@ -94,7 +100,7 @@
                 <div class="underline">
                     {{ Form::text('city', '', ['placeholder' => 'Città']) }}
                 </div>
-                
+
                 @if ($errors->first('city'))
                     <ul class="errors">
                         @foreach ($errors->get('city') as $message)
@@ -106,7 +112,7 @@
                 <div class="underline">
                     {{ Form::text('street', '', ['placeholder' => 'Via']) }}
                 </div>
-                
+
                 @if ($errors->first('street'))
                     <ul class="errors">
                         @foreach ($errors->get('street') as $message)
