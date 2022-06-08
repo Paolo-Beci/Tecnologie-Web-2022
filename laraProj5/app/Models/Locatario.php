@@ -7,6 +7,7 @@ use App\Models\Resources\DatiPersonali;
 use App\Models\Resources\Disponibilita;
 use App\Models\Resources\Faq;
 use App\Models\Resources\Foto;
+use App\Models\Resources\Interazione;
 use App\Models\Resources\User;
 use Illuminate\Support\Facades\DB;
 
@@ -229,6 +230,10 @@ class Locatario {
             ->get()[0];
 
         $dati['alloggio'] = Alloggio::find($alloggio);
+
+        $dati['interazione'] = Interazione::where('utente', $locatario)
+                                          ->where('alloggio', $alloggio)
+                                          ->get()[0];
 
         // echo "<pre>" . print_r($dati, true) . "</pre>"; 
 

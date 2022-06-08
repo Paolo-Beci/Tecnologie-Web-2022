@@ -1,0 +1,20 @@
+.main-container {
+    padding-top: 150px;
+    padding-left: 50px;
+    padding-right: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+@media print {
+
+    header { 
+        display: none !important;
+    }
+
+    footer {
+        display: none !important;
+    }
+
+}
