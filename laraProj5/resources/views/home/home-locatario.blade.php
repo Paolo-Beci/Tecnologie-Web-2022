@@ -2,11 +2,6 @@
     <article>
         <p class="titolo">Dai un'occhiata agli ultimi annunci!</p>
     </article>
-    <section class="immagini-alloggi">
-        <div class="slideshow">
-
-        </div>
-    </section>
     <section class="scopri-servizio">
         <div class="immagine-paragrafo2">
             <img src="{{asset('images/messaging_image.jpg')}}" alt="Immagine 1" width="80%">
