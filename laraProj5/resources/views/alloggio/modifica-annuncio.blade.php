@@ -26,7 +26,7 @@
                             @endif
                         </div>
 
-                        {{ Form::open(array('route' => 'modifica-dati-locatore', 'files' => true, 'class' => 'modifica-dati')) }}
+                        {{ Form::open(array('route' => 'modifica-annuncio.store', 'files' => true, 'class' => 'modifica-dati')) }}
 
                         {{ Form::hidden('id_alloggio', $alloggio->id_alloggio) }}
 
@@ -51,7 +51,7 @@
                                 <!-- Tipologia -->
                                 <div class="item">
                                     {{Form::label('tipologia', 'Tipologia: ', ['class' => 'label-form'])}}
-                                    {{Form::select('tipologia', ['A' => 'Appartamento', 'P' => 'Posto letto'], $alloggio->tipologia, ['id' => 'tipologia'])}}
+                                    {{Form::select('tipologia', ['Appartamento' => 'Appartamento', 'Posto_letto' => 'Posto letto'], $alloggio->tipologia, ['id' => 'tipologia'])}}
                                     <span class="underline"></span>
                                 </div>
 

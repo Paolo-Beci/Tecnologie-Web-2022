@@ -273,7 +273,6 @@ class LocatoreController extends Controller {
     public function modifyAlloggio(AlloggioRequest $request){
         $array = $request->all();
         $time = now();
-
         //modifico i dati relativi all'alloggio
         Alloggio::where('id_alloggio', $array['id_alloggio'])
             ->update([
