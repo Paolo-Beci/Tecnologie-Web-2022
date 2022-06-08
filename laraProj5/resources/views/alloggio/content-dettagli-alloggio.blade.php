@@ -3,6 +3,7 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/dettagli-alloggio.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/content-home-loggato.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/gestione-alloggi.css') }}">
 @endsection
 
 @section('title', 'Dettagli alloggio')
@@ -111,8 +112,12 @@
                 </div>
                 <div class="info-contatto">
                     <p class="item-desc">{{$info_generali->first()->nome}} {{$info_generali->first()->cognome}} - {{$info_generali->first()->username}}</p>
-                    <p class="item-desc"><i class="icon fa-solid fa-envelope"></i>{{$info_generali->first()->mail}}</p>
-                    <p class="item-desc"><i class="icon fa-solid fa-phone"></i>{{$info_generali->first()->cellulare}}</p>
+                    @isset($info_generali->first()->mail)
+                        <p class="item-desc"><i class="icon fa-solid fa-envelope"></i>{{$info_generali->first()->mail}}</p>
+                    @endisset
+                    @isset($info_generali->first()->cellulare)
+                        <p class="item-desc"><i class="icon fa-solid fa-phone"></i>{{$info_generali->first()->cellulare}}</p>
+                    @endisset
                 </div>
                 @if($info_generali->first()->stato != 'locato')
                     <div class="btn-contatto">

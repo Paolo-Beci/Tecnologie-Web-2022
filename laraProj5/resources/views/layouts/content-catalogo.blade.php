@@ -7,7 +7,7 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('js/catalogo.js')}}" defer></script>
+    <script src="{{asset('js/catalogo.js')}}"></script>
 @endsection
 
 @section('title', 'Catalogo')
