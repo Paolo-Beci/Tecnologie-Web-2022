@@ -1,8 +1,11 @@
 @extends('template')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/catalogo.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/content-home-loggato.css') }}">
-@section('title', 'Gestione alloggi')
 
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/catalogo.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/content-home-loggato.css') }}">
+@endsection
+
+@section('title', 'Gestione alloggi')
 
 @section('content')
     <main class="main-container">

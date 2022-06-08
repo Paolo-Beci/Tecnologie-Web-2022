@@ -1,7 +1,11 @@
 @extends('template')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/content-account.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/content-home-loggato.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/gestione-alloggi.css') }}">
+
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/content-account.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/content-home-loggato.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/gestione-alloggi.css') }}">
+@endsection
+
 @section('title', 'Account')
 
 <!-- Vista che visualizza i dati personali e li rende modificabili all'utente loggato -->
