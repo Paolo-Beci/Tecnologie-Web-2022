@@ -12,6 +12,7 @@
 @section('content')
     @isset($alloggi)
         @isset($servizi)
+            @isset($servizi_disponibili)
 
 
             @foreach($alloggi as $alloggio)
@@ -26,9 +27,6 @@
                         </div>
 
                         {{ Form::open(array('route' => 'modifica-dati-locatore', 'files' => true, 'class' => 'modifica-dati')) }}
-
-                        {{Form::hidden('id_alloggio', $hidden) }}
-                        {{Form::hidden('id_posto_letto', $hidden) }}
 
                         <div class="profile-input">
                             <h1>Inserisci o modifica l'immagine dell'alloggio!</h1>
@@ -58,7 +56,7 @@
                                 <!-- Dimensione -->
                                 <div class="item">
                                     {{ Form::label('dimensione', 'Dimensione (mq)', ['class' => 'label-form']) }}
-                                    {{ Form::text('dimensione', $alloggio->dimensione, ['id' => 'dimensione']) }}
+                                    {{ Form::text('dimensione', $alloggio->dimensione, ['id' => 'dimensione', 'placeholder' => 'Nessuna dimensione']) }}
                                 </div>
                                 @if ($errors->first('dimensione'))
                                     <ul class="errors">
@@ -70,14 +68,14 @@
 
                                 <!-- Num posti letto totali -->
                                 <div class="item">
-                                    {{ Form::label('numPostiLettoTot', 'Num posti letto totali') }}
+                                    {{ Form::label('numPostiLettoTot', 'Num posti letto totali', ['class' => 'label-form']) }}
                                     {{ Form::selectRange('numPostiLettoTot', 1, 20, $alloggio->num_posti_letto_tot, ['id' => 'numPostiLettoTot']) }}
                                 </div>
 
                                 @if($alloggio->tipologia == 'Appartamento')
                                 <!-- Num camere (appartemento)-->
                                     <div class="item">
-                                        {{ Form::label('numCamere', 'Num camere') }}
+                                        {{ Form::label('numCamere', 'Num camere', ['class' => 'label-form']) }}
                                         {{ Form::selectRange('numCamere', 1, 20, $alloggio->numCamere, ['id' => 'numCamere']) }}
                                     </div>
                                 @endif
@@ -85,7 +83,7 @@
                                 @if($alloggio->tipologia == 'Posto_letto')
                                 <!-- Tipologia camera (posto letto) -->
                                     <div class=item">
-                                        {{ Form::label('tipologiaCamera', 'Tipologia camera') }}
+                                        {{ Form::label('tipologiaCamera', 'Tipologia camera', ['class' => 'label-form']) }}
                                         {{ Form::select('tipologiaCamera', ['S' => 'Singola', 'D' => 'Doppia'], $alloggio->tipologia_camera, ['id' => 'tipologiaCamera']) }}
                                     </div>
                                 @endif
@@ -95,53 +93,51 @@
                                 <legend><h2>Vicoli di locazione sul locatario:</h2></legend>
                                 <!-- Genere -->
                                 <div class="item">
-                                    {{ Form::label('genere', 'Genere') }}
-                                    {{Form::select('genere', ['m' => 'm', 'f' => 'f', 'u' => 'u'], $alloggio->sesso, ['id' => 'genere'])}}
+                                    {{ Form::label('genere', 'Genere', ['class' => 'label-form']) }}
+                                    {{Form::select('genere', ['m' => 'm', 'f' => 'f', 'u' => 'u'], $alloggio->genere, ['id' => 'genere'])}}
                                 </div>
 
                                 <!-- Età minima - Età massima -->
                                 <div>
                                     <p class="item">Fascia di età:</p>
-                                    {{ Form::label('etaMin', 'Min') }}
+                                    {{ Form::label('etaMin', 'Min', ['class' => 'label-form']) }}
                                     {{ Form::selectRange('etaMin', 18, 100, $alloggio->eta_minima, ['id' => 'etaMin']) }}
-                                    {{ Form::label('etaMax', 'Max') }}
+                                    {{ Form::label('etaMax', 'Max', ['class' => 'label-form']) }}
                                     {{ Form::selectRange('etaMax', 18, 100, $alloggio->eta_massima, ['id' => 'etaMax']) }}
                                 </div>
 
                                 <!-- Periodo locazione -->
                                 <div>
-                                    {{ Form::label('periodoLocazione', 'Periodo locazione (mesi):') }}
+                                    {{ Form::label('periodoLocazione', 'Periodo locazione (mesi):', ['class' => 'label-form']) }}
                                     {{Form::select('periodoLocazione', ['6' => 6, '9' => 9, '12' => 12], $alloggio->periodo_locazione, ['id' => 'periodoLocazione'])}}
                                 </div>
-
                             </fieldset>
 
                             <fieldset title="Modifica i servizi presenti nell'alloggio" class="fieldset">
                                 <legend><h2>Servizi</h2></legend>
+
+
                                 @foreach($servizi as $servizio)
-                                    @if($servizio->servizio == 'Bagno')
-                                        <div>
-                                            {{ Form::selectRange('Bagno', 1, 9, $servizio->quantita, ['id' => 'Bagno']) }}
-                                            {{ Form::label('Bagno', 'Bagno/i') }}
-                                        </div>
-                                    @elseif($servizio->servizio == 'Cucina')
-                                        <div>
-                                            {{ Form::selectRange('Cucina', 1, 9, $servizio->quantita, ['id' => 'Cucina']) }}
-                                            {{ Form::label('Cucina', 'Cucina/e') }}
-                                        </div>
-                                    @else
-                                        @if($servizio->servizio == 'Lavanderia')
+                                    @foreach($servizi_disponibili as $servizio_disponibile)
+                                        @if($servizio->nome_servizio == $servizio_disponibile->servizio)
+                                            @if($servizio->nome_servizio == 'Bagno' || $servizio->nome_servizio == 'Cucina')
                                             <div>
-                                                {{ Form::checkbox('Lavanderia', 1, $servizio->quantita, ['id' => 'Lavanderia']) }}
-                                                {{ Form::label('Lavanderia', 'Lavanderia') }}
+                                                {{ Form::selectRange($servizio->nome_servizio, 1, 9, $servizio_disponibile->quantita, ['id' => $servizio->nome_servizio, ]) }}
+                                                {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio) }}
                                             </div>
-                                        @else
+                                            @else
+                                                <div>
+                                                    {{ Form::checkbox($servizio->nome_servizio, 1, true, ['id' => $servizio->nome_servizio]) }}
+                                                    {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio) }}
+                                                </div>
+                                            @endif
+                                        @elseif
                                             <div>
-                                                {{ Form::checkbox('Lavanderia', 1, 1, ['id' => 'Lavanderia']) }}
-                                                {{ Form::label('Lavanderia', 'Lavanderia') }}
+                                                {{ Form::checkbox($servizio->nome_servizio, 1, false, ['id' => $servizio->nome_servizio]) }}
+                                                {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio) }}
                                             </div>
                                         @endif
-                                    @endif
+                                    @endforeach
                                 @endforeach
                             </fieldset>
                         </div>
@@ -151,8 +147,8 @@
                                 <legend><h2>Localizzazione:</h2></legend>
                                 <!-- Città -->
                                 <div class="item">
-                                    {{ Form::label('citta', 'Città') }}
-                                    {{ Form::text('citta', $alloggio->citta, ['id' => 'citta']) }}
+                                    {{ Form::label('citta', 'Città', ['class' => 'label-form']) }}
+                                    {{ Form::text('citta', $alloggio->citta)}}
                                 </div>
                                 @if ($errors->first('citta'))
                                     <ul class="errors">
@@ -164,7 +160,7 @@
 
                                 <!-- Via -->
                                 <div class="item">
-                                    {{ Form::label('via', 'Via') }}
+                                    {{ Form::label('via', 'Via', ['class' => 'label-form']) }}
                                     {{ Form::text('via', $alloggio->via, ['id' => 'via']) }}
                                 </div>
                                 @if ($errors->first('via'))
@@ -177,7 +173,7 @@
 
                                 <!-- Num civico -->
                                 <div class="item">
-                                    {{ Form::label('numCivico', 'Num civico') }}
+                                    {{ Form::label('numCivico', 'Num civico', ['class' => 'label-form']) }}
                                     {{ Form::text('numCivico', $alloggio->num_civico, ['id' => 'numCivico']) }}
                                 </div>
                                 @if ($errors->first('numCivico'))
@@ -190,7 +186,7 @@
 
                                 <!-- CAP -->
                                 <div class="item">
-                                    {{ Form::label('cap', 'CAP') }}
+                                    {{ Form::label('cap', 'CAP', ['class' => 'label-form']) }}
                                     {{ Form::text('cap', $alloggio->cap, ['id' => 'cap']) }}
                                 </div>
                                 @if ($errors->first('cap'))
@@ -203,7 +199,7 @@
 
                                 <!-- Interno -->
                                 <div>
-                                    {{ Form::label('interno', 'Interno') }}
+                                    {{ Form::label('interno', 'Interno', ['class' => 'label-form']) }}
                                     {{ Form::selectRange('interno', 1, 508, $alloggio->interno, ['id' => 'interno']) }}
                                 </div>
                                 @if ($errors->first('interno'))
@@ -216,7 +212,7 @@
 
                                 <!-- Piano -->
                                 <div>
-                                    {{ Form::label('piano', 'Piano') }}
+                                    {{ Form::label('piano', 'Piano', ['class' => 'label-form']) }}
                                     {{ Form::selectRange('piano', 0, 127, $alloggio->piano, ['id' => 'piano']) }}
                                 </div>
                                 @if ($errors->first('piano'))
@@ -232,7 +228,7 @@
                                 <legend><h2>Costi:</h2></legend>
                                 <!-- Canone di affitto -->
                                 <div class="item">
-                                    {{ Form::label('canoneAffitto', 'Canone di affitto') }}
+                                    {{ Form::label('canoneAffitto', 'Canone di affitto', ['class' => 'label-form']) }}
                                     {{ Form::text('canoneAffitto', $alloggio->canone_affitto, ['id' => 'canoneAffitto']) }}
                                 </div>
                                 @if ($errors->first('canoneAffitto'))
@@ -244,7 +240,7 @@
                                 @endif
                                 <!-- Utenze -->
                                 <div class="item">
-                                    {{ Form::label('utenze', 'Utenze') }}
+                                    {{ Form::label('utenze', 'Utenze', ['class' => 'label-form', 'placeholder'=>'Nessun valore']) }}
                                     {{ Form::text('utenze', $alloggio->utenze, ['id' => 'utenze']) }}
                                 </div>
                                 @if ($errors->first('utenze'))
@@ -259,7 +255,7 @@
                             <!-- Descrizione -->
                             <fieldset title="Inserisci una desrizione" class="fieldset">
                                 <legend><h2>Descrizione</h2></legend>
-                                {{ Form::textarea('descrizione', $alloggio->descrizione , ['id' => 'descrizione', 'rows' => 3]) }}
+                                {{ Form::textarea('descrizione', $alloggio->descrizione , ['id' => 'descrizione', 'rows' => 3, 'placeholder' => 'Nessuna descrizione']) }}
                                 @if ($errors->first('descrizione'))
                                     <ul class="errors">
                                         @foreach ($errors->get('descrizione') as $message)
@@ -279,6 +275,7 @@
         {{ Form::close() }}
     </main>
             @endforeach
+            @endisset
         @endisset
     @endisset
 @endsection

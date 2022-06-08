@@ -7,6 +7,7 @@ use App\Models\Resources\DatiPersonali;
 use App\Models\Resources\Disponibilita;
 use App\Models\Resources\Faq;
 use App\Models\Resources\Interazione;
+use App\Models\Resources\Servizio;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -27,20 +28,12 @@ class Locatore {
         if($tipAlloggio == 'Appartamento'){
            return Alloggio::where('id_alloggio', $idAlloggio)
                 ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-                ->leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
-                ->leftJoin('utente', 'interazione.utente', '=', 'utente.id')
-                ->where('ruolo','=', 'locatore')
-                ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
                 ->leftJoin('appartamento', 'alloggio.id_alloggio', '=', 'appartamento.alloggio')
                 ->get();
         }
         else{
             return Alloggio::where('id_alloggio', $idAlloggio)
                 ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
-                ->leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
-                ->leftJoin('utente', 'interazione.utente', '=', 'utente.id')
-                ->where('ruolo','=', 'locatore')
-                ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
                 ->leftJoin('posto_letto', 'alloggio.id_alloggio', '=', 'posto_letto.alloggio')
                 ->get();
         }
@@ -49,6 +42,11 @@ class Locatore {
     //metodo che torna i servizi di un alloggio in base all'id
     public function getServiziAlloggioById($idAlloggio){
         return Disponibilita::where('alloggio', $idAlloggio)->get();
+    }
+
+    //metodo che torna tutti i servizi
+    public function getAllServizi(){
+        return Servizio::all();
     }
 
     //metodo che torna gli alloggi insieme alle info sulle foto

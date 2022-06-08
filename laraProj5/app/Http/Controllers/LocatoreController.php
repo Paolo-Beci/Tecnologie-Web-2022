@@ -255,10 +255,12 @@ class LocatoreController extends Controller {
     //questa funzione apre la sezione modifica
     public function showAlloggio($id, $tipologia) {
         $alloggi = $this->_locatoreModel->getAlloggioByIdAndTip($id, $tipologia);
-        $servizi = $this->_locatoreModel->getServiziAlloggioById($id);
+        $servizi_disponibili = $this->_locatoreModel->getServiziAlloggioById($id);
+        $servizi = $this->_locatoreModel->getAllServizi();
 
         return view('alloggio/modifica-annuncio')
             ->with('alloggi', $alloggi)
+            ->with('servizi_disponibili', $servizi_disponibili)
             ->with('servizi', $servizi);
     }
 

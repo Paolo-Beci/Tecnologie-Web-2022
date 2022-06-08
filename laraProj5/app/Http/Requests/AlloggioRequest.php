@@ -29,7 +29,7 @@ class AlloggioRequest extends FormRequest{
      */
     public function rules() {
         return [
-            'dimensione' => 'min:0|max:99999',
+            'dimensione' => 'numeric|min:0|max:99999',
             'citta' => ['required','string','max:255','regex:/^[A-Za-z\-]/u'],
             'via' => ['required','string','max:255','regex:/^[A-Za-z\-]/u'],
             'numCivico' => ['required','string','max:4','regex:/^([1-9]{1})([0-9]{1})?([0-9]{1})?([a-z])?/u'],
