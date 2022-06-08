@@ -110,6 +110,9 @@ class LocatarioController extends Controller {
 
     //metodo utilizzato per tornare gli alloggi in base a tutti i filtri
     public function showAlloggiFiltered() {
+
+        /*effettua controlli sui campi delle form: se sono vuoti, il controller fa sì che
+        il filtraggio avvenga senza considerare i campi non compilati*/
         $check = $_POST['check'] ?? ['Libero', 'Locato'];
 
         $servizi = $_POST['check2'] ?? [];
@@ -175,7 +178,7 @@ class LocatarioController extends Controller {
             ->with('minprezzo', $_POST['min-prezzo'])
             ->with('maxprezzo', $_POST['max-prezzo'])
             ->with('num_camere_tot', $_POST['num_camere'])
-            ->with('tipo', $_POST['tipo']);;
+            ->with('tipo', $_POST['tipo']);
     }
 
     // metodo utilizzato per tornare i dettagli dell'account attualmente loggato

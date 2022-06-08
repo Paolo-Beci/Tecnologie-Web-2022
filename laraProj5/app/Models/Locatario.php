@@ -97,6 +97,7 @@ class Locatario {
             ->get();
     }
 
+    //metodo per ritornare un array contenente le città nelle quali si trovano tutti gli alloggi (senza doppioni)
     public function getCity() {
         $citta = Alloggio::select('citta')->distinct()->get();
         $lista_citta = array();
@@ -108,12 +109,14 @@ class Locatario {
         return $lista_citta;
     }
 
+    //metodo per il filtraggio
     public function getAlloggiFiltered($tipologia, $stato, $periodo, $genere, $piano, $num_posti_letto, $citta,
                                        $sup_min, $sup_max, $prezzo_min, $prezzo_max, $servizi, $num_camere_app, $tip_camera)
     {
 
         //caso indifferente
         if ($tipologia == 'NULL') {
+            //prima effettua un filtraggio sulla tabella alloggi (senza join con disponibilità)
             $risultato = DB::table('alloggio')
                 ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
                 ->whereIn('citta', $citta)
@@ -127,13 +130,17 @@ class Locatario {
                 ->where('canone_affitto', '<', $prezzo_max)
                 ->where('canone_affitto', '>', $prezzo_min);
 
+            //se non sono stati spuntati servizi, ritorna gli alloggi precedentemente filtrati
             if ($servizi == []) {
                 return $risultato
                     ->paginate(3);
             }
+            //altrimenti fa un join con disponibilità e va a vedere quali alloggi hanno i servizi selezionati
             return $risultato
                 ->leftJoin('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
                 ->whereIn('servizio', $servizi)
+                /*select e distinct servono per avere in maniera univoca gli alloggi
+                con tutti gli attributi che servono nelle viste*/
                 ->select('alloggio.id_alloggio', 'alloggio.descrizione', 'alloggio.utenze',
                     'alloggio.canone_affitto', 'alloggio.periodo_locazione', 'alloggio.genere',
                     'alloggio.eta_minima', 'alloggio.eta_massima', 'alloggio.dimensione',
@@ -146,7 +153,7 @@ class Locatario {
                 ->paginate(3);
         }
 
-        //caso appartamento
+        //caso appartamento (analogo al precedente)
         elseif ($tipologia == 'Appartamento') {
             $risultato = DB::table('alloggio')
                 ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
@@ -183,7 +190,7 @@ class Locatario {
                 ->paginate(3);
         }
 
-        //caso posto letto
+        //caso posto letto (analogo al precedente)
         elseif ($tipologia == 'Posto_letto') {
             $risultato = DB::table('alloggio')
                 ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
