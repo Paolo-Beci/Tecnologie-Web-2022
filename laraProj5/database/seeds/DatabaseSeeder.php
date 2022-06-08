@@ -47,6 +47,9 @@ class DatabaseSeeder extends Seeder {
         DB::table('appartamento')->insert([
             ['id_appartamento' => 1, 'num_camere' => 5, 'alloggio' => 1],
             ['id_appartamento' => 2, 'num_camere' => 5, 'alloggio' => 4],
+            ['id_appartamento' => 3, 'num_camere' => 2, 'alloggio' => 8],
+            ['id_appartamento' => 4, 'num_camere' => 3, 'alloggio' => 9],
+            ['id_appartamento' => 5, 'num_camere' => 2, 'alloggio' => 10],
         ]);
 
         DB::table('posto_letto')->insert([
@@ -54,6 +57,7 @@ class DatabaseSeeder extends Seeder {
             ['id_posto_letto' => 2, 'tipologia_camera' => 'Singola', 'alloggio' => 3],
             ['id_posto_letto' => 3, 'tipologia_camera' => 'Doppia', 'alloggio' => 5],
             ['id_posto_letto' => 4, 'tipologia_camera' => 'Singola', 'alloggio' => 6],
+            ['id_posto_letto' => 5, 'tipologia_camera' => 'Doppia', 'alloggio' => 7],
         ]);
 
         DB::table('servizio')->insert([
@@ -63,9 +67,9 @@ class DatabaseSeeder extends Seeder {
             ['nome_servizio' => 'Ripostiglio'],
             ['nome_servizio' => 'Garage'],
             ['nome_servizio' => 'Giardino'],
-            ['nome_servizio' => 'Aria condizionata'],
+            ['nome_servizio' => 'Aria_condizionata'],
             ['nome_servizio' => 'Wi-fi'],
-            ['nome_servizio' => 'Angolo studio'],
+            ['nome_servizio' => 'Angolo_studio'],
         ]);
 
         DB::table('foto')->insert([
@@ -116,7 +120,7 @@ class DatabaseSeeder extends Seeder {
             ['alloggio' => 3, 'servizio' => 'Garage', 'quantita' => 1],
             ['alloggio' => 4, 'servizio' => 'Bagno', 'quantita' => 1],
             ['alloggio' => 4, 'servizio' => 'Cucina', 'quantita' => 1],
-            ['alloggio' => 4, 'servizio' => 'Aria condizionata', 'quantita' => 1],
+            ['alloggio' => 4, 'servizio' => 'Aria_condizionata', 'quantita' => 1],
             ['alloggio' => 5, 'servizio' => 'Bagno', 'quantita' => 1],
             ['alloggio' => 5, 'servizio' => 'Cucina', 'quantita' => 1],
             ['alloggio' => 5, 'servizio' => 'Wi-fi', 'quantita' => 1],
@@ -125,19 +129,19 @@ class DatabaseSeeder extends Seeder {
             ['alloggio' => 6, 'servizio' => 'Wi-fi', 'quantita' => 1],
             ['alloggio' => 6, 'servizio' => 'Bagno', 'quantita' => 1],
             ['alloggio' => 7, 'servizio' => 'Cucina', 'quantita' => 1],
-            ['alloggio' => 7, 'servizio' => 'Bagno', 'quantita' => 1],
+            ['alloggio' => 7, 'servizio' => 'Bagno', 'quantita' => 2],
             ['alloggio' => 7, 'servizio' => 'Ripostiglio', 'quantita' => 1],
             ['alloggio' => 7, 'servizio' => 'Lavanderia', 'quantita' => 1],
             ['alloggio' => 8, 'servizio' => 'Cucina', 'quantita' => 1],
             ['alloggio' => 8, 'servizio' => 'Bagno', 'quantita' => 1],
-            ['alloggio' => 8, 'servizio' => 'Angolo studio', 'quantita' => 1],
+            ['alloggio' => 8, 'servizio' => 'Angolo_studio', 'quantita' => 1],
             ['alloggio' => 9, 'servizio' => 'Cucina', 'quantita' => 1],
             ['alloggio' => 9, 'servizio' => 'Bagno', 'quantita' => 1],
             ['alloggio' => 9, 'servizio' => 'Giardino', 'quantita' => 1],
-            ['alloggio' => 9, 'servizio' => 'Garage', 'quantita' => 1],
+            ['alloggio' => 9, 'servizio' => 'Garage', 'quantita' => 2],
             ['alloggio' => 10, 'servizio' => 'Cucina', 'quantita' => 1],
             ['alloggio' => 10, 'servizio' => 'Bagno', 'quantita' => 1],
-            ['alloggio' => 10, 'servizio' => 'Lavanderia', 'quantita' => 1],
+            ['alloggio' => 10, 'servizio' => 'Lavanderia', 'quantita' => 2],
             ['alloggio' => 10, 'servizio' => 'Giardino', 'quantita' => 1],
         ]);
 

@@ -74,7 +74,7 @@
 <div class="box-servizio">
     @php $flag = false @endphp
     @foreach($info_generali as $servizio)
-        @if($servizio->servizio=='AriaCondizionata' && $flag==false)
+        @if($servizio->servizio=='Aria_condizionata' && $flag==false)
             <p><i class="icon fa-solid fa-fan"></i> Aria Condizionata ({{$servizio->quantita}})</p>
             @php $flag = true @endphp
         @endif
@@ -86,7 +86,7 @@
 
     @php $flag = false @endphp
     @foreach($info_generali as $servizio)
-        @if($servizio->servizio=='WiFi' && $flag==false)
+        @if($servizio->servizio=='Wi-fi' && $flag==false)
             <p><i class="icon fa-solid fa-wifi"></i> WiFi ({{$servizio->quantita}})</p>
             @php $flag = true @endphp
         @endif
@@ -98,7 +98,7 @@
 
     @php $flag = false @endphp
     @foreach($info_generali as $servizio)
-        @if($servizio->servizio=='AngoloStudio' && $flag==false)
+        @if($servizio->servizio=='Angolo_studio' && $flag==false)
             <p><i class="icon fa-solid fa-book"></i> Angolo Studio ({{$servizio->quantita}})</p>
             @php $flag = true @endphp
         @endif
