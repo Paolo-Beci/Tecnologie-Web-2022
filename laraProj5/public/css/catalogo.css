@@ -213,3 +213,12 @@ label {
 select {
     margin-left: 50px;
 }
+
+/*regole css per visualizzazione/scomparsa particolari elementi*/
+.postoletto {
+    display: none;
+}
+
+.numcamere {
+    display: none;
+}

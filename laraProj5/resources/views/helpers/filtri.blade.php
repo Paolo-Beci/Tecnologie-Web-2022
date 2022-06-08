@@ -1,9 +1,32 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(function () {
+        //seleziono l'elemento della form sul quale avviene l'evento ("#idElementoNellaForm")
+        $('#tipologia').on('change', function (event) {
+            //Se l'opzione selezionata assume un determinato valore
+            if($(this).val() === 'Posto_letto'){
+                $("div.postoletto").show();
+                $("div.numcamere").hide();
+            }
+            else if($(this).val() === 'Appartamento'){
+                $("div.postoletto").hide();
+                $("div.numcamere").show();
+            }
+            else {
+                $("div.postoletto").hide();
+                $("div.numcamere").hide();
+            }
+        });
+    });
+</script>
 <h1 style="margin: 20px">Filtri ricerca</h1>
 <hr style="margin: 10px">
 {{ Form::open(array('route' => 'filtered', 'class' => 'filtri active-form')) }}
 
 <h2 class="subtitle-filtri">Città</h2>
-    {{ Form::text('citta', '', ['placeholder' => 'Es: Ancona...']) }}<br>
+    {{ Form::text('citta', $citta, ['placeholder' => 'Es: Ancona...']) }}<br>
+<h2 class="subtitle-filtri">Tipologia</h2>
+    {{ Form::select('tipologia', ['Appartamento' => 'Appartamento', 'Posto_letto' => 'Posto letto', 'NULL' => 'Indifferente'], $tipologia, array('id'=>'tipologia')) }}<br>
 <h2 class="subtitle-filtri">Stato attuale</h2>
     {{ Form::checkbox('check[]', 'Libero') }}
     {{ Form::label('Libero', 'Libero') }}<br>
@@ -26,8 +49,6 @@
     {{ Form::label('min-mq', 'Mq minimi') }}
     {{ Form::text('max-mq', $maxmq, array('placeholder' => 'superficie massima...')) }}
     {{ Form::label('max-mq', 'Mq massimi') }}
-<h2 class="subtitle-filtri">Numero di camere</h2>
-    {{ Form::text('num_camere', '', ['placeholder' => 'Es: 1, 2, ...']) }},
 <h2 class="subtitle-filtri">Genere ammesso</h2>
     {{ Form::radio('gender', 'f', false) }}
     {{ Form::label('f', 'Femmine') }}<br>
@@ -36,11 +57,11 @@
     {{ Form::radio('gender', 'u', false) }}
     {{ Form::label('u', 'Tutti') }}<br>
 <h2 class="subtitle-filtri">Piano</h2>
-    {{ Form::select('number_piano', array('' => $piano) + range(0,127)) }}
-<h2 class="subtitle-filtri">Num. posti letto appartamento</h2>
-    {{ Form::select('number_pl_app', array('' => '--') + range(1,20)), array('class' => 'select_range_catalogo') }}
-<h2 class="subtitle-filtri">Num. posti letto camera</h2>
-    {{ Form::select('number_pl_cam', array('' => '--') + range(1,20)), array('class' => 'select_range_catalogo') }}
+    {{ Form::select('number_piano', array('' => '--') + range(0,127), $piano) }}
+<h2 class="subtitle-filtri">Num. posti letto totali</h2>
+    {{ Form::select('number_pl_app', array('' => '--') + range(1,20)), $num_pl }}
+{{--<h2 class="subtitle-filtri">Num. posti letto camera</h2>
+    {{ Form::select('number_pl_cam', array('' => '--') + range(1,20)), array('class' => 'select_range_catalogo') }}--}}
 <h2 class="subtitle-filtri">Servizi</h2>
     {{ Form::checkbox('check2[]', 'Bagno') }}
     {{ Form::label('Bagno', 'Bagno') }}<br>
@@ -54,10 +75,20 @@
     {{ Form::label('Garage', 'Garage') }}<br>
     {{ Form::checkbox('check2[]', 'Giardino') }}
     {{ Form::label('Giardino', 'Giardino') }}<br>
-<h2 class="subtitle-filtri">Tipo posto letto</h2>
-    {{ Form::select('tipo', ['S' => 'Singola', 'D' => 'Doppia', 'NULL' => 'Indifferente'], 'NULL') }}
+
+<div class="numcamere">
+    <h2 class="subtitle-filtri">Numero di camere</h2>
+    {{ Form::text('num_camere', $num_camere_tot, ['placeholder' => 'Es: 1, 2, ...'], array('id'=>'num_camere')) }}
+</div>
+
+<div class="postoletto">
+    <h2 class="subtitle-filtri">Tipo posto letto</h2>
+    {{ Form::select('tipo', ['Singola' => 'Singola', 'Doppia' => 'Doppia', 'NULL' => 'Indifferente'], $tipo, array('id'=>'tipo')) }}
+</div>
+
 <h2 style="margin: 20px"></h2>
 
-{{ Form::submit('Filtra', ['class' => 'filter_stats_button']) }}
+{{ Form::submit('Filtra', ['class' => 'filter_stats_button', 'id'=>'bottone']) }}
 
 {!! Form::close() !!}
+
