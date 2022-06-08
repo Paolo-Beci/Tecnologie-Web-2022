@@ -33,9 +33,9 @@
     {{ Form::checkbox('check[]', 'Locato') }}
     {{ Form::label('Locato', 'Locato') }}<br>
 <h2 class="subtitle-filtri">Fascia di Prezzo</h2>
-    {{ Form::text('min-prezzo', $minprezzo, array('placeholder' => 'prezzo minimo...')) }}
+    {{ Form::number('min-prezzo', $minprezzo, array('placeholder' => 'prezzo minimo...')) }}
     {{ Form::label('min-prezzo', '&#8364; Minimi') }}
-    {{ Form::text('max-prezzo', $maxprezzo, array('placeholder' => 'prezzo massimo...')) }}
+    {{ Form::number('max-prezzo', $maxprezzo, array('placeholder' => 'prezzo massimo...')) }}
     {{ Form::label('max-prezzo', '&#8364; Massimi') }}
 <h2 class="subtitle-filtri">Periodo locazione</h2>
     {{ Form::radio('periodo', '12', false) }}
@@ -45,9 +45,9 @@
     {{ Form::radio('periodo', '6', false) }}
     {{ Form::label('6', '6 mesi') }}
 <h2 class="subtitle-filtri">Superficie</h2>
-    {{ Form::text('min-mq', $minmq, array('placeholder' => 'superficie minima...')) }}
+    {{ Form::number('min-mq', $minmq, array('placeholder' => 'superficie minima...')) }}
     {{ Form::label('min-mq', 'Mq minimi') }}
-    {{ Form::text('max-mq', $maxmq, array('placeholder' => 'superficie massima...')) }}
+    {{ Form::number('max-mq', $maxmq, array('placeholder' => 'superficie massima...')) }}
     {{ Form::label('max-mq', 'Mq massimi') }}
 <h2 class="subtitle-filtri">Genere ammesso</h2>
     {{ Form::radio('gender', 'f', false) }}
@@ -60,8 +60,6 @@
     {{ Form::select('number_piano', array('' => '--') + range(0,127), $piano) }}
 <h2 class="subtitle-filtri">Num. posti letto totali</h2>
     {{ Form::select('number_pl_app', array('' => '--') + range(1,20)), $num_pl }}
-{{--<h2 class="subtitle-filtri">Num. posti letto camera</h2>
-    {{ Form::select('number_pl_cam', array('' => '--') + range(1,20)), array('class' => 'select_range_catalogo') }}--}}
 <h2 class="subtitle-filtri">Servizi</h2>
     {{ Form::checkbox('check2[]', 'Bagno') }}
     {{ Form::label('Bagno', 'Bagno') }}<br>
@@ -78,7 +76,7 @@
 
 <div class="numcamere">
     <h2 class="subtitle-filtri">Numero di camere</h2>
-    {{ Form::text('num_camere', $num_camere_tot, ['placeholder' => 'Es: 1, 2, ...'], array('id'=>'num_camere')) }}
+    {{ Form::number('num_camere', $num_camere_tot, ['placeholder' => 'Es: 1, 2, ...'], array('id'=>'num_camere')) }}
 </div>
 
 <div class="postoletto">
