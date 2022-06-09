@@ -14,8 +14,12 @@
 @foreach($dati_personali as $dati)
     <main class="main-container">
         <section class="primo-box">
-            <h1>Ciao {{$dati->nome}} {{$dati->cognome}} !<br> Questa è la tua area privata!</h1>
-            <p style="margin-top: 10px"> Puoi visualizzare e modificare i tuoi dati personali </p>
+            @if (Route::current()->getName() != 'show-locatario')
+                <h1>Ciao {{$dati->nome}} {{$dati->cognome}} !<br> Questa è la tua area privata!</h1>
+                <p style="margin-top: 10px"> Puoi visualizzare e modificare i tuoi dati personali </p>
+            @else
+                <h1>{{$dati->nome}} {{$dati->cognome}}</h1>
+            @endif
             <div class="img-container">
                 @if(is_null($dati->id_foto_profilo))
                     <img src="{{ asset('images_profilo/no_image.png') }}" alt="immagine profilo" class="img-profilo">
@@ -32,28 +36,35 @@
                 {{ Form::open(array('route' => 'modifica-dati-locatario', 'files' => true, 'class' => 'modifica-dati')) }}
             @endcan
 
-            <div class="profile-input">
-                <h1>Inserisci o modifica l'immagine di profilo!</h1>
-                {{ Form::file('image', ['id' => 'image']) }}
-            </div>
+            @if (Route::current()->getName() != 'show-locatario')
+                <div class="profile-input">
+                    <h1>Inserisci o modifica l'immagine di profilo!</h1>
+                    {{ Form::file('image', ['id' => 'image']) }}
+                </div>
+            @endif
         </section>
         <hr style="margin-right: 50px; margin-left: 50px">
 
         <section class="secondo-box">
             <fieldset class="colonna form-group">
                 <!-- Username -->
-                <div class="item">
-                    {{ Form::label('username', 'Username attuale: ', ['class' => 'label-form']) }}
+                @if (Route::current()->getName() != 'show-locatario')
+                    <div class="item">
+                        {{ Form::label('username', 'Username attuale: ', ['class' => 'label-form']) }}
+                        {{ Form::label('username', $dati->username, ['class' => 'label-form']) }}
+                        {{ Form::text('username', '', ['placeholder' => 'Nuovo Username']) }}
+                        <span class="underline"></span>
+                    </div>
+                    @if ($errors->first('username'))
+                        <ul class="errors">
+                            @foreach ($errors->get('username') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                @else
+                    {{ Form::label('username', 'Username ', ['class' => 'label-form']) }}
                     {{ Form::label('username', $dati->username, ['class' => 'label-form']) }}
-                    {{ Form::text('username', '', ['placeholder' => 'Nuovo Username']) }}
-                    <span class="underline"></span>
-                </div>
-                @if ($errors->first('username'))
-                    <ul class="errors">
-                        @foreach ($errors->get('username') as $message)
-                            <li>{{ $message }}</li>
-                        @endforeach
-                    </ul>
                 @endif
 
                 <!-- Nome -->
@@ -85,28 +96,40 @@
                 @endif
 
                 <!-- Sesso -->
-                <div class="item">
-                    {{ Form::label('gender', 'Sesso', ['class' => 'label-form'])}}
-                    @if($dati->sesso == 'm')
-                        <div>
-                            {{ Form::radio('gender', 'm', ['id' => 'male']) }}
-                            {{ Form::label('male', 'Uomo') }}
-                        </div>
-                        <div>
-                            {{ Form::radio('gender', 'f', false, ['id' => 'female']) }}
-                            {{ Form::label('female', 'Donna') }}
-                        </div>
-                    @else
-                        <div>
-                            {{ Form::radio('gender', 'm', false, ['id' => 'male']) }}
-                            {{ Form::label('male', 'Uomo') }}
-                        </div>
-                        <div>
-                            {{ Form::radio('gender', 'f', ['id' => 'female']) }}
-                            {{ Form::label('female', 'Donna') }}
-                        </div>
-                    @endif
-                </div>
+                @if (Route::current()->getName() != 'show-locatario')
+                    <div class="item">
+                        {{ Form::label('gender', 'Sesso', ['class' => 'label-form'])}}
+                        @if($dati->sesso == 'm')
+                            <div>
+                                {{ Form::radio('gender', 'm', ['id' => 'male']) }}
+                                {{ Form::label('male', 'Uomo') }}
+                            </div>
+                            <div>
+                                {{ Form::radio('gender', 'f', false, ['id' => 'female']) }}
+                                {{ Form::label('female', 'Donna') }}
+                            </div>
+                        @else
+                            <div>
+                                {{ Form::radio('gender', 'm', false, ['id' => 'male']) }}
+                                {{ Form::label('male', 'Uomo') }}
+                            </div>
+                            <div>
+                                {{ Form::radio('gender', 'f', ['id' => 'female']) }}
+                                {{ Form::label('female', 'Donna') }}
+                            </div>
+                        @endif
+                    </div>
+                @else
+                    <div class="item">
+                        @if($dati->sesso == 'm')
+                            {{ Form::label('gender', 'Sesso', ['class' => 'label-form'])}}
+                            {{ Form::text('gender', 'Uomo') }}
+                        @else
+                            {{ Form::label('gender', 'Sesso', ['class' => 'label-form'])}}
+                            {{ Form::text('gender', 'Donna') }}
+                        @endif
+                    </div>
+                @endif
 
                 <!-- Città -->
                 <div class="item">
@@ -153,17 +176,19 @@
             </fieldset>
             <fieldset class="colonna form-group">
                 <!-- Password -->
-                <div class="item">
-                    {{ Form::label('password', 'Password') }}
-                    {{ Form::input('password', 'password', $dati->password) }}
-                    <span class="underline"></span>
-                </div>
-                @if ($errors->first('password'))
-                    <ul class="errors">
-                        @foreach ($errors->get('password') as $message)
-                            <li>{{ $message }}</li>
-                        @endforeach
-                    </ul>
+                @if (Route::current()->getName() != 'show-locatario')
+                    <div class="item">
+                        {{ Form::label('password', 'Password') }}
+                        {{ Form::input('password', 'password', $dati->password) }}
+                        <span class="underline"></span>
+                    </div>
+                    @if ($errors->first('password'))
+                        <ul class="errors">
+                            @foreach ($errors->get('password') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
                 @endif
 
                 <!-- Cognome -->
@@ -253,9 +278,11 @@
             </fieldset>
         </section>
         <section class="terzo-box">
-            @cannot('isAdmin')
-                {{ Form::submit('Modifica', ['class' => 'filter_button']) }}
-            @endcannot
+            @if (Route::current()->getName() != 'show-locatario')
+                @cannot('isAdmin')
+                    {{ Form::submit('Modifica', ['class' => 'filter_button']) }}
+                @endcannot
+            @endif
         </section>
         {!! Form::close() !!}
     </main>

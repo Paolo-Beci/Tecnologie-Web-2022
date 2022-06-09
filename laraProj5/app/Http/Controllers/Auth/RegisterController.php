@@ -59,7 +59,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
             'surname' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
             'birthplace' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
-            'birthtime' => ['required', 'date', 'before:-18 years'],
+            'birthtime' => ['required', 'date', 'before:-18 years', 'max:10'],
             //no gender validation
             'cf' => ['required', 'string', 'min:16', 'max:16'],
             'city' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],

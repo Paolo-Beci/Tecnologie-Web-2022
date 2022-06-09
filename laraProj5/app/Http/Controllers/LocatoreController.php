@@ -355,4 +355,10 @@ class LocatoreController extends Controller {
         return redirect()->action('LocatoreController@showLocatoreAlloggi');
 
     }
+
+    public function showLocatarioById($id) {
+        $locatario = $this->_locatoreModel->getLocatarioById($id);
+        return view('layouts/content-account')
+            ->with('dati_personali', $locatario);
+    }
 }

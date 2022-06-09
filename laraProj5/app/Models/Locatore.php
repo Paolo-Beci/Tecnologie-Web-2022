@@ -120,4 +120,10 @@ class Locatore {
     public function getPeriodoLocazioneAlloggio(){
         return Alloggio::select('periodo_locazione')->distinct()->get();
     }
+
+    public function getLocatarioById($id) {
+        return User::where('id', $id)
+            ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
+            ->get();
+    }
 }

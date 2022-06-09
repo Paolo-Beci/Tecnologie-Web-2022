@@ -23,6 +23,8 @@ Route::prefix('locatore')->group(function () {
     Route::post('/modifica-dati', 'LocatoreController@showModificaAccount')->name('modifica-dati-locatore');
     Route::post('/account/immagine-profilo', 'LocatoreController@showImmagineProfilo')->name('immagine-profilo-locatore');
 
+    Route::get('/show-locatario/{id}', 'LocatoreController@showLocatarioById')->name('show-locatario');
+
     Route::get('/dettagli-alloggio/{id_alloggio?}/{tipologia_alloggio?}', 'LocatoreController@showDettaglioAlloggio')->name('dettagli-alloggio-locatore');
 
     Route::prefix('gestione-alloggi')->group(function () {

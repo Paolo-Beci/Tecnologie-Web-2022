@@ -10,7 +10,7 @@ $('.contacts').on('click', '.contact', function(){
 
     let chat = $("[data-chat-contact='" + contact + "'][data-chat-alloggio='" + alloggio + "']");
 
-    let profileImg = chat.children('.chat-top-bar').children('div').children('img');
+    let profileImg = chat.children('.chat-top-bar').children('div').children('a').children('img');
 
     profileImg.attr('src', $(this).children('img').attr('src'));
 
@@ -60,17 +60,17 @@ function createMessageView(form, formData, data) {
         if(container.hasClass('sent-container')) {
 
             lastMessage.after(sentMessage);
-    
+
             lastMessage.next()[0].scrollIntoView(true);
-    
+
         } else {
-    
+
             let sentContainer = '<div class="sent-container">' + sentMessage + '</div>';
-    
+
             container.after(sentContainer);
-    
+
             container.next().children('.sent')[0].scrollIntoView(true);
-    
+
         }
 
     } else {
@@ -102,7 +102,7 @@ function changeContactsDisposition(form, data) {
 
     let newContact;
     let oldContactsHtml = '';
-    
+
 
     let contacts = $('.contacts');
 

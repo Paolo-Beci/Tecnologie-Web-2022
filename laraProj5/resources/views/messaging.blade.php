@@ -19,7 +19,7 @@
                 event.preventDefault();
 
                 let form = $(this).parent();
-                
+
                 sendMessage(route, form);
 
             });
@@ -42,7 +42,7 @@
 <body>
 
     <section class="body-content">
-        
+
         <article class="left-content">
 
             @php
@@ -93,13 +93,13 @@
                                     </span>
                                 </div>
                                 <div class="last-message">{!!
-                                    strlen($last_message->contenuto) > 40 ? 
+                                    strlen($last_message->contenuto) > 40 ?
                                         substr($last_message->contenuto, 0, 40) . '...' : $last_message->contenuto
                                 !!}</div>
                             </div>
                         </div>
                     @endforeach
-                    
+
                 @endforeach
 
             </div>
@@ -120,19 +120,28 @@
         @foreach ($contacts as $contacts_alloggio)
 
             @foreach ($contacts_alloggio as $contact)
-                
+
                 @php
                     $contact_username = array_search($contact, $contacts_alloggio);
                     $contact_alloggio = array_search($contacts_alloggio, $contacts);
                 @endphp
 
-                <div class="chat" data-chat-contact="{{$contact_username}}"
-                                data-chat-alloggio="{{$contact_alloggio}}">
+                <div class="chat" data-chat-contact="{{$contact_username}}" data-chat-alloggio="{{$contact_alloggio}}">
 
                     <div class="chat-top-bar">
                         <div>
-                            <img src="" alt="User">
-                            <span>{{array_search($contact, $contacts_alloggio)}}</span>
+                            @can('isLocatore')
+                                <a href="{{route('show-locatario', [$usernameIdUsers[$contact_username]])}}">
+                                    <img src="" alt="User">
+                                    <span>{{array_search($contact, $contacts_alloggio)}}</span>
+                                </a>
+                            @endcan
+                            @can('isLocatario')
+                                <a>
+                                    <img src="" alt="User">
+                                    <span>{{array_search($contact, $contacts_alloggio)}}</span>
+                                </a>
+                            @endcan
                         </div>
 
                         @php
@@ -149,7 +158,7 @@
                                 . $alloggio->citta . ' ' . $alloggio->cap}}
                             </span>
                         </a>
-                    </div>               
+                    </div>
 
                     <div class="chat-content">
 
@@ -167,7 +176,7 @@
 
                                     @if (current($day_contact)->mittente == $authUser->username)
 
-                                        <div class="sent-container">                                           
+                                        <div class="sent-container">
 
                                             @foreach ($day_contact as $message)
 
@@ -196,12 +205,12 @@
                                             @foreach ($day_contact as $message)
 
                                                 @if ($message->mittente != $authUser->username)
-                                                    
+
                                                     <div class="received">
                                                         <span class="chat-text">
                                                             {!! $message->contenuto !!}
                                                             @if ($message->contenuto == '<span>Ti è stato assegnato questo alloggio!</span>')
-                                                            
+
                                                             {{ Form::open(array('route' => 'contratto')) }}
                                                                 {{ Form::hidden('locatore', $usernameIdUsers[$contact_username]) }}
                                                                 {{ Form::hidden('locatario', $authUser->id) }}
@@ -219,7 +228,7 @@
                                                         $key = array_search($message, $day_contact);
                                                         unset($day_contact[$key]);
                                                     @endphp
-                                                    
+
                                                 @else
                                                     @break
                                                 @endif

@@ -30,7 +30,7 @@ class UpdateProfileRequest extends FormRequest {
             'name' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
             'surname' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
             'birthplace' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
-            'birthtime' => ['required', 'date', 'before:-18 years'],
+            'birthtime' => ['required', 'date', 'before:-18 years', 'max:10'],
             'cf' => ['required', 'alpha_num', 'min:16', 'max:16'],
             'city' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
             'street' => ['required', 'string', 'max:255'],

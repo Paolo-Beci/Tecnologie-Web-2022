@@ -11,3 +11,5 @@
 </ul>
 <span class="copyright">Copyright © 2022 Tavernelle Dev Company.
     <br>All Rights Reserved.</span>
+
+<span class="copyright">Via Brecce Bianche, 4, Ancona, Italy</span>
