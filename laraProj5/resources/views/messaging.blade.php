@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/messaging.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="{{asset('js/messaggistica.js')}}"></script>
+    <script src="{{asset('js/messaggistica.js')}}" defer></script>
     <script>
         $(function(){
 
