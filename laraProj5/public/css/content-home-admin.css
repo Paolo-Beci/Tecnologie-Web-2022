@@ -91,44 +91,6 @@
     background-size: cover;
 }
 
-/*regole css per le palline*/
-.loader {
-    width: 120px;
-    height: 75px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin: 0 auto;
-}
-
-.ball {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: black;
-    animation: bounce .5s alternate
-    infinite;
-}
-
-.ball:nth-child(2) {
-    animation-delay: .16s;
-}
-
-.ball:nth-child(3) {
-    animation-delay: .32s;
-}
-
-@keyframes bounce {
-    from {
-        transform: scaleX(1.25);
-    }
-    to {
-        transform:
-        translateY(-25px) scaleX(1);
-    }
-}
-
 /*regole css per i bottoni filtra in home admin*/
 .filter_button_home {
     border-radius: 13px;

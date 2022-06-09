@@ -16,11 +16,6 @@
                 <p>{{$numAllAllocati}}</p>
             </article>
         </div>
-        <div id="1" class="loader">
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-        </div>
     </section>
 
     {{--sezione offerte alloggio--}}
@@ -35,10 +30,10 @@
                 {{--div per date--}}
                 <div class="wrap-input">
                     {{ Form::label('da', 'Da')}}
-                    {{ Form::date('da', $da, ['class' => 'input', 'id' => 'da']) }}
+                    {{ Form::date('da', $da, ['class' => 'input', 'id' => 'da', 'max'=>'2099-12-31']) }}
 
                     {{ Form::label('a', 'A') }}
-                    {{ Form::date('a', $a, ['class' => 'input', 'id' => 'a']) }}
+                    {{ Form::date('a', $a, ['class' => 'input', 'id' => 'a', 'max'=>'2099-12-31']) }}
                 </div>
 
                 {{--div per la tipologia--}}
@@ -80,11 +75,6 @@
             </div>
         </div>
     </section>
-    <div id="2" class="loader">
-        <div class="ball"></div>
-        <div class="ball"></div>
-        <div class="ball"></div>
-    </div>
 
     {{--sezione offerte locazione--}}
     <section id="offerte_di_locazione" class="filter_section">
@@ -97,10 +87,10 @@
                 {{--div per date--}}
                 <div class="wrap-input">
                     {{ Form::label('da2', 'Da')}}
-                    {{ Form::date('da2', $da2, ['class' => 'input', 'id' => 'da2']) }}
+                    {{ Form::date('da2', $da2, ['class' => 'input', 'id' => 'da2', 'max'=>'2099-12-31']) }}
 
                     {{ Form::label('a2', 'A') }}
-                    {{ Form::date('a2', $a2, ['class' => 'input', 'id' => 'a2']) }}
+                    {{ Form::date('a2', $a2, ['class' => 'input', 'id' => 'a2', 'max'=>'2099-12-31']) }}
                 </div>
 
                 {{--div per la tipologia--}}
@@ -141,11 +131,6 @@
             </div>
         </div>
     </section>
-    <div id="3" class="loader">
-        <div class="ball"></div>
-        <div class="ball"></div>
-        <div class="ball"></div>
-    </div>
 
     {{--alloggi locati--}}
     <section id="alloggi_locati" class="filter_section">
@@ -158,10 +143,10 @@
                 {{--div per date--}}
                 <div class="wrap-input">
                     {{ Form::label('da3', 'Da')}}
-                    {{ Form::date('da3', $da3, ['class' => 'input', 'id' => 'da3']) }}
+                    {{ Form::date('da3', $da3, ['class' => 'input', 'id' => 'da3', 'max'=>'2099-12-31']) }}
 
                     {{ Form::label('a3', 'A') }}
-                    {{ Form::date('a3', $a3, ['class' => 'input', 'id' => 'a3']) }}
+                    {{ Form::date('a3', $a3, ['class' => 'input', 'id' => 'a3', 'max'=>'2099-12-31']) }}
                 </div>
 
                 {{--div per la tipologia--}}
