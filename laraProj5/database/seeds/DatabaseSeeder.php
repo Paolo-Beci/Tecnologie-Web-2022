@@ -15,11 +15,12 @@ class DatabaseSeeder extends Seeder {
 
         DB::table('dati_personali')->insert([
             ['id_dati_personali' => 1, 'id_foto_profilo' => 1, 'estensione_p' => '.jpg', 'cellulare' => 3256425968, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 4, 'cap' => 60123, 'nome' => 'Paolo', 'cognome' => 'Beci', 'data_nascita' => '2000-07-22', 'luogo_nascita' => 'Fabriano', 'sesso' => 'm', 'mail' => 'paolo.beci@gmail.com', 'codice_fiscale' => 'BCEPLA00L22D451H'],
-            ['id_dati_personali' => 2, 'id_foto_profilo' => 2, 'estensione_p' => '.jpg', 'cellulare' => NULL, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 25, 'cap' => 60123, 'nome' => 'Giuseppe', 'cognome' => 'Izzi', 'data_nascita' => '2000-07-26', 'luogo_nascita' => 'Vasto', 'sesso' => 'm', 'mail' => 'izzi.g@gmail.com', 'codice_fiscale' => 'SCCPRM10D08H501W'],
+            ['id_dati_personali' => 2, 'id_foto_profilo' => 2, 'estensione_p' => '.jpg', 'cellulare' => 2365841268, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 25, 'cap' => 60123, 'nome' => 'Giuseppe', 'cognome' => 'Izzi', 'data_nascita' => '2000-07-26', 'luogo_nascita' => 'Vasto', 'sesso' => 'm', 'mail' => 'izzi.g@gmail.com', 'codice_fiscale' => 'SCCPRM10D08H501W'],
             ['id_dati_personali' => 3, 'id_foto_profilo' => NULL, 'estensione_p' => NULL, 'cellulare' => 4568235971, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 23, 'cap' => 60123, 'nome' => 'Domenico', 'cognome' => 'La Porta', 'data_nascita' => '2000-05-10', 'luogo_nascita' => 'San Marco in Lamis', 'sesso' => 'm', 'mail' => 'd.laporta@gmail.com', 'codice_fiscale' => 'SCCPRM08S24H501C'],
             ['id_dati_personali' => 4, 'id_foto_profilo' => 3, 'estensione_p' => '.jpg', 'cellulare' => 3225874691, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 45, 'cap' => 60123, 'nome' => 'Emanuele', 'cognome' => 'Frisi', 'data_nascita' => '2000-11-03', 'luogo_nascita' => 'Foggia', 'sesso' => 'm', 'mail' => NULL, 'codice_fiscale' => 'FRSMNL00E11D643V'],
             ['id_dati_personali' => 5, 'id_foto_profilo' => 4, 'estensione_p' => '.jpg', 'cellulare' => 4563287549, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 22, 'cap' => 60123, 'nome' => 'Gianni', 'cognome' => 'Albertini', 'data_nascita' => '1900-11-03', 'luogo_nascita' => 'Ancona', 'sesso' => 'm', 'mail' => 'gialbe@gmail.com', 'codice_fiscale' => 'FRSMDL00E11D643V'],
             ['id_dati_personali' => 6, 'id_foto_profilo' => 5, 'estensione_p' => '.jpg', 'cellulare' => 8742159682, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 1, 'cap' => 60123, 'nome' => 'Simone', 'cognome' => 'Fiori', 'data_nascita' => '1980-11-03', 'luogo_nascita' => 'Ancona', 'sesso' => 'm', 'mail' => 'fiori.s@gmail.com', 'codice_fiscale' => 'FESMNL00E11D643V'],
+            ['id_dati_personali' => 7, 'id_foto_profilo' => 6, 'estensione_p' => '.jpg', 'cellulare' => 8742159682, 'via' => 'Via brecce bianche', 'citta' => 'Ancona', 'num_civico' => 69, 'cap' => 60123, 'nome' => 'Emanuele', 'cognome' => 'Frontoni', 'data_nascita' => '1975-11-11', 'luogo_nascita' => 'Ancona', 'sesso' => 'm', 'mail' => 'e.frontoni@gmail.com', 'codice_fiscale' => 'FEGHYL00E11D643V'],
         ]);
 
         DB::table('utente')->insert([
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder {
             ['username' => 'adminadmin', 'password' => Hash::make('BFbDeT62'), 'ruolo' => 'admin', 'dati_personali' => 4],
             ['username' => 'gialbe_19', 'password' => Hash::make('BFbDeT62'), 'ruolo' => 'locatore', 'dati_personali' => 5],
             ['username' => 'fiore_99', 'password' => Hash::make('BFbDeT62'), 'ruolo' => 'locatore', 'dati_personali' => 6],
+            ['username' => 'frontons_89', 'password' => Hash::make('BFbDeT62'), 'ruolo' => 'locatario', 'dati_personali' => 7],
         ]);
 
         DB::table('alloggio')->insert([
@@ -155,15 +157,23 @@ class DatabaseSeeder extends Seeder {
         ]);
 
         DB::table('messaggio')->insert([
-            ['data_invio' => now(), 'contenuto' => 'Ciao, sarei interessato', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 1],
-            ['data_invio' => now(), 'contenuto' => 'Ti tengo in considerazione', 'mittente' => 1, 'destinatario' => 2, 'alloggio' => 1],
-            ['data_invio' => now(), 'contenuto' => 'Buongiorno, sono interessato', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 2],
-            ['data_invio' => now(), 'contenuto' => 'Ti metto tra gli interessati', 'mittente' => 1, 'destinatario' => 2, 'alloggio' => 2],
-            ['data_invio' => now(), 'contenuto' => 'Perfetto, attendo aggiornamenti', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 1],
-            ['data_invio' => now(), 'contenuto' => 'Grazie mille, aspetto riscontri', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 2],
-            ['data_invio' => now(), 'contenuto' => 'Ottimo, buona giornata', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 1],
-            ['data_invio' => now(), 'contenuto' => 'Va bene, le auguro una buona giornata', 'mittente' => 1, 'destinatario' => 2, 'alloggio' => 2],
-            ['data_invio' => now(), 'contenuto' => '<span>Ciao, ho visto la casa e sono interessato!</span>', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 3],
+            ['data_invio' => '2022-06-01 8:30:00', 'contenuto' => '<span>Ciao, ho visto la casa e sono interessato!</span>', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 1],
+            ['data_invio' => '2022-06-01 9:30:00', 'contenuto' => 'Ti tengo in considerazione...', 'mittente' => 1, 'destinatario' => 2, 'alloggio' => 1],
+            ['data_invio' => '2022-06-01 9:31:00', 'contenuto' => 'Intanto puoi contattarmi per concordare un appuntamento per una visita!', 'mittente' => 1, 'destinatario' => 2, 'alloggio' => 1],
+            ['data_invio' => '2022-06-03 16:30:00', 'contenuto' => 'Buongiorno, ci sono notizie?', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 1],
+            ['data_invio' => '2022-06-03 18:30:00', 'contenuto' => 'Sei stato selezionato per questo alloggio, ti invio il contratto da firmare e spedire al mio recapito!', 'mittente' => 1, 'destinatario' => 2, 'alloggio' => 1],
+            ['data_invio' => '2022-06-03 18:35:00', 'contenuto' => '<span>Ti è stato assegnato questo alloggio!</span>', 'mittente' => 1, 'destinatario' => 2, 'alloggio' => 1],
+            ['data_invio' => '2022-06-04 8:30:00', 'contenuto' => 'Perfetto, ci sentiamo telefonicamente per concludere il contratto!', 'mittente' => 2, 'destinatario' => 1, 'alloggio' => 1],
+
+            ['data_invio' => '2022-06-07 10:35:00', 'contenuto' => '<span>Ciao, ho visto la casa e sono interessato!</span>', 'mittente' => 3, 'destinatario' => 1, 'alloggio' => 2],
+            ['data_invio' => '2022-06-07 12:30:00', 'contenuto' => 'Salve, vuole vedere il posto letto prima di procedere con il contratto?', 'mittente' => 1, 'destinatario' => 3, 'alloggio' => 2],
+            ['data_invio' => '2022-06-07 15:22:00', 'contenuto' => 'Sarebbe perfetto! Quando è disponibile per una visita?', 'mittente' => 3, 'destinatario' => 1, 'alloggio' => 2],
+            ['data_invio' => '2022-06-07 18:00:00', 'contenuto' => 'Martedì mattina sono libero...', 'mittente' => 1, 'destinatario' => 3, 'alloggio' => 2],
+
+            ['data_invio' => '2022-05-07 9:00:00', 'contenuto' => '<span>Ciao, ho visto la casa e sono interessato!</span>', 'mittente' => 7, 'destinatario' => 6, 'alloggio' => 9],
+            ['data_invio' => '2022-05-07 11:00:00', 'contenuto' => 'Buonasera, ci sono delle informazioni che desidera ricevere?', 'mittente' => 6, 'destinatario' => 7, 'alloggio' => 9],
+            ['data_invio' => '2022-05-07 13:00:00', 'contenuto' => 'Si, mi piacerebbe parlarle di persona', 'mittente' => 7, 'destinatario' => 6, 'alloggio' => 9],
+            ['data_invio' => '2022-05-08 11:00:00', 'contenuto' => 'Può trovare il mio numero nel profilo', 'mittente' => 7, 'destinatario' => 6, 'alloggio' => 9],
         ]);
     }
 
