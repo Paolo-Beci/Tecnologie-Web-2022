@@ -64,7 +64,7 @@ class RegisterController extends Controller
             'cf' => ['required', 'string', 'min:16', 'max:16'],
             'city' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
             'street' => ['required', 'string', 'max:255'],
-            'house-number' => ['required', 'numeric', 'max:10'],
+            'house-number' => ['required', 'numeric', 'max:1000'],
             'cap' => ['required', 'string', 'regex:/^([0-9]{5})/u', 'max:5'],
             'email' => ['nullable', 'regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/'],
             'telephone' => ['nullable', 'regex:/^(\+[0-9]{2}\s?)?[0-9]{3}\s?[0-9]{3}\s?[0-9]{4}$/u', 'max:10']
