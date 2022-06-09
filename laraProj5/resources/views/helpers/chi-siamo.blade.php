@@ -33,4 +33,11 @@
                 <a class="email" href="mailto:s1095492@studenti.univpm.it">s1095492@studenti.univpm.it</a>
             </div>
     </article>
+    <!-- Bottone per accedere alla documentazione -->
+    <div>
+        <a href="{{asset('documentazione_grp_02.pdf')}}">
+            <button class="bottone-documentazione"><i class="fa-solid fa-book"></i> Documentazione del progetto </button>
+        </a>
+    </div>
 </div>
+

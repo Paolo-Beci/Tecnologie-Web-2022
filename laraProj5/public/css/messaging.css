@@ -162,7 +162,7 @@ body {
     border-bottom: 1px solid #8c8c8c;
 }
 
-.chat-top-bar div {
+.chat-top-bar div a {
     display: flex;
     align-items: center;
     gap: 20px;
