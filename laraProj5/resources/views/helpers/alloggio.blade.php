@@ -8,7 +8,11 @@
 
 <!-- Popup di errore se non autorizzato a visualizzare i dettagli -->
 @cannot('isLocatario')
-    <div class="alloggio" id="accedi" data-popup-caller>
+    <div class="alloggio" id="accedi" 
+    @if (Route::current()->getName() != 'gestione-alloggi')
+        data-popup-caller
+    @endif
+    >
         @include('helpers/carta-alloggio-catalogo')
     </div>
 @endcannot
