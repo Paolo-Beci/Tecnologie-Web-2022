@@ -123,7 +123,6 @@
                                 <p>Tipo: {{$alloggio->tipologia}}</p>
                                 <p>Interessato: {{$alloggio->username}}</p>
                                 <p>Data interessamento: {{$alloggio->data_invio}}</p>
-                                <a class="dettagli_locatore" title="Clicca qui per informazioni sul locatore" href="#id_result">Id alloggio: {{$alloggio->id_alloggio}}</a>
                             </div>
                         </article>
                     @endforeach
@@ -179,7 +178,6 @@
                                 <p>Tipo: {{$alloggio->tipologia}}</p>
                                 <p>Locatario: {{$alloggio->username}}</p>
                                 <p>Data interessamento: {{$alloggio->data_interazione}}</p>
-                                <a class="dettagli_locatore" title="Clicca qui per informazioni sul locatore" href="#id_result">Id alloggio: {{$alloggio->id_alloggio}}</a>
                             </div>
                         </article>
                     @endforeach
