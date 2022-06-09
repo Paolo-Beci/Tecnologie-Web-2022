@@ -193,8 +193,9 @@ class LocatarioController extends Controller {
     public function showModificaAccount(UpdateProfileRequest $request){
         //prendo l'id_foto_profilo più grande nel DB
         $imageName = DatiPersonali::select('id_foto_profilo')->max('id_foto_profilo') + 1;
-        // rinomino l'immagine
+        $user = User::find(auth()->user()->getAuthIdentifier());
 
+        // rinomino l'immagine
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $oldName = $image->getClientOriginalName();
@@ -226,15 +227,11 @@ class LocatarioController extends Controller {
                     , 'via' => $request['street'], 'cap' => $request['cap'], 'cellulare' => $request['telephone']]);
         }
 
-
-
-        if(is_null($request['username']))
-            User::where('id', auth()->user()->getAuthIdentifier())
-                ->update(['password' => $request['password']]);
-        else
-            User::where('id', auth()->user()->getAuthIdentifier())
-                ->update(['username' => $request['username'], 'password' => $request['password']]);
-
+        if(!is_null($request['username']))
+            $user->username = $request['username'];
+        if(!is_null($request['password']))
+            $user->password = Hash::make($request['password']);
+        $user->save();
 
         return redirect()->action('LocatarioController@showAccount');
     }

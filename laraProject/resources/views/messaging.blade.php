@@ -113,7 +113,7 @@
                 <p class="description">
                     Benvenuto nella sezione di messaggistica di Flatmate.
                     <br>
-                    Da qui puoi messagguare liberamente con gli altri utenti del portale!
+                    Da qui puoi messaggiare liberamente con gli altri utenti del portale!
                 </p>
             </div>
 

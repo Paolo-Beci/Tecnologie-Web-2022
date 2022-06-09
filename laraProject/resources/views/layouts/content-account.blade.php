@@ -179,7 +179,7 @@
                 @if (Route::current()->getName() != 'show-locatario')
                     <div class="item">
                         {{ Form::label('password', 'Password') }}
-                        {{ Form::input('password', 'password', $dati->password) }}
+                        {{ Form::input('password', 'password', ['placeholder' => 'Password']) }}
                         <span class="underline"></span>
                     </div>
                     @if ($errors->first('password'))
