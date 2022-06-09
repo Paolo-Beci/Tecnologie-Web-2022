@@ -1,15 +1,27 @@
+@php
+    $routeName = Route::current()->getName();
+@endphp
+
 <li>
-    @if(Route::current()->getName() != 'home-locatario')
+    @if($routeName != 'home-locatario')
         <a href="{{route('home-locatario')}}/#faq" title="Frequenty Asked Questions">FAQ</a>
     @else
         <a class="anchor" href="#faq" title="Frequenty Asked Questions">FAQ</a>
     @endif
 </li>
 <li>
-    <a href="{{route('catalogo-locatario')}}" title="Vai al catalogo annunci">Catalogo</a>
+    <a 
+    @if (in_array($routeName, ['catalogo-locatario', 'catalogo-appartamenti-locatario', 'catalogo-posti-letto-locatario']))
+        class="active"
+    @endif
+    href="{{route('catalogo-locatario')}}" title="Vai al catalogo annunci">Catalogo</a>
 </li>
 <li>
-    <a href="{{route('storico-alloggi')}}" title="Storico degli alloggi">Storico alloggi</a>
+    <a 
+    @if ($routeName == 'storico-alloggi')
+        class="active"
+    @endif
+    href="{{route('storico-alloggi')}}" title="Storico degli alloggi">Storico alloggi</a>
 </li>
 <li>
     <a href="{{route('messaggistica')}}" title="Messaggistica">Messaggi</a>

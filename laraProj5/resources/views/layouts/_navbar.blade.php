@@ -1,9 +1,18 @@
 <ul class="menu">
 
     {{-- Tutti gli utenti --}}
-
     <li>
-        <a class="active" href="{{route('home-guest')}}" title="Home">Home</a>
+        <a 
+        @if (in_array(Route::current()->getName(), ['home-guest', 'home-locatario', 'home-locatore', 'home-admin']))
+            class="active" 
+        @endif
+        @guest
+            href="{{route('home-guest')}}"
+        @endguest
+        @auth
+            href="{{route('home-' . auth()->user()->ruolo)}}"
+        @endauth
+        title="Home">Home</a>
     </li>
 
     {{-- Sezione locatore --}}
