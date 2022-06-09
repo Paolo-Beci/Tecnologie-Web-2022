@@ -39,12 +39,12 @@
 
             //si occupa di settare l'età max in base all'età min selezionata dall'utente
             $("#etaMin").on('change', function(event) {
-                $("#etaMax").val($(this).val());
+                $("#etaMax").val(parseInt($(this).val()));
             });
 
             $("#etaMax").on('change', function(event) {
-                if($(this).val() < $("#etaMin").val()){
-                    $(this).val($("#etaMin").val());
+                if(parseInt($(this).val()) < parseInt($("#etaMin").val())){
+                    $(this).val(parseInt($("#etaMin").val()));
                 }
             });
         });
@@ -104,9 +104,9 @@
                         <div>
                             <p class="item">Fascia di età:</p>
                             {{ Form::label('etaMin', 'Min') }}
-                            {{ Form::selectRange('etaMin', 18, 99, ['id' => 'etaMin']) }}
+                            {{ Form::selectRange('etaMin', 18, 100, ['id' => 'etaMin']) }}
                             {{ Form::label('etaMax', 'Max') }}
-                            {{ Form::selectRange('etaMax', 18, 99, ['id' => 'etaMax']) }}
+                            {{ Form::selectRange('etaMax', 18, 100, ['id' => 'etaMax']) }}
                         </div>
                         <!-- Periodo locazione -->
                         <div>
