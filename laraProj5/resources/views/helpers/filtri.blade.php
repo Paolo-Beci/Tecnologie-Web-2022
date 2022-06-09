@@ -17,6 +17,27 @@
                 $("div.numcamere").hide();
             }
         });
+
+        //funzione controlli estremi superficie e prezzo
+        $("#min-prezzo").on('change', function(event) {
+            $("#max-prezzo").val(parseInt($(this).val()));
+        });
+
+        $("#max-prezzo").on('change', function(event) {
+            if(parseInt($(this).val()) < parseInt($("#min-prezzo").val())){
+                $(this).val(parseInt($("#min-prezzo").val()));
+            }
+        });
+
+        $("#min-mq").on('change', function(event) {
+            $("#max-mq").val(parseInt($(this).val()));
+        });
+
+        $("#max-mq").on('change', function(event) {
+            if(parseInt($(this).val()) < parseInt($("#min-mq").val())){
+                $(this).val(parseInt($("#min-mq").val()));
+            }
+        });
     });
 </script>
 <h1 style="margin: 20px">Filtri ricerca</h1>
@@ -33,9 +54,9 @@
     {{ Form::checkbox('check[]', 'Locato') }}
     {{ Form::label('Locato', 'Locato') }}<br>
 <h2 class="subtitle-filtri">Fascia di Prezzo</h2>
-    {{ Form::number('min-prezzo', $minprezzo, array('placeholder' => 'prezzo minimo...')) }}
+    {{ Form::number('min-prezzo', $minprezzo, array('placeholder' => 'prezzo minimo...', 'id'=>'min-prezzo', 'min'=>0)) }}
     {{ Form::label('min-prezzo', '&#8364; Minimi') }}
-    {{ Form::number('max-prezzo', $maxprezzo, array('placeholder' => 'prezzo massimo...')) }}
+    {{ Form::number('max-prezzo', $maxprezzo, array('placeholder' => 'prezzo massimo...', 'id'=>'max-prezzo', 'min'=>0)) }}
     {{ Form::label('max-prezzo', '&#8364; Massimi') }}
 <h2 class="subtitle-filtri">Periodo locazione</h2>
     {{ Form::radio('periodo', '12', false) }}
@@ -45,9 +66,9 @@
     {{ Form::radio('periodo', '6', false) }}
     {{ Form::label('6', '6 mesi') }}
 <h2 class="subtitle-filtri">Superficie</h2>
-    {{ Form::number('min-mq', $minmq, array('placeholder' => 'superficie minima...')) }}
+    {{ Form::number('min-mq', $minmq, array('placeholder' => 'superficie minima...', 'id'=>'min-mq', 'min'=>0)) }}
     {{ Form::label('min-mq', 'Mq minimi') }}
-    {{ Form::number('max-mq', $maxmq, array('placeholder' => 'superficie massima...')) }}
+    {{ Form::number('max-mq', $maxmq, array('placeholder' => 'superficie massima...', 'id'=>'max-mq', 'min'=>0)) }}
     {{ Form::label('max-mq', 'Mq massimi') }}
 <h2 class="subtitle-filtri">Genere ammesso</h2>
     {{ Form::radio('gender', 'f', false) }}
