@@ -9,9 +9,25 @@
     <article class="forms forms-anim" id="login">
         <div class="container">
             
-            @include('auth/login-utente')
+            @php
+                $loginClass = '';
+                $signUpClass = '';
 
-            @include('auth/register-utente')
+                $errorUsernameSignUp = $errors->first('sign-up-username');
+                $errorPasswordSignUp = $errors->first('sign-up-password');
+
+                if($errorUsernameSignUp == '' && $errorPasswordSignUp == '') {
+                    $loginClass = 'active-form';
+                    $signUpClass = 'inactive-form';
+                } else {
+                    $loginClass = 'inactive-form';
+                    $signUpClass = 'active-form';
+                }
+            @endphp
+
+            @include('auth/login-utente', ['loginClass' => $loginClass])
+
+            @include('auth/register-utente', ['signUpClass' => $signUpClass])
 
             <div class="circle-to-sign-up"></div>
             <div class="circle-to-login"></div>

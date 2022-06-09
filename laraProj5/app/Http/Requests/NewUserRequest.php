@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Session;
 
 class NewUserRequest extends FormRequest {
 
@@ -26,13 +25,9 @@ class NewUserRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'sign-up-username' => ['required', 'string', 'unique:utente,username', 'min:8', 'max:20'],
-            'sign-up-password' => ['required', 'string', 'max:191', 'confirmed'],
+            'sign-up-username' => ['required', 'string', 'unique:utente,username', 'min:8', 'max:255'],
+            'sign-up-password' => ['required', 'string', 'max:255', 'confirmed'],
         ];
-    }
-
-    protected function failedValidation(Validator $validator) {
-        Session::put('active-form', 'sign-up');
     }
 
 }

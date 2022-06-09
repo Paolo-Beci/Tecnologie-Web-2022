@@ -1,4 +1,4 @@
-{{ Form::open(array('route' => 'registrazione-dati-personali', 'class' => 'sign-up inactive-form')) }}
+{{ Form::open(array('route' => 'registrazione-dati-personali', 'class' => 'sign-up ' . $signUpClass)) }}
     <h1>Registrazione</h1>
     <fieldset class="sign-up-fieldset">
         <div class="username">

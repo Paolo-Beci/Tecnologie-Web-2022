@@ -1,4 +1,4 @@
-{{ Form::open(array('route' => 'login', 'class' => 'login active-form')) }}
+{{ Form::open(array('route' => 'login', 'class' => 'login ' . $loginClass)) }}
     <h1>Login</h1>
     <fieldset class="login-fieldset">
         <div class="username">
