@@ -145,7 +145,6 @@
 
 .login-extra {
     width: 100%;
-    margin-top: -40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -160,22 +159,6 @@
     justify-content: center;
     align-items: center;
     gap: 25px;
-}
-
-.forgot {
-    font-size: 18px;
-    color: gray;
-    margin-left: 10px;
-    text-decoration: none;
-    align-self: flex-start;
-}
-
-.forgot:hover {
-    text-decoration: underline;
-}
-
-.forgot:active {
-    color: rgb(65, 65, 65);
 }
 
 .role {

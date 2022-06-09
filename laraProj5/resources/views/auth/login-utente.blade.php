@@ -27,7 +27,6 @@
         @endif
     </fieldset>
     <div class="login-extra">
-        <a class="forgot" href="">Password dimenticata?</a>
         {{ Form::submit('Login', ['class' => 'submit']) }}
         <span>Non sei un membro? <a data-form="toSignUp">Registrati</a></span>
     </div>
