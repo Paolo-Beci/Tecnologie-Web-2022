@@ -33,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    
+
     //protected $redirectTo = '/home';
     protected $redirectTo = '/';
 
@@ -56,18 +56,18 @@ class RegisterController extends Controller
     protected function validator(array $data) {
         return Validator::make($data, [
             //no profile-picture validation
-            'name' => ['required', 'string', 'max:255'],
-            'surname' => ['required', 'string', 'max:255'],
-            'birthplace' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
+            'surname' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
+            'birthplace' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
             'birthtime' => ['required', 'date', 'before:-18 years'],
             //no gender validation
             'cf' => ['required', 'string', 'min:16', 'max:16'],
-            'city' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
             'street' => ['required', 'string', 'max:255'],
-            'house-number' => ['required', 'numeric', 'max:1000000'],
-            'cap' => ['required', 'string', 'max:5'],
-            'email' => ['nullable', 'email:filter,dns'],
-            'telephone' => ['nullable', 'regex:/^(\+[0-9]{2}\s?)?[0-9]{3}\s?[0-9]{3}\s?[0-9]{4}$/u']
+            'house-number' => ['required', 'numeric', 'max:10'],
+            'cap' => ['required', 'string', 'regex:/^([0-9]{5})/u', 'max:5'],
+            'email' => ['nullable', 'regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/'],
+            'telephone' => ['nullable', 'regex:/^(\+[0-9]{2}\s?)?[0-9]{3}\s?[0-9]{3}\s?[0-9]{4}$/u', 'max:10']
         ]);
     }
 

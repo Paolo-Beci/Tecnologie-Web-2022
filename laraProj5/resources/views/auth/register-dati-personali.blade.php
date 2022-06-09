@@ -159,10 +159,17 @@
                 <div class="underline">
                     {{ Form::text('email', '', ['placeholder' => 'E-mail']) }}
                 </div>
+                @if ($errors->first('email'))
+                    <ul class="errors">
+                        @foreach ($errors->get('email') as $message)
+                            <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+
                 <div class="underline">
                     {{ Form::text('telephone', '', ['placeholder' => 'Cellulare']) }}
                 </div>
-
                 @if ($errors->first('telephone'))
                     <ul class="errors">
                         @foreach ($errors->get('telephone') as $message)
