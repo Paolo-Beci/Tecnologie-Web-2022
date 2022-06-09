@@ -38,14 +38,14 @@ class AdminController extends Controller {
             ->with('numAllAllocati', $numAllAllocati)
             ->with('allAllocati', $allAllocati)
             ->with('type', '')
-            ->with('da', now())
-            ->with('a', now())
+            ->with('da', '')
+            ->with('a', '')
             ->with('type2', '')
-            ->with('da2', now())
-            ->with('a2', now())
+            ->with('da2', '')
+            ->with('a2', '')
             ->with('type3', '')
-            ->with('da3', now())
-            ->with('a3', now());
+            ->with('da3', '')
+            ->with('a3', '');
     }
 
     public function showFaq() {
@@ -154,9 +154,21 @@ class AdminController extends Controller {
     //questa funzione mostra le offerte di alloggio filtrate per tipologia e data
     public function getOfferteAlloggioByTipAndDate(/*$tipologia, $data_init, $data_fin*/){
 
+        if ($_POST['type']=='Indefinito') {
+            $type = ['Appartamento', 'Posto_letto'];
+        } else $type = array($_POST['type']);
+
+        if ($_POST['da']=='') {
+            $da = "1900-01-01";
+        } else $da = $_POST['da'];
+
+        if ($_POST['a']=='') {
+            $a = "2099-12-31";
+        } else $a = $_POST['a'];
+
         //per offerte di alloggio
         $numOffAll = $this->_adminModel->getNumOfferteAlloggio();
-        $offAll = $this->_adminModel->getOfferteAlloggioByTipAndDate($_POST['type'], $_POST['da'], $_POST['a']/*$tipologia, $data_init, $data_fin*/);
+        $offAll = $this->_adminModel->getOfferteAlloggioByTipAndDate($type, $da, $a/*$tipologia, $data_init, $data_fin*/);
 
         //per offerte di locazione
         $numOffLoc = $this->_adminModel->getNumOfferteLocazione();
@@ -177,15 +189,27 @@ class AdminController extends Controller {
             ->with('da', $_POST['da'])
             ->with('a', $_POST['a'])
             ->with('type2', '')
-            ->with('da2', now())
-            ->with('a2', now())
+            ->with('da2', '')
+            ->with('a2', '')
             ->with('type3', '')
-            ->with('da3', now())
-            ->with('a3', now());
+            ->with('da3', '')
+            ->with('a3', '');
     }
 
     //questa funzione mostra le offerte di locazione filtrate per tipologia e data
     public function getOfferteLocazioneByTipAndDate(/*$tipologia, $data_init, $data_fin*/){
+
+        if ($_POST['type2']=='Indefinito') {
+            $type2 = ['Appartamento', 'Posto_letto'];
+        } else $type2 = array($_POST['type2']);
+
+        if ($_POST['da2']=='') {
+            $da2 = "1900-01-01";
+        } else $da2 = $_POST['da2'];
+
+        if ($_POST['a2']=='') {
+            $a2 = "2099-12-31";
+        } else $a2 = $_POST['a2'];
 
         //per offerte di alloggio
         $numOffAll = $this->_adminModel->getNumOfferteAlloggio();
@@ -193,7 +217,7 @@ class AdminController extends Controller {
 
         //per offerte di locazione
         $numOffLoc = $this->_adminModel->getNumOfferteLocazione();
-        $offLoc = $this->_adminModel->getOfferteLocazioneByTipAndDate($_POST['type2'], $_POST['da2'], $_POST['a2']/*$tipologia, $data_init, $data_fin*/);
+        $offLoc = $this->_adminModel->getOfferteLocazioneByTipAndDate($type2, $da2, $a2/*$tipologia, $data_init, $data_fin*/);
 
         //per alloggi allocati
         $numAllAllocati = $this->_adminModel->getNumAlloggiAllocati();
@@ -207,18 +231,30 @@ class AdminController extends Controller {
             ->with('numAllAllocati', $numAllAllocati)
             ->with('allAllocati', $allAllocati)
             ->with('type', '')
-            ->with('da', now())
-            ->with('a', now())
+            ->with('da', '')
+            ->with('a', '')
             ->with('type2', $_POST['type2'])
             ->with('da2', $_POST['da2'])
             ->with('a2', $_POST['a2'])
             ->with('type3', '')
-            ->with('da3', now())
-            ->with('a3', now());
+            ->with('da3', '')
+            ->with('a3', '');
     }
 
     //questa funzione mostra gli alloggi locati filtrate per tipologia e data
     public function getAlloggiAllocatiByTipAndDate(){
+
+        if ($_POST['type3']=='Indefinito') {
+            $type3 = ['Appartamento', 'Posto_letto'];
+        } else $type3 = array($_POST['type']);
+
+        if ($_POST['da3']=='') {
+            $da3 = "1900-01-01";
+        } else $da3 = $_POST['da3'];
+
+        if ($_POST['a3']=='') {
+            $a3 = "2099-12-31";
+        } else $a3 = $_POST['a3'];
 
         //per offerte di alloggio
         $numOffAll = $this->_adminModel->getNumOfferteAlloggio();
@@ -230,7 +266,7 @@ class AdminController extends Controller {
 
         //per alloggi allocati
         $numAllAllocati = $this->_adminModel->getNumAlloggiAllocati();
-        $allAllocati = $this->_adminModel->getAlloggiAllocatiByTipAndDate($_POST['type3'], $_POST['da3'], $_POST['a3']);
+        $allAllocati = $this->_adminModel->getAlloggiAllocatiByTipAndDate($type3, $da3, $a3);
 
         return view('layouts/content-home')
             ->with('numOffAll', $numOffAll)
@@ -240,11 +276,11 @@ class AdminController extends Controller {
             ->with('numAllAllocati', $numAllAllocati)
             ->with('allAllocati', $allAllocati)
             ->with('type', '')
-            ->with('da', now())
-            ->with('a', now())
+            ->with('da', '')
+            ->with('a', '')
             ->with('type2', '')
-            ->with('da2', now())
-            ->with('a2', now())
+            ->with('da2', '')
+            ->with('a2', '')
             ->with('type3', $_POST['type3'])
             ->with('da3', $_POST['da3'])
             ->with('a3', $_POST['a3']);

@@ -39,7 +39,7 @@
                 {{--div per la tipologia--}}
                 <div class="wrap-input">
                     {{ Form::label('type', 'Tipologia di alloggio') }}
-                    {{ Form::select('type', ['Appartamento'=>'appartamento', 'Posto_letto'=>'posto letto'], $type, ['class' => 'input', 'id' => 'type']) }}
+                    {{ Form::select('type', ['Indefinito'=>'Indefinito', 'Appartamento'=>'appartamento', 'Posto_letto'=>'posto letto'], $type, ['class' => 'input', 'id' => 'type']) }}
                 </div>
 
                 {{--bottone di conferma--}}
@@ -96,7 +96,7 @@
                 {{--div per la tipologia--}}
                 <div class="wrap-input">
                     {{ Form::label('type2', 'Tipologia di alloggio') }}
-                    {{ Form::select('type2', ['Appartamento'=>'appartamento', 'Posto_letto'=>'posto letto'], $type2, ['class' => 'input', 'id' => 'type2']) }}
+                    {{ Form::select('type2', ['Indefinito'=>'Indefinito', 'Appartamento'=>'appartamento', 'Posto_letto'=>'posto letto'], $type2, ['class' => 'input', 'id' => 'type2']) }}
                 </div>
 
                 {{--bottone di conferma--}}
@@ -152,7 +152,7 @@
                 {{--div per la tipologia--}}
                 <div class="wrap-input">
                     {{ Form::label('type3', 'Tipologia di alloggio') }}
-                    {{ Form::select('type3', ['Appartamento'=>'appartamento', 'Posto_letto'=>'posto letto'], $type3, ['class' => 'input', 'id' => 'type3']) }}
+                    {{ Form::select('type3', ['Indefinito'=>'Indefinito', 'Appartamento'=>'appartamento', 'Posto_letto'=>'posto letto'], $type3, ['class' => 'input', 'id' => 'type3']) }}
                 </div>
 
                 {{--bottone di conferma--}}
