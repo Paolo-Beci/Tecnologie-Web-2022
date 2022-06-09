@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}" type="image/x-icon">
     <link rel="icon" href="{{asset('images/favicon.ico')}}" type="image/x-icon">
-    <title>FlatMate |Registrazione dati Personali</title>
+    <title>FlatMate | Registrazione dati Personali</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/sign-up-continue.css')}}">
     <script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>

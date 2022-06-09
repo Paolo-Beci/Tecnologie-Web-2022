@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Models\Resources\Alloggio;
 use App\Models\Resources\Faq;
-use Illuminate\Support\Facades\DB;
 
 class Guest {
 
@@ -15,15 +14,13 @@ class Guest {
 
     //metodo che torna gli alloggi insieme alle info sulle foto
     public function getAlloggi(){
-        return DB::table('alloggio')
-            ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+        return Alloggio::join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->paginate(3);
     }
 
     //metodo per tornare un'array di alloggi in base alla tipologia
     public function getAlloggioByTip($tipologia){
-        return DB::table('alloggio')
-            ->where('tipologia', $tipologia)
+        return Alloggio::where('tipologia', $tipologia)
             ->join('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->paginate(3);
     }

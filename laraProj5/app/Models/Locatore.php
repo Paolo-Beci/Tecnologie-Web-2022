@@ -8,8 +8,7 @@ use App\Models\Resources\Disponibilita;
 use App\Models\Resources\Faq;
 use App\Models\Resources\Interazione;
 use App\Models\Resources\Servizio;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
+use App\Models\Resources\User;
 
 class Locatore {
 
@@ -51,15 +50,13 @@ class Locatore {
 
     //metodo che torna gli alloggi insieme alle info sulle foto
     public function getAlloggi(){
-        return DB::table('alloggio')
-            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+        return Alloggio::leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->paginate(3);
     }
 
     //metodo per tornare un'array di alloggi in base alla tipologia
     public function getAlloggioByTip($tipologia){
-        return DB::table('alloggio')
-            ->where('tipologia', $tipologia)
+        return Alloggio::where('tipologia', $tipologia)
             ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->paginate(3);
     }
@@ -67,8 +64,7 @@ class Locatore {
     //funzione che torna l'istanza dell'alloggio considerato insieme alle sue foto e alle info del locatore
     public function getAlloggio($idAlloggio, $tipologia){
         if($tipologia == 'Appartamento'){
-            return DB::table('alloggio')
-                ->where('id_alloggio', $idAlloggio)
+            return Alloggio::where('id_alloggio', $idAlloggio)
                 ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
                 ->leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
                 ->leftJoin('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
@@ -79,8 +75,7 @@ class Locatore {
                 ->get();
         }
         else{
-            return DB::table('alloggio')
-                ->where('id_alloggio', $idAlloggio)
+            return Alloggio::where('id_alloggio', $idAlloggio)
                 ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
                 ->leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
                 ->leftJoin('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
@@ -96,8 +91,7 @@ class Locatore {
     public function getAlloggiByLocatore(){
         $locatore = auth()->user()->getAuthIdentifier();
 
-         return DB::table('alloggio')
-            ->leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
+         return Alloggio::leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
             ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('utente', $locatore)
             ->paginate(3);
@@ -107,8 +101,7 @@ class Locatore {
     public function getDatiLocatore(){
         $locatore = auth()->user()->getAuthIdentifier();
 
-        return DB::table('utente')
-            ->where('id', $locatore)
+        return User::where('id', $locatore)
             ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
             ->get();
     }

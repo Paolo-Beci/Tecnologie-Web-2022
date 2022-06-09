@@ -5,7 +5,9 @@ namespace App\Models;
 use App\Models\Resources\Alloggio;
 use App\Models\Resources\DatiPersonali;
 use App\Models\Resources\Faq;
-use Illuminate\Support\Facades\DB;
+use App\Models\Resources\Interazione;
+use App\Models\Resources\Messaggio;
+use App\Models\Resources\User;
 
 class Admin {
 
@@ -24,8 +26,7 @@ class Admin {
 
     //metodo per ritornare tutti gli alloggi con il locatore per visualizzarli in stats
     public function getOfferteAlloggio(){
-        return DB::table('alloggio')
-            ->leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
+        return Alloggio::leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
             ->leftJoin('utente', 'interazione.utente', '=', 'utente.id')
             ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('utente.ruolo', 'locatore')
@@ -34,8 +35,7 @@ class Admin {
 
     //metodo per tornare un'array di alloggi in base alla tipologia e alla data in stats
     public function getOfferteAlloggioByTipAndDate($tipologia, $data_init, $data_fin){
-        return DB::table('alloggio')
-            ->leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
+        return Alloggio::leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
             ->leftJoin('utente', 'interazione.utente', '=', 'utente.id')
             ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('utente.ruolo', '=','locatore')
@@ -47,8 +47,7 @@ class Admin {
 
     //metodo per ritornare le offerte di locazione (alloggi che interessano, tramite messaggio, a qualcuno)
     public function getOfferteLocazione(){
-        return DB::table('messaggio')
-            ->join('alloggio', 'messaggio.alloggio', '=', 'alloggio.id_alloggio')
+        return Messaggio::join('alloggio', 'messaggio.alloggio', '=', 'alloggio.id_alloggio')
             ->join('utente', 'messaggio.mittente', '=', 'utente.id')
             ->join('foto', 'messaggio.alloggio', '=', 'foto.alloggio')
             ->where('messaggio.contenuto', '=', '<span>Ciao, ho visto la casa e sono interessato!</span>')
@@ -57,15 +56,13 @@ class Admin {
 
     //metodo per ritornare il numero di offerte di locazione
     public function getNumOfferteLocazione(){
-        return DB::table('messaggio')
-            ->where('messaggio.contenuto', '=', '<span>Ciao, ho visto la casa e sono interessato!</span>')
+        return Messaggio::where('messaggio.contenuto', '=', '<span>Ciao, ho visto la casa e sono interessato!</span>')
             ->count();
     }
 
     //metodo per ritornare le offerte di locazione in base alla tipologia e alla data in stats
     public function getOfferteLocazioneByTipAndDate($tipologia, $data_init, $data_fin){
-        return DB::table('messaggio')
-            ->leftJoin('alloggio', 'messaggio.alloggio', '=', 'alloggio.id_alloggio')
+        return Messaggio::leftJoin('alloggio', 'messaggio.alloggio', '=', 'alloggio.id_alloggio')
             ->leftJoin('utente', 'messaggio.mittente', '=', 'utente.id')
             ->leftJoin('foto', 'messaggio.alloggio', '=', 'foto.alloggio')
             ->where('messaggio.contenuto', '=', '<span>Ciao, ho visto la casa e sono interessato!</span>')
@@ -77,8 +74,7 @@ class Admin {
 
     //metodo per ritornare gli alloggi allocati con il loro locatario
     public function getAlloggiAllocati(){
-        return DB::table('interazione')
-            ->leftJoin('utente', 'interazione.utente', 'utente.id')
+        return Interazione::leftJoin('utente', 'interazione.utente', 'utente.id')
             ->leftJoin('alloggio', 'interazione.alloggio', 'alloggio.id_alloggio')
             ->leftJoin('foto', 'interazione.alloggio', '=', 'foto.alloggio')
             ->where('utente.ruolo', '=', 'locatario')
@@ -87,16 +83,14 @@ class Admin {
 
     //metodo per ritornare il numero di alloggi allocati
     public function getNumAlloggiAllocati(){
-        return DB::table('interazione')
-            ->leftJoin('utente', 'interazione.utente', 'utente.id')
+        return Interazione::leftJoin('utente', 'interazione.utente', 'utente.id')
             ->where('utente.ruolo', 'locatario')
             ->count();
     }
 
     //metodo per ritornare gli alloggi allocati in base alla tipologia e alla data in stats
     public function getAlloggiAllocatiByTipAndDate($tipologia, $data_init, $data_fin){
-        return DB::table('interazione')
-            ->leftJoin('utente', 'interazione.utente', 'utente.id')
+        return Interazione::leftJoin('utente', 'interazione.utente', 'utente.id')
             ->leftJoin('alloggio', 'interazione.alloggio', 'alloggio.id_alloggio')
             ->leftJoin('foto', 'interazione.alloggio', '=', 'foto.alloggio')
             ->where('utente.ruolo', '=', 'locatario')
@@ -109,15 +103,13 @@ class Admin {
     //metodo per ritornare tutti gli alloggi per visualizzarli in catalogo (si paginate)
     //metodo che torna gli alloggi insieme alle info sulle foto
     public function getAlloggi(){
-        return DB::table('alloggio')
-            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+        return Alloggio::leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->paginate(3);
     }
 
     //metodo per tornare un'array di alloggi in base alla tipologia
     public function getAlloggioByTip($tipologia){
-        return DB::table('alloggio')
-            ->where('tipologia', $tipologia)
+        return Alloggio::where('tipologia', $tipologia)
             ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->paginate(3);
     }
@@ -126,8 +118,7 @@ class Admin {
     public function getDatiAdmin(){
         $admin = auth()->user()->getAuthIdentifier();
 
-        return DB::table('utente')
-            ->where('id', $admin)
+        return User::where('id', $admin)
             ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
             ->get();
     }

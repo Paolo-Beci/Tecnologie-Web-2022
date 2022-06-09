@@ -9,7 +9,6 @@ use App\Models\Resources\Faq;
 use App\Models\Resources\Foto;
 use App\Models\Resources\Interazione;
 use App\Models\Resources\User;
-use Illuminate\Support\Facades\DB;
 
 class Locatario {
 
@@ -20,15 +19,13 @@ class Locatario {
 
     //metodo che torna gli alloggi insieme alle info sulle foto
     public function getAlloggi(){
-        return DB::table('alloggio')
-            ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+        return Alloggio::leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->paginate(3);
     }
 
     //metodo per tornare un'array di alloggi in base alla tipologia
     public function getAlloggioByTip($tipologia){
-        return DB::table('alloggio')
-            ->where('tipologia', $tipologia)
+        return Alloggio::where('tipologia', $tipologia)
             ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->paginate(3);
     }
@@ -36,8 +33,7 @@ class Locatario {
     //funzione che torna l'istanza dell'alloggio considerato insieme alle sue foto e alle info del locatore
     public function getAlloggio($idAlloggio, $tipologia){
         if($tipologia == 'Appartamento'){
-            return DB::table('alloggio')
-                ->where('id_alloggio', $idAlloggio)
+            return Alloggio::where('id_alloggio', $idAlloggio)
                 ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
                 ->leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
                 ->leftJoin('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
@@ -48,8 +44,7 @@ class Locatario {
                 ->get(['appartamento.*', 'dati_personali.*', 'utente.*', 'disponibilita.*', 'interazione.*' , 'foto.*', 'alloggio.*', 'alloggio.via as via_alloggio', 'alloggio.citta as citta_alloggio', 'alloggio.num_civico as num_civico_alloggio', 'alloggio.cap as cap_alloggio']);
         }
         else{
-            return DB::table('alloggio')
-                ->where('id_alloggio', $idAlloggio)
+            return Alloggio::where('id_alloggio', $idAlloggio)
                 ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
                 ->leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
                 ->leftJoin('disponibilita', 'alloggio.id_alloggio', '=', 'disponibilita.alloggio')
@@ -80,8 +75,7 @@ class Locatario {
 
         // ordinarlo per la data di locazione
 
-        return DB::table('alloggio')   // TO DO
-            ->leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
+        return Alloggio::leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
             ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('utente', $locatario)
             ->orderBy('data_interazione', 'DESC')
@@ -92,8 +86,7 @@ class Locatario {
     public function getDatiLocatario(){
         $locatario = auth()->user()->getAuthIdentifier();
 
-        return DB::table('utente')
-            ->where('id', $locatario)
+        return User::where('id', $locatario)
             ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
             ->get();
     }
@@ -118,8 +111,7 @@ class Locatario {
         //caso indifferente
         if ($tipologia == 'NULL') {
             //prima effettua un filtraggio sulla tabella alloggi (senza join con disponibilità)
-            $risultato = DB::table('alloggio')
-                ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+            $risultato = Alloggio::leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
                 ->whereIn('citta', $citta)
                 ->whereIn('stato', $stato)
                 ->whereIn('periodo_locazione', $periodo)
@@ -156,8 +148,7 @@ class Locatario {
 
         //caso appartamento (analogo al precedente)
         elseif ($tipologia == 'Appartamento') {
-            $risultato = DB::table('alloggio')
-                ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+            $risultato = Alloggio::leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
                 ->leftJoin('appartamento', 'alloggio.id_alloggio', '=', 'appartamento.alloggio')
                 ->where('tipologia', $tipologia)
                 ->whereIn('citta', $citta)
@@ -193,8 +184,7 @@ class Locatario {
 
         //caso posto letto (analogo al precedente)
         elseif ($tipologia == 'Posto_letto') {
-            $risultato = DB::table('alloggio')
-                ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
+            $risultato = Alloggio::leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
                 ->leftJoin('posto_letto', 'alloggio.id_alloggio', '=', 'posto_letto.alloggio')
                 ->where('tipologia', $tipologia)
                 ->whereIn('citta', $citta)
