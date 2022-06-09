@@ -14,7 +14,7 @@
 
     <!-- FONTAWESOME ICONS -->
     <script src="https://kit.fontawesome.com/644d83f971.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('js/menu-script.js')}}"></script>
     <script src="{{asset('js/reviews.js')}}"></script>
     <script src="{{asset('js/popup.js')}}"></script> 
