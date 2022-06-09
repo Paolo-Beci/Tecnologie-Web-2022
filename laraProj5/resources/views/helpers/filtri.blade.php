@@ -79,11 +79,13 @@
     {{ Form::checkbox('check2[]', 'Giardino') }}
     {{ Form::label('Giardino', 'Giardino') }}<br>
 
-    {{ Form::checkbox('check2[]', 'Angolo studio') }}
-    {{ Form::label('Angolo studio', 'Angolo studio') }}<br>
+<div class="postoletto">
+    {{ Form::checkbox('check2[]', 'Angolo_studio') }}
+    {{ Form::label('Angolo_studio', 'Angolo studio') }}<br>
+</div>
 
-    {{ Form::checkbox('check2[]', 'Aria condizionata') }}
-    {{ Form::label('Aria condizionata', 'Aria condizionata') }}<br>
+    {{ Form::checkbox('check2[]', 'Aria_condizionata') }}
+    {{ Form::label('Aria_condizionata', 'Aria condizionata') }}<br>
 
     {{ Form::checkbox('check2[]', 'Wi-fi') }}
     {{ Form::label('Wi-fi', 'Wi-fi') }}<br>
