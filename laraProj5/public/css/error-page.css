@@ -1,0 +1,12 @@
+.error-section {
+    padding-top: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-section p {
+    font-size: 20px;
+    font-weight: bold;
+}

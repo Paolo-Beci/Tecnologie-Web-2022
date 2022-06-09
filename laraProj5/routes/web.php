@@ -1,18 +1,12 @@
 <?php
 
-/*
-  |--------------------------------------------------------------------------
-  | Web Routes
-  |--------------------------------------------------------------------------
-  |
-  | Here is where you can register web routes for your application. These
-  | routes are loaded by the RouteServiceProvider within a group which
-  | contains the "web" middleware group. Now create something great!
-  |
- */
+
+
 
 //GUEST
 Route::get('/', 'GuestController@index')->name('home-guest');
+
+
 
 
 //LOCATORE
@@ -58,6 +52,9 @@ Route::prefix('locatore')->group(function () {
     });
 });
 
+
+
+
 //LOCATARIO
 Route::prefix('locatario')->group(function () {
     Route::get('/', 'LocatarioController@index')->name('home-locatario');
@@ -80,6 +77,9 @@ Route::prefix('locatario')->group(function () {
         Route::get('/dettagli-alloggio/{id_alloggio?}/{tipologia_alloggio?}', 'LocatarioController@showDettaglioAlloggio')->name('dettagli-alloggio-locatario');
     });
 });
+
+
+
 
 //ADMIN
 Route::prefix('admin')->group(function () {
@@ -124,6 +124,9 @@ Route::prefix('admin')->group(function () {
     });
 });
 
+
+
+
 //AUTENTICAZIONE E REGISTRAZIONE
 Route::get('/registrazione-dati-personali', 'GuestController@showRegisterDatiPersonaliGet');
 
@@ -136,6 +139,8 @@ Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 
+
+
 //CATALOGO
 Route::prefix('catalogo')->group(function () {
     Route::get('/', 'GuestController@showPublicCatalog')->name('catalogo');
@@ -144,6 +149,9 @@ Route::prefix('catalogo')->group(function () {
 
     Route::get('/posti-letto', 'GuestController@showPublicCatalogPostiLetto')->name('catalogo-posti-letto');
 });
+
+
+
 
 //MESSAGGISTICA
 
@@ -156,3 +164,52 @@ Route::post('/opzionamento', 'MessaggisticaController@opzionamento')->name('opzi
 Route::post('/assegnamento', 'MessaggisticaController@assegnamento')->name('assegnamento');
 
 Route::post('/contratto', 'LocatarioController@showContratto')->name('contratto');
+
+
+
+
+//SEZIONE ERRORI ROTTE POST
+
+Route::get('/locatore/modifica-dati', function() {
+    return view('layouts/error');
+});
+
+Route::get('/locatario/modifica-dati', function() {
+    return view('layouts/error');
+});
+
+Route::get('/admin/gestione-faq/offerte-alloggio-filtrate', function() {
+    return view('layouts/error');
+});
+
+Route::get('/admin/gestione-faq/offerte-locazione-filtrate', function() {
+    return view('layouts/error');
+});
+
+Route::get('/admin/gestione-faq/alloggi-allocati-filtrati', function() {
+    return view('layouts/error');
+});
+
+Route::get('/login', function() {
+    return view('layouts/error');
+});
+
+Route::get('/logout', function() {
+    return view('layouts/error');
+});
+
+Route::get('/registrazione', function() {
+    return view('layouts/error');
+});
+
+Route::get('/opzionamento', function() {
+    return view('layouts/error');
+});
+
+Route::get('/assegnamento', function() {
+    return view('layouts/error');
+});
+
+Route::get('/contratto', function() {
+    return view('layouts/error');
+});
