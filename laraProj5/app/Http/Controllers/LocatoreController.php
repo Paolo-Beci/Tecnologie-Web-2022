@@ -184,8 +184,8 @@ class LocatoreController extends Controller {
         //crea la foto
         if ($request->hasFile('immagine')) {
             $image = $request->file('immagine');
-            $array = $this->imageCompose($image);
-            $estensione = '.' . $array[1];
+            $arrayImage = $this->imageCompose($image);
+            $estensione = '.' . $arrayImage[1];
 
             $new_foto = Foto::create([
                 'estensione' => $estensione,
