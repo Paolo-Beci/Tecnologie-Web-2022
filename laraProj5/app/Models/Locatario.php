@@ -45,7 +45,7 @@ class Locatario {
                 ->where('ruolo','=', 'locatore')
                 ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
                 ->leftJoin('appartamento', 'alloggio.id_alloggio', '=', 'appartamento.alloggio')
-                ->get();
+                ->get(['appartamento.*', 'dati_personali.*', 'utente.*', 'disponibilita.*', 'interazione.*' , 'foto.*', 'alloggio.*', 'alloggio.via as via_alloggio', 'alloggio.citta as citta_alloggio', 'alloggio.num_civico as num_civico_alloggio', 'alloggio.cap as cap_alloggio']);
         }
         else{
             return DB::table('alloggio')
@@ -57,7 +57,8 @@ class Locatario {
                 ->where('ruolo', '=', 'locatore')
                 ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
                 ->leftJoin('posto_letto', 'alloggio.id_alloggio', '=', 'posto_letto.alloggio')
-                ->get();
+                ->get(['posto_letto.*', 'dati_personali.*', 'utente.*', 'disponibilita.*', 'interazione.*' , 'foto.*', 'alloggio.*', 'alloggio.via as via_alloggio', 'alloggio.citta as citta_alloggio', 'alloggio.num_civico as num_civico_alloggio', 'alloggio.cap as cap_alloggio']);
+
         }
     }
 
@@ -247,7 +248,7 @@ class Locatario {
                                           ->where('alloggio', $alloggio)
                                           ->get()[0];
 
-        // echo "<pre>" . print_r($dati, true) . "</pre>"; 
+        // echo "<pre>" . print_r($dati, true) . "</pre>";
 
         return $dati;
 

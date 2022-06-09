@@ -14,7 +14,7 @@
         <section class="primo-box">
             <div class="image-container">
                 <img class="immagine-alloggio"
-                     src="{{ asset('images_case/'.$info_generali->first()->alloggio.$info_generali->first()->estensione) }}"
+                     src="{{ asset('images_case/'.$info_generali->first()->id_foto.$info_generali->first()->estensione) }}"
                      alt="Immagine">
             </div>
 
@@ -25,9 +25,9 @@
                     @else
                         <h1>Posto letto</h1>
                     @endif
-                    <h1>{{$info_generali->first()->via}}
-                        , {{$info_generali->first()->num_civico}}
-                        , {{$info_generali->first()->citta}} {{$info_generali->first()->cap}}<br>
+                    <h1>{{$info_generali->first()->via_alloggio}}
+                        , {{$info_generali->first()->num_civico_alloggio}}
+                        , {{$info_generali->first()->citta}} {{$info_generali->first()->cap_alloggio}}<br>
                         Piano: {{$info_generali->first()->piano}} Interno: {{$info_generali->first()->interno}}</h1>
 
                     @if($info_generali->first()->stato == 'libero')
@@ -134,7 +134,7 @@
             <div class="mappa-alloggio">
                 <iframe width="600" height="500" id="gmap_canvas" loading="lazy" allowfullscreen
                         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDKrpbaW7f4DAhXkdkXw3T_f62wW2zFwtg&q=
-                        {{ $info_generali->first()->via }} {{ $info_generali->first()->num_civico }} {{ $info_generali->first()->citta }}
+                        {{ $info_generali->first()->via }} {{ $info_generali->first()->num_civico }} {{ $info_generali->first()->citta_alloggio }}
                             " frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
             </div>
         </section>
