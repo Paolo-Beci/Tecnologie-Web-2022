@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Resources\Faq;
+use App\Models\Resources\Modifica;
 
 use Illuminate\Http\Request;
 
@@ -76,10 +77,16 @@ class AdminController extends Controller {
     {
         $array = $request->all();
 
-        Faq::create([
+        $idFaq = Faq::create([
             'domanda' => $array['domanda'],
             'risposta' => $array['risposta'],
             'target' => $array['target']
+        ])->id_faq;
+
+        Modifica::create([
+            'utente' => auth()->user()->id,
+            'faq' => $idFaq,
+            'data_modifica' => now()
         ]);
 
         return redirect()->action('AdminController@confirm');
@@ -141,6 +148,12 @@ class AdminController extends Controller {
         $faq->risposta = $request->risposta;
         $faq->target = $request->target;
         $faq->save();
+
+        Modifica::create([
+            'utente' => auth()->user()->id,
+            'faq' => $request->id_faq,
+            'data_modifica' => now()
+        ]);
 
         return redirect()->action('AdminController@confirm');
 
@@ -217,7 +230,7 @@ class AdminController extends Controller {
 
         //per offerte di locazione
         $numOffLoc = $this->_adminModel->getNumOfferteLocazione();
-        $offLoc = $this->_adminModel->getOfferteLocazioneByTipAndDate($type2, $da2, $a2/*$tipologia, $data_init, $data_fin*/);
+        $offLoc = $this->_adminModel->getOfferteLocazioneByTipAndDate($type2, $da2, $a2);/*$tipologia, $data_init, $data_fin*/
 
         //per alloggi allocati
         $numAllAllocati = $this->_adminModel->getNumAlloggiAllocati();

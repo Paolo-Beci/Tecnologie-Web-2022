@@ -195,7 +195,7 @@
 
 /*regole css per l'ancora che visualizza info sul locatore in stats admin*/
 .dettagli_locatore {
-    margin: 116px;
+    margin: 20px auto;
 }
 
 .dettagli_locatore:hover {
@@ -203,7 +203,6 @@
     text-decoration: underline rgb(255, 214, 37);
 }
 
-/*prova*/
 .card {
     position: relative;
     width: 350px;
@@ -223,6 +222,9 @@
     outline-offset: 5px;
     backface-visibility: hidden;
     border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .card__image:nth-child(2),

@@ -146,12 +146,12 @@ class DatabaseSeeder extends Seeder {
         ]);
 
         DB::table('modifica')->insert([
-            ['utente' => 3, 'faq' => 1, 'data_modifica' => now()],
-            ['utente' => 3, 'faq' => 2, 'data_modifica' => now()],
-            ['utente' => 3, 'faq' => 3, 'data_modifica' => now()],
-            ['utente' => 3, 'faq' => 4, 'data_modifica' => now()],
-            ['utente' => 3, 'faq' => 5, 'data_modifica' => now()],
-            ['utente' => 3, 'faq' => 6, 'data_modifica' => now()],
+            ['utente' => 4, 'faq' => 1, 'data_modifica' => now()],
+            ['utente' => 4, 'faq' => 2, 'data_modifica' => now()],
+            ['utente' => 4, 'faq' => 3, 'data_modifica' => now()],
+            ['utente' => 4, 'faq' => 4, 'data_modifica' => now()],
+            ['utente' => 4, 'faq' => 5, 'data_modifica' => now()],
+            ['utente' => 4, 'faq' => 6, 'data_modifica' => now()],
         ]);
 
         DB::table('messaggio')->insert([
