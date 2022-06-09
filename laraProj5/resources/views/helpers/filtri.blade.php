@@ -42,7 +42,7 @@
 </script>
 <h1 style="margin: 20px">Filtri ricerca</h1>
 <hr style="margin: 10px">
-{{ Form::open(array('route' => 'filtered', 'class' => 'filtri active-form')) }}
+{{ Form::open(array('route' => 'filtered', 'class' => 'filtri active-form', 'method' => 'get')) }}
 
 <h2 class="subtitle-filtri">Città</h2>
     {{ Form::text('citta', $citta, ['placeholder' => 'Es: Ancona...']) }}<br>

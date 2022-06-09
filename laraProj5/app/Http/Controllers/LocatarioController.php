@@ -109,76 +109,77 @@ class LocatarioController extends Controller {
     }
 
     //metodo utilizzato per tornare gli alloggi in base a tutti i filtri
-    public function showAlloggiFiltered() {
+    public function showAlloggiFiltered(Request $request) {
 
+        $array = $request->all();
         /*effettua controlli sui campi delle form: se sono vuoti, il controller fa sì che
         il filtraggio avvenga senza considerare i campi non compilati*/
-        $check = $_POST['check'] ?? ['Libero', 'Locato'];
+        $check = $array['check'] ?? ['Libero', 'Locato'];
 
-        $servizi = $_POST['check2'] ?? [];
+        $servizi = $array['check2'] ?? [];
 
-        if ($_POST['citta'] == '') {
+        if ($array['citta'] == '') {
             $citta = $this->_locatarioModel->getCity();
-        } else $citta = array($_POST['citta']);
+        } else $citta = array($array['citta']);
 
-        if ($_POST['num_camere'] == '') {
+        if ($array['num_camere'] == '') {
             $num_camere = range(0, 20);
-        } else $num_camere = array($_POST['num_camere']);
+        } else $num_camere = array($array['num_camere']);
 
-        if ($_POST['number_pl_app'] == '') {
+        if ($array['number_pl_app'] == '') {
             $number_pl_app = range(0, 20);
-        } else $number_pl_app = array($_POST['number_pl_app']);
+        } else $number_pl_app = array($array['number_pl_app']);
 
-        if ($_POST['tipo'] == 'NULL') {
+        if ($array['tipo'] == 'NULL') {
             $tipo = ['Doppia', 'Singola'];
-        } else $tipo = array($_POST['tipo']);
+        } else $tipo = array($array['tipo']);
 
-        if (isset($_POST['periodo'])) {
-            $periodo = array($_POST['periodo']);
+        if (isset($array['periodo'])) {
+            $periodo = array($array['periodo']);
         } else $periodo = [12, 9, 6];
 
-        if (isset($_POST['gender'])) {
-            $gender = array($_POST['gender']);
+        if (isset($array['gender'])) {
+            $gender = array($array['gender']);
         } else $gender = ['m', 'f', 'u'];
 
-        if ($_POST['number_piano'] == '') {
+        if ($array['number_piano'] == '') {
             $number_piano = range(0,127);
-        } else $number_piano = array($_POST['number_piano']);
+        } else $number_piano = array($array['number_piano']);
 
-        if ($_POST['min-mq'] == '') {
+        if ($array['min-mq'] == '') {
             $min_mq = 0;
-        } else $min_mq = $_POST['min-mq'];
+        } else $min_mq = $array['min-mq'];
 
-        if ($_POST['max-mq'] == '') {
+        if ($array['max-mq'] == '') {
             $max_mq = 999999;
-        } else $max_mq = $_POST['max-mq'];
+        } else $max_mq = $array['max-mq'];
 
-        if ($_POST['min-mq'] == '') {
+        if ($array['min-mq'] == '') {
             $min_prezzo = 0;
-        } else $min_prezzo = $_POST['min-prezzo'];
+        } else $min_prezzo = $array['min-prezzo'];
 
-        if ($_POST['max-prezzo'] == '') {
+        if ($array['max-prezzo'] == '') {
             $max_prezzo = 999999;
-        } else $max_prezzo = $_POST['max-prezzo'];
+        } else $max_prezzo = $array['max-prezzo'];
 
         $alloggiFiltered = $this->_locatarioModel->getAlloggiFiltered(
-            $_POST['tipologia'], $check, $periodo,
+            $array['tipologia'], $check, $periodo,
             $gender, $number_piano, $number_pl_app,
             $citta, $min_mq, $max_mq, $min_prezzo,
             $max_prezzo, $servizi, $num_camere, $tipo);
 
         return view('layouts/content-catalogo')
             ->with('alloggi', $alloggiFiltered)
-            ->with('tipologia', $_POST['tipologia'])
-            ->with('citta', $_POST['citta'])
-            ->with('piano', $_POST['number_piano'])
-            ->with('num_pl', $_POST['number_pl_app'])
-            ->with('minmq', $_POST['min-mq'])
-            ->with('maxmq', $_POST['max-mq'])
-            ->with('minprezzo', $_POST['min-prezzo'])
-            ->with('maxprezzo', $_POST['max-prezzo'])
-            ->with('num_camere_tot', $_POST['num_camere'])
-            ->with('tipo', $_POST['tipo']);
+            ->with('tipologia', $array['tipologia'])
+            ->with('citta', $array['citta'])
+            ->with('piano', $array['number_piano'])
+            ->with('num_pl', $array['number_pl_app'])
+            ->with('minmq', $array['min-mq'])
+            ->with('maxmq', $array['max-mq'])
+            ->with('minprezzo', $array['min-prezzo'])
+            ->with('maxprezzo', $array['max-prezzo'])
+            ->with('num_camere_tot', $array['num_camere'])
+            ->with('tipo', $array['tipo']);
     }
 
     // metodo utilizzato per tornare i dettagli dell'account attualmente loggato

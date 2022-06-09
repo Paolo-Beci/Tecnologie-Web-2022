@@ -92,6 +92,6 @@
         </section>
     </main>
     <!--Paginazione-->
-    @include('pagination.paginator', ['paginator' => $alloggi])
+    @include('pagination.paginator', ['paginator' => $alloggi->appends($_GET)])
 
 @endsection
