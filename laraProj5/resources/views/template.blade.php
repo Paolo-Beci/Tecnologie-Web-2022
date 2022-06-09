@@ -34,7 +34,18 @@
             <img src="{{asset('images/FlatMate_Logo_mini.png')}}" alt="FlatMate Logo">
         </a>
         <nav>
-            @include('layouts/_navbar')
+            @auth
+                @php
+                    $datiPersonali = App\Models\Resources\DatiPersonali::find(auth()->user()->dati_personali);
+                    $profilePhoto = $datiPersonali->id_foto_profilo . $datiPersonali->estensione_p;
+                    if($profilePhoto == '')
+                        $profilePhoto = 'user_icon.png';
+                @endphp
+                @include('layouts/_navbar', ['profilePhoto' => $profilePhoto])
+            @endauth
+            @guest
+                @include('layouts/_navbar')
+            @endguest
         </nav>
     </header>
         @yield('content')

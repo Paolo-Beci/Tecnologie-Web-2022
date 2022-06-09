@@ -36,8 +36,8 @@
 <li>
     <a href="{{route('account-locatore')}}">
         <button class="bottone_profilo">
-            <img src="{{asset('images/user_icon.png')}}" alt="User Logo" width="10%" style="vertical-align:middle;padding-right: 10px">
-            {{Auth::user()->username}}
+            <img src="{{asset('images_profilo/' . $profilePhoto)}}" alt="User Logo" width="10%" style="vertical-align:middle;padding-right: 10px">
+            <span>{{Auth::user()->username}}</span>
         </button>
     </a>
 </li>

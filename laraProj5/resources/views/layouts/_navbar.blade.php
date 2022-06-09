@@ -18,19 +18,19 @@
     {{-- Sezione locatore --}}
 
     @can('isLocatore')
-       @include('_navbar/_navbar-locatore')
+       @include('_navbar/_navbar-locatore', ['profilePhoto' => $profilePhoto])
     @endcan
 
     {{-- Sezione locatario --}}
 
     @can('isLocatario')
-        @include('_navbar/_navbar-locatario')
+        @include('_navbar/_navbar-locatario', ['profilePhoto' => $profilePhoto])
     @endcan
 
     {{-- Sezione admin --}}
 
     @can('isAdmin')
-        @include('_navbar/_navbar-admin')
+        @include('_navbar/_navbar-admin', ['profilePhoto' => $profilePhoto])
     @endcan
 
     {{-- Sezione utente non autenticato --}}

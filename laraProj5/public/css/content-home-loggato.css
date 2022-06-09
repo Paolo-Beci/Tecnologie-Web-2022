@@ -1,22 +1,36 @@
 /* Regole bottone profilo utente */
 .bottone_profilo {
     background-color: white;
-    border-radius:13px;
-    border:2px solid #414141;
-    display:inline-block;
-    cursor:pointer;
+    border-radius: 13px;
+    border: 2px solid #414141;
+    display: inline-block;
+    cursor: pointer;
     color:#414141;
-    font-size:18px;
-    font-weight:bold;
-    padding:13px 1px;
-    text-decoration:none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 0px;
+    text-decoration: none;
     width: 200px;
 }
 
 .bottone_profilo:hover {
     background-color:#414141;
     border:2px solid #ffd725;
+}
+
+.bottone_profilo:hover span {
     color:#ffd725;
+}
+
+.bottone_profilo img {
+    height: 40px;
+    width: 40px;
+    padding-right: 0 !important;
+    border-radius: 50%;
+}
+
+.bottone_profilo span {
+    padding-left: 10px;
 }
 
 /* Regole corpo del documento */
