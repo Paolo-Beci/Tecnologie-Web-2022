@@ -16,15 +16,26 @@
                 //seleziono l'elemento della form specificando il suo id ed applica il metodo per nasconderlo/meno
                 $("input.appartamento").show();
                 $("label.appartamento").show();
-                $("div#tipologiaCamera").show();
-                $("div#numCamere").hide();
+                $("div#containerTipologiaCamera").show();
+                $("div#containerNumCamere").hide();
             }
             else{
                 $("input.appartamento").hide();
                 $("label.appartamento").hide();
-                $("div#tipologiaCamera").hide();
-                $("div#numCamere").show();
+                $("div#containerTipologiaCamera").hide();
+                $("div#containerNumCamere").show();
             }
+            });
+
+            //si occupa di settare l'età max in base all'età min selezionata dall'utente
+            $("#etaMin").on('change', function(event) {
+                $("#etaMax").val($(this).val());
+            });
+
+            $("#etaMax").on('change', function(event) {
+                if($(this).val() < $("#etaMin").val()){
+                    $(this).val($("#etaMin").val());
+                }
             });
         });
     </script>
@@ -99,13 +110,13 @@
                                 </div>
 
                                 <!-- Num camere (appartemento)-->
-                                    <div class="item" id="numCamere">
+                                    <div class="item" id="containerNumCamere">
                                         {{ Form::label('numCamere', 'Num camere', ['class' => 'label-form']) }}
                                         {{ Form::selectRange('numCamere', 1, 20, $alloggio->num_camere, ['id' => 'numCamere']) }}
                                     </div>
 
                                 <!-- Tipologia camera (posto letto) -->
-                                    <div class="appartamento" id="tipologiaCamera">
+                                    <div class="appartamento" id="containerTipologiaCamera">
                                         {{ Form::label('tipologiaCamera', 'Tipologia camera', ['class' => 'label-form']) }}
                                         {{ Form::select('tipologiaCamera', ['S' => 'Singola', 'D' => 'Doppia'], $alloggio->tipologia_camera, ['id' => 'tipologiaCamera']) }}
                                     </div>
@@ -123,9 +134,9 @@
                                 <div>
                                     <p class="item">Fascia di età:</p>
                                     {{ Form::label('etaMin', 'Min', ['class' => 'label-form']) }}
-                                    {{ Form::selectRange('etaMin', 18, 100, $alloggio->eta_minima, ['id' => 'etaMin']) }}
+                                    {{ Form::selectRange('etaMin', 18, 99, $alloggio->eta_minima, ['id' => 'etaMin']) }}
                                     {{ Form::label('etaMax', 'Max', ['class' => 'label-form']) }}
-                                    {{ Form::selectRange('etaMax', 18, 100, $alloggio->eta_massima, ['id' => 'etaMax']) }}
+                                    {{ Form::selectRange('etaMax', 18, 99, $alloggio->eta_massima, ['id' => 'etaMax']) }}
                                 </div>
 
                                 <!-- Periodo locazione -->
@@ -145,17 +156,23 @@
                                             {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio) }}
                                         @else
                                             @if (array_key_exists($servizio->nome_servizio, $servizi_disponibili))
-                                                @if($servizio->nome_servizio == 'Angolo studio')
-                                                    {{ Form::checkbox($servizio->nome_servizio, 1, true, [ 'class'=>'appartamento']) }}
-                                                    {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio, [ 'class'=>'appartamento'])}}
+                                                @if($servizio->nome_servizio == 'Angolo_studio')
+                                                    {{ Form::checkbox($servizio->nome_servizio, 1, true, ['id' => $servizio->nome_servizio, 'class'=>'appartamento']) }}
+                                                    {{ Form::label($servizio->nome_servizio, 'Angolo studio', [ 'class'=>'appartamento'])}}
+                                                @elseif($servizio->nome_servizio == 'Aria_condizionata')
+                                                    {{ Form::checkbox($servizio->nome_servizio, 1, true, ['id' => $servizio->nome_servizio]) }}
+                                                    {{ Form::label($servizio->nome_servizio, 'Aria condizionata')}}
                                                 @else
                                                     {{ Form::checkbox($servizio->nome_servizio, 1, true, ['id' => $servizio->nome_servizio]) }}
                                                     {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio)}}
                                                 @endif
                                             @else
-                                                @if($servizio->nome_servizio == 'Angolo studio')
-                                                    {{ Form::checkbox($servizio->nome_servizio, 1, false, ['class'=>'appartamento']) }}
-                                                    {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio, ['class'=>'appartamento'])}}
+                                                @if($servizio->nome_servizio == 'Angolo_studio')
+                                                    {{ Form::checkbox($servizio->nome_servizio, 1, false, ['id' => $servizio->nome_servizio, 'class'=>'appartamento']) }}
+                                                    {{ Form::label($servizio->nome_servizio, 'Angolo studio', ['class'=>'appartamento'])}}
+                                                @elseif($servizio->nome_servizio == 'Aria_condiziona')
+                                                    {{ Form::checkbox($servizio->nome_servizi, 1, false, ['id' => $servizio->nome_servizio, 'class'=>'appartamento']) }}
+                                                    {{ Form::label($servizio->nome_servizi, 'Aria condizionata', [ 'class'=>'appartamento'])}}
                                                 @else
                                                     {{ Form::checkbox($servizio->nome_servizio, 1, false, ['id' => $servizio->nome_servizio]) }}
                                                     {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio)}}

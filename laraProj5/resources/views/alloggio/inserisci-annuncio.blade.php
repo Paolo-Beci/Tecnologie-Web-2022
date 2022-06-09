@@ -29,11 +29,22 @@
                 if($(this).val() === 'Posto_letto'){
                     //seleziono l'elemento della form specificando il suo id ed applica il metodo per nasconderlo/meno
                     $("div.appartamento").show();
-                    $("div#numCamere").hide();
+                    $("div#containerNumCamere").hide();
                 }
                 else{
                     $("div.appartamento").hide();
-                    $("div#numCamere").show();
+                    $("div#containerNumCamere").show();
+                }
+            });
+
+            //si occupa di settare l'età max in base all'età min selezionata dall'utente
+            $("#etaMin").on('change', function(event) {
+                $("#etaMax").val($(this).val());
+            });
+
+            $("#etaMax").on('change', function(event) {
+                if($(this).val() < $("#etaMin").val()){
+                    $(this).val($("#etaMin").val());
                 }
             });
         });
@@ -71,7 +82,7 @@
                             {{ Form::selectRange('numPostiLettoTot', 1, 20, ['id' => 'numPostiLettoTot']) }}
                         </div>
                         <!-- Num camere (appartemento)-->
-                        <div id="numCamere">
+                        <div id="containerNumCamere">
                             {{ Form::label('numCamere', 'Num camere') }}
                             {{ Form::selectRange('numCamere', 1, 20, ['id' => 'numCamere']) }}
                         </div>
@@ -93,9 +104,9 @@
                         <div>
                             <p class="item">Fascia di età:</p>
                             {{ Form::label('etaMin', 'Min') }}
-                            {{ Form::selectRange('etaMin', 18, 100, ['id' => 'etaMin']) }}
+                            {{ Form::selectRange('etaMin', 18, 99, ['id' => 'etaMin']) }}
                             {{ Form::label('etaMax', 'Max') }}
-                            {{ Form::selectRange('etaMax', 18, 100, ['id' => 'etaMax']) }}
+                            {{ Form::selectRange('etaMax', 18, 99, ['id' => 'etaMax']) }}
                         </div>
                         <!-- Periodo locazione -->
                         <div>

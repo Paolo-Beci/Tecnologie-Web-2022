@@ -92,3 +92,8 @@ function doFormValidation(actionUrl, formId) {
         processData: false
     });
 }
+
+function changeEta(etaMinima) {
+    console.log($(this).val());
+
+}
