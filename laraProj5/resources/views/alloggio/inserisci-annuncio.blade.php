@@ -61,7 +61,7 @@
                             {{Form::select('tipologia', ['Appartamento' => 'Appartamento', 'Posto_letto' => 'Posto letto'], '', ['id' => 'tipologia'])}}
                         </div>
                         <!-- Dimensione -->
-                        <div class="item" id="dimensione">
+                        <div class="item">
                             {{ Form::label('dimensione', 'Dimensione (mq)') }}
                             {{ Form::text('dimensione', '', ['id' => 'dimensione']) }}
                         </div>

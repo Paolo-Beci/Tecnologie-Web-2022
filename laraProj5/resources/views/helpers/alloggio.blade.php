@@ -12,5 +12,4 @@
         @include('helpers/carta-alloggio-catalogo')
     </div>
 @endcannot
-@endif
 </article>

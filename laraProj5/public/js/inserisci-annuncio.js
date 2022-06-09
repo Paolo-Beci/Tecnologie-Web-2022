@@ -33,7 +33,7 @@ function doElemValidation(id, actionUrl, formId) {
                     //trasformazione in array associativo dei mex di errore
                     var errMsgs = JSON.parse(data.responseText);
                     //elimino i mex di errore vecchi associati ad un determinato elemento
-                    $("#" + id).parent().find('.errors').html(' ');
+                    $("#" + id).parent().find('.errors').remove();
                     //inserisco i nuovi mex di errore
                     $("#" + id).after(getErrorHtml(errMsgs[id]));
                 }
@@ -79,7 +79,7 @@ function doFormValidation(actionUrl, formId) {
             if (data.status === 422) {
                 var errMsgs = JSON.parse(data.responseText);
                 $.each(errMsgs, function (id) {
-                    $("#" + id).parent().find('.errors').html(' ');
+                    $("#" + id).parent().find('.errors').remove();
                     $("#" + id).after(getErrorHtml(errMsgs[id]));
                 });
             }
