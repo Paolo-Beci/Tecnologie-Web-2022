@@ -1,4 +1,4 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
 <script>
     $(function () {
         //seleziono l'elemento della form sul quale avviene l'evento ("#idElementoNellaForm")
