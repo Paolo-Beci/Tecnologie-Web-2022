@@ -39,9 +39,9 @@ class Admin {
             ->leftJoin('utente', 'interazione.utente', '=', 'utente.id')
             ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('utente.ruolo', '=','locatore')
-            ->where('tipologia', $tipologia)
-            ->where('data_inserimento_offerta', '<', $data_fin)
-            ->where('data_inserimento_offerta', '>', $data_init)
+            ->whereIn('tipologia', $tipologia)
+            ->where('data_inserimento_offerta', '<=', $data_fin)
+            ->where('data_inserimento_offerta', '>=', $data_init)
             ->get();
     }
 
@@ -66,9 +66,9 @@ class Admin {
             ->leftJoin('utente', 'messaggio.mittente', '=', 'utente.id')
             ->leftJoin('foto', 'messaggio.alloggio', '=', 'foto.alloggio')
             ->where('messaggio.contenuto', '=', '<span>Ciao, ho visto la casa e sono interessato!</span>')
-            ->where('tipologia', $tipologia)
-            ->where('data_invio', '<', $data_fin)
-            ->where('data_invio', '>', $data_init)
+            ->whereIn('tipologia', $tipologia)
+            ->where('data_invio', '<=', $data_fin)
+            ->where('data_invio', '>=', $data_init)
             ->get();
     }
 
@@ -94,9 +94,9 @@ class Admin {
             ->leftJoin('alloggio', 'interazione.alloggio', 'alloggio.id_alloggio')
             ->leftJoin('foto', 'interazione.alloggio', '=', 'foto.alloggio')
             ->where('utente.ruolo', '=', 'locatario')
-            ->where('tipologia', $tipologia)
-            ->where('data_interazione', '<', $data_fin)
-            ->where('data_interazione', '>', $data_init)
+            ->whereIn('tipologia', $tipologia)
+            ->where('data_interazione', '<=', $data_fin)
+            ->where('data_interazione', '>=', $data_init)
             ->get();
     }
 
