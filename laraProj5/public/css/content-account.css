@@ -89,6 +89,18 @@ li {
 }
 
 .img-profilo {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #414141;
+}
+
+.Posto_letto {
     width: 15%;
     height: 15%;
     background-size: cover;

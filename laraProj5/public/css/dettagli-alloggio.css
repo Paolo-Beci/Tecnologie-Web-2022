@@ -119,8 +119,8 @@
 }
 
 .img-profilo {
-    width: 15%;
-    height: 15%;
+    width: 150px;
+    height: 150px;
     background-size: cover;
     background-position: center;
     border-radius: 150px;
