@@ -32,6 +32,6 @@ Di seguito vengono riportate le credenziali di accesso agli utenti già inseriti
 Nome | LinkedIn
 ---- | ----
 [Paolo Beci](https://github.com/Paolo-Beci) | [Link](https://www.linkedin.com/in/paolo-beci-919a28199/)
-[Emanuele Frisi](https://github.com/emanuelefrisi) | [Link](hhttps://www.linkedin.com/in/emanuele-frisi-771260201/)
+[Emanuele Frisi](https://github.com/emanuelefrisi) | [Link](https://www.linkedin.com/in/emanuele-frisi-771260201/)
 [Giuseppe Izzi](https://github.com/IzziGiuseppe) | [Link](https://www.linkedin.com/in/giuseppe-izzi-81bb301b8/)
 [Domenico La Porta](https://github.com/domenicolaporta00) | -
