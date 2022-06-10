@@ -178,8 +178,8 @@
                 <!-- Password -->
                 @if (Route::current()->getName() != 'show-locatario')
                     <div class="item">
-                        {{ Form::label('password', 'Password') }}
-                        {{ Form::input('password', 'password', ['placeholder' => 'Password']) }}
+                        {{ Form::label('password', 'Nuova Password', ['class' => 'label-form']) }}
+                        {{ Form::input('password', 'password') }}
                         <span class="underline"></span>
                     </div>
                     @if ($errors->first('password'))
