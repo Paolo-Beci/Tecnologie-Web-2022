@@ -1,4 +1,4 @@
-# Tecnologie Web 2022 - FlatMate :globe_with_meridians
+# Tecnologie Web 2022 - FlatMate :globe_with_meridians:
 Progetto per esame di Tecnologie Web 2022 UNIVPM
 
 ## Credenziali di accesso agli utenti stock
