@@ -31,6 +31,8 @@ class AdminController extends Controller {
         $numAllAllocati = $this->_adminModel->getNumAlloggiAllocati();
         $allAllocati = $this->_adminModel->getAlloggiAllocati();
 
+        /*richiama la home page admin con le statistiche derivanti dai metodi richiamati sopra
+        e i filtri non settati (ci sarà quindi un placeholder)*/
         return view('layouts/content-home')
             ->with('numOffAll', $numOffAll)
             ->with('offAll', $offAll)
@@ -49,6 +51,7 @@ class AdminController extends Controller {
             ->with('a3', '');
     }
 
+    //metodo che richiama una vista con tutte le faq
     public function showFaq() {
         $faq = $this->_adminModel->getFaq();
 
@@ -59,6 +62,7 @@ class AdminController extends Controller {
     //questa funzione apre la sezione di inserimento
     public function insertFaq() {
 
+        //array associativo che rappresenta il target delle faq (da passare alla vista)
         $tg = ['locatore'=>'locatore', 'locatario'=>'locatario', 'utente non registrato'=>'utente non registrato'];
         return view('faq/insert-faq')
             ->with('insert', 'active')
@@ -124,7 +128,12 @@ class AdminController extends Controller {
 
         $faq = $this->_adminModel->getFaqById($id);
 
+        //stesso array associativo del caso inserimento
         $tg = ['locatore'=>'locatore', 'locatario'=>'locatario', 'utente non registrato'=>'utente non registrato'];
+
+        /*viene richiamata la stessa vista, ma con parametri differenti in modo da visualizzare
+        invece che campi della form vuoti campi compilati con la particolare faq da modificare;
+        cambiano inoltre alcune label nella vista*/
         return view('faq/insert-faq')
             ->with('insert', '')
             ->with('edit', 'active')
@@ -191,6 +200,10 @@ class AdminController extends Controller {
         $numAllAllocati = $this->_adminModel->getNumAlloggiAllocati();
         $allAllocati = $this->_adminModel->getAlloggiAllocati();
 
+        /*viene richiamata sempre la vista home admin, ma con i risultati filtrati,
+        derivanti sempre dai metodi utilizzati sopra; inoltre i campi delle form
+        che sono stati compilati restano con gli stessi dati che sono stati passati,
+        mentre gli altri hanno sempre il placeholder*/
         return view('layouts/content-home')
             ->with('numOffAll', $numOffAll)
             ->with('offAll', $offAll)
@@ -236,6 +249,7 @@ class AdminController extends Controller {
         $numAllAllocati = $this->_adminModel->getNumAlloggiAllocati();
         $allAllocati = $this->_adminModel->getAlloggiAllocati();
 
+        //come il caso precedente, riga 203->206
         return view('layouts/content-home')
             ->with('numOffAll', $numOffAll)
             ->with('offAll', $offAll)
@@ -281,6 +295,7 @@ class AdminController extends Controller {
         $numAllAllocati = $this->_adminModel->getNumAlloggiAllocati();
         $allAllocati = $this->_adminModel->getAlloggiAllocatiByTipAndDate($type3, $da3, $a3);
 
+        //come il caso precedente, riga 203->206
         return view('layouts/content-home')
             ->with('numOffAll', $numOffAll)
             ->with('offAll', $offAll)
@@ -299,6 +314,7 @@ class AdminController extends Controller {
             ->with('a3', $_POST['a3']);
     }
 
+    //metodo che restituisce la vista catalogo per l'admin (quindi senza possibilità di filtrare)
     public function showCatalog(){
 
         $alloggi = $this->_adminModel->getAlloggi();
@@ -308,6 +324,7 @@ class AdminController extends Controller {
 
     }
 
+    //come metodo precedente solo che mostra gli appartamenti
     public function showCatalogAppartamenti(){
 
         $alloggi = $this->_adminModel->getAlloggioByTip('Appartamento');
@@ -317,6 +334,7 @@ class AdminController extends Controller {
 
     }
 
+    //come metodo precedente solo che mostra i posti letto
     public function showCatalogPostiLetto(){
 
         $alloggi = $this->_adminModel->getAlloggioByTip('Posto_letto');
