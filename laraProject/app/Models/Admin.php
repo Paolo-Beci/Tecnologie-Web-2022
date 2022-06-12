@@ -11,10 +11,12 @@ use App\Models\Resources\User;
 
 class Admin {
 
+    //metodo che restituisci tutte le faq
     public function getFaq(){
         return Faq::all();
     }
 
+    //metodo che restituisce una particolare faq in base al suo id
     public function getFaqById($id){
         return Faq::find($id);
     }
@@ -100,8 +102,7 @@ class Admin {
             ->get();
     }
 
-    //metodo per ritornare tutti gli alloggi per visualizzarli in catalogo (si paginate)
-    //metodo che torna gli alloggi insieme alle info sulle foto
+    //metodo per ritornare tutti gli alloggi insieme alle info sulle foto per visualizzarli in catalogo
     public function getAlloggi(){
         return Alloggio::leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->paginate(3);

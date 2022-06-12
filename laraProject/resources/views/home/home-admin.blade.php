@@ -1,3 +1,5 @@
+{{--tutti i parametri inerenti alle statistiche derivano dal controller
+e cambiano a seconda del particolare filtro che l'utente esegue--}}
 <main id="content-home-admin" class="content-home-admin">
     {{--sezione riassunto filtri--}}
     <section id="statistiche" class="stats-section">
