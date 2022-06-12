@@ -8,6 +8,7 @@ use App\Models\Guest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
+// CONTROLLER DELL'UTENTE NON REGISTRATO
 class GuestController extends Controller {
 
     protected $_guestUserModel;
@@ -17,6 +18,7 @@ class GuestController extends Controller {
         $this->_guestUserModel = new Guest();
     }
 
+    // Funzione che mostra la home generica con le FAQ pertinenti all'utente non registrato
     public function index() {
 
         //Faq
@@ -27,6 +29,7 @@ class GuestController extends Controller {
 
     }
 
+    // Funzione che mostra la pagina con il catalogo pubblico
     public function showPublicCatalog(){
 
         $alloggi = $this->_guestUserModel->getAlloggi();
@@ -36,6 +39,7 @@ class GuestController extends Controller {
 
     }
 
+    // Funzione che mostra la pagina catalogo con alloggi di tipologia -> APPARTAMENTO
     public function showPublicCatalogAppartamenti(){
 
         $alloggi = $this->_guestUserModel->getAlloggioByTip('Appartamento');
@@ -45,6 +49,7 @@ class GuestController extends Controller {
 
     }
 
+    // Funzione che mostra la pagina catalogo con alloggi di tipologia -> POSTO LETTO
     public function showPublicCatalogPostiLetto(){
 
         $alloggi = $this->_guestUserModel->getAlloggioByTip('Posto_letto');

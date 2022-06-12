@@ -1,3 +1,4 @@
+{{-- CONDIZIONI D'USO - SEZIONE DESCRITTIVA PRESENTE SIA NELLA HOMEPAGE CHE COME POPUP NEL FOOTER --}}
 <div data-popup-content="condizioni-uso">
     <h1>Condizioni d'uso del sito web FlatMate</h1>
     <p> 1. Una volta entrati nel sito, è preferibile creare un account ed effettuare l'accesso.<br>

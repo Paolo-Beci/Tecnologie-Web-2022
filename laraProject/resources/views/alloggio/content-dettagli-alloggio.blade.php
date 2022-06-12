@@ -8,16 +8,19 @@
 
 @section('title', 'Dettagli alloggio')
 
+{{-- CONTENUTO DELLA PAGINA DEI DETTAGLI DELL'ALLOGGIO SELEZIONATO --}}
 @section('content')
 @isset($info_generali)
     <main class="main-container">
         <section class="primo-box">
+            {{-- Immagine --}}
             <div class="image-container">
                 <img class="immagine-alloggio"
                      src="{{ asset('images_case/'.$info_generali->first()->id_foto.$info_generali->first()->estensione) }}"
                      alt="Immagine">
             </div>
 
+            {{-- Descrizione e informazioni dettagliate --}}
             <div class="testo-alloggio">
                 <div class="item-desc">
                     @if($info_generali->first()->tipologia == 'Appartamento')
@@ -99,8 +102,11 @@
                 </div>
             </div>
         </section>
+
         <hr style="margin-right: 50px; margin-left: 50px">
+
         <section class="secondo-box">
+            {{-- Dati del Locatore corrispondente all'annuncio visualizzato --}}
             <div class="contatto-alloggio">
                 <h2>Contatti host</h2>
                 <div class="img-contatto">
@@ -131,6 +137,7 @@
                     </div>
                 @endif
             </div>
+            {{-- Mappa centrata all'indirizzo dell'alloggio selezionato --}}
             <div class="mappa-alloggio">
                 <iframe width="600" height="500" id="gmap_canvas" loading="lazy" allowfullscreen
                         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDKrpbaW7f4DAhXkdkXw3T_f62wW2zFwtg&q=

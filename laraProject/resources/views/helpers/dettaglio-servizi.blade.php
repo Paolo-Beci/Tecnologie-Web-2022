@@ -1,20 +1,22 @@
 <!-- ELENCO DEI SERVIZI DISPONIBILI PER OGNI ALLOGGIO NELLA VISTA DETTAGLIO ALLOGGIO -->
 <div class="box-servizio">
-    @php $flag = false @endphp
-    @foreach($info_generali as $servizio)
-        @if($servizio->servizio=='Bagno' && $flag==false)
-            <p><i class="icon fa-solid fa-toilet"></i> Bagno ({{$servizio->quantita}})</p>
-            @php $flag = true @endphp
+    {{-- BAGNO --}}
+    @php $flag = false @endphp    {{-- La flag impedisce di ripetere l'inserimento di un servizio della view visto che abbiamo più entità 'alloggio' --}}
+    @foreach($info_generali as $alloggio)
+        @if($alloggio->servizio=='Bagno' && $flag==false)
+            <p><i class="icon fa-solid fa-toilet"></i> Bagno ({{$alloggio->quantita}})</p>
+            @php $flag = true @endphp  {{-- servizio presente e caricato --}}
         @endif
     @endforeach
-    @if($flag==false)
+    @if($flag==false)    {{-- servizio non presente --}}
         <p class="icon-false"><i class="icon fa-solid fa-toilet fa-fade"></i> Bagno </p>
     @endif
 
+    {{-- CUCINA --}}
     @php $flag = false @endphp
-    @foreach($info_generali as $servizio)
-        @if($servizio->servizio=='Cucina' && $flag==false)
-            <p><i class="icon fa-solid fa-kitchen-set"></i> Cucina ({{$servizio->quantita}})</p>
+    @foreach($info_generali as $alloggio)
+        @if($alloggio->servizio=='Cucina' && $flag==false)
+            <p><i class="icon fa-solid fa-kitchen-set"></i> Cucina ({{$alloggio->quantita}})</p>
             @php $flag = true @endphp
         @endif
     @endforeach
@@ -22,10 +24,11 @@
         <p class="icon-false"><i class="icon fa-solid fa-kitchen-set fa-fade"></i> Cucina </p>
     @endif
 
+    {{-- LAVANDERIA --}}
     @php $flag = false @endphp
-    @foreach($info_generali as $servizio)
-        @if($servizio->servizio=='Lavanderia' && $flag==false)
-            <p><i class="icon fa-solid fa-faucet"></i> Lavanderia ({{$servizio->quantita}})</p>
+    @foreach($info_generali as $alloggio)
+        @if($alloggio->servizio=='Lavanderia' && $flag==false)
+            <p><i class="icon fa-solid fa-faucet"></i> Lavanderia ({{$alloggio->quantita}})</p>
             @php $flag = true @endphp
         @endif
     @endforeach
@@ -35,10 +38,11 @@
     @endif
 </div>
 <div class="box-servizio">
+    {{-- RIPOSTIGLIO --}}
     @php $flag = false @endphp
-    @foreach($info_generali as $servizio)
-        @if($servizio->servizio=='Ripostiglio' && $flag==false)
-            <p><i class="icon fa-solid fa-box-archive"></i> Ripostiglio ({{$servizio->quantita}})</p>
+    @foreach($info_generali as $alloggio)
+        @if($alloggio->servizio=='Ripostiglio' && $flag==false)
+            <p><i class="icon fa-solid fa-box-archive"></i> Ripostiglio ({{$alloggio->quantita}})</p>
             @php $flag = true @endphp
         @endif
     @endforeach
@@ -47,10 +51,11 @@
         @php $flag = true @endphp
     @endif
 
+    {{-- GARAGE --}}
     @php $flag = false @endphp
-    @foreach($info_generali as $servizio)
-        @if($servizio->servizio=='Garage' && $flag==false)
-            <p><i class="icon fa-solid fa-square-parking"></i> Garage ({{$servizio->quantita}})</p>
+    @foreach($info_generali as $alloggio)
+        @if($alloggio->servizio=='Garage' && $flag==false)
+            <p><i class="icon fa-solid fa-square-parking"></i> Garage ({{$alloggio->quantita}})</p>
             @php $flag = true @endphp
         @endif
     @endforeach
@@ -59,10 +64,11 @@
         @php $flag = true @endphp
     @endif
 
+    {{-- GIARDINO --}}
     @php $flag = false @endphp
-    @foreach($info_generali as $servizio)
-        @if($servizio->servizio=='Giardino' && $flag==false)
-            <p><i class="icon fa-solid fa-tree"></i> Giardino ({{$servizio->quantita}})</p>
+    @foreach($info_generali as $alloggio)
+        @if($alloggio->servizio=='Giardino' && $flag==false)
+            <p><i class="icon fa-solid fa-tree"></i> Giardino ({{$alloggio->quantita}})</p>
             @php $flag = true @endphp
         @endif
     @endforeach
@@ -72,10 +78,11 @@
     @endif
 </div>
 <div class="box-servizio">
+    {{-- ARIA CONDIZIONATA --}}
     @php $flag = false @endphp
-    @foreach($info_generali as $servizio)
-        @if($servizio->servizio=='Aria_condizionata' && $flag==false)
-            <p><i class="icon fa-solid fa-fan"></i> Aria Condizionata ({{$servizio->quantita}})</p>
+    @foreach($info_generali as $alloggio)
+        @if($alloggio->servizio=='Aria_condizionata' && $flag==false)
+            <p><i class="icon fa-solid fa-fan"></i> Aria Condizionata ({{$alloggio->quantita}})</p>
             @php $flag = true @endphp
         @endif
     @endforeach
@@ -84,10 +91,11 @@
         @php $flag = true @endphp
     @endif
 
+    {{-- WI-FI --}}
     @php $flag = false @endphp
-    @foreach($info_generali as $servizio)
-        @if($servizio->servizio=='Wi-fi' && $flag==false)
-            <p><i class="icon fa-solid fa-wifi"></i> WiFi ({{$servizio->quantita}})</p>
+    @foreach($info_generali as $alloggio)
+        @if($alloggio->servizio=='Wi-fi' && $flag==false)
+            <p><i class="icon fa-solid fa-wifi"></i> WiFi ({{$alloggio->quantita}})</p>
             @php $flag = true @endphp
         @endif
     @endforeach
@@ -96,10 +104,11 @@
         @php $flag = true @endphp
     @endif
 
+    {{-- ANGOLO STUDIO --}}
     @php $flag = false @endphp
-    @foreach($info_generali as $servizio)
-        @if($servizio->servizio=='Angolo_studio' && $flag==false)
-            <p><i class="icon fa-solid fa-book"></i> Angolo Studio ({{$servizio->quantita}})</p>
+    @foreach($info_generali as $alloggio)
+        @if($alloggio->servizio=='Angolo_studio' && $flag==false)
+            <p><i class="icon fa-solid fa-book"></i> Angolo Studio ({{$alloggio->quantita}})</p>
             @php $flag = true @endphp
         @endif
     @endforeach

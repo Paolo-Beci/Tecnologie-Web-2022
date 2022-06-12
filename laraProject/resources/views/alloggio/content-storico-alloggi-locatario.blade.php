@@ -7,6 +7,7 @@
 
 @section('title', 'Storico alloggi')
 
+{{-- STORICOALLOGGI - CONTIENE LA LISTA DEGLI ALLOGGI LOCATI IN PASSATO DAL LOCATARIO IN QUESTIONE --}}
 @section('content')
     <main class="main-container">
         <section class="catalogo">
@@ -16,7 +17,7 @@
                 </div>
             </div>
         <!-- ALLOGGI -->
-        @if($alloggiLocatario->isEmpty())
+        @if($alloggiLocatario->isEmpty()) {{-- Se non sono presenti alloggi... --}}
             <div class="parent">
                 <div class="child">
                     <i class="fa-solid fa-house-circle-xmark fa-2xl" style="margin: 50px"></i>
@@ -31,8 +32,10 @@
         @endisset
         </section>
     </main>
+
     <!--Paginazione-->
     @isset($alloggiLocatario)
         @include('pagination.paginator', ['paginator' => $alloggiLocatario])
     @endisset
+
 @endsection

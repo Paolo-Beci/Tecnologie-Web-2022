@@ -1,3 +1,4 @@
+{{-- CHI SIAMO - SEZIONE DESCRITTIVA PRESENTE SIA NELLA HOMEPAGE CHE COME POPUP NEL FOOTER --}}
 <h2>Cosa facciamo e chi siamo?</h2>
 <p>Siamo una società immobiliare fondata ad Ancona nel 2022 che intende
     <br>
@@ -9,7 +10,7 @@
             <img src="{{asset('images/icons_utente_chi_siamo.png')}}" alt="" height="75" width="75">
             <div>
                 <h2>Paolo Beci</h2>
-                <a class="email" href="mailto:s1092712@studenti.univpm.it">s1092712@studenti.univpm.it</a>
+                <a class="email" href="mailto:s1092712@studenti.univpm.it">s1092712@studenti.univpm.it</a>  {{-- MAILTO --}}
             </div>
     </article>
     <article class="info">
@@ -33,11 +34,13 @@
                 <a class="email" href="mailto:s1095492@studenti.univpm.it">s1095492@studenti.univpm.it</a>
             </div>
     </article>
+
     <!-- Bottone per accedere alla documentazione -->
     <div>
         <a href="{{asset('documentazione_grp_02.pdf')}}">
             <button class="bottone-documentazione"><i class="fa-solid fa-book"></i> Documentazione del progetto </button>
         </a>
     </div>
+
 </div>
 

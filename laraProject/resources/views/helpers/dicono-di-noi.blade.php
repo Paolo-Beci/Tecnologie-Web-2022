@@ -1,3 +1,4 @@
+{{-- DICONO DI NOI - SEZIONE DESCRITTIVA PRESENTE SIA NELLA HOMEPAGE CHE COME POPUP NEL FOOTER --}}
 <h2>Cosa dicono di noi?</h2>
 <div class="reviews-container">
     <article class="left-review">
@@ -15,6 +16,7 @@
             <span class="rating">4/5 ★</span>
         </button>
     </article>
+
     <article class="right-review active-review" data-review="1">
         Sono cliente da inizio 2022. C'è poco da dire: funziona tutto a meraviglia.
         Il sito è velocissimo, le performance sono davvero degne di nota.

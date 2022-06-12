@@ -1,3 +1,4 @@
+{{-- PRIVACY - SEZIONE DESCRITTIVA PRESENTE SIA NELLA HOMEPAGE CHE COME POPUP NEL FOOTER --}}
 <div data-popup-content="privacy">
     <h1>Informativa sulla Privacy e la Protezione dei Dati Personali</h1>
     <p>La presente informativa è resa, nel rispetto degli artt. 13 e 14 del Regolamento UE 679/2016 (di seguito “Regolamento”), agli utilizzatori (di seguito: “Utenti” oppure “Utente”) del sito in versione desktop

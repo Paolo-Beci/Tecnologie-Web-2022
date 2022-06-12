@@ -8,6 +8,7 @@ use App\Models\Resources\Modifica;
 
 use Illuminate\Http\Request;
 
+// CONTROLLER DELL'AMMINISTRATORE
 class AdminController extends Controller {
 
     protected $_adminModel;
@@ -17,6 +18,7 @@ class AdminController extends Controller {
         $this->_adminModel = new Admin();
     }
 
+    // Funzione che mostra la home amministratore con tutte le statistiche
     public function index() {
 
         //per offerte di alloggio
@@ -299,6 +301,7 @@ class AdminController extends Controller {
             ->with('a3', $_POST['a3']);
     }
 
+    // Funzione utilizzata per tornare un array di alloggi in catalogo
     public function showCatalog(){
 
         $alloggi = $this->_adminModel->getAlloggi();
@@ -308,6 +311,7 @@ class AdminController extends Controller {
 
     }
 
+    // Funzione che mostra la pagina catalogo con alloggi di tipologia -> APPARTAMENTO
     public function showCatalogAppartamenti(){
 
         $alloggi = $this->_adminModel->getAlloggioByTip('Appartamento');
@@ -317,6 +321,7 @@ class AdminController extends Controller {
 
     }
 
+    // Funzione che mostra la pagina catalogo con alloggi di tipologia -> POSTO LETTO
     public function showCatalogPostiLetto(){
 
         $alloggi = $this->_adminModel->getAlloggioByTip('Posto_letto');

@@ -1,3 +1,4 @@
+{{-- FILTRI DEL CATALOGO --}}
 <script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
 <script>
     $(function () {
@@ -18,7 +19,7 @@
             }
         });
 
-        //funzione controlli estremi superficie e prezzo
+        //funzione controlli estremi prezzo
         $("#min-prezzo").on('change', function(event) {
             $("#max-prezzo").val(parseInt($(this).val()));
         });
@@ -29,6 +30,7 @@
             }
         });
 
+        //funzione controlli estremi superficie
         $("#min-mq").on('change', function(event) {
             $("#max-mq").val(parseInt($(this).val()));
         });
@@ -40,8 +42,10 @@
         });
     });
 </script>
+
 <h1 style="margin: 20px">Filtri ricerca</h1>
 <hr style="margin: 10px">
+
 {{ Form::open(array('route' => 'filtered', 'class' => 'filtri active-form', 'method' => 'get')) }}
 
 <h2 class="subtitle-filtri">Città</h2>

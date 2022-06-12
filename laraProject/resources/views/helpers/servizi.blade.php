@@ -1,3 +1,4 @@
+{{-- SERVIZI OFFERTI - SEZIONE DESCRITTIVA PRESENTE SIA NELLA HOMEPAGE CHE COME POPUP NEL FOOTER --}}
 <h2>Un servizio eccezionale!</h2>
 <p>Il nostro servizio clienti risponde 24 ore su 24, e ricorda,
     <br>

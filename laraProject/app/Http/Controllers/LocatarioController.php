@@ -10,6 +10,7 @@ use App\Models\Resources\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
+// CONTROLLER DEL LOCATARIO
 class LocatarioController extends Controller {
 
     protected $_locatarioModel;
@@ -19,6 +20,7 @@ class LocatarioController extends Controller {
         $this->_locatarioModel = new Locatario();
     }
 
+    // Funzione che mostra la home locatario con le FAQ pertinenti
     public function index() {
 
         //Faq
@@ -28,7 +30,7 @@ class LocatarioController extends Controller {
             ->with('faq', $faq); //la variabile faq (array) viene passata alla view
     }
 
-    // metodo utilizzato per tornare gli alloggi in catalogo
+    // Funzione utilizzata per tornare un array di alloggi in catalogo
     public function showCatalog(){
         $alloggi = $this->_locatarioModel->getAlloggi();
 
@@ -47,13 +49,14 @@ class LocatarioController extends Controller {
 
     }
 
-    // metodo utilizzato per tornare gli appartamenti in catalogo
+    // Funzione che mostra la pagina catalogo con alloggi di tipologia -> APPARTAMENTO
     public function showCatalogAppartamenti(){
 
         $alloggi = $this->_locatarioModel->getAlloggioByTip('Appartamento');
 
         return view('layouts/content-catalogo')
             ->with('alloggi', $alloggi) //la variabile appartamenti (array) viene passata alla view
+            //Dati usati per la ricerca nei filtri:
             ->with('tipologia', 'NULL')
             ->with('citta', '')
             ->with('piano', '--')
@@ -66,13 +69,14 @@ class LocatarioController extends Controller {
             ->with('tipo', 'NULL');
     }
 
-    // metodo utilizzato per tornare i posti letto in catalogo
+    // Funzione che mostra la pagina catalogo con alloggi di tipologia -> POSTO LETTO
     public function showCatalogPostiLetto(){
 
         $alloggi = $this->_locatarioModel->getAlloggioByTip('Posto_letto');
 
         return view('layouts/content-catalogo')
             ->with('alloggi', $alloggi) //la variabile posti letto (array) viene passata alla view
+            //Dati usati per la ricerca nei filtri:
             ->with('tipologia', 'NULL')
             ->with('citta', '')
             ->with('piano', '--')
@@ -85,30 +89,34 @@ class LocatarioController extends Controller {
             ->with('tipo', 'NULL');
     }
 
-    // metodo utilizzato per tornare gli alloggi locati da un determinato locatario
+    // Funzione utilizzata per tornare gli alloggi locati da un determinato locatario
     public function showStoricoAlloggi(){
+
         $alloggiLocatario = $this->_locatarioModel->getStoricoAlloggiByLocatario();
+
         return view('alloggio/content-storico-alloggi-locatario')
             ->with('alloggiLocatario', $alloggiLocatario);
     }
 
-    // metodo utilizzato per tornare i dettagli dell'alloggio selezionato in catalogo
+    // Funzione utilizzata per tornare i dettagli dell'alloggio selezionato in catalogo
     public function showDettaglioAlloggio($id_alloggio, $tipologia){
+
         $info_generali = $this->_locatarioModel->getAlloggio($id_alloggio, $tipologia);
 
         return view('alloggio/content-dettagli-alloggio')
             ->with('info_generali', $info_generali);
     }
 
-    //metodo utilizzato per tornare gli alloggi in base alla città
+    // Funzione utilizzata per tornare gli alloggi in base alla città
     public function showAlloggiByCity() {
+
         $alloggiByCity = $this->_locatarioModel->getAlloggiByCity($_POST['citta']);
 
         return view('layouts/content-catalogo')
             ->with('alloggi', $alloggiByCity);
     }
 
-    //metodo utilizzato per tornare gli alloggi in base a tutti i filtri
+    // Funzione utilizzata per tornare gli alloggi in base a tutti i filtri
     public function showAlloggiFiltered(Request $request) {
 
         $array = $request->all();
@@ -182,7 +190,7 @@ class LocatarioController extends Controller {
             ->with('tipo', $array['tipo']);
     }
 
-    // metodo utilizzato per tornare i dettagli dell'account attualmente loggato
+    // Funzione utilizzata per tornare i dettagli dell'account attualmente loggato
     public function showAccount() {
         $dati_personali = $this->_locatarioModel->getDatiLocatario();
 

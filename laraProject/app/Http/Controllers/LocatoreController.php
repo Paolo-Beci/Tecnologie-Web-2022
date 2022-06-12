@@ -17,6 +17,7 @@ use App\Models\Resources\Servizio;
 use App\Models\Resources\User;
 use Illuminate\Support\Facades\Hash;
 
+// CONTROLLER DEL LOCATORE
 class LocatoreController extends Controller {
 
     protected $_locatoreModel;
@@ -26,6 +27,7 @@ class LocatoreController extends Controller {
         $this->_locatoreModel = new Locatore();
     }
 
+    // Funzione che mostra la home locatore con le FAQ pertinenti
     public function index() {
 
         //Faq
@@ -35,7 +37,7 @@ class LocatoreController extends Controller {
             ->with('faq', $faq); //la variabile faq (array) viene passata alla view
     }
 
-    // metodo utilizzato per tornare gli alloggi in catalogo
+    // Funzione utilizzata per tornare un array di alloggi in catalogo
     public function showCatalog(){
         $alloggi = $this->_locatoreModel->getAlloggi();
 
@@ -44,7 +46,7 @@ class LocatoreController extends Controller {
 
     }
 
-    // metodo utilizzato per tornare gli appartamenti in catalogo
+    // Funzione che mostra la pagina catalogo con alloggi di tipologia -> APPARTAMENTO
     public function showCatalogAppartamenti(){
 
         $alloggi = $this->_locatoreModel->getAlloggioByTip('Appartamento');
@@ -54,7 +56,7 @@ class LocatoreController extends Controller {
 
     }
 
-    // metodo utilizzato per tornare i posti letto in catalogo
+    // Funzione che mostra la pagina catalogo con alloggi di tipologia -> POSTO LETTO
     public function showCatalogPostiLetto(){
 
         $alloggi = $this->_locatoreModel->getAlloggioByTip('Posto_letto');

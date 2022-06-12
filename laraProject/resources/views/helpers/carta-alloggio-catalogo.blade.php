@@ -1,16 +1,24 @@
-@if(isset($alloggio->id_foto))
-    <img class="item-immagine" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Immagine">
-@else
-    <img class="item-immagine" src="{{ asset('images/icons_casa.png') }}" alt="Immagine">
-@endif
+{{-- VISUALIZZAZIONE DELLE INFORMAZIONI DI UN ALLOGGIO CONTENUTE DENTRO UNA SINGOLA BOX NEL CATALOGO --}}
 
+{{-- IMMAGINE --}}
+<div>
+    @if(isset($alloggio->id_foto))
+        <img class="item-immagine" src="{{ asset('images_case/'.$alloggio->id_foto.$alloggio->estensione) }}" alt="Immagine">
+    @else
+        <img class="item-immagine" src="{{ asset('images/icons_casa.png') }}" alt="Immagine">
+    @endif
+</div>
+
+{{-- DESCRIZIONE E DETTAGLI DELL'ALLOGGIO --}}
 <div>
     @if($alloggio->tipologia == 'Posto_letto')
         <h1>Posto letto</h1>
     @else
         <h1>{{ $alloggio->tipologia }}</h1>  <!-- Tipologia -->
     @endif
+
     <hr style="margin: 10px">
+
     <h1>
         {{ $alloggio->via }}, {{ $alloggio->num_civico }},
         Piano {{ $alloggio->piano }}
@@ -32,12 +40,17 @@
         @endif
     </div>
 </div>
+
+{{-- Sezione accessibile UNICAMENTE dalla rotta 'gestione-alloggi' che permette di accedere alle sezioni di modifica o elimina annuncio --}}
 @can('isLocatore')
 @if(Route::current()->getName() == 'gestione-alloggi')
 <div>
+    {{-- Modifica annuncio --}}
     <div class="icona-catalogo">
         <a href="{{route('modifica-annuncio', [$alloggio->id_alloggio, $alloggio->tipologia])}}"><img class="click" src="{{asset('images/icons_modificare.png')}}" alt="Modifica"/></a>
     </div>
+
+    {{-- Elimina annuncio --}}
     <div class="icona-catalogo">
         <a href="{{ route('cancella-alloggio.store', [$alloggio->id_alloggio]) }}" onclick="return confirm('Sei sicuro di voler proseguire?')"><img class="click"  src="{{asset('images/icons_cestino.png')}}" alt="Elimina"/></a>
     </div>

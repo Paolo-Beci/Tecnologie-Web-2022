@@ -8,18 +8,21 @@
 
 @section('title', 'Account')
 
-<!-- Vista che visualizza i dati personali e li rende modificabili all'utente loggato -->
+{{-- Vista che visualizza i dati personali e li rende modificabili all'utente loggato --}}
 @section('content')
 @isset($dati_personali)
 @foreach($dati_personali as $dati)
     <main class="main-container">
         <section class="primo-box">
+            {{-- Se la rotta è 'show-locatario' allora devono essere visualizzate determinate informazioni. Accessibile cliccando il profilo in messaggistica locatore --}}
             @if (Route::current()->getName() != 'show-locatario')
                 <h1>Ciao {{$dati->nome}} {{$dati->cognome}} !<br> Questa è la tua area privata!</h1>
                 <p style="margin-top: 10px"> Puoi visualizzare e modificare i tuoi dati personali </p>
             @else
                 <h1>{{$dati->nome}} {{$dati->cognome}}</h1>
             @endif
+
+            {{-- Immagine di profilo --}}
             <div class="img-container">
                 @if(is_null($dati->id_foto_profilo))
                     <img src="{{ asset('images_profilo/no_image.png') }}" alt="immagine profilo" class="img-profilo">
@@ -36,13 +39,16 @@
                 {{ Form::open(array('route' => 'modifica-dati-locatario', 'files' => true, 'class' => 'modifica-dati')) }}
             @endcan
 
+            {{-- Caricamento immagine di profilo --}}
             @if (Route::current()->getName() != 'show-locatario')
                 <div class="profile-input">
                     <h1>Inserisci o modifica l'immagine di profilo!</h1>
                     {{ Form::file('image', ['id' => 'image']) }}
                 </div>
             @endif
+
         </section>
+
         <hr style="margin-right: 50px; margin-left: 50px">
 
         <section class="secondo-box">
@@ -55,6 +61,8 @@
                         {{ Form::text('username', '', ['placeholder' => 'Nuovo Username']) }}
                         <span class="underline"></span>
                     </div>
+                    {{-- Messaggio di errore che compare in caso di inserimento di dati non ammessi - scatenato dal sistema di validazione Laravel --}}
+                    {{-- La variabile $error è contenuta nella risposta del server alla richiesta di validazione --}}
                     @if ($errors->first('username'))
                         <ul class="errors">
                             @foreach ($errors->get('username') as $message)
@@ -280,10 +288,12 @@
         <section class="terzo-box">
             @if (Route::current()->getName() != 'show-locatario')
                 @cannot('isAdmin')
+                    {{-- Bottone di inoltro dei dati inseriti nelle form - gestito dal framework Laravel --}}
                     {{ Form::submit('Modifica', ['class' => 'filter_button']) }}
                 @endcannot
             @endif
         </section>
+        {{-- Chiusura form --}}
         {!! Form::close() !!}
     </main>
 @endforeach

@@ -1,7 +1,10 @@
+{{-- HOMEPAGE LOCATORE --}}
 <main id="content-home-locatore" class="content-home-locatore">
+
     <article>
         <p class="titolo">Dai un'occhiata agli ultimi annunci!</p>
     </article>
+
     <section class="gestisci-alloggi">
         <div>
             <div>
@@ -14,6 +17,7 @@
             <img src="{{asset('images/gestione_image.jpg')}}" alt="Immagine 1" width="80%">
         </div>
     </section>
+
     <section class="scopri-servizio">
         <div class="immagine-paragrafo2">
             <img src="{{asset('images/messaging_image.jpg')}}" alt="Immagine 2" width="80%">
@@ -27,7 +31,10 @@
             </div>
         </div>
     </section>
+
+    {{-- Inserimento delle FAQ (pertinenti all'utente) all'interno della vista --}}
     @isset($faq)
         @include('helpers.faq')
     @endisset
+
 </main>
