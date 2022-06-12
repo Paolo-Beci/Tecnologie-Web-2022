@@ -22,7 +22,7 @@ class Locatore {
         return Alloggio::find( $idAlloggio);
     }
 
-    //metodo che torna gli alloggi in base all'id
+    //metodo che torna gli alloggi in base all'id ed alla tipologia -> utili per mostrarli nella vista di modifica alloggio
     public function getAlloggioByIdAndTip($idAlloggio, $tipAlloggio){
         if($tipAlloggio == 'Appartamento'){
            return Alloggio::where('id_alloggio', $idAlloggio)

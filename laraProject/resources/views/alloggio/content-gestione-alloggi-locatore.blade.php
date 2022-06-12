@@ -15,7 +15,7 @@
             @isset($alloggiLocatore)   <!-- esiste o non è null -->
                 @foreach ($alloggiLocatore as $alloggio)
                 <!-- Alloggio -->
-                @include('helpers.alloggio')
+                @include('helpers.alloggio') <!-- ad ogni alloggio associo la sua carta descrittiva, che se cliccabile mi mostra il pop-up che non mi fa approfondire -->
                 @endforeach
             @endisset
         </section>

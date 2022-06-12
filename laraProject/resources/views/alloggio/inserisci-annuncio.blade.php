@@ -12,14 +12,21 @@
 
     <script>
         $(function () {
+            //rotta che crea l'annuncio
             var actionUrl = "{{ route('new-annuncio.store') }}";
             var formId = 'inserisci-annuncio';
+            //con la perdita del focus di un elemento di input della form
             $(":input").on('blur', function (event) {
+                //estrapoliamo l'id dell'elemento che ha perso il focus
                 var formElementId = $(this).attr('id');
+                //funzione js che si occupa della validazione dell'elemento della form di cui ho passato l'id
                 doElemValidation(formElementId, actionUrl, formId);
             });
+            //con il verificarsi del submit della form
             $("#inserisci-annuncio").on('submit', function (event) {
+                //blocca il meccanismo standard del B di gestione del submit della form. Equivalente del "return false" in html.
                 event.preventDefault();
+                //funzione js che si occupa della validazione di tutti gli elementi di input della form
                 doFormValidation(actionUrl, formId);
             });
 
@@ -39,10 +46,13 @@
 
             //si occupa di settare l'età max in base all'età min selezionata dall'utente
             $("#etaMin").on('change', function(event) {
+                //se l'età minima cambia => la max assumerà il valore della minima. Non sarà possibile selezionare un valore inferiore di età.
                 $("#etaMax").val(parseInt($(this).val()));
             });
 
+            //si occupa di fare in modo che l'età max sia sempre più grande della min
             $("#etaMax").on('change', function(event) {
+                //se il valore dell'età max e minore della minima => assegnagli il valore dell'età minima
                 if(parseInt($(this).val()) < parseInt($("#etaMin").val())){
                     $(this).val(parseInt($("#etaMin").val()));
                 }

@@ -11,9 +11,8 @@
     @cannot('isLocatario')
         <div class="alloggio" id="accedi"
             @if (Route::current()->getName() != 'gestione-alloggi')
-                data-popup-caller
+                data-popup-caller  <!-- Che roba è? -->
             @endif
-            >
                 @include('helpers/carta-alloggio-catalogo')
         </div>
     @endcannot

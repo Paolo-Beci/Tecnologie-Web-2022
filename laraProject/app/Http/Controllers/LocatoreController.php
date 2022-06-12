@@ -100,12 +100,17 @@ class LocatoreController extends Controller {
         $imageName = DatiPersonali::select('id_foto_profilo')->max('id_foto_profilo') + 1;
         $user = User::find(auth()->user()->getAuthIdentifier());
 
-        // rinomino l'immagine
+        // mi accerto che l'utente abbia caricato un'immagine
         if ($request->hasFile('image')) {
+            //seleziono l'oggetto immagine e lo assegno ad una variabile
             $image = $request->file('image');
+            //estraggo il nome dell'immagine dall'oggetto che la rappresenta
             $oldName = $image->getClientOriginalName();
+            //decompongo il nome separando il nome fornito dall'utente dall'estensione, posizionandolo dentro un array
             $array = explode('.', $oldName);
+            //aggiungo all'estensione il "."
             $estensione = '.'.$array[1];
+            //assemblo il nuovo nome dell'immagine
             $fullImageName = $imageName.$estensione;
 
             //update del DB con immagine
@@ -142,14 +147,16 @@ class LocatoreController extends Controller {
         return redirect()->action('LocatoreController@showAccount');
     }
 
-    //metodo che apre la sezione di inserimento annuncio
+    //funzione che apre la sezione di inserimento annuncio
     public function insertAnnuncio(){
         return view('alloggio.inserisci-annuncio');
     }
 
+    //funzione che crea effettivamente l'annuncio
     public function storeAnnuncio(NewAlloggioRequest $request)
     {
         $array = $request->all();
+        //data che dovrà coincidere tra le diverse istanze dell'oggetto creato
         $time = now();
 
         //crea l'alloggio
@@ -181,7 +188,7 @@ class LocatoreController extends Controller {
             'data_interazione' => $time
         ]);
 
-        //crea la foto
+        //crea la foto sempre rinominandola allo stesso modo
         if ($request->hasFile('immagine')) {
             $image = $request->file('immagine');
             $arrayImage = $this->imageCompose($image);
@@ -207,6 +214,7 @@ class LocatoreController extends Controller {
                 'alloggio' => $new_alloggio->id_alloggio
             ]);
         }
+        //oppure il posto letto
         else{
             $new_posto_letto = PostoLetto::create([
                 'tipologia_camera' => $array['tipologiaCamera'],
@@ -218,6 +226,7 @@ class LocatoreController extends Controller {
         $servizi = Servizio::all();
 
         foreach ($servizi as $servizio){
+            //Scorrendo tutti i servizi della tabella Servizio verifico quali sono stati selezionati dall'utente e ne creo un'istanza
             if(array_key_exists($servizio->nome_servizio, $array)){
                 $new_servizio = Disponibilita::create([
                     'alloggio' => $new_alloggio->id_alloggio,
@@ -246,6 +255,7 @@ class LocatoreController extends Controller {
         $annuncio = $this->_locatoreModel->getAlloggioById($id);
         $annuncio->delete();
 
+        //dopo l'eliminzazione torno alla schermata "gestione alloggi"
         return redirect()->action('LocatoreController@showLocatoreAlloggi');
     }
 
@@ -253,13 +263,14 @@ class LocatoreController extends Controller {
         return redirect()->action('LocatoreController@showAccount');
     }
 
-    //questa funzione apre la sezione modifica
+    //questa funzione apre la sezione modifica alloggio
     public function showAlloggio($id, $tipologia) {
         $alloggi = $this->_locatoreModel->getAlloggioByIdAndTip($id, $tipologia);
         $servizi = $this->_locatoreModel->getAllServizi();
         $servizi_disponibili = array();
 
         foreach($this->_locatoreModel->getServiziAlloggioById($id) as $servizio_disponibile) {
+            //popolo l'array associativo in base ai servizi di cui è dotato quell'alloggio, associando al nome la quantità
             $servizi_disponibili[$servizio_disponibile->servizio] = $servizio_disponibile->quantita;
         }
 
@@ -271,6 +282,7 @@ class LocatoreController extends Controller {
         // echo "<pre>" . print_r($servizi_disponibili, true) . "</pre>";
     }
 
+    //funzione che modifica effettivamente un all'alloggio
     public function modifyAlloggio(UpdateAlloggioRequest $request){
         $array = $request->all();
         $time = now();
@@ -328,17 +340,17 @@ class LocatoreController extends Controller {
             ]);
         }
         else{
+            //oppure il posto letto
             PostoLetto::where('id_posto_letto', $array['id_posto_letto'])
             ->update([
                 'tipologia_camera' => $array['tipologiaCamera'],
             ]);
         }
 
-        //Modifico i servizi (deve contenere anche la creazione di nuovi servizi e l'eliminazione di quelli che sono stati rimossi
-
+        //Modifico i servizi
         $servizi = Servizio::all();
 
-        //cancello dal DB tutti i campi relativi un determinato alloggio
+        //cancello dal DB tutti i campi relativi ai servizi di un determinato alloggio
         Disponibilita::where('alloggio', $array['id_alloggio'])->delete();
 
         //ripopolo il DB con i servizi inseriti dall'utente

@@ -32,6 +32,7 @@
                 $("#etaMax").val(parseInt($(this).val()));
             });
 
+            //si occupa di fare in modo che l'età max sia sempre più grande della min
             $("#etaMax").on('change', function(event) {
                 if(parseInt($(this).val()) < parseInt($("#etaMin").val())){
                     $(this).val(parseInt($("#etaMin").val()));
@@ -62,6 +63,7 @@
 
                         {{ Form::open(array('route' => 'modifica-annuncio.store', 'files' => true, 'class' => 'modifica-dati')) }}
 
+                        {{-- Parametri che non dovranno essere visibili nella form ma che devo passarmi per modificare l'annuncio --}}
                         {{ Form::hidden('id_alloggio', $alloggio->id_alloggio) }}
                         {{ Form::hidden('id_foto', $alloggio->id_foto) }}
 
@@ -69,6 +71,7 @@
                             <h1>Inserisci o modifica l'immagine dell'alloggio!</h1>
                             {{ Form::file('immagine', ['id' => 'image']) }}
                         </div>
+                        {{-- se la variabile $error contiene errori riguardanti l'elemento della form di id "immagine", allora stampali --}}
                         @if ($errors->first('immagine'))
                             <ul class="errors">
                                 @foreach ($errors->get('immagine') as $message)
@@ -149,16 +152,20 @@
                             <fieldset title="Modifica i servizi presenti nell'alloggio" class="fieldset">
                                 <legend><h2>Servizi</h2></legend>
 
+                                {{--Inserisco nella form di modifica i servizi selezionati/meno in base alle caratteristiche dell'annuncio--}}
                                 @foreach ($servizi as $servizio)
                                     <div>
+                                        {{-- se il servizio è il bogno/cucina => crea una selectRange, altrimenti una checkBox--}}
                                         @if ($servizio->nome_servizio == 'Bagno' || $servizio->nome_servizio == 'Cucina')
                                             {{ Form::selectRange($servizio->nome_servizio, 1, 9, $servizi_disponibili[$servizio->nome_servizio]) }}
                                             {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio) }}
                                         @else
                                             @if (array_key_exists($servizio->nome_servizio, $servizi_disponibili))
+                                                {{-- ho bisogno di distinguere l'angolo studio in quanto deve avere associata la classe di stile "appartamento" che lo fa sparire nel caso in cui la tipologia dell'alloggio sia un appartmanto --}}
                                                 @if($servizio->nome_servizio == 'Angolo_studio')
                                                     {{ Form::checkbox($servizio->nome_servizio, 1, true, ['id' => $servizio->nome_servizio, 'class'=>'appartamento']) }}
                                                     {{ Form::label($servizio->nome_servizio, 'Angolo studio', [ 'class'=>'appartamento'])}}
+                                                {{-- ho bisogno di distinguerla in quanto devo scriverla senza "_" --}}
                                                 @elseif($servizio->nome_servizio == 'Aria_condizionata')
                                                     {{ Form::checkbox($servizio->nome_servizio, 1, true, ['id' => $servizio->nome_servizio]) }}
                                                     {{ Form::label($servizio->nome_servizio, 'Aria condizionata')}}
@@ -167,6 +174,7 @@
                                                     {{ Form::label($servizio->nome_servizio, $servizio->nome_servizio)}}
                                                 @endif
                                             @else
+                                                {{-- Ugualmente nel caso in cui i servizi non siano stati selezionati --}}
                                                 @if($servizio->nome_servizio == 'Angolo_studio')
                                                     {{ Form::checkbox($servizio->nome_servizio, 1, false, ['id' => $servizio->nome_servizio, 'class'=>'appartamento']) }}
                                                     {{ Form::label($servizio->nome_servizio, 'Angolo studio', ['class'=>'appartamento'])}}
