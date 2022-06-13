@@ -71,12 +71,8 @@ class RegisterController extends Controller
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
+    // Funzione che crea una nuova istanza di Utente e di DatiPersonali. Inoltre elimina dalla sessione
+    // le variabili salvate dalla form di registrazione utente
     protected function create(array $data)
     {
 
@@ -110,6 +106,7 @@ class RegisterController extends Controller
 
     }
 
+    // Funzione che, una volta registrati, effettua il logout riportando così il nuovo utente alla pagina di login
     protected function registered(Request $request, $user) {
         Auth::logout();
     }

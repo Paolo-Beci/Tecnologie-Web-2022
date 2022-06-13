@@ -222,6 +222,8 @@ class Locatario {
 
     }
 
+    // Funzione che ritorna un array map in cui vi sono i dati di un locatore, un locatario e l'alloggio
+    // assegnato a quest'ultimo che serviranno nella visualizzazione del contratto
     public function getDatiContratto($locatore, $locatario, $alloggio) {
 
         $dati = array();

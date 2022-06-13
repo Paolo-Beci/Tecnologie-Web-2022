@@ -248,6 +248,8 @@ class LocatarioController extends Controller {
         return redirect()->action('LocatarioController@showAccount');
     }
 
+    // Funzione che mostra la pagina del contratto al locatario una volta che il locatore gli ha assegnato
+    // un alloggio
     public function showContratto(Request $request) {
 
         $array = $request->all();

@@ -96,6 +96,8 @@ class MessaggisticaController extends Controller {
 
     }
 
+    // Funzione che permette ad un locatario che visualizza un alloggio libero di opzionarlo mandando
+    // un messaggio al locatore relativo all'alloggio e ridireziona alla pagina di messaggistica
     public function opzionamento(Request $request) {
 
         $message = $request->all();

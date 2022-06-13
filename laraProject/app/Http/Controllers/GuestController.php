@@ -58,6 +58,9 @@ class GuestController extends Controller {
             ->with('alloggi', $alloggi); //la variabile posti letto (array) viene passata alla view
     }
 
+    //Funzione che mostra la pagina della registrazione dei dati personali nel caso in cui la validazione
+    //dei dati di registrazione utente sia andata buon fine. Essa immagazzina le informazione della
+    //form da cui proviene nella sessione
     protected function showRegisterDatiPersonaliPost(NewUserRequest $request) {
 
         $array = $request->all();
@@ -73,6 +76,9 @@ class GuestController extends Controller {
 
     }
 
+    //Funzione che mostra la pagina della registrazione dei dati personali solo quando la sessione presenta
+    // i dati di registrazione utente. Questa metodo viene utilizzato ad esempio quando fallisce la validazione
+    // dei dati della formd i registrazione dei dati personali
     protected function showRegisterDatiPersonaliGet() {
 
         if(Session::has(['sign-up-username', 'sign-up-password', 'role']) ){

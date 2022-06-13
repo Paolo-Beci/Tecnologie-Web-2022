@@ -9,6 +9,7 @@ use App\Models\Resources\User;
 
 class Messaggistica {
 
+    // Ritorna tutti i messaggi(mandati e ricevuti) relativi all'utente autenticato
     public function getUserMessages() {
 
         $user_id = auth()->user()->getAuthIdentifier();
@@ -40,6 +41,8 @@ class Messaggistica {
         return Alloggio::get();
     }
 
+    // Ritorna un array map in cui all'id di un utente viene associata una stringa
+    // che indica il nome del file della foto profilo
     public function getUsersPhoto() {
         $utenti = User::select('utente.id', 'id_foto_profilo', 'estensione_p')
             ->leftJoin('dati_personali', 'utente.dati_personali', '=', 'dati_personali.id_dati_personali')
@@ -56,6 +59,7 @@ class Messaggistica {
 
     }
 
+    // Ritorna un array map a in cui allo username di un utente associa il suo id
     public function getUsernameIdUsers() {
         $utenti = User::select('id', 'username')->get();
 
@@ -68,6 +72,8 @@ class Messaggistica {
         return $usernameIdUsers;
     }
 
+    // Funzione che modifica lo stato di un alloggio da libero a locato e crea una istanza
+    // di interazione tra l'alloggio e il locatario a cui esso è stato assagnato
     public function setAssegnamento($idAlloggio, $locatario) {
 
         $alloggio = Alloggio::find($idAlloggio);
