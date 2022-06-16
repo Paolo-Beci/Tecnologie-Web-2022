@@ -172,6 +172,8 @@
                                     $day_contact = array_reverse($day_contact);
                                 @endphp
 
+                                {{-- Forma alternativa di un for each per controllare al meglio l'iterazione
+                                e l'oggetto dell'interazione corrente --}}
                                 @while (!empty($day_contact))
 
                                     @if (current($day_contact)->mittente == $authUser->username)

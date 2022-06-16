@@ -59,7 +59,7 @@ class GuestController extends Controller {
     }
 
     //Funzione che mostra la pagina della registrazione dei dati personali nel caso in cui la validazione
-    //dei dati di registrazione utente sia andata buon fine. Essa immagazzina le informazione della
+    //dei dati di registrazione utente sia andata a buon fine. Essa immagazzina le informazioni della
     //form da cui proviene nella sessione
     protected function showRegisterDatiPersonaliPost(NewUserRequest $request) {
 

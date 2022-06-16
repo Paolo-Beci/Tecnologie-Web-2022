@@ -22,7 +22,7 @@ class MessaggisticaController extends Controller {
 
         $contacts = array();
 
-        // Generazione primo livello array contact. Alloggi
+        // Generazione primo livello array contact. Alloggi(IDalloggio)
         foreach($messages as $message) {
 
             $alloggio = $message->alloggio;
@@ -39,15 +39,18 @@ class MessaggisticaController extends Controller {
             $mittente = $message->mittente;
             $destinatario = $message->destinatario;
 
+            //Controllo per non far visualizzare all'utente loggato una chat con sè stesso
+            //Controllo inoltre i messaggi che vengono inviati all'utente loggato
             if($mittente != $authUsername && !array_key_exists($mittente, $contacts[$alloggio]))
                 $contacts[$alloggio][$mittente] = array();
 
+            //Controllo i messaggi che vengono inviati dall'utente loggato
             if($destinatario != $authUsername && !array_key_exists($destinatario, $contacts[$alloggio]))
                 $contacts[$alloggio][$destinatario] = array();
 
         }
 
-        // Generazione terzo livello array contact. Giorno. Popolazione dell'array
+        // Generazione terzo livello array contact. Giorno. Popolazione del terzo livello
         foreach($messages as $message) {
 
             $alloggio = $message->alloggio;
@@ -71,7 +74,7 @@ class MessaggisticaController extends Controller {
             
         }
 
-        // echo "<pre>".print_r($contacts, true)."</pre>";
+        //echo "<pre>".print_r($contacts, true)."</pre>";
 
         return view('messaging')
             ->with('authUser', auth()->user())

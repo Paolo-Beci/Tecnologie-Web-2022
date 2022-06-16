@@ -1,3 +1,5 @@
+// Gestisce il click di un contact facendo appartire a schermo la chat-content corrispondente
+// tramite i data attribute 'data-contact' -> 'data-chat-contact' e 'data-alloggio' -> 'data-chat-alloggio'
 $('.contacts').on('click', '.contact', function(){
 
     let contact = $(this).data('contact');
@@ -121,8 +123,6 @@ function changeContactsDisposition(form, data) {
             oldContactsHtml += '</div>';
         }
     });
-
-    //modificare contenuto ultimo messaggio e ora
 
     newContact.find('.preview .preview-top .datetime').text(data.ora_invio);
 
