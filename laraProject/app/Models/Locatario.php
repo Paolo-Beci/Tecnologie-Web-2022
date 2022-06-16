@@ -59,28 +59,14 @@ class Locatario {
         }
     }
 
-    //non serve
-    public function getFotoAlloggio($id_alloggio)
-    {
-        return Foto::where('alloggio', $id_alloggio)->get();
-    }
-
-    //non serve
-    public function getServiziAlloggio($id_alloggio)
-    {
-        return Disponibilita::where('alloggio', $id_alloggio)->get();
-    }
-
     //metodo per tornare un' array di alloggi locati da un locatario
     public function getStoricoAlloggiByLocatario(){
         $locatario = auth()->user()->getAuthIdentifier();
 
-        // ordinarlo per la data di locazione
-
         return Alloggio::leftJoin('interazione', 'alloggio.id_alloggio', '=', 'interazione.alloggio')
             ->leftJoin('foto', 'alloggio.id_alloggio', '=', 'foto.alloggio')
             ->where('utente', $locatario)
-            ->orderBy('data_interazione', 'DESC')
+            ->orderBy('data_interazione', 'DESC')    // ordinato per la data di locazione decrescente
             ->paginate(3);
     }
 
@@ -241,8 +227,6 @@ class Locatario {
         $dati['interazione'] = Interazione::where('utente', $locatario)
                                           ->where('alloggio', $alloggio)
                                           ->get()[0];
-
-        // echo "<pre>" . print_r($dati, true) . "</pre>";
 
         return $dati;
 

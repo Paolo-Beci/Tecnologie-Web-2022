@@ -198,17 +198,24 @@ class LocatarioController extends Controller {
             ->with('dati_personali', $dati_personali);
     }
 
+    // Funzione utilizzata per modificare i dati personali dell'utente
     public function showModificaAccount(UpdateProfileRequest $request){
-        //prendo l'id_foto_profilo più grande nel DB
+        // prendo l'id_foto_profilo più grande nel DB per asssegnare il nome ad una nuova immagine inserita
         $imageName = DatiPersonali::select('id_foto_profilo')->max('id_foto_profilo') + 1;
         $user = User::find(auth()->user()->getAuthIdentifier());
 
-        // rinomino l'immagine
+        // mi accerto che l'utente abbia caricato un'immagine
         if ($request->hasFile('image')) {
+            // rinomino l'immagine caricata
+            //seleziono l'oggetto immagine e lo assegno ad una variabile
             $image = $request->file('image');
+            //estraggo il nome dell'immagine dall'oggetto che la rappresenta
             $oldName = $image->getClientOriginalName();
+            //decompongo il nome separando il nome fornito dall'utente dall'estensione, posizionandolo dentro un array
             $array = explode('.', $oldName);
+            //aggiungo all'estensione il "."
             $estensione = '.'.$array[1];
+            //assemblo il nuovo nome dell'immagine
             $fullImageName = $imageName.$estensione;
 
             //update del DB con immagine
@@ -219,7 +226,7 @@ class LocatarioController extends Controller {
                     , 'via' => $request['street'], 'cap' => $request['cap'], 'cellulare' => $request['telephone']
                     , 'id_foto_profilo' => $imageName, 'estensione_p' => $estensione]);
 
-            //spostiamo l'immagine
+            //spostiamo l'immagine nella cartella images-profilo
             if(!is_null($imageName))
             {
                 $destinationPath = public_path().'/images_profilo';
@@ -227,7 +234,7 @@ class LocatarioController extends Controller {
             }
             }
         else{
-            //update del DB senza immagine
+            //update del DB senza immagine - tabella dati_personali
             DatiPersonali::where('id_dati_personali', auth()->user()->getAuthIdentifier())
                 ->update(['nome' => $request['name'], 'cognome' => $request['surname'], 'luogo_nascita' => $request['birthplace']
                     , 'sesso' => $request['gender'], 'citta' => $request['city'], 'num_civico' => $request['house-number']
@@ -235,21 +242,24 @@ class LocatarioController extends Controller {
                     , 'via' => $request['street'], 'cap' => $request['cap'], 'cellulare' => $request['telephone']]);
         }
 
+        // aggiorno username e password solo se sono stati inseriti
         if(!is_null($request['username']))
             $user->username = $request['username'];
         if(!is_null($request['password']))
             $user->password = Hash::make($request['password']);
+        // salvataggio dei dati dell'utente
         $user->save();
 
+        // al completamento dell'operazione ritorno alla pagina dell'account
         return redirect()->action('LocatarioController@showAccount');
     }
 
+    // Funzione utilizzata per aggiornare l'immagine di profilo nel caso in cui venisse modificata
     public function showImmagineProfilo(){
         return redirect()->action('LocatarioController@showAccount');
     }
 
-    // Funzione che mostra la pagina del contratto al locatario una volta che il locatore gli ha assegnato
-    // un alloggio
+    // Funzione utilizzata per visualizzare il contratto dell'alloggio selezionato - si apre dalla messaggistica di un locatario
     public function showContratto(Request $request) {
 
         $array = $request->all();
