@@ -54,7 +54,7 @@
     height: 515px;
     width: 385px;
     border-radius: 15px;
-    overflow: hidden;
+    overflow: hidden; /*Nasconde le palle nella home al di fuori del container della registrazione/login*/
 }
 
 .login {

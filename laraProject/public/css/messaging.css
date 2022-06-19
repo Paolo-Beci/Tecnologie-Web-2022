@@ -178,7 +178,7 @@ body {
 
 .chat-content {
     height: 540px;
-    overflow: auto;
+    overflow: auto; /*si occupa dello scroll*/
 }
 
 .day-chat {

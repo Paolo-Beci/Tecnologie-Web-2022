@@ -41,7 +41,7 @@ class Messaggistica {
         return Alloggio::get();
     }
 
-    // Ritorna un array map in cui all'id di un utente viene associata una stringa
+    // Ritorna un array associativo in cui all'id di un utente viene associata una stringa
     // che indica il nome del file della foto profilo
     public function getUsersPhoto() {
         $utenti = User::select('utente.id', 'id_foto_profilo', 'estensione_p')
@@ -54,12 +54,12 @@ class Messaggistica {
             $profilePhoto = $utente->id_foto_profilo . $utente->estensione_p;
             $usersPhoto[$utente->id] = $profilePhoto;
         }
-        
+
         return $usersPhoto;
 
     }
 
-    // Ritorna un array map a in cui allo username di un utente associa il suo id
+    // Ritorna un array associativo a in cui allo username di un utente associa il suo id
     public function getUsernameIdUsers() {
         $utenti = User::select('id', 'username')->get();
 
@@ -68,7 +68,7 @@ class Messaggistica {
         foreach($utenti as $utente) {
             $usernameIdUsers[$utente->username] = $utente->id;
         }
-        
+
         return $usernameIdUsers;
     }
 

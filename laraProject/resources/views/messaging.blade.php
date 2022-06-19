@@ -46,7 +46,7 @@
         <article class="left-content">
 
             @php
-
+                //utente che non ha associato all'id la foto profilo
                 if($usersPhoto[$authUser->id] == '')
                     $usersPhoto[$authUser->id] = 'no_image.png';
 
@@ -59,14 +59,18 @@
 
             <div class="contacts">
 
+                {{-- Scorro gli alloggi dentro l'array tridimensionale --}}
                 @foreach ($contacts as $contacts_alloggio)
 
+                    {{-- Scorro gli username --}}
                     @foreach ($contacts_alloggio as $contact)
 
                         @php
+                        //array_search() mi cerca l'elemento nell'array e ne ritorna la chiave
                             $contact_username = array_search($contact, $contacts_alloggio);
                             $contact_id = $usernameIdUsers[$contact_username];
 
+                            //setto le foto
                             if($usersPhoto[$contact_id] == '')
                                 $usersPhoto[$contact_id] = 'no_image.png';
 
@@ -151,6 +155,7 @@
                         @if ($authUser->ruolo == 'locatario')
                             <a href="{{route('dettagli-alloggio-locatario', [$alloggio->id_alloggio, $alloggio->tipologia])}}">
                         @else
+                            {{-- Essendo un locatore... --}}
                             <a href="{{route('gestione-alloggi')}}">
                         @endif
                             <span>{{str_replace('_', ' ', $alloggio->tipologia)}} situato in {{
@@ -162,6 +167,7 @@
 
                     <div class="chat-content">
 
+                        {{-- Cambio l'ordine dell'array, ordinandolo per data crescente --}}
                         @foreach (array_reverse($contact) as $day_contact)
 
                             <div class="day-chat">
@@ -169,19 +175,23 @@
                                 <div class="date">{{array_search($day_contact, $contact)}}</div>
 
                                 @php
+                                //Cambio l'ordine dell'array, ordinandolo per messaggio (ora) crescente
                                     $day_contact = array_reverse($day_contact);
                                 @endphp
 
                                 {{-- Forma alternativa di un for each per controllare al meglio l'iterazione
                                 e l'oggetto dell'interazione corrente --}}
+                                {{-- Scorro l'array di mex relativi ad un determinato giorno finché non diventa vuoto --}}
                                 @while (!empty($day_contact))
 
+                                    {{-- Verifico che il mittente coincida con l'utente loggato--}}
                                     @if (current($day_contact)->mittente == $authUser->username)
 
                                         <div class="sent-container">
-
+                                            {{-- Scorro ogni mex relativo ad un determinato giorno --}}
                                             @foreach ($day_contact as $message)
 
+                                                {{-- Verifico se il mittente di un determinato mex corrisponde con l'utente loggato --}}
                                                 @if ($message->mittente == $authUser->username)
                                                     <div class="sent">
                                                         <span class="chat-text">{!! $message->contenuto !!}</span>
@@ -190,7 +200,10 @@
                                                         </div>
                                                     </div>
                                                     @php
+                                                        //trova la chiave del messaggio dentro l'array dei messaggi relativi ad un particolare giorno
                                                         $key = array_search($message, $day_contact);
+                                                        //elimina la coppia individuata dall'array
+                                                        //Eliminazione svolta per verificare che i mex siano contigui
                                                         unset($day_contact[$key]);
                                                     @endphp
                                                 @else
@@ -201,7 +214,7 @@
 
                                         </div>
                                     @else
-
+                                        {{-- caso in cui il mittente è cambiato --}}
                                         <div class="received-container">
 
                                             @foreach ($day_contact as $message)
@@ -254,6 +267,7 @@
                                 {{ Form::hidden('mittente', $authUser->id) }}
                                 {{ Form::hidden('destinatario', $usernameIdUsers[$contact_username]) }}
                                 {{ Form::hidden('alloggio', $contact_alloggio) }}
+                        {{--Bottone Assegna--}}
                                 {{ Form::submit('Assegna', ['id' => 'assign-submit']) }}
                             {{ Form::close() }}
                         @endif
